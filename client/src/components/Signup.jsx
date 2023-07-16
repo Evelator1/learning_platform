@@ -1,8 +1,11 @@
-import React from "react";
+import {useState} from "react";
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Signup = () => {
+
+export default function Signup(){
   const {
     handleSubmit,
     register,
@@ -11,13 +14,28 @@ const Signup = () => {
     watch,
   } = useForm();
 
+  const [userInfo,setUserInfo]=useState({})
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
-    console.log("Signup form submitted");
-    console.log("Name:", data.name);
-    console.log("Email:", data.email);
-    console.log("Password:", data.password);
-    console.log("Confirm Password:", data.confirmPassword);
-    reset()
+    axios
+    .post("http://localhost:3010/auth/signup", {
+    username: data.username,  
+    email: data.email,
+    password: data.password,
+    })
+    .then((response) => {
+      if(response.status=200){
+         setUserInfo(response.data)
+         console.log("Registation Complete, Welcome",response.data.username)
+         navigate(`/dashboard/${response.data.id}`);
+        } else{
+      console.log("error at Signup")
+    }  })
+    .catch((err) => {
+      console.error(err);
+    });
+  reset();
   };
 
   const password = watch("password");
@@ -29,12 +47,12 @@ const Signup = () => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Sign up</h3>
 
-          <Form.Group controlId="name" className="mb-3">
+          <Form.Group controlId="username" className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter name"
-              {...register("name", { required: "Name is required" })}
+              {...register("username", { required: "Name is required" })}
             />
           </Form.Group>
 
@@ -79,4 +97,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+
