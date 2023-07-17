@@ -20,7 +20,7 @@ const getUserById = async (req, res) => {
   }
 };
 
-const creatUser = async (req, res) => {
+const createUser = async (req, res) => {
   try {
     const {
       body: { username, email, password,userWishWelcome, profilePicture },
@@ -62,4 +62,4 @@ const updatePreferences = async (req, res) => {
   }
 };
 
-module.exports = { creatUser, getUsers, getUserById, updateUser, updatePreferences };
+module.exports = { createUser, getUsers, getUserById, updateUser, updatePreferences };
