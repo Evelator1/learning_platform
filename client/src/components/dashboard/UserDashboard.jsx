@@ -6,10 +6,9 @@ import axios from "axios";
 
 import WelcomeUserPage from "./WelcomeUserPage";
 import CreateMask from "./CreateMask";
-import PostFeed from "./PostFeed";
+import PostsList from "../InterviewQuestions/PostsList"
 import UserBadge from "./UserBadge";
 import LeftMenu from "./LeftMenu";
-
 export default function UserDashboard() {
   const [wishWelcome, setWishWelcome] = useState(true);
   const [userInfo, setUserInfo] = useState({});
@@ -40,7 +39,7 @@ export default function UserDashboard() {
             </Col>
             <Col md={7} className="p-0">
               <CreateMask />
-              <PostFeed />
+              <PostsList />
             </Col>
             <Col md={3} className="p-0">
               <UserBadge userInfo={userInfo}/>
