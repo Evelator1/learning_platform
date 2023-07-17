@@ -20,7 +20,7 @@ const getCommentById=async(req,res)=>{
     }
 }
 
-const creatComment=async(req,res)=>{
+const createComment=async(req,res)=>{
     try{
         const {
             body:{content, author,onPost}
@@ -43,4 +43,4 @@ const updateComment=async(req,res)=>{
     }
 }
 
-module.exports={creatComment, getComments, getCommentById, updateComment}
+module.exports={createComment, getComments, getCommentById, updateComment}
