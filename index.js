@@ -3,19 +3,19 @@ const app = express()
 require ('dotenv').config()
 const port = process.env.PORT || 3011
 require ('./db')
+const cors = require('cors');
 
-app.get('/', (req, res) => {
-    try {
-        res.status(201).send("Welcome to the final project")
-    } catch (error) {
-        res.status(500).send("Error while trying to get", error)
-    }
-});
+app.use(cors());
+app.use(express.json())
 
 const userRouter=require("./routes/User")
-app.use(express.json())
 app.use("/users",userRouter)
 
+const postRouter=require("./routes/Post")
+app.use("/post",postRouter)
+
+const commentRouter=require("./routes/Comments")
+app.use("/comment",commentRouter)
 
 
 

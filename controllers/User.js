@@ -12,8 +12,8 @@ const GetUsers=async(req,res)=>{
 
 const GetUserById=async(req,res)=>{
     try{
-        const ID=req.param.id
-        const user = await User.findOne(ID)
+        const ID=req.params.id
+        const user = await User.findById(ID)
         res.status(201).json(user)
     }catch(error){
         res.status(500).send(error.message)
@@ -38,7 +38,6 @@ const UpdateUser=async(req,res)=>{
         const body=req.body
 
         const user = await User.findByIdAndUpdate(id,body,{new:true})
-        console.log(req.body);
         res.status(201).json(user)
     }catch(error){
         res.status(500).send(error.message)

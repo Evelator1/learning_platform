@@ -8,7 +8,7 @@ userRouter.get("/",User.GetUsers)
 userRouter.get("/:id",User.GetUserById)
 userRouter.put("/:id",User.UpdateUser)
 
-userRouter.post("/",User.CreatUser)
+userRouter.post("/signup",User.CreatUser)
 
 
 module.exports=userRouter
