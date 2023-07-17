@@ -9,8 +9,6 @@ import CreateMask from "./CreateMask";
 import PostsList from "../InterviewQuestions/PostsList"
 import UserBadge from "./UserBadge";
 import LeftMenu from "./LeftMenu";
-
-
 export default function UserDashboard() {
   const [wishWelcome, setWishWelcome] = useState(true);
   const [userInfo, setUserInfo] = useState({});

@@ -13,6 +13,7 @@ userRouter.get("/", getUsers);
 userRouter.get("/:username", getUserById);
 userRouter.put("/:id", updateUser);
 userRouter.put("/:id/wishWelcome", updatePreferences);
+userRouter.post("/", creatUser);
 
 
 module.exports = userRouter;
