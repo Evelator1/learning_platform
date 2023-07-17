@@ -20,7 +20,7 @@ const getPostById=async(req,res)=>{
     }
 }
 
-const creatPost=async(req,res)=>{
+const createPost=async(req,res)=>{
     try{
         const {
             body:{content, author}
@@ -44,4 +44,4 @@ const updatePost=async(req,res)=>{
     }
 }
 
-module.exports={creatPost,getPosts,getPostById,updatePost}
+module.exports={createPost,getPosts,getPostById,updatePost}
