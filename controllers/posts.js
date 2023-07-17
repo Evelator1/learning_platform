@@ -1,5 +1,5 @@
 const Post =require("../models/post")
-const { param } = require('../routes/user');
+//const { param } = require('../routes/user');
 
 const getPosts=async(req,res)=>{
     try{
