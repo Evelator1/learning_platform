@@ -37,7 +37,7 @@ console.log(cols)
               <div className="row text-center">
 
               <h4>{option.name}</h4>
-              <h4>{option.name}</h4>
+              <h4>{option.description}</h4>
               </div>
             </Link>
           ))}

@@ -28,7 +28,7 @@ export default function Signup(){
       if(response.status=200){
          setUserInfo(response.data)
          console.log("Registation Complete, Welcome",response.data.username)
-         navigate(`/dashboard/${response.data.id}`);
+         navigate(`/home/${response.data.username}`);
         } else{
       console.log("error at Signup")
     }  })
@@ -48,10 +48,10 @@ export default function Signup(){
           <h3 className="text-center">Sign up</h3>
 
           <Form.Group controlId="username" className="mb-3">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter name"
+              placeholder="Choose a username"
               {...register("username", { required: "Name is required" })}
             />
           </Form.Group>

@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const User = require('../models/user');
 const { ErrorResponse } = require("../utils/ErrorResponse");
 
 const signup = async (req, res, next) => {
@@ -23,6 +23,7 @@ const signup = async (req, res, next) => {
       email: newUser.email,
       id: newUser._id,
       role: newUser.role,
+      username: newUser.username
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {

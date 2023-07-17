@@ -30,7 +30,7 @@ export default function UserDashboard() {
   return (
     <div className="container-fluid  m-0 p-0">
       {userInfo.userWishWelcome ? (
-        <WelcomeUserPage userInfo={userInfo} />
+        <WelcomeUserPage userInfo={userInfo}  className="m-0 p-0 vh-100 d-flex col-12"/>
       ) : (
         <Container className="m-0 p-0 vh-100 d-flex col-12">
           <Row className="d-flex justify-content-center align-items-start">

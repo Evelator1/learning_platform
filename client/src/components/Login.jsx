@@ -25,7 +25,7 @@ export default function Login(){
         if(response.status=200){
            setUserInfo(response.data)
            console.log("authentication complete, Welcome",response.data.email)
-           navigate(`/dashboard/${response.data.id}`);
+           navigate(`/home/${response.data.username}`);
           } else{
         console.log("error at Login")
       }  })

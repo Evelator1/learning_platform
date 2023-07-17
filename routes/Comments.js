@@ -1,15 +1,12 @@
-const express = require('express');
-const Comment = require("../controllers/Comments")
+const express = require("express");
+const {createComment, getComments, getCommentById, updateComment} = require("../controllers/comments");
 
+const commentRouter = express.Router();
 
-const commentRouter=express.Router()
+commentRouter.get("/", getComments);
+commentRouter.get("/:id", getCommentById);
+commentRouter.put("/:id", updateComment);
 
-commentRouter.get("/",Comment.getComments)
-commentRouter.get("/:id",Comment.getCommentById)
-commentRouter.put("/:id",Comment.updateComment)
+commentRouter.post("/", createComment);
 
-commentRouter.post("/",Comment.creatComment)
-
-
-module.exports=commentRouter
-
+module.exports = commentRouter;
