@@ -2,13 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import PostsList from './components/InterviewQuestions/PostsList'
+import PostForm from "./components/InterviewQuestions/PostForm";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const loggedInUserId = "64b16a37e3011f8fe3953b66";
 
   return (
     <>
-      <h1>Welcome to the frontEnd</h1>
+      <PostForm loggedInUserId={loggedInUserId} />
+      <PostsList/>
     </>
   )
 }
