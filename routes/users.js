@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  creatUser,
+  createUser,
   getUsers,
   getUserById,
   updateUser,
@@ -13,7 +13,7 @@ userRouter.get("/", getUsers);
 userRouter.get("/:username", getUserById);
 userRouter.put("/:id", updateUser);
 userRouter.put("/:id/wishWelcome", updatePreferences);
-userRouter.post("/", creatUser);
+userRouter.post("/", createUser);
 
 
 module.exports = userRouter;
