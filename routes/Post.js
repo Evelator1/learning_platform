@@ -1,14 +1,14 @@
 const express = require('express');
-const Post = require("../controllers/Post")
+const {getPosts,getPostById,updatePost,creatPost} = require("../controllers/post")
 
 
 const postRouter=express.Router()
 
-postRouter.get("/",Post.GetPosts)
-postRouter.get("/:id",Post.GetPostById)
-postRouter.put("/:id",Post.UpdatePost)
+postRouter.get("/",getPosts)
+postRouter.get("/:id",getPostById)
+postRouter.put("/:id",updatePost)
 
-postRouter.post("/",Post.CreatPost)
+postRouter.post("/newPost",creatPost)
 
 
 module.exports=postRouter

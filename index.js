@@ -30,7 +30,7 @@ const postRouter=require("./routes/Post")
 app.use("/post",postRouter)
 
 const commentRouter=require("./routes/Comments")
-app.use("/comment",commentRouter)
+app.use("/comments",commentRouter)
 
 app.use(errorHandler);
 

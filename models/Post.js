@@ -1,6 +1,6 @@
 const mongoose= require("mongoose")
 
-const PostSchema=new mongoose.Schema({
+const postSchema=new mongoose.Schema({
     content:{
         type:String,
         required:true,
@@ -16,6 +16,6 @@ const PostSchema=new mongoose.Schema({
     }
 })
 
-const Post=mongoose.model("Post",PostSchema)
+const Post=mongoose.model("Post",postSchema)
 
 module.exports=Post;
