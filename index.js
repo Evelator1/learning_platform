@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 const authRouter = require("./routes/auth");
 const { errorHandler } = require("./middelwares/errorHandler");
-const userRouter=require("./routes/user")
+const userRouter=require("./routes/users")
 
 
 app.use(cors());
@@ -26,10 +26,10 @@ app.use("/users",userRouter)
 app.use("/auth", authRouter);
 
 
-const postRouter=require("./routes/Post")
+const postRouter=require("./routes/posts")
 app.use("/post",postRouter)
 
-const commentRouter=require("./routes/Comments")
+const commentRouter=require("./routes/comments")
 app.use("/comments",commentRouter)
 
 app.use(errorHandler);
