@@ -8,7 +8,7 @@ postRouter.get("/",getPosts)
 postRouter.get("/:id",getPostById)
 postRouter.put("/:id",updatePost)
 
-postRouter.post("/newPost",creatPost)
+postRouter.post("/newPost",createPost)
 
 
 module.exports=postRouter
