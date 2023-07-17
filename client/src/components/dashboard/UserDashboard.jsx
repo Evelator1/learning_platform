@@ -34,7 +34,7 @@ export default function UserDashboard() {
         <WelcomeUserPage userInfo={userInfo} />
       ) : (
         <Container className="m-0 p-0 vh-100 d-flex col-12">
-          <Row>
+          <Row className="d-flex justify-content-center align-items-start">
             <Col md={2} className="p-0">
               <LeftMenu />
             </Col>
@@ -43,7 +43,7 @@ export default function UserDashboard() {
               <PostFeed />
             </Col>
             <Col md={3} className="p-0">
-              <UserBadge />
+              <UserBadge userInfo={userInfo}/>
             </Col>
           </Row>
         </Container>

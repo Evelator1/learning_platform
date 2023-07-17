@@ -10,7 +10,7 @@ const {
 const userRouter = express.Router();
 
 userRouter.get("/", getUsers);
-userRouter.get("/:id", getUserById);
+userRouter.get("/:username", getUserById);
 userRouter.put("/:id", updateUser);
 userRouter.put("/:id/wishWelcome", updatePreferences);
 
