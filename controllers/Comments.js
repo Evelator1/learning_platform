@@ -1,4 +1,4 @@
-const Comment =require("../models/Comments")
+const Comment =require("../models/comments")
 
 
 const getComments=async(req,res)=>{

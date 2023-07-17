@@ -12,7 +12,7 @@ export default function CreateMask() {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3010/post/new", {
+      .post("http://localhost:3010/newPost", {
         author: data.author,
         content: data.content,
       })

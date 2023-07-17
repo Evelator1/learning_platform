@@ -1,7 +1,7 @@
-const Post =require("../models/Post")
-const { param } = require('../routes/User');
+const Post =require("../models/post")
+const { param } = require('../routes/user');
 
-const GetPosts=async(req,res)=>{
+const getPosts=async(req,res)=>{
     try{
         const posts = await Post.find().populate("author")
         res.status(201).json(posts)
@@ -10,7 +10,7 @@ const GetPosts=async(req,res)=>{
     }
 }
 
-const GetPostById=async(req,res)=>{
+const getPostById=async(req,res)=>{
     try{
         const ID=req.params.id
         const post = await Post.findById(ID)
@@ -20,7 +20,7 @@ const GetPostById=async(req,res)=>{
     }
 }
 
-const CreatPost=async(req,res)=>{
+const creatPost=async(req,res)=>{
     try{
         const {
             body:{content, author}
@@ -32,7 +32,7 @@ const CreatPost=async(req,res)=>{
     }
 }
 
-const UpdatePost=async(req,res)=>{
+const updatePost=async(req,res)=>{
     try{
         const id =req.params.id
         const body=req.body
@@ -44,4 +44,4 @@ const UpdatePost=async(req,res)=>{
     }
 }
 
-module.exports={CreatPost,GetPosts,GetPostById,UpdatePost}
+module.exports={creatPost,getPosts,getPostById,updatePost}
