@@ -16,7 +16,7 @@ import {faStar as solidStar}from '@fortawesome/free-solid-svg-icons';
 
 import './PostsList.css';
 import CommentsModal from './CommentsModal';
-import PostCommentsList from "./CommentsList";
+// import PostCommentsList from "./CommentsList";
 
 
 function PostsList() {
@@ -124,9 +124,9 @@ function PostsList() {
               15
             </Col>
             <Col className='commentsTracker'>
-              <a href='/comments' onClick={() => handleAllCommentsClick(post)}>
+              {/* <a href='/comments' onClick={() => handleAllCommentsClick(post)}>
                 All Comments
-              </a>
+              </a> */}
               
               {/* <PostCommentsList post= {post}/> */}
             </Col>
@@ -138,7 +138,7 @@ function PostsList() {
                 onClick={() => handleLikeClick(post._id)}
               >
                 <FontAwesomeIcon
-                  icon={post.likeChecked ? solidThumbsUp : outlineThumbsUp}
+                  // icon={post.likeChecked ? solidThumbsUp : outlineThumbsUp}
                   className={`LikeIconAction ${post.likeChecked ? 'likeChecked' : ''}`}
                 />
                 <span className={`ml-6 likeButtonText ${post.likeChecked ? 'likeChecked' : ''}`}>

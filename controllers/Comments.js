@@ -1,7 +1,7 @@
 const Comment =require("../models/Comments")
 
 
-const GetComments=async(req,res)=>{
+const getComments=async(req,res)=>{
     try{
         const comments = await Comment.find().populate("author").populate("onPost")
         res.status(201).json(comments)
@@ -10,7 +10,7 @@ const GetComments=async(req,res)=>{
     }
 }
 
-const GetCommentById=async(req,res)=>{
+const getCommentById=async(req,res)=>{
     try{
         const ID=req.params.id
         const comment = await Comment.findById(ID)
@@ -20,7 +20,7 @@ const GetCommentById=async(req,res)=>{
     }
 }
 
-const CreatComment=async(req,res)=>{
+const creatComment=async(req,res)=>{
     try{
         const {
             body:{content, author,onPost}
@@ -32,7 +32,7 @@ const CreatComment=async(req,res)=>{
     }
 }
 
-const UpdateComment=async(req,res)=>{
+const updateComment=async(req,res)=>{
     try{
         const id =req.params.id
         const body=req.body
@@ -43,4 +43,4 @@ const UpdateComment=async(req,res)=>{
     }
 }
 
-module.exports={CreatComment, GetComments, GetCommentById, UpdateComment}
+module.exports={creatComment, getComments, getCommentById, updateComment}

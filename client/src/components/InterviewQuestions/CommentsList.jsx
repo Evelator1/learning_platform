@@ -6,6 +6,9 @@ import Container from 'react-bootstrap/Container';
 import Modal from 'react-modal';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp as solidThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faComment} from '@fortawesome/free-regular-svg-icons';
+
 
 function PostCommentsList({ post }) {
   const [comments, setComments] = useState([]);
