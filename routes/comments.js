@@ -1,5 +1,5 @@
 const express = require('express');
-const {getComments,getCommentById,updateComment,creatComment} = require("../controllers/Comments")
+const {getComments,getCommentById,updateComment,createComment} = require("../controllers/comments")
 
 
 const commentRouter=express.Router()
@@ -8,7 +8,7 @@ commentRouter.get("/",getComments)
 commentRouter.get("/:id",getCommentById)
 commentRouter.put("/:id",updateComment)
 
-commentRouter.post("/",creatComment)
+commentRouter.post("/",createComment)
 
 
 module.exports=commentRouter
