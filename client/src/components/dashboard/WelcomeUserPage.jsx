@@ -5,13 +5,12 @@ import axios from "axios";
 
 export default function WelcomeUserPage({ userInfo }) {
   const sendPreferences = (e) => {
-    console.log(e.target.checked);
+   // console.log(e.target.checked);
     const updatedUserInfo = {
-      ...userInfo,
       userWishWelcome: e.target.checked,
     };
     axios
-      .put(`http://localhost:3010/users/${userInfo._id}`, updatedUserInfo)
+      .put(`http://localhost:3010/users/${userInfo.id}`, updatedUserInfo)
       .then((response) => {
         console.log(response.data);
       })
@@ -19,11 +18,10 @@ export default function WelcomeUserPage({ userInfo }) {
         console.log(error);
       });
   };
-  // console.log(cols)
   return (
     <div
-      className="position-fixed overflow-auto container-fluid vh-100 d-flex-column justify-content-center align-items-center"
-      style={{ backgroundColor: cols.yellow }}
+      className="position-fixed overflow-auto container-fluid vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
+      style={{ backgroundColor: cols.yellow, marginTop: "5rem"}}
     >
       <h1
         className="fs-1 mt-5 p-0
@@ -39,7 +37,7 @@ export default function WelcomeUserPage({ userInfo }) {
               key={option.name}
               style={{
                 width: "18rem",
-                minHeight: "15rem",
+                minHeight: "12rem",
                 backgroundColor: cols.blue,
               }}
               className="col-3 m-5 p-0 rounded-5 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"

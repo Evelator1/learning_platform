@@ -1,52 +1,61 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { axiosClient } from "../../axiosClient";
 
-import WelcomeUserPage from "./WelcomeUserPage";
 import CreateMask from "./CreateMask";
 import PostsList from "../InterviewQuestions/PostsList";
 import UserBadge from "./UserBadge";
 import LeftMenu from "./LeftMenu";
-export default function UserDashboard() {
-  const [userInfo, setUserInfo] = useState();
-
-  const userId = useParams();
+import { cols } from "../../colorSchema";
+export default function UserDashboard({ userInfo, setUserInfo }) {
+  const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosClient
-      .get(`http://localhost:3010/users/${userId.username}`)
+      // .get(`http://localhost:3010/users/${params.username}`) //user route
+       .get(`http://localhost:3010/auth/profile`) //auth route
       .then((response) => {
         setUserInfo(response.data);
+        if(response.data.username === params.username){
+           console.log("match!")
+        }else{
+          navigate(`/login`)
+        }
       })
       .catch((err) => console.error(err));
   }, []);
 
-  // axiosClient.get("/auth/profile ")
-  // console.log(userInfo.userWishWelcome);
-
   return (
-    <div className="container-fluid"
-    style={{marginTop: "7rem"}}>
-      <>
+    <>
+      <div style={{ marginTop: "5rem" }} className=" container-fluid  vw-100">
         {userInfo && (
-          <Container className="m-0 p-0 vh-100 d-flex col-12">
-            <Row className="d-flex justify-content-center">
+          <Container
+            
+            style={{ background: cols.white, overflowY:scroll}}
+          >
+            <Row className="vw-75 d-flex justify-content-between">
               <Col md={2} className="p-0">
                 <LeftMenu userInfo={userInfo} />
               </Col>
-              <Col md={7} className="p-0">
+
+              <Col
+                md={7}
+                className="p-0 d-flex flex-column justify-content-center align-items-center"
+              >
                 <CreateMask />
                 <PostsList />
               </Col>
+
               <Col md={3} className="p-0">
                 <UserBadge userInfo={userInfo} />
               </Col>
             </Row>
           </Container>
         )}
-      </>
-    </div>
+      </div>
+    </>
   );
 }

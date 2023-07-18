@@ -14,13 +14,11 @@ export default function LeftMenu({userInfo}) {
             <Link
             to={`${option.linkTo}/${userInfo.username}`}
             key={option.name}
-            style={{ width: "7rem", minHeight: "5rem", backgroundColor:cols.blue }}
-            className="col-md-3 m-1 p-1 rounded-5 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"
+            style={{ width: "100%", minHeight: "6rem", backgroundColor:cols.blue }}
+            className="col-md-3 my-3 p-1 text-center rounded-5 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"
             >
-              <div className="row text-center">
 
               <p>{option.name}</p>
-              </div>
             </Link>
           ))}
           </div>

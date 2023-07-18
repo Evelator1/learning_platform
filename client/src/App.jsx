@@ -14,12 +14,14 @@ function App() {
 const [userInfo,setUserInfo]=useState()
   return (
     <>
-    <Navbar/>
+    <Navbar userInfo={userInfo} setUserInfo={setUserInfo}/>
       <Routes>
       <Route path='/login' element={<Login setUserInfo={setUserInfo}/>}> </Route>
       <Route path='/signup' element={<Signup setUserInfo={setUserInfo}/>}> </Route>
       <Route path='/welcome/:username' element={<WelcomeUserPage userInfo={userInfo}/>}> </Route>
-      <Route path='/:username' element={<UserDashboard/>}> </Route>
+      <Route path='/:username' element={<UserDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
+      <Route path='/settings/profile/:username' element={<UserDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
+      <Route path='/settings/account/:username' element={<UserDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
     </Routes>
     </>
   )
