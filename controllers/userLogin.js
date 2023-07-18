@@ -81,7 +81,7 @@ const login = async (req, res, next) => {
 
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
 
-    const payload = { email: user.email, id: user._id, role: user.role , username: user.username};
+    const payload = { email: user.email, id: user._id, role: user.role , username: user.username , userWishWelcome: user.userWishWelcome};
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "500m",

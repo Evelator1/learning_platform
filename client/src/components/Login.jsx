@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link,useNavigate } from "react-router-dom";
 import {axiosClient} from "../axiosClient";
 
-export default function Login(){
+export default function Login({setUserInfo}){
   const {
     handleSubmit,
     register,
@@ -12,7 +12,6 @@ export default function Login(){
     formState: { errors },
   } = useForm();
   
-  const [userInfo,setUserInfo]=useState({})
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -24,8 +23,13 @@ export default function Login(){
       .then((response) => {
         if(response.status=200){
            setUserInfo(response.data)
-           console.log("authentication complete, Welcome",response.data.email)
-           navigate(`/${response.data.username}`);
+
+           console.log("authentication complete, Welcome",response.data)
+           if(response.data.userWishWelcome){
+            navigate(`/welcome/${response.data.username}`);
+           }else{
+            navigate(`/${response.data.username}`);
+           }
           } else{
         console.log("error at Login")
       }  })

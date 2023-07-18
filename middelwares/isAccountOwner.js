@@ -7,7 +7,7 @@ const isAccountOwner = (req, res, next) => {
 
         next()
     }else{
-        throw new ErrorResponse("Not Allowed to rethrieve the page", 403)
+        throw new ErrorResponse("Not Allowed to get access to the Content", 403)
     }
   } catch (error) {
     next(error);

@@ -5,7 +5,7 @@ import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-export default function Signup(){
+export default function Signup({setUserInfo}){
   const {
     handleSubmit,
     register,
@@ -14,7 +14,6 @@ export default function Signup(){
     watch,
   } = useForm();
 
-  const [userInfo,setUserInfo]=useState({})
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -27,8 +26,9 @@ export default function Signup(){
     .then((response) => {
       if(response.status=200){
          setUserInfo(response.data)
+
          console.log("Registation Complete, Welcome",response.data.username)
-         navigate(`/dashboard/${response.data.id}`);
+         navigate(`/welcome/${response.data.username}`);
         } else{
       console.log("error at Signup")
     }  })
@@ -48,10 +48,10 @@ export default function Signup(){
           <h3 className="text-center">Sign up</h3>
 
           <Form.Group controlId="username" className="mb-3">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter name"
+              placeholder="Enter a username"
               {...register("username", { required: "Name is required" })}
             />
           </Form.Group>

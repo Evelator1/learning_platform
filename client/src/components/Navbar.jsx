@@ -30,7 +30,7 @@ export default function Navbar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" sx={{height:"7rem"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

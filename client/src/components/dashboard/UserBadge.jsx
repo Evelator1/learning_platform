@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 export default function UserBadge({userInfo}) {
   //console.log(userInfo)
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', position: "fixed" }}>
       <Card.Img variant="top" src={userInfo.profilePicture} />
       <Card.Body>
         <Card.Title>{userInfo.username}</Card.Title>
