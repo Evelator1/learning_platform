@@ -6,6 +6,8 @@ import Signup from './components/Signup'
 import Navbar from './components/Navbar'
 import UserDashboard from './components/dashboard/UserDashboard'
 import WelcomeUserPage from './components/dashboard/WelcomeUserPage'
+import AccountSettings from './components/settings/AccountSettings'
+import ProfileSettings from './components/settings/ProfileSettings'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { axiosClient } from './axiosClient'
@@ -20,8 +22,8 @@ const [userInfo,setUserInfo]=useState()
       <Route path='/signup' element={<Signup setUserInfo={setUserInfo}/>}> </Route>
       <Route path='/welcome/:username' element={<WelcomeUserPage userInfo={userInfo}/>}> </Route>
       <Route path='/:username' element={<UserDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
-      <Route path='/settings/profile/:username' element={<UserDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
-      <Route path='/settings/account/:username' element={<UserDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
+      <Route path='/settings/profile/:username' element={<AccountSettings userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
+      <Route path='/settings/account/:username' element={<ProfileSettings userInfo={userInfo} setUserInfo={setUserInfo}/>}> </Route>
     </Routes>
     </>
   )

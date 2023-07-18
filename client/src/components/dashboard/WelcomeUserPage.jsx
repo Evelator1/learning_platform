@@ -4,8 +4,10 @@ import { cols } from "../../colorSchema";
 import axios from "axios";
 
 export default function WelcomeUserPage({ userInfo }) {
+
+
+
   const sendPreferences = (e) => {
-   // console.log(e.target.checked);
     const updatedUserInfo = {
       userWishWelcome: e.target.checked,
     };
@@ -21,11 +23,12 @@ export default function WelcomeUserPage({ userInfo }) {
   return (
     <div
       className="position-fixed overflow-auto container-fluid vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
-      style={{ backgroundColor: cols.yellow, marginTop: "5rem"}}
+      style={{ backgroundColor: cols.black, marginTop: "5rem" }}
     >
       <h1
         className="fs-1 mt-5 p-0
        text-center"
+        style={{ color: cols.blue }}
       >
         Welcome {userInfo.username}!
       </h1>
@@ -38,18 +41,17 @@ export default function WelcomeUserPage({ userInfo }) {
               style={{
                 width: "18rem",
                 minHeight: "12rem",
-                backgroundColor: cols.blue,
+                backgroundColor: cols.pink,
               }}
-              className="col-3 m-5 p-0 rounded-5 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"
+              className="col-3 m-5 p-0 rounded-1 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"
             >
-              <div className="row text-center">
+              <div className="row text-center" style={{ color: cols.blue }}>
                 <h4>{option.name}</h4>
                 <h4>{option.name}</h4>
               </div>
             </Link>
           ))}
-        </div>
-        <div className="form-check">
+ <div className="form-check">
           <input
             type="checkbox"
             onChange={sendPreferences}
@@ -60,6 +62,8 @@ export default function WelcomeUserPage({ userInfo }) {
             View welcome message on login
           </span>
         </div>
+        </div>
+       
       </div>
     </div>
   );

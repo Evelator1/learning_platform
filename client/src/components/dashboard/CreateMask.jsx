@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { cols } from "../../colorSchema";
 export default function CreateMask() {
   const {
     handleSubmit,
@@ -29,7 +30,7 @@ export default function CreateMask() {
        style={{ width: "80%" }}
       className="d-flex justify-content-center align-items-center"
     >
-      <div className="container-fluid  p-5 rounded-4 bg-light">
+      <div className="container-fluid  p-5 rounded" style={{backgroundColor: cols.pink, color:cols.black }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Share with the Community</h3>
           <Form.Group controlId="email">

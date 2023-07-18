@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link,useNavigate } from "react-router-dom";
 import {axiosClient} from "../axiosClient";
 
+import {cols} from '../colorSchema'
 export default function Login({setUserInfo}){
   const {
     handleSubmit,
@@ -40,10 +41,10 @@ export default function Login({setUserInfo}){
   };
 
   return (
-    <div className="login template d-flex justify-content-center align-items-center vh-100 bg-primary">
-      <div className="container-fluid w-sm-75 p-5 rounded-4 bg-light">
+    <div className="d-flex justify-content-center align-items-center vh-100 "style={{backgroundColor: cols.white, color:cols.black }}>
+      <div className="col-lg-6 col-md-8 col-sm-9 col-10 container-fluid  p-5 rounded-4 fs-5" style={{backgroundColor: cols.pink, color:cols.black }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-center">Sign In</h3>
+          <h3 className="text-center" >Sign In</h3>
           <Form.Group controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control

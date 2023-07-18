@@ -16,13 +16,13 @@ export default function UserDashboard({ userInfo, setUserInfo }) {
   useEffect(() => {
     axiosClient
       // .get(`http://localhost:3010/users/${params.username}`) //user route
-       .get(`http://localhost:3010/auth/profile`) //auth route
+      .get(`http://localhost:3010/auth/profile`) //auth route
       .then((response) => {
         setUserInfo(response.data);
-        if(response.data.username === params.username){
-           console.log("match!")
-        }else{
-          navigate(`/login`)
+        if (response.data.username === params.username) {
+          console.log("match!");
+        } else {
+          navigate(`/login`);
         }
       })
       .catch((err) => console.error(err));
@@ -30,20 +30,15 @@ export default function UserDashboard({ userInfo, setUserInfo }) {
 
   return (
     <>
-      <div style={{ marginTop: "5rem" }} className=" container-fluid  vw-100">
+      <div style={{ marginTop: "5rem" }} className=" container-fluid  vw-100 p-0">
         {userInfo && (
-          <Container
-            
-            style={{ background: cols.white, overflowY:scroll}}
-          >
+          <Container style={{ background: cols.white, overflowY: scroll }}>
             <Row className="vw-75 d-flex justify-content-between">
-              <Col md={2} className="p-0">
+              <Col md={3} className="p-0">
                 <LeftMenu userInfo={userInfo} />
               </Col>
 
-              <Col
-                md={7}
-                className="p-0 d-flex flex-column justify-content-center align-items-center"
+              <Col md={6}  className="p-0 d-flex flex-column justify-content-center align-items-center"
               >
                 <CreateMask />
                 <PostsList />

@@ -1,6 +1,3 @@
-
-export default function AccountSettings() {
-  return (
-    <div>AccountSettings</div>
-  )
+export default function AccountSettings({ userInfo, setUserInfo }) {
+  return <div style={{ margin: "5rem" }}>AccountSettings</div>;
 }

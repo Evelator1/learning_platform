@@ -1,6 +1,3 @@
-
-export default function ProfileSettings() {
-  return (
-    <div>ProfileSettings</div>
-  )
+export default function ProfileSettings({ userInfo, setUserInfo }) {
+  return <div style={{ margin: "5rem" }}>Profile Settings</div>;
 }

@@ -19,10 +19,11 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom";
-import { cols } from "../colorSchema";
-const pages = ["Home", "Dashboard", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 import {axiosClient} from "../axiosClient";
+
+import { cols } from "../colorSchema";
+
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Navbar({ userInfo, setUserInfo }) {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
   };
 
   return (
-    <AppBar position="fixed" sx={{ height: "5rem" }}>
+    <AppBar position="fixed" sx={{ height: "5rem", backgroundColor:cols.lila}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -75,7 +76,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
               fontFamily:'MONTSERRAT',
               fontWeight: 600,
               letterSpacing: ".5rem",
-              color: "inherit",
+              color: cols.blue,
               textDecoration: "none",
             }}
           >
@@ -88,7 +89,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color={cols.yellow}
             >
               <MenuIcon />
             </IconButton>
@@ -127,10 +128,10 @@ export default function Navbar({ userInfo, setUserInfo }) {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: cols.blue,
               textDecoration: "none",
             }}
           >

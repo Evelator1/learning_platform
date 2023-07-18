@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import {cols} from '../colorSchema'
 
 export default function Signup({setUserInfo}){
   const {
@@ -42,8 +43,8 @@ export default function Signup({setUserInfo}){
   const confirmPassword = watch("confirmPassword");
 
   return (
-    <div className="login template d-flex justify-content-center align-items-center vh-100 bg-primary">
-      <div className="container-fluid w-75 p-5 rounded-4 bg-light">
+    <div className="d-flex justify-content-center align-items-center vh-100 "style={{backgroundColor: cols.white, color:cols.black }}>
+      <div className="col-lg-6 col-md-8 col-sm-9 col-10 container-fluid  p-5 rounded-4 fs-5" style={{backgroundColor: cols.pink, color:cols.black }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Sign up</h3>
 
@@ -91,6 +92,9 @@ export default function Signup({setUserInfo}){
           <Button variant="primary" type="submit">
             Sign Up
           </Button>
+          <p className="text-right text-decoration-none">
+            Already&nbsp;registered?&nbsp;<Link to="/login">Login</Link>
+          </p>
         </Form>
       </div>
     </div>
