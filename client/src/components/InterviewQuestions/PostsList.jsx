@@ -28,9 +28,10 @@ function PostsList() {
     const fetchData = async () => {
       try {
         const result = await fetch("http://localhost:3010/post");
+        console.log(result)
         const jsonData = await result.json();
-        const initialData = jsonData.map((post) => ({ ...post, likeChecked: false,commentChecked: false,saveChecked: false }));
-        setData(initialData);
+       // const initialData = jsonData.map((post) => ({ ...post, likeChecked: false,commentChecked: false,saveChecked: false }));
+        setData(jsonData);
       } catch (error) {
         console.log(error);
       }
@@ -138,7 +139,7 @@ function PostsList() {
                 onClick={() => handleLikeClick(post._id)}
               >
                 <FontAwesomeIcon
-                  // icon={post.likeChecked ? solidThumbsUp : outlineThumbsUp}
+                   icon={post.likeChecked ? solidThumbsUp : outlineThumbsUp}
                   className={`LikeIconAction ${post.likeChecked ? 'likeChecked' : ''}`}
                 />
                 <span className={`ml-6 likeButtonText ${post.likeChecked ? 'likeChecked' : ''}`}>

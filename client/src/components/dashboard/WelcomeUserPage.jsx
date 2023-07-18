@@ -19,7 +19,7 @@ export default function WelcomeUserPage({ userInfo }) {
         console.log(error);
       });
   };
-console.log(cols)
+// console.log(cols)
   return (
     <div className="position-fixed overflow-auto container-fluid vh-100 d-flex-column justify-content-center align-items-center"
     style={{ backgroundColor:cols.yellow}}>
@@ -29,7 +29,7 @@ console.log(cols)
         <div className="row d-flex justify-content-around">
           {userMenuOptions.map((option) => (
             <Link
-              to={`${option.linkTo}`}
+              to={`${option.linkTo}/${userInfo.username}`}
               key={option.name}
               style={{ width: "18rem", minHeight: "15rem", backgroundColor:cols.blue }}
               className="col-md-3 m-5 p-0 rounded-5 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"

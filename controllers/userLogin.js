@@ -23,6 +23,7 @@ const signup = async (req, res, next) => {
       email: newUser.email,
       id: newUser._id,
       role: newUser.role,
+      username: newUser.username,
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -80,7 +81,7 @@ const login = async (req, res, next) => {
 
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
 
-    const payload = { email: user.email, id: user._id, role: user.role };
+    const payload = { email: user.email, id: user._id, role: user.role , username: user.username};
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "500m",

@@ -9,7 +9,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-const getUserById = async (req, res) => {
+const getUserByUsername = async (req, res) => {
   try {
     console.log(req.params)
     const username = req.params;
@@ -62,4 +62,4 @@ const updatePreferences = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getUsers, getUserById, updateUser, updatePreferences };
+module.exports = { createUser, getUsers, getUserByUsername, updateUser, updatePreferences };

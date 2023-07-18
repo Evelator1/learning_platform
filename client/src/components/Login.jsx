@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import { Link,useNavigate } from "react-router-dom";
-import axios from "axios";
+import {axiosClient} from "../axiosClient";
 
 export default function Login(){
   const {
@@ -16,7 +16,7 @@ export default function Login(){
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    axios
+    axiosClient
       .post("http://localhost:3010/auth/login", {
         email: data.email,
         password: data.password,
@@ -25,7 +25,7 @@ export default function Login(){
         if(response.status=200){
            setUserInfo(response.data)
            console.log("authentication complete, Welcome",response.data.email)
-           navigate(`/dashboard/${response.data.id}`);
+           navigate(`/${response.data.username}`);
           } else{
         console.log("error at Login")
       }  })
