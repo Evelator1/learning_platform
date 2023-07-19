@@ -88,9 +88,10 @@ function PostsList() {
     return yesterday;
   }
 
-    const handleAllCommentsClick = (post) => {
-    setSelectedPost(post);
-    setModalIsOpen(true);
+    const handleAllCommentsClick = (post,event) => {
+      event.preventDefault(),
+      setSelectedPost(post);
+      setModalIsOpen(true);
   };
 
   return (
@@ -125,11 +126,7 @@ function PostsList() {
               15
             </Col>
             <Col className='commentsTracker'>
-              {/* <a href='/comments' onClick={() => handleAllCommentsClick(post)}>
-                All Comments
-              </a> */}
-              
-              {/* <PostCommentsList post= {post}/> */}
+            <a href='/comments' onClick={(event) => handleAllCommentsClick(post, event)}>All Comments</a>
             </Col>
           </Row>
           <Row className='likes_Comments_Save'>
