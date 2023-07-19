@@ -14,14 +14,18 @@ app.get("/", (req, res) => {
     res.status(500).send("Error while trying to get", error);
   }
 });
-const authRouter = require("./routes/auth");
-const { errorHandler } = require("./middelwares/errorHandler");
-const userRouter = require("./routes/users");
+const { errorHandler } = require("./middlewares/errorHandler");
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+
 app.use(cookieParser());
+
 app.use(express.json());
+
+const userRouter = require("./routes/users");
 app.use("/users", userRouter);
+
+const authRouter = require("./routes/auth");
 app.use("/auth", authRouter);
 
 const postRouter = require("./routes/posts");

@@ -6,8 +6,8 @@ const {
   updateUser,
   updatePreferences,
 } = require("../controllers/users");
-const { verifyToken } = require("../middelwares/verifyToken");
-const { isAccountOwner } = require("../middelwares/isAccountOwner");
+const { verifyToken } = require("../middlewares/verifyToken");
+const { isAccountOwner } = require("../middlewares/isAccountOwner");
 
 const userRouter = express.Router();
 

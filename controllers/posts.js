@@ -1,5 +1,5 @@
 const Post =require("../models/post")
-//const { param } = require('../routes/user');
+const fs = require("fs")
 
 const getPosts=async(req,res)=>{
     try{
@@ -22,16 +22,24 @@ const getPostById=async(req,res)=>{
 
 const createPost=async(req,res)=>{
     try{
-        const {
-            body:{content, author}
-        }=req
-        const post = await Post.create({content, author})
+        const {content, author, createdAt}=req.body
+
+        const post = await Post.create({content, image: req.file.secure_url, author, createdAt})
+      
+        fs.unlinkSync(req.file.localPath)
+
         res.status(201).json(post)
     }catch(error){
         res.status(500).send(error.message)
     }
 }
 
+
+
+////
+/// Do we Need the updatePost at all?
+/// or leavit for later (extra)
+/////////////////////////////////////
 const updatePost=async(req,res)=>{
     try{
         const id =req.params.id
