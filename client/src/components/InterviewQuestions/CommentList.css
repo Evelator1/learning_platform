@@ -1,0 +1,22 @@
+.commenterName{
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+    color: black;
+    font-weight: 600;
+}
+
+.commentBlock{
+    background-color: #F2F3F5;
+    padding-top: 0.5%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 3px solid transparent;
+    border-radius: 20px;
+    margin-bottom: 5%;
+
+}
+.commenterImg{
+    text-align: end;
+    padding-left: 1%;
+}

@@ -10,10 +10,10 @@ const getComments=async(req,res)=>{
     }
 }
 
-const getCommentById=async(req,res)=>{
+const getCommentByPostId=async(req,res)=>{
     try{
-        const ID=req.params.id
-        const comment = await Comment.findById(ID)
+        const id=req.params.id
+        const comment = await Comment.find({onPost:id}).populate("author","profilePicture username")
         res.status(201).json(comment)
     }catch(error){
         res.status(500).send(error.message)
@@ -43,4 +43,4 @@ const updateComment=async(req,res)=>{
     }
 }
 
-module.exports={createComment, getComments, getCommentById, updateComment}
+module.exports={createComment, getComments, getCommentByPostId, updateComment}

@@ -1,0 +1,75 @@
+
+.modal-dialog{
+    width: 50%;
+    max-width: 80%;
+}
+.likesCounter{
+    text-align: start;
+    margin-left: 30px;
+}
+.commentsTracker{
+    text-align: end;
+    margin-right: 30px;
+}
+.likes_Comments_Counter{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+    color: #65676b ;
+}
+.postOfTheCommentSection{
+    border-bottom: none;
+    padding-left: 3%;
+    padding-right: 3%;
+    text-align: justify;
+}
+.likes_Comments_Save{
+    margin-left: 50px !important;
+    margin-right: 1px !important;
+    color: #65676b;
+}
+.saveButton{
+    padding-bottom: 0px;
+}
+.modalContants{
+    max-height: 70vh;
+    overflow-y: auto;
+}
+.customModalBody p{
+    background-color: #CED0D4;
+    border: solid transparent;
+    border-radius: 15px;
+}
+.posterName{
+    font-size: 1.3rem;
+    padding-top: 0.39rem;
+    color: black;
+    font-weight: 600;
+}
+
+.customModalBody {
+    padding-left: 0px;
+}
+
+@media only screen and (max-width: 400px)  {
+    .modal-dialog{
+        width: 60%;
+        max-width: 70%;
+        margin: auto;
+        position: fixed;
+        left: 10%;
+        right: 10%;
+        top: 2%;
+        bottom: 10%;
+        max-height: 130vh;
+        overflow-y: auto;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        
+    }
+    .modal-backdrop{
+        width: 100%;
+        --bs-backdrop-opacity: 0.8;
+    }
+}
