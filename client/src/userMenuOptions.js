@@ -1,5 +1,5 @@
 export const userMenuOptions = [
-  { name: "Your Feed", linkTo: "/home" },
+  { name: "Your Feed", linkTo: "" },
   { name: "Learning Cards", linkTo: "/learning-cards" },
   { name: "Connect", linkTo: "/connect" },
   { name: "Share Reviews", linkTo: "/share-reviews" },

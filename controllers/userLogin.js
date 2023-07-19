@@ -81,14 +81,14 @@ const login = async (req, res, next) => {
 
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
 
-    const payload = { email: user.email, id: user._id, role: user.role , username: user.username};
+    const payload = { email: user.email, id: user._id, role: user.role , username: user.username , userWishWelcome: user.userWishWelcome};
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "500m",
+      expiresIn: "10m",
     });
 
     res
-      .cookie("access_token", token, { maxAge: 6000 * 500, httpOnly: true })
+      .cookie("access_token", token, { maxAge: 10*60*1000, httpOnly: true })
       .json(payload);
   } catch (error) {
     next(error);
@@ -98,7 +98,8 @@ const login = async (req, res, next) => {
 const logout = async (req, res, next) => {
   try {
     console.log(res);
-    res.cookie("access_token", "", { maxAge: 0 }).end();
+    console.log(new Date(0))
+    res.cookie("access_token", "", { maxAge: 0, expires: new Date(0), httpOnly: true }).send("User is Logged Out");
   } catch (error) {
     next(error);
   }
@@ -106,9 +107,11 @@ const logout = async (req, res, next) => {
 
 const getProfile = async (req, res, next) => {
   try {
-    const { id } = req.user;
-    const user = await User.findById(id);
-    res.json(user);
+    // const { id } = req.user;
+    //console.log(req.user.username,"is the request")
+    const  username  = req.user.username ;
+    const user = await User.findOne({username});
+    res.status(200).json(user);
   } catch (error) {
     next(error);
   }
