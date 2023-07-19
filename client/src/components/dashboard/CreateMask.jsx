@@ -30,7 +30,7 @@ export default function CreateMask() {
        style={{ width: "80%" }}
       className="d-flex justify-content-center align-items-center"
     >
-      <div className="container-fluid  p-5 rounded" style={{backgroundColor: cols.pink, color:cols.black }}>
+      <div className="container-fluid  p-5 rounded my-5" style={{backgroundColor: cols.white, color:cols.black, border: `2px solid #999999`}}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Share with the Community</h3>
           <Form.Group controlId="email">

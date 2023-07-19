@@ -76,7 +76,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
               fontFamily:'MONTSERRAT',
               fontWeight: 600,
               letterSpacing: ".5rem",
-              color: cols.blue,
+              color: cols.white,
               textDecoration: "none",
             }}
           >
@@ -131,7 +131,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
               fontFamily: "montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: cols.blue,
+              color: cols.white,
               textDecoration: "none",
             }}
           >
