@@ -49,9 +49,11 @@ export default function AccountSettings() {
       <div style={{ marginTop: "18vw" }}>
         <h1>ACCOUNT SETTINGS: </h1>
 
-        <div className="form-check">
+        <h3>change Email: <span>{userSettings.username}</span></h3>
+         
+        <h3>Change Password</h3>
+        <span></span>
 
-        </div>
       </div>
     )
   );

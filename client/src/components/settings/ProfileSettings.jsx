@@ -17,7 +17,13 @@ export default function AccountSettings() {
       .then((response) => {
         const { userWishWelcome, profilePicture, _id, username, email } =
           response.data;
-        setUserSettings({ userWishWelcome, profilePicture, _id, username, email });
+        setUserSettings({
+          userWishWelcome,
+          profilePicture,
+          _id,
+          username,
+          email,
+        });
         if (response.data.username === params.username) {
           console.log("match!");
         } else {
@@ -45,18 +51,30 @@ export default function AccountSettings() {
 
   return (
     userSettings && (
-      <div style={{ marginTop: "10vw", padding:"2rem"}} className="pt-5 pt-md-3pt-xl-0">
+      <div
+        style={{ marginTop: "10vw", padding: "2rem" }}
+        className="pt-5 pt-md-3pt-xl-0"
+      >
         <h1>PROFILE SETTINGS: </h1>
 
         <span className="form-check-span " style={{ color: cols.black }}>
           <h3> View welcome message on login</h3>
           <Switch {...label} defaultChecked onChange={sendPreferences} />
-
         </span>
-        <h3>change Username</h3><span>{ userSettings.username}</span>
-        <h3>manage Personal Information</h3><span></span>
+        
+        <h3>change Username</h3>
+        <span>{userSettings.username}</span>
+        <h3>manage Personal Information</h3>
+        <span></span>
 
-        <h3>manage Profile Image</h3><span><img src={userSettings.profilePicture} alt=""  style={{ width:"20rem"}} /></span>
+        <h3>manage Profile Image</h3>
+        <span>
+          <img
+            src={userSettings.profilePicture}
+            alt=""
+            style={{ width: "20rem" }}
+          />
+        </span>
       </div>
     )
   );
