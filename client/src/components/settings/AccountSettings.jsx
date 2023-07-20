@@ -5,6 +5,7 @@ import { userMenuOptions } from "../../userMenuOptions";
 import { axiosClient } from "../../axiosClient";
 import Switch from "@mui/material/Switch";
 import { cols } from "../../colorSchema";
+import StandardButton from '../StandardButton'
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 
@@ -50,9 +51,12 @@ export default function AccountSettings() {
         <h1>ACCOUNT SETTINGS: </h1>
 
         <h3>change Email: <span>{userSettings.username}</span></h3>
+        
          
         <h3>Change Password</h3>
-        <span></span>
+ 
+        <StandardButton link={`/settings/account/${userSettings.username}`} w={100} content={"Dashboard"}/>
+
 
       </div>
     )

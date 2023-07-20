@@ -13,21 +13,6 @@ export default function UserDashboard({ userInfo, setUserInfo }) {
   const params = useParams();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   axiosClient
-  //     .get(`http://localhost:3010/users/${params.username}`) //user route
-  //   //  .get(`http://localhost:3010/auth/profile`) //auth route
-  //     .then((response) => {
-  //       setUserInfo(response.data);
-  //       if (response.data.username === params.username) {
-  //         console.log("match!");
-  //       } else {
-  //         navigate(`/login`);
-  //       }
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
   return (
     <>
       <div style={{ paddingTop: "8rem",zIndex:"9999"  }} className=" mt-0 mt-md-3 mt-lg-5 container-fluid  vw-100">

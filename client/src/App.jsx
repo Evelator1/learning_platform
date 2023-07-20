@@ -15,7 +15,7 @@ import { axiosClient } from "./axiosClient";
 function App() {
   const [userInfo, setUserInfo] = useState();
 
-  console.log(userInfo)
+  //console.log(userInfo)
   return (
     <>
       <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />

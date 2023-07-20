@@ -3,24 +3,22 @@ import { Link} from "react-router-dom";
 import { userMenuOptions } from "../../userMenuOptions";
 import { cols } from "../../colorSchema";
 import { axiosClient } from "../../axiosClient";
-import { Box } from "@mui/material";
+import { Box, Typography, Switch } from "@mui/material";
+import ToggleWelcomeMessage from "../settings/ToggleWelcomeMessage";
+const label = { inputProps: { "aria-label": "View at Login" } };
 
 export default function WelcomeUserPage({ userInfo, setUserInfo }) {
-
-  const sendPreferences = (e) => {
-    const updatedUserInfo = {
-      userWishWelcome: e.target.checked,
-    };
-    userInfo &&
-      axiosClient
-        .put(`http://localhost:3010/users/${userInfo.id}`, updatedUserInfo)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  const hoverStyle = {
+    textDecoration: "none",
+    color: cols.black,
+    "&:hover": {
+      color: cols.white,
+      backgroundColor: cols.black,
+      borderRadius:"2rem"
+    },
   };
+
+  
 
   return (
     userInfo && (
@@ -53,11 +51,7 @@ export default function WelcomeUserPage({ userInfo, setUserInfo }) {
                     marginX: "3rem",
                     borderRadius: "0.5rem",
                     bgColor: cols.lila,
-                    "&:hover": {
-                      backgroundColor: cols.pink,
-                      width: "16rem",
-                      color: cols.white
-                    },
+                    
                   }}
                 >
                   <Link
@@ -67,28 +61,20 @@ export default function WelcomeUserPage({ userInfo, setUserInfo }) {
                     {" "}
                     <Box
                       className="d-flex-column align-items-center justify-content-center text-center "
-                      style={{ color: cols.black }}
+                      sx={hoverStyle}
                     >
                       <option.iconOutlined
-                        style={{ color: cols.black, fontSize: "6rem", justifyContent:"center" }}
+                        style={{  fontSize: "6rem", justifyContent:"center" }}
                       />
-                      <h4>{option.name}</h4>
+                  <Typography variant="h6">{option.name}</Typography>
                     </Box>
                   </Link>
                 </Box>
               </div>
             ))}
-            <div className="form-check">
-              <input
-                type="checkbox"
-                onChange={sendPreferences}
-                defaultChecked={userInfo.userWishWelcome}
-              />
-              <span className="form-check-span " style={{ color: cols.white }}>
-                {" "}
-                View welcome message on login
-              </span>
-            </div>
+           
+                  <ToggleWelcomeMessage userInfo={userInfo}/>
+
           </div>
         </div>
       </div>
