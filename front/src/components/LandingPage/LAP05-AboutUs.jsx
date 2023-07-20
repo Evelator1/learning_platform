@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Omar from "../../assets/pics/mickey.jpeg";
+import Footer from "../LandingPage/Footer";
 
 function AboutUsPage() {
   return (
@@ -15,22 +16,25 @@ function AboutUsPage() {
     //       <h1>About Us</h1>
     //     </div>
     //   </div>
-    <Container fluid style={{ backgroundColor: "#181d25" }}>
-      <Row className="d-flex justify-content-around align-items-center vh-100">
-        <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
-          <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-          <p className="text-white">kdsmxycjxkljlkdldsklf</p>
-        </Col>
-        <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
-          <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-          <p className="text-white">kdsmxycjxkljlkdldsklf</p>
-        </Col>
-        <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
-          <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-          <p className="text-white">kdsmxycjxkljlkdldsklf</p>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Container fluid style={{ backgroundColor: "#181d25" }}>
+        <Row className="d-flex justify-content-around align-items-center vh-100">
+          <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
+            <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
+            <p className="text-white">kdsmxycjxkljlkdldsklf</p>
+          </Col>
+          <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
+            <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
+            <p className="text-white">kdsmxycjxkljlkdldsklf</p>
+          </Col>
+          <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
+            <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
+            <p className="text-white">kdsmxycjxkljlkdldsklf</p>
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
+    </>
   );
 }
 

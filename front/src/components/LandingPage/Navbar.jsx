@@ -4,7 +4,7 @@ import "../../App.css";
 
 function Navbar() {
   return (
-    <nav className="navbar bg-black">
+    <nav className="navbar bg-black2">
       <div className="container-fluid">
         <a className="navbar-brand text-white" href="#">
           GradBook

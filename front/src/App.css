@@ -1,8 +1,14 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #181d25 !important;
+}
+
+#root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw;
+}
 
 .bg-blue {
   background-color: #3a5fcf !important;
@@ -16,7 +22,7 @@
   background-color: #f59a8c !important;
 }
 
-.bg-black {
+.bg-black2 {
   background-color: #181d25 !important;
 }
 
