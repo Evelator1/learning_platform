@@ -1,7 +1,7 @@
 const express = require("express");
 const { signup, login, logout, getProfile, editPassword } = require("../controllers/userLogin");
-const { verifyToken } = require("../middelwares/verifyToken");
-const { authorize } = require("../middelwares/authorize");
+const { verifyToken } = require("../middlewares/verifyToken");
+const { authorize } = require("../middlewares/authorize");
 
 const authRouter = express.Router();
 authRouter.post("/signup", signup);

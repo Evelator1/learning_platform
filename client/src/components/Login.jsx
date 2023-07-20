@@ -78,6 +78,9 @@ export default function Login({setUserInfo}){
             Forgot&nbsp;<Link to="/resetPassword">{"Password"}</Link>?{" "}
             <Link to="/signup">{"Sign up"}</Link>
           </p>
+          <p className="text-right text-decoration-none">
+            New to GRADBOOK? <Link to="/signup">{"Sign up"}</Link>
+          </p>
         </Form>
       </div>
     </div>
