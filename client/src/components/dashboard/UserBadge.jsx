@@ -1,17 +1,30 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import {cols} from '../../colorSchema'
-export default function UserBadge({userInfo}) {
+import React from "react";
+import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
+import { cols } from "../../colorSchema";
+import { borders } from '@mui/system';
+
+
+export default function UserBadge({ userInfo }) {
   return (
-    <Card style={{ maxWidth: '15rem', position: "fixed" }}>
-      <Card.Img variant="top" src={userInfo.profilePicture} />
-      <Card.Body>
-        <Card.Title>{userInfo.username}</Card.Title>
-        <Card.Text>
-          Some quick example text about the user
-        </Card.Text>
-        <Button style={{backgroundColor: cols.blue}}>Profile Settings</Button>
-      </Card.Body>
+    <Card sx={{ maxWidth: "15rem", position: "fixed" }}>
+      <CardMedia
+        component="img"
+        height="240"
+        image={userInfo.profilePicture}
+        alt={userInfo.username}
+    
+      />
+      <CardContent>
+        <Typography variant="h5" component="div" className="p-0">
+          {userInfo.username}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" className="my-4">
+          {userInfo.info?userInfo.info:"Tell something about you"}
+        </Typography>
+        <Button style={{ backgroundColor: cols.blue, color: cols.white }}>
+          Profile Settings
+        </Button>
+      </CardContent>
     </Card>
-  )
+  );
 }

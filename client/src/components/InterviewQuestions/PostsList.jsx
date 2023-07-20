@@ -28,7 +28,7 @@ function PostsList() {
     const fetchData = async () => {
       try {
         const result = await fetch("http://localhost:3010/post");
-        console.log(result)
+        // console.log(result)
         const jsonData = await result.json();
        // const initialData = jsonData.map((post) => ({ ...post, likeChecked: false,commentChecked: false,saveChecked: false }));
         setData(jsonData);
@@ -97,7 +97,7 @@ function PostsList() {
   return (
     <div className='postList'>
       {data.map((post) => (
-        <Container key={post._id} className='postCard'>
+        <Container key={post._id} className='postCard'> 
           <Row className='postHeader'>
             <Col xs={1}>
               {post.author.profilePicture && (

@@ -1,7 +1,8 @@
-
 .modal-dialog{
     width: 50%;
     max-width: 80%;
+
+    top: 80px;
 }
 .likesCounter{
     text-align: start;
@@ -32,10 +33,11 @@
 .saveButton{
     padding-bottom: 0px;
 }
-.modalContants{
-    max-height: 70vh;
+/* .modalContants{
+    max-height: 80vh;
     overflow-y: auto;
-}
+    top: 5.27 rem;
+} */
 .customModalBody p{
     background-color: #CED0D4;
     border: solid transparent;
@@ -54,12 +56,10 @@
 
 @media only screen and (max-width: 400px)  {
     .modal-dialog{
-        width: 60%;
-        max-width: 70%;
+        width: 100%;
+        max-width: 100%;
         margin: auto;
         position: fixed;
-        left: 10%;
-        right: 10%;
         top: 2%;
         bottom: 10%;
         max-height: 130vh;
@@ -69,7 +69,7 @@
         
     }
     .modal-backdrop{
-        width: 100%;
+        width: 0;
         --bs-backdrop-opacity: 0.8;
     }
 }

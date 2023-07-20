@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
 import { cols } from "../../colorSchema";
-export default function CreateMask() {
+import { axiosClient } from "../../axiosClient";
+
+
+export default function CreatePostMask({userInfo}) {
   const {
     handleSubmit,
     register,
@@ -10,12 +12,14 @@ export default function CreateMask() {
     formState: { errors },
   } = useForm();
 
+  //console.log(userInfo);
+
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:3010/newPost", {
-        author: data.author,
-        content: data.content,
+    axiosClient.post("http://localhost:3010/post/newPost", {
+        author: userInfo._id,
+        content: data.content
       })
+
       .then((response) => {
         console.log(response);
       })
@@ -23,8 +27,9 @@ export default function CreateMask() {
         console.error(err);
       });
     reset();
+    console.log(data)
   };
-
+  
   return (
     <div
        style={{ width: "80%" }}
@@ -38,7 +43,7 @@ export default function CreateMask() {
             <Form.Control
               type="post"
               placeholder="Post Something"
-              {...register("post", { required: "empty Posts are not allowed" })}
+              {...register("content", { required: "empty Posts are not allowed" })}
             />
           </Form.Group>
 

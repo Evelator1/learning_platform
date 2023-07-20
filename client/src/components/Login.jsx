@@ -24,7 +24,6 @@ export default function Login({setUserInfo}){
       .then((response) => {
         if(response.status=200){
            setUserInfo(response.data)
-
            console.log("authentication complete, Welcome",response.data)
            if(response.data.userWishWelcome){
             navigate(`/welcome/${response.data.username}`);
@@ -41,8 +40,8 @@ export default function Login({setUserInfo}){
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 "style={{backgroundColor: cols.white, color:cols.black }}>
-      <div className="col-lg-6 col-md-8 col-sm-9 col-10 container-fluid  p-5 rounded-4 fs-5" style={{backgroundColor: cols.pink, color:cols.black }}>
+    <div className="d-flex justify-content-center align-items-center vh-100 "style={{backgroundColor: cols.white, color:cols.black, paddingTop:"-2rem"}}>
+      <div className="col-lg-6 col-md-8 col-sm-9 col-10 container-fluid  p-5 rounded-4 fs-5" style={{backgroundColor: cols.lila, color:cols.black }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center" >Sign In</h3>
           <Form.Group controlId="email">
@@ -74,12 +73,11 @@ export default function Login({setUserInfo}){
           <Button variant="primary" type="submit">
             Login
           </Button>
-          <p className="text-right text-decoration-none">
-            Forgot&nbsp;<Link to="/resetPassword">{"Password"}</Link>?{" "}
-            <Link to="/signup">{"Sign up"}</Link>
+          <p className="text-left text-decoration-none">
+            Forgot&nbsp;<Link to="/resetPassword" className="text-decoration-none">{"Password"}</Link>?{" "}
           </p>
-          <p className="text-right text-decoration-none">
-            New to GRADBOOK? <Link to="/signup">{"Sign up"}</Link>
+          <p className="text-left text-decoration-none">
+            New to GRADBOOK? <Link to="/signup" className="text-decoration-none">{"Sign up"}</Link>
           </p>
         </Form>
       </div>
