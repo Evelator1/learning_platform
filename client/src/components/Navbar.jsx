@@ -172,8 +172,8 @@ function Navbar({ userInfo, setUserInfo }) {
                   key={option.linkTo}
                   className="text-decoration-none"
                 >
-                  <MenuItem onClick={handleCloseNavMenu} style={{  fontSize: "2rem", justifyContent:"flex-start", marginTop: "2.5rem",color:cols.black}}>
-                    <option.iconOutlined style={{  fontSize: "4rem" }}/>
+                  <MenuItem onClick={handleCloseNavMenu} style={{  fontSize: "2rem", justifyContent:"flex-start", marginTop: "1.8rem",color:cols.black}}>
+                    <option.iconOutlined style={{  fontSize: "2rem" }}/>
                     <Typography textAlign="center"  style={{  fontSize: "2rem" }}>{option.name}</Typography>
                   </MenuItem>
                 </Link>
