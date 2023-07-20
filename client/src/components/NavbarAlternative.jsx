@@ -218,7 +218,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
                   <Avatar
                     alt={userInfo && userInfo.username}
                     src={userInfo && userInfo.profilePicture}
-                    sx={{border:1, borderColor: cols.white}}
+                    sx={{ border: 1, borderColor: cols.white }}
                   />
                 </IconButton>
               </Tooltip>
@@ -255,10 +255,10 @@ export default function Navbar({ userInfo, setUserInfo }) {
                   
                 )
                 } */}
-                
-                {settingsOptions.map((option) => (
+
+                {userInfo && (settingsOptions.map((option) => (
                   <Link
-                    to={userInfo && `${option.linkTo}/${userInfo.username}`}
+                    to={`${option.linkTo}/${userInfo.username}`}
                     key={option.linkTo}
                     className="text-decoration-none"
                   >
@@ -270,7 +270,7 @@ export default function Navbar({ userInfo, setUserInfo }) {
                       </Typography>
                     </MenuItem>
                   </Link>
-                ))}
+                )))}
 
                 {!userInfo && (
                   <MenuItem>
