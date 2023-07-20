@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Navbar from "./components/Navbar";
 import WelcomePage from "./components/LandingPage/LAP01-Welcome";
 import CardsPage from "./components/LandingPage/LAP02-Cards";
-
 import UserFeedbackPage from "./components/LandingPage/LAP04-UserFeedback";
 import AboutUsPage from "./components/LandingPage/LAP05-AboutUs";
 import Navbar from "./components/LandingPage/Navbar";

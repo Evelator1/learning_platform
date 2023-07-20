@@ -17,7 +17,7 @@ function CardsPage() {
             </h2>
           </div>
           <div className="col-md-6 h-25 d-flex align-items-center justify-content-around">
-            <Windows className="w-25 vh-25" />
+            <Windows className="w-50 vh-25" />
           </div>
         </div>
         <div className="row pb-5 pt-0 mt-0">
@@ -27,7 +27,7 @@ function CardsPage() {
                 <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
                   <h4>Enhance my learning</h4>
                 </div>
-                <div className="flip-card-back bg-purple font-plex d-flex flex-column align-items-center justify-content-center">
+                <div className="flip-card-back bg-black2 border p-3 font-plex d-flex flex-column align-items-center justify-content-center">
                   With our custom made learning cards you can easily practice
                   for your next interview or freshen up your coding knowledge.
                 </div>

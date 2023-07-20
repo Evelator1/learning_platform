@@ -17,7 +17,7 @@ function WelcomePage() {
             <h1 className="text-white text-center font-mont fw-bold">
               Welcome to GradBook
             </h1>
-            <WelcomePageButton content={"Discover more"} color={"blue"} />
+            <WelcomePageButton content={"Discover more"} color={"#d2bbee"} />
           </div>
           <div className="col-md-6 p-0 vh-100 col-12 d-flex flex-column align-items-center justify-content-start">
             <Undraw1 style={{ width: "80vw" }} />

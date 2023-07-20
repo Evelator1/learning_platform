@@ -18,18 +18,33 @@ function AboutUsPage() {
     //   </div>
     <>
       <Container fluid style={{ backgroundColor: "#181d25" }}>
-        <Row className="d-flex justify-content-around align-items-center vh-100">
-          <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
+        <Row className="d-flex justify-content-around align-items-center vh-sm-100 vh-50">
+          <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
             <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-            <p className="text-white">kdsmxycjxkljlkdldsklf</p>
+            <p className="text-white w-50 text-center pt-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              sit voluptatem possimus autem doloribus, saepe, aspernatur
+              voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
+              ab! Nulla dicta autem tenetur quibusdam!
+            </p>
           </Col>
-          <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
+          <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
             <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-            <p className="text-white">kdsmxycjxkljlkdldsklf</p>
+            <p className="text-white w-50 text-center pt-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              sit voluptatem possimus autem doloribus, saepe, aspernatur
+              voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
+              ab! Nulla dicta autem tenetur quibusdam!
+            </p>
           </Col>
-          <Col className="d-flex flex-column col-12 col-md-4 justify-content-center align-items-center">
+          <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
             <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-            <p className="text-white">kdsmxycjxkljlkdldsklf</p>
+            <p className="text-white w-50 text-center pt-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              sit voluptatem possimus autem doloribus, saepe, aspernatur
+              voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
+              ab! Nulla dicta autem tenetur quibusdam!
+            </p>
           </Col>
         </Row>
       </Container>
