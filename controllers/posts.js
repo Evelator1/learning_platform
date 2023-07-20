@@ -3,7 +3,7 @@ const Post =require("../models/post")
 
 const getPosts=async(req,res)=>{
     try{
-        const posts = await Post.find().populate("author")
+        const posts = await Post.find().sort({ createdAt: -1 }).populate("author")
         res.status(200).json(posts)
     }catch(error){
         res.status(500).send(error.message)
@@ -21,6 +21,7 @@ const getPostById=async(req,res)=>{
 }
 
 const createPost=async(req,res)=>{
+    console.log(req)
     try{
         const {
             body:{content, author}
