@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { axiosClient } from "../../axiosClient";
 
-import CreateMask from "./CreateMask";
+import CreatePostMask from "./CreatePostMask";
 import PostsList from "../InterviewQuestions/PostsList";
 import UserBadge from "./UserBadge";
 import LeftMenu from "./LeftMenu";
@@ -12,7 +12,7 @@ import { cols } from "../../colorSchema";
 export default function UserDashboard({ userInfo, setUserInfo }) {
   const params = useParams();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     axiosClient
       // .get(`http://localhost:3010/users/${params.username}`) //user route
@@ -27,7 +27,6 @@ export default function UserDashboard({ userInfo, setUserInfo }) {
       })
       .catch((err) => console.error(err));
   }, []);
-
   return (
     <>
       <div style={{ marginTop: "5rem" }} className=" container-fluid  vw-100 p-0">
@@ -40,7 +39,7 @@ export default function UserDashboard({ userInfo, setUserInfo }) {
 
               <Col md={6}  className="p-0 d-flex flex-column justify-content-center align-items-center"
               >
-                <CreateMask />
+                <CreatePostMask userInfo ={userInfo} />
                 <PostsList />
               </Col>
 

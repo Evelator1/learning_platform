@@ -11,6 +11,7 @@ import { faThumbsUp as outlineThumbsUp } from '@fortawesome/free-regular-svg-ico
 import { faComment} from '@fortawesome/free-regular-svg-icons';
 import {faStar as outlineStar}from '@fortawesome/free-regular-svg-icons';
 import {faStar as solidStar}from '@fortawesome/free-solid-svg-icons';
+import { axiosClient } from "../../axiosClient";
 
 
 
@@ -27,17 +28,14 @@ function PostsList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetch("http://localhost:3010/post");
-        console.log(result)
-        const jsonData = await result.json();
-       // const initialData = jsonData.map((post) => ({ ...post, likeChecked: false,commentChecked: false,saveChecked: false }));
-        setData(jsonData);
+        const result = await axiosClient.get("http://localhost:3010/post");
+        setData(result.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, []);
+  }, [data]);
 
   const handleLikeClick = (postId) => {
     setData((prevData) =>
@@ -99,7 +97,7 @@ function PostsList() {
       {data.map((post) => (
         <Container key={post._id} className='postCard'>
           <Row className='postHeader'>
-            <Col xs={1}>
+            <Col xs={2}>
               {post.author.profilePicture && (
                 <Image
                   src={post.author.profilePicture}
@@ -118,6 +116,7 @@ function PostsList() {
           <Row>
             <blockquote className='blockquote mb-0'>
               <p>{post.content}</p>
+              <Image src={post.image} className='postImage'></Image>
             </blockquote>
           </Row>
           <Row className='likes_Comments_Counter'>
