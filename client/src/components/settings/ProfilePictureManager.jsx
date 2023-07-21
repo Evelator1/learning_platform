@@ -4,14 +4,13 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { axiosClient } from "../../axiosClient";
 
-export default function ProfilePictureUpload({ userInfo }) {
+export default function ProfilePictureManager({ userInfo }) {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -26,7 +25,7 @@ export default function ProfilePictureUpload({ userInfo }) {
       .then((response) => {
         reset();
         // navigate(`/settings/profile/${userInfo.username}`);
-        window.location.reload(false)
+        window.location.reload(false); //refresh the page
       })
       .catch((err) => {
         console.log(err);
@@ -34,9 +33,15 @@ export default function ProfilePictureUpload({ userInfo }) {
   };
 
   const deleteCurrentPic = () => {
+    const replaceDefault = {
+      profilePicture: userInfo.profilePicture,
+      defaultPic:
+        "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png",
+    };
+    console.log(replaceDefault, "is the body of the  request");
     axiosClient
-      .put(`http://localhost:3010/users/${userInfo._id}`, {
-        profilePicture: "",
+      .patch(`http://localhost:3010/users/${userInfo._id}/remove-profile-pic`, {
+        replaceDefault,
       })
       .then((response) => {
         console.log(response);
@@ -48,42 +53,30 @@ export default function ProfilePictureUpload({ userInfo }) {
   };
 
   return (
-    <div className="mt-5">
-     <h3>manage Profile Image</h3>
-        <span>
-          <img
-            src={userInfo.profilePicture}
-            alt=""
-            style={{ width: "20rem" }}
-          />
-        </span>
+    <div className="mt-3 w-100">
+      <h3>Profile Image</h3>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex h-screen flex-col items-center justify-center bg-stone-400"
       >
-        <div  >
-          <label htmlFor="image" className="mb-1 block">
-         Select a new Profile Pic
-          </label>
+        <div>
           <input
+            style={{ width: "22rem" }}
             type="file"
             id="image"
             accept="image/*"
             {...register("profilePicture", { required: true })}
-            className="w-80 rounded-md border border-gray-800 bg-stone-100 px-4 py-2"
+            className="w-100  rounded-md border border-gray-800 bg-stone-100 px-4 py-2"
           />
-           <button
-            type="submit"
-            className=" cursor-pointer rounded-md bg-stone-900 px-4 py-2 text-stone-50 hover:bg-stone-700"
-          >
-            Upload
-          </button>
+
+          <input type="submit" value={"submit"} />
         </div>
 
-       
+        <img src={userInfo.profilePicture} alt="" style={{ width: "22rem", marginTop:"2rem"}} />
+
       </form>
-      <div className="mt-5">
+      <div className="mt-2">
         <button
           onClick={deleteCurrentPic}
           className="w-80 cursor-pointer rounded-md bg-danger px-4 py-2 text-stone-50 hover:bg-stone-700"

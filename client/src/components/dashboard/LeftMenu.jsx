@@ -39,7 +39,7 @@ export default function LeftMenu({ userInfo }) {
         {userMenuOptions.map((option) => (
           <div
             key={option.name}
-            className="col-3 my-3 p-0 rounded-1 text-light  color-dark d-flex justify-content-center align-items-center"
+            className="col-3 my-2 p-0 rounded-1 text-light  color-dark d-flex justify-content-center align-items-center"
             style={{ width: "3rem" }}
           >
             <Box
@@ -62,7 +62,7 @@ export default function LeftMenu({ userInfo }) {
                   }}
                   sx={hoverStyle}
                 >
-                  <option.iconOutlined />
+                  <option.iconOutlined className="fs-1"/>
                   <Typography variant="h6">{option.name}</Typography>
                 </Box>
               </Link>

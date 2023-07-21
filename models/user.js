@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true, select: false },
   profilePicture: { type: String, default:"https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png"},
+  personalInfo: { type: String, default:""},
   userWishWelcome: { type: Boolean, default: true},
   role: { type: String, enum: ["user", "admin"], default: "user" },
   createdAt:{type:Date,default:Date.now}

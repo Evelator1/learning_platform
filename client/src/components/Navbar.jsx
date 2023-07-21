@@ -62,7 +62,7 @@ function Navbar({ userInfo, setUserInfo }) {
         handleCloseUserMenu();
         setUserInfo("");
         console.log(response.data);
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -91,7 +91,6 @@ function Navbar({ userInfo, setUserInfo }) {
       name: "Profile",
       linkTo: "/settings/profile",
       action: handleCloseUserMenu,
-
       iconOutlined: ManageAccountsIcon,
     },
     {
@@ -118,7 +117,7 @@ function Navbar({ userInfo, setUserInfo }) {
             variant="h3"
             noWrap
             component="a"
-            href={userInfo && `${userInfo.username}`}
+            href={userInfo && `/`}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },

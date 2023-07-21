@@ -26,12 +26,12 @@ export default function WelcomeUserPage({ userInfo, setUserInfo }) {
         className="my-lg-5 my-sm-0 position-fixed overflow-auto container-fluid vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
         style={{
           backgroundColor: cols.white,
-          paddingTop: "9vw",
+          paddingTop: "8vw",
           paddingBottom: "5rem",
         }}
       >
         <h1
-          className="fs-1 mt-5 p-0
+          className="fs-1 mt-2 
        text-center"
           style={{ color: cols.white }}
         >
@@ -42,15 +42,13 @@ export default function WelcomeUserPage({ userInfo, setUserInfo }) {
             {userMenuOptions.map((option) => (
               <div
                 key={option.name}
-                className="col-3 my-4 p-0 rounded-1 text-light  color-dark d-flex justify-content-center align-items-center"
+                className="col-3 my-5 py-4 rounded-1 text-light  color-dark d-flex justify-content-center align-items-center"
               >
                 <Box
                   sx={{
                     width: "15rem",
                     minHeight: "12rem",
-                    marginX: "3rem",
-                    borderRadius: "0.5rem",
-                    bgColor: cols.lila,
+                    marginX: "2rem",
                     
                   }}
                 >
@@ -60,7 +58,7 @@ export default function WelcomeUserPage({ userInfo, setUserInfo }) {
                   >
                     {" "}
                     <Box
-                      className="d-flex-column align-items-center justify-content-center text-center "
+                      className="py-3 d-flex-column align-items-center justify-content-center text-center "
                       sx={hoverStyle}
                     >
                       <option.iconOutlined

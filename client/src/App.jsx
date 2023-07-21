@@ -10,12 +10,10 @@ import AccountSettings from "./components/settings/AccountSettings";
 import ProfileSettings from "./components/settings/ProfileSettings";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { axiosClient } from "./axiosClient";
-
 function App() {
   const [userInfo, setUserInfo] = useState();
 
-  //console.log(userInfo)
+  
   return (
     <>
       <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />
@@ -39,7 +37,7 @@ function App() {
         <Route
           path="/:username"
           element={
-            <UserDashboard userInfo={userInfo} setUserInfo={setUserInfo} />
+            <UserDashboard userInfo={userInfo} />
           }
         >
           {" "}
