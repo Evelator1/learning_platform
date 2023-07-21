@@ -25,7 +25,6 @@ function PostsList({ userInfo }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-
         const result = await axiosClient.get("http://localhost:3010/post");
         setData(result.data);
       } catch (error) {
@@ -94,7 +93,6 @@ function PostsList({ userInfo }) {
   return (
     <div className="postList">
       {data.map((post) => (
-
         <Container key={post._id} className="postCard">
           <Row className="postHeader">
             <Col xs={2}>
@@ -116,7 +114,7 @@ function PostsList({ userInfo }) {
           <Row>
             <blockquote className="blockquote mb-0">
               <p>{post.content}</p>
-              <Image src={post.image} className="postImage"></Image>
+             { post.image&&  <Image src={post.image} className="postImage"></Image>}
             </blockquote>
           </Row>
           <Row className="likes_Comments_Counter">
