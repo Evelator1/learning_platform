@@ -1,7 +1,7 @@
-
 .modal-dialog{
     width: 50%;
     max-width: 80%;
+
     top: 80px;
 
 }
@@ -41,6 +41,7 @@ padding-top: 0;
 .saveButton{
     padding-bottom: 0px;
 }
+
 .modalContants{
     max-height: 80vh;
     overflow-y: auto;

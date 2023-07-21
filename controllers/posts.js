@@ -3,6 +3,7 @@ const fs = require("fs")
 
 const getPosts=async(req,res)=>{
     try{
+
         const posts = await Post.find().sort({ createdAt: -1 }).populate("author")
         res.status(200).json(posts)
     }catch(error){
@@ -39,7 +40,7 @@ const createPost=async(req,res)=>{
 
 ////
 /// Do we Need the updatePost at all?
-/// or leavit for later (extra)
+/// or leavit for later (extra) 
 /////////////////////////////////////
 const updatePost=async(req,res)=>{
     try{

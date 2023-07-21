@@ -19,6 +19,10 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  draft:{
+    type:Boolean,
+    default: false,
+  },
   image:{
     type:String,
     default:""

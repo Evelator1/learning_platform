@@ -25,6 +25,7 @@ function PostsList({ userInfo }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+
         const result = await axiosClient.get("http://localhost:3010/post");
         setData(result.data);
       } catch (error) {
@@ -93,6 +94,7 @@ function PostsList({ userInfo }) {
   return (
     <div className="postList">
       {data.map((post) => (
+
         <Container key={post._id} className="postCard">
           <Row className="postHeader">
             <Col xs={2}>

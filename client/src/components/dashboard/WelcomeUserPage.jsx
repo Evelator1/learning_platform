@@ -1,70 +1,81 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link} from "react-router-dom";
 import { userMenuOptions } from "../../userMenuOptions";
 import { cols } from "../../colorSchema";
-import axios from "axios";
+import { axiosClient } from "../../axiosClient";
+import { Box, Typography, Switch } from "@mui/material";
+import ToggleWelcomeMessage from "../settings/ToggleWelcomeMessage";
+const label = { inputProps: { "aria-label": "View at Login" } };
 
-export default function WelcomeUserPage({ userInfo }) {
-
-
-
-  const sendPreferences = (e) => {
-    const updatedUserInfo = {
-      userWishWelcome: e.target.checked,
-    };
-    axios
-      .put(`http://localhost:3010/users/${userInfo.id}`, updatedUserInfo)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+export default function WelcomeUserPage({ userInfo, setUserInfo }) {
+  const hoverStyle = {
+    textDecoration: "none",
+    color: cols.black,
+    "&:hover": {
+      color: cols.white,
+      backgroundColor: cols.black,
+      borderRadius:"2rem"
+    },
   };
+
+  
+
   return (
-    <div
-      className="position-fixed overflow-auto container-fluid vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
-      style={{ backgroundColor: cols.black, marginTop: "5rem" }}
-    >
-      <h1
-        className="fs-1 mt-5 p-0
-       text-center"
-        style={{ color: cols.blue }}
+    userInfo && (
+      <div
+        className="my-lg-5 my-sm-0 position-fixed overflow-auto container-fluid vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
+        style={{
+          backgroundColor: cols.white,
+          paddingTop: "8vw",
+          paddingBottom: "5rem",
+        }}
       >
-        Welcome {userInfo.username}!
-      </h1>
-      <div className="w-100 p-5  d-flex-column justify-content-center align-items-center">
-        <div className="row d-flex justify-content-around">
-          {userMenuOptions.map((option) => (
-            <Link
-              to={`${option.linkTo}/${userInfo.username}`}
-              key={option.name}
-              style={{
-                width: "18rem",
-                minHeight: "12rem",
-                backgroundColor: cols.pink,
-              }}
-              className="col-3 m-5 p-0 rounded-1 text-light text-decoration-none color-dark d-flex justify-content-center align-items-center"
-            >
-              <div className="row text-center" style={{ color: cols.blue }}>
-                <h4>{option.name}</h4>
-                <h4>{option.name}</h4>
+        <h1
+          className="fs-1 mt-2 
+       text-center"
+          style={{ color: cols.white }}
+        >
+          Welcome {userInfo.username}!
+        </h1>
+        <div className="w-100 p-0  d-flex-column justify-content-center align-items-center">
+          <div className="row d-flex justify-content-around">
+            {userMenuOptions.map((option) => (
+              <div
+                key={option.name}
+                className="col-3 my-5 py-4 rounded-1 text-light  color-dark d-flex justify-content-center align-items-center"
+              >
+                <Box
+                  sx={{
+                    width: "15rem",
+                    minHeight: "12rem",
+                    marginX: "2rem",
+                    
+                  }}
+                >
+                  <Link
+                    to={`${option.linkTo}/${userInfo.username}`}
+                    className="text-decoration-none"
+                  >
+                    {" "}
+                    <Box
+                      className="py-3 d-flex-column align-items-center justify-content-center text-center "
+                      sx={hoverStyle}
+                    >
+                      <option.iconOutlined
+                        style={{  fontSize: "6rem", justifyContent:"center" }}
+                      />
+                  <Typography variant="h6">{option.name}</Typography>
+                    </Box>
+                  </Link>
+                </Box>
               </div>
-            </Link>
-          ))}
- <div className="form-check">
-          <input
-            type="checkbox"
-            onChange={sendPreferences}
-            defaultChecked={userInfo.userWishWelcome}
-          />
-          <span className="form-check-span">
-            {" "}
-            View welcome message on login
-          </span>
+            ))}
+           
+                  <ToggleWelcomeMessage userInfo={userInfo}/>
+
+          </div>
         </div>
-        </div>
-       
       </div>
-    </div>
+    )
   );
 }

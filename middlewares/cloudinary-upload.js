@@ -7,6 +7,7 @@ cloudinary.config({
   secure: true,
 });
 
+
 const cloudinaryUpload = async (req, res, next) => {
   try {
     const { file } = req;
@@ -14,17 +15,19 @@ const cloudinaryUpload = async (req, res, next) => {
       file.path,
       "odgsuzdgvzszogzuovszdddfzgsuvodv" // unsigned upload parameter
     );
-
-    console.log(result, "is the result");
+    //console.log(result, "is the result");
 
     result.localPath = file.path;
     req.file = result;
 
     next();
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).send("upload failed", err);
   }
 };
+
+
+
 
 module.exports = { cloudinaryUpload };

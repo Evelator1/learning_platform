@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { cols } from "../../colorSchema";
 import { axiosClient } from "../../axiosClient";
 
+
 export default function CreatePostMask({ userInfo }) {
   const {
     handleSubmit,
@@ -10,6 +11,7 @@ export default function CreatePostMask({ userInfo }) {
     reset,
     formState: { errors },
   } = useForm();
+
 
   const onSubmit = (data) => {
     axiosClient
@@ -27,6 +29,7 @@ export default function CreatePostMask({ userInfo }) {
         console.error(err);
       });
     reset();
+
   };
 
   return (
@@ -49,6 +52,7 @@ export default function CreatePostMask({ userInfo }) {
             <Form.Control
               type="post"
               placeholder="Post Something"
+
               {...register("content", {
                 required: "empty Posts are not allowed",
               })}
@@ -63,3 +67,4 @@ export default function CreatePostMask({ userInfo }) {
     </div>
   );
 }
+

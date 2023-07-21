@@ -1,3 +1,7 @@
+
+
+
+
 const authorize = (role) => {
   return (req, res, next) => {
     if (req.user) {
@@ -8,11 +12,12 @@ const authorize = (role) => {
   };
 };
 
-// const authorizeUser = authorize("user");
-// const authorizeAdmin = authorize("admin");
+//const authorizeUser = authorize("user");
+//const authorizeAdmin = authorize("admin");
 
 module.exports = {
   authorize,
-  //   authorizeUser,
-  //   authorizeAdmin,
+  //  authorizeUser,
+   // authorizeAdmin,
 };
+
