@@ -21,6 +21,7 @@ const getCommentByPostId=async(req,res)=>{
 }
 
 const createComment=async(req,res)=>{
+    console.log(req)
     try{
         const {
             body:{content, author,onPost}
