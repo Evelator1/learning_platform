@@ -8,23 +8,23 @@ import UserDashboard from "./components/dashboard/UserDashboard";
 import WelcomeUserPage from "./components/dashboard/WelcomeUserPage";
 import AccountSettings from "./components/settings/AccountSettings";
 import ProfileSettings from "./components/settings/ProfileSettings";
+
+ 
+import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { axiosClient } from "./axiosClient";
 
 function App() {
   const [userInfo, setUserInfo] = useState();
-
-  
   return (
     <>
       <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />
-
       <Routes>
+        <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<Login setUserInfo={setUserInfo} />}>
           {" "}
         </Route>
-        {/* <Route path="/home" element={<Landing setUserInfo={setUserInfo} />}>
-          {" "}
-        </Route> */}
         <Route path="/signup" element={<Signup setUserInfo={setUserInfo} />}>
           {" "}
         </Route>
@@ -37,13 +37,15 @@ function App() {
         <Route
           path="/:username"
           element={
-            <UserDashboard userInfo={userInfo} />
+
+            <UserDashboard userInfo={userInfo} setUserInfo={setUserInfo} />
           }
         >
           {" "}
         </Route>
         <Route
           path="/settings/account/:username"
+
           element={
             <AccountSettings userInfo={userInfo} setUserInfo={setUserInfo} />
           }
@@ -52,6 +54,7 @@ function App() {
         </Route>
         <Route
           path="/settings/profile/:username"
+
           element={
             <ProfileSettings userInfo={userInfo} setUserInfo={setUserInfo} />
           }

@@ -4,7 +4,7 @@ import { cols } from "../../colorSchema";
 import { axiosClient } from "../../axiosClient";
 
 
-export default function CreatePostMask({userInfo}) {
+export default function CreatePostMask({ userInfo }) {
   const {
     handleSubmit,
     register,
@@ -12,12 +12,14 @@ export default function CreatePostMask({userInfo}) {
     formState: { errors },
   } = useForm();
 
-  //console.log(userInfo);
 
   const onSubmit = (data) => {
-    axiosClient.post("http://localhost:3010/post/newPost", {
+    axiosClient
+      .post("http://localhost:3010/post/newPost", {
         author: userInfo._id,
-        content: data.content
+        content: data.content,
+        postCategory: "communityPost",
+        // image:""
       })
 
       .then((response) => {
@@ -27,15 +29,22 @@ export default function CreatePostMask({userInfo}) {
         console.error(err);
       });
     reset();
-    console.log(data)
+
   };
-  
+
   return (
     <div
-       style={{ width: "80%" }}
+      style={{ width: "80%" }}
       className="d-flex justify-content-center align-items-center"
     >
-      <div className="container-fluid  p-5 rounded my-5" style={{backgroundColor: cols.white, color:cols.black, border: `2px solid #999999`}}>
+      <div
+        className="container-fluid  p-5 rounded my-5"
+        style={{
+          backgroundColor: cols.white,
+          color: cols.black,
+          border: `2px solid #999999`,
+        }}
+      >
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Share with the Community</h3>
           <Form.Group controlId="email">
@@ -43,7 +52,10 @@ export default function CreatePostMask({userInfo}) {
             <Form.Control
               type="post"
               placeholder="Post Something"
-              {...register("content", { required: "empty Posts are not allowed" })}
+
+              {...register("content", {
+                required: "empty Posts are not allowed",
+              })}
             />
           </Form.Group>
 
@@ -55,3 +67,4 @@ export default function CreatePostMask({userInfo}) {
     </div>
   );
 }
+

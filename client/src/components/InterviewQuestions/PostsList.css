@@ -132,4 +132,13 @@ color: "#65676b" ;
 .saveButtonText.saveChecked{
     color: #129CF7;
 }
+.postImage{
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
 
+
+.blockquote p {
+    word-break: break-all;
+}
