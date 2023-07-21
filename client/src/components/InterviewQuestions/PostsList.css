@@ -137,3 +137,8 @@ color: "#65676b" ;
     border: 1px solid transparent;
     border-radius: 20px;
 }
+
+
+.blockquote p {
+    word-break: break-all;
+}
