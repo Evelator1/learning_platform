@@ -65,15 +65,15 @@ const editPassword = async (req, res, next) => {
 
     //here i here i check if the old password is the right one
     const isMatch = await bcrypt.compare(oldPassword, checkUser.password);
-
+    
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
     console.log(
       isMatch,
       "___________________________________________password Matches"
-    );
-
-    //here i hash the newPassword
-    const saltRounds = 10;
+      );
+      //here i hash the newPassword
+      const saltRounds = 10;
+      console.log(newPassword, saltRounds)
     const hashed = await bcrypt.hash(newPassword, saltRounds);
     console.log(
       hashed,
@@ -85,7 +85,7 @@ const editPassword = async (req, res, next) => {
 
     //here i update the password
     const user = await User.findByIdAndUpdate(
-      id,
+      _id,
       { password: hashed },
       { new: true }
     );
@@ -141,11 +141,11 @@ const login = async (req, res, next) => {
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "10m",
+      expiresIn: "1440m",
     });
 
     res
-      .cookie("access_token", token, { maxAge: 10 * 60 * 1000, httpOnly: true })
+      .cookie("access_token", token, { maxAge: 24 * 60* 60 * 1000, httpOnly: true })
       .json(payload);
   } catch (error) {
     next(error);

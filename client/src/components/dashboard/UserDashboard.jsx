@@ -35,20 +35,20 @@ export default function UserDashboard({ userInfo, setUserInfo }) {
           <Container  fluid style={{ background: cols.white, overflowY: "auto", width:"100vw", margin:"0", }}>
             <Row className="vw-100 d-flex justify-content-around mx-3" >
              
-              <Col md={2} sm={0}   xs={0} className="p-0">
+              <Col md={3} sm={0}   xs={0} className="p-0">
                 <LeftMenu userInfo={userInfo} />
               </Col>
 
 
-              <Col md={7} sm={12}  xs={12}  className="p-0 d-flex flex-column justify-content-center align-items-center"
+              <Col md={9} sm={12}  xs={12}  className="p-0 d-flex flex-column justify-content-center align-items-center"
               >
                 <CreatePostMask userInfo ={userInfo} />
                 <PostsList userInfo ={userInfo} />
               </Col>
 
-              <Col md={3} sm={0}  xs={0} className="p-0">
+              {/* <Col md={3} sm={0}  xs={0} className="p-0">
                 <UserBadge userInfo={userInfo} />
-              </Col>
+              </Col> */}
 
             </Row>
           </Container>

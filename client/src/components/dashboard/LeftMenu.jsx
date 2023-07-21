@@ -34,8 +34,8 @@ export default function LeftMenu({ userInfo }) {
   }
 
   return (
-    <div className="col mt-4 position-fixed container-fluid vh-100 d-flex-column justify-content-center align-items-center">
-      <div>
+    <div className="col mt-4 position-fixed vh-100  d-flex-column justify-content-center align-items-center">
+   
         {userMenuOptions.map((option) => (
           <div
             key={option.name}
@@ -69,7 +69,6 @@ export default function LeftMenu({ userInfo }) {
             </Box>
           </div>
         ))}
-      </div>
     </div>
   );
 }
