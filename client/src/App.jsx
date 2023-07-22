@@ -13,13 +13,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { axiosClient } from "./axiosClient";
 
+import LearningCardList from "./components/LearningCards/LearningCardList";
+import cardData from "./components/LearningCards/LearningCardsData";
+
 function App() {
   const [userInfo, setUserInfo] = useState();
+  // const [learningCards, setLearningCards] = useState(cardData);
   return (
     <>
       <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/" element={<LandingPage />}>
+          {" "}
+        </Route>
+        <Route path="/learningcards" element={<LearningCardList />}></Route>
         <Route path="/login" element={<Login setUserInfo={setUserInfo} />}>
           {" "}
         </Route>
