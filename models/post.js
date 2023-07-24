@@ -19,11 +19,22 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  draft:{
+    type:Boolean,
+    default: false,
+  },
   image:{
     type:String,
     default:""
   },
-  likes: { type: [mongoose.Schema.Types.ObjectId], ref: "User" },
+  likes: { 
+    type: [mongoose.Schema.Types.ObjectId], 
+    ref: "User" 
+  },
+  postCategory:{
+    type:String, enum:["interviewQuestion","review","communityPost"],
+    required: true
+  }
 });
 
 const Post = mongoose.model("Post", postSchema);

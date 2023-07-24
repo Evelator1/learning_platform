@@ -8,12 +8,14 @@ import UserDashboard from "./components/dashboard/UserDashboard";
 import WelcomeUserPage from "./components/dashboard/WelcomeUserPage";
 import AccountSettings from "./components/settings/AccountSettings";
 import ProfileSettings from "./components/settings/ProfileSettings";
+
 import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { axiosClient } from "./axiosClient";
 
 import LearningCardList from "./components/LearningCards/LearningCardList";
+import LearningCard from "./components/LearningCards/LearningCard";
 import cardData from "./components/LearningCards/LearningCardsData";
 
 function App() {
@@ -35,7 +37,9 @@ function App() {
         </Route>
         <Route
           path="/welcome/:username"
-          element={<WelcomeUserPage userInfo={userInfo} />}
+          element={
+            <WelcomeUserPage userInfo={userInfo} setUserInfo={setUserInfo} />
+          }
         >
           {" "}
         </Route>
@@ -48,7 +52,7 @@ function App() {
           {" "}
         </Route>
         <Route
-          path="/settings/profile/:username"
+          path="/settings/account/:username"
           element={
             <AccountSettings userInfo={userInfo} setUserInfo={setUserInfo} />
           }
@@ -56,7 +60,7 @@ function App() {
           {" "}
         </Route>
         <Route
-          path="/settings/account/:username"
+          path="/settings/profile/:username"
           element={
             <ProfileSettings userInfo={userInfo} setUserInfo={setUserInfo} />
           }

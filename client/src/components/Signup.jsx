@@ -44,7 +44,7 @@ export default function Signup({setUserInfo}){
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 "style={{backgroundColor: cols.white, color:cols.black }}>
-      <div className="col-lg-6 col-md-8 col-sm-9 col-10 container-fluid  p-5 rounded-4 fs-5" style={{backgroundColor: cols.pink, color:cols.black }}>
+      <div className="col-lg-6 col-md-8 col-sm-9 col-10 container-fluid  p-5 rounded-4 fs-5" style={{backgroundColor: cols.lila, color:cols.black }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Sign up</h3>
 
@@ -93,7 +93,7 @@ export default function Signup({setUserInfo}){
             Sign Up
           </Button>
           <p className="text-right text-decoration-none">
-            Already&nbsp;registered?&nbsp;<Link to="/login">Login</Link>
+            Already&nbsp;registered?&nbsp;<Link to="/login" className="text-decoration-none">Login</Link>
           </p>
         </Form>
       </div>
