@@ -15,8 +15,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { axiosClient } from "./axiosClient";
 
 import LearningCardList from "./components/LearningCards/LearningCardList";
-import LearningCard from "./components/LearningCards/LearningCard";
-import cardData from "./components/LearningCards/LearningCardsData";
+// import LearningCard from "./components/LearningCards/LearningCard";
+// import cardData from "./components/LearningCards/LearningCardsData";
 
 function App() {
   const [userInfo, setUserInfo] = useState();
