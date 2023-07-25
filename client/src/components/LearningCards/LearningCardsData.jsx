@@ -1,9 +1,19 @@
-const cardData = [
-  { id: 1, question: "What is a function?", answer: "blabla" },
-  { id: 2, question: "What is a variable?", answer: "blablablabla" },
-  { id: 3, question: "What is a xxxx?", answer: "blablablabla" },
-  { id: 4, question: "What is a gdfdsf?", answer: "blablablabla" },
-  { id: 5, question: "What is a fghgfhhg?", answer: "blablablabla" },
-];
+import React, { useState, useEffect } from "react";
+import { axiosClient } from "../../axiosClient";
+
+function cardData() {
+  const [cardData, setCardData] = useState();
+
+  useEffect(() => {
+    axiosClient
+      .get("http://localhost:3010/learningcards")
+      .then((response) => {
+        setCardData(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+}
 
 export default cardData;
