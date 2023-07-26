@@ -23,7 +23,7 @@ function App() {
   // const [learningCards, setLearningCards] = useState(cardData);
   return (
     <>
-      <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />
+      {/* <Navbar userInfo={userInfo} setUserInfo={setUserInfo} /> */}
       <Routes>
         <Route path="/" element={<LandingPage />}>
           {" "}
