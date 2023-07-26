@@ -125,3 +125,19 @@ html {
   color: white;
   transform: rotateY(180deg);
 }
+
+@media screen and (min-width: 568px) {
+  .cards-wrapper {
+    display: flex;
+  }
+
+  .card {
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .card:not(:first-child) {
+    display: none;
+  }
+}

@@ -5,7 +5,9 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
-import Omar from "../../assets/pics/mickey.jpeg";
+import Fred from "../../assets/pics/Fred.jpg";
+import Marie from "../../assets/pics/Marie_Foto_Kopie.jpg";
+import Omar from "../../assets/pics/smiley.jpeg";
 import Footer from "../LandingPage/Footer";
 
 function AboutUsPage() {
@@ -20,7 +22,7 @@ function AboutUsPage() {
       <Container fluid style={{ backgroundColor: "#181d25" }}>
         <Row className="d-flex justify-content-around align-items-center vh-sm-100 vh-50">
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
-            <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
+            <Image src={Fred} roundedCircle style={{ width: "10rem" }} />
             <p className="text-white w-50 text-center pt-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
@@ -29,7 +31,7 @@ function AboutUsPage() {
             </p>
           </Col>
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
-            <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
+            <Image src={Marie} roundedCircle style={{ width: "10rem" }} />
             <p className="text-white w-50 text-center pt-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
