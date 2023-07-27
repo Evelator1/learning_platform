@@ -1,11 +1,7 @@
-import React from 'react'
-
-
-import Box from "@mui/material/Box";
 
 export default function JobSearchTab() {
   return (
-    <Box sx={{
+    <div sx={{
       width:"80vw",
       position:"relative", top:"0px",left:"4vw",
       overflow:"scroll",
@@ -14,6 +10,6 @@ export default function JobSearchTab() {
       justifyContent: "center",
     }} >
       JobSearchTab
-    </Box>
+    </div>
   )
 }
