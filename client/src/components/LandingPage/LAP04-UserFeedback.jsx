@@ -24,9 +24,7 @@ function UserFeedbackPage() {
       <div className="container-fluid p-0 m-0 welcome-container align-items-center d-flex flex-column justify-content-center min-vh-50 bg-purple">
         <div className="row">
           <div className="col-12 m-0 pb-5 align-items-center text-center ">
-            <h2 className="text-white display-4 pt-5 font-mont fw-bold">
-              User Feedback
-            </h2>
+            <h2 className="display-4 pt-5 font-mont fw-bold">User Feedback</h2>
           </div>
         </div>
 

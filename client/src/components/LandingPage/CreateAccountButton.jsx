@@ -9,7 +9,7 @@ function WelcomePageButton({ content, color, textColor }) {
             color: ${textColor}; 
         }`}
       </style>
-      <Button variant="flat" size="sm">
+      <Button variant="flat" size="lg">
         {content}
       </Button>
     </>

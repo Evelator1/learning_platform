@@ -10,6 +10,13 @@ function CardsPage() {
   return (
     <>
       <div className="container-fluid pt-5 d-flex flex-column align-items-center justify-content-center bg-black2">
+        <div className="row d-flex align-items-center justify-content-center p-md-5">
+          <div className="col-12">
+            <h2 className="text-white font-mont fw-bold p-md-5 card-section-h2">
+              What can I do here?
+            </h2>
+          </div>
+        </div>
         <div className="row pb-5 pt-5 mt-0">
           <div className="col pb-3 d-flex justify-content-center align-items-center">
             <div className="flip-card">

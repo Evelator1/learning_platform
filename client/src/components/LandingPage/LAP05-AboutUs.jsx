@@ -7,7 +7,7 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Fred from "../../assets/pics/Fred.jpg";
 import Marie from "../../assets/pics/Marie_Foto_Kopie.jpg";
-import Omar from "../../assets/pics/smiley.jpeg";
+import Omar from "../../assets/pics/Omar.jpg";
 import Footer from "../LandingPage/Footer";
 
 function AboutUsPage() {
@@ -20,10 +20,24 @@ function AboutUsPage() {
     //   </div>
     <>
       <Container fluid style={{ backgroundColor: "#181d25" }}>
-        <Row className="d-flex justify-content-around align-items-center vh-sm-100 vh-50">
+        <div className="row">
+          <div className="col-12 m-0 pb-5 align-items-center text-center">
+            <h2 className="display-4 font-mont fw-bold text-white">About Us</h2>
+          </div>
+        </div>
+        <Row className="d-flex justify-content-around align-items-center vh-sm-100 vh-50 pb-5">
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
-            <Image src={Fred} roundedCircle style={{ width: "10rem" }} />
-            <p className="text-white w-50 text-center pt-4">
+            <Image
+              src={Fred}
+              roundedCircle
+              style={{
+                width: "10rem",
+                height: "10rem",
+                aspectRatio: "1/1",
+                objectFit: "cover",
+              }}
+            />
+            <p className="text-white text-center pt-4 px-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
               voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
@@ -31,8 +45,20 @@ function AboutUsPage() {
             </p>
           </Col>
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
-            <Image src={Marie} roundedCircle style={{ width: "10rem" }} />
-            <p className="text-white w-50 text-center pt-4">
+            <div className="rounded-circle ratio-1x1">
+              <Image
+                src={Marie}
+                roundedCircle
+                style={{
+                  width: "10rem",
+                  height: "10rem",
+                  aspectRatio: "1/1",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
+
+            <p className="text-white text-center pt-4 px-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
               voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
@@ -40,8 +66,17 @@ function AboutUsPage() {
             </p>
           </Col>
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
-            <Image src={Omar} roundedCircle style={{ width: "10rem" }} />
-            <p className="text-white w-50 text-center pt-4">
+            <Image
+              src={Omar}
+              roundedCircle
+              style={{
+                width: "10rem",
+                height: "10rem",
+                aspectRatio: "1/1",
+                objectFit: "cover",
+              }}
+            />
+            <p className="text-white text-center pt-4 px-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
               voluptatibus quis adipisci ad dolores corrupti modi necessitatibus

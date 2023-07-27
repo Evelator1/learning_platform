@@ -140,4 +140,13 @@ html {
   .card:not(:first-child) {
     display: none;
   }
+
+  .welcome-text {
+    font-size: 1em;
+    padding: 0 20px 0 20px;
+  }
+
+  .card-section-h2 {
+    font-size: 1.5em;
+  }
 }
