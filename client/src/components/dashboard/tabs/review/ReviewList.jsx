@@ -11,10 +11,10 @@ import { faThumbsUp as outlineThumbsUp } from "@fortawesome/free-regular-svg-ico
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faStar as outlineStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { axiosClient } from "../../axiosClient";
+import { axiosClient } from "../../../../axiosClient";
 
-import "./PostsList.css";
-import CommentsModal from "./CommentsModal";
+import "./reviewList.css";
+// import CommentsModal from "./CommentsModal";
 // import PostCommentsList from "./CommentsList";
 
 function PostsList({ userInfo }) {
@@ -204,12 +204,12 @@ function PostsList({ userInfo }) {
           </Row>
         </Container>
       ))}
-      <CommentsModal
+      {/* <CommentsModal
         selectedPost={selectedPost}
         isOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
         userInfo={userInfo}
-      />
+      /> */}
     </div>
   );
 }

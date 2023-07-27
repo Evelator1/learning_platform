@@ -3,64 +3,61 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Navbar from "./components/Navbar";
-import UserDashboard from "./components/dashboard/UserDashboard";
+import NavbarBS from "./components/Navbar-Components/NavbarBS";
+import Protected from "./components/Protected";
+import Profile from "./components/Profile";
 import WelcomeUserPage from "./components/dashboard/WelcomeUserPage";
-import AccountSettings from "./components/settings/AccountSettings";
-import ProfileSettings from "./components/settings/ProfileSettings";
-
- 
+import UserSettings from "./components/settings/Settings";
+import PostsFeedTab from "./components/dashboard/tabs/userfeed/PostsFeedTab";
 import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { axiosClient } from "./axiosClient";
+import LearningCardsTab from "./components/dashboard/tabs/LearningCardsTab";
+import InterviewQuestionsTab from "./components/dashboard/tabs/InterviewQuestionsTab";
+import JobSearchTab from "./components/dashboard/tabs/JobSearchTab";
+import ShareReviewsTab from "./components/dashboard/tabs/review/ShareReviewsTab";
+import ChatTab from "./components/dashboard/tabs/ChatTab";
+import NextStepsTab from "./components/dashboard/tabs/NextStepsTab";
+import Favourite from "./components/dashboard/tabs/Favourite";
+import LogoutMessage from "./components/LogoutMessage";
+
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthProvider";
 
 function App() {
-  const [userInfo, setUserInfo] = useState();
+  const { user, isLoading } =
+    useContext(AuthContext);
+
+
   return (
     <>
-      <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />
+      <NavbarBS />
+
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/login" element={<Login setUserInfo={setUserInfo} />}>
-          {" "}
-        </Route>
-        <Route path="/signup" element={<Signup setUserInfo={setUserInfo} />}>
-          {" "}
-        </Route>
-        <Route
-          path="/welcome/:username"
-          element={<WelcomeUserPage userInfo={userInfo} setUserInfo={setUserInfo}/>}
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/:username"
-          element={
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/logout" element={<LogoutMessage />}></Route>
+        <Route path="/welcome/:username" element={<WelcomeUserPage />}></Route>
 
-            <UserDashboard userInfo={userInfo} setUserInfo={setUserInfo} />
-          }
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/settings/account/:username"
+        <Route path="/:username" element={<Protected />}>
+        <Route index element={<Profile />} />
+          <Route path="feed" element={<PostsFeedTab />} />
+          <Route path="learning-cards" element={<LearningCardsTab />} />
+          <Route
+            path="interview-questions"
+            element={<InterviewQuestionsTab />}
+          />
+          <Route path="job-search" element={<JobSearchTab />} />
+          <Route path="reviews" element={<ShareReviewsTab />} />
+          <Route path="connect" element={<ChatTab />} />
+          <Route path="next-steps" element={<NextStepsTab />} />
+          <Route path="favourites" element={<Favourite />} />
 
-          element={
-            <AccountSettings userInfo={userInfo} setUserInfo={setUserInfo} />
-          }
-        >
-          {" "}
+          <Route path="settings/account" element={<UserSettings />} />
         </Route>
-        <Route
-          path="/settings/profile/:username"
 
-          element={
-            <ProfileSettings userInfo={userInfo} setUserInfo={setUserInfo} />
-          }
-        >
-          {" "}
-        </Route>
+        
       </Routes>
     </>
   );

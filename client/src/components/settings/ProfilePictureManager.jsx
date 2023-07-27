@@ -4,7 +4,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { axiosClient } from "../../axiosClient";
 
-export default function ProfilePictureManager({ userInfo }) {
+
+export default function ProfilePictureManager({ userSettings }) {
   const {
     register,
     handleSubmit,
@@ -19,12 +20,12 @@ export default function ProfilePictureManager({ userInfo }) {
 
     axiosClient
       .patch(
-        `http://localhost:3010/users/${userInfo._id}/update-profile-pic`,
+        `http://localhost:3010/users/${userSettings._id}/update-profile-pic`,
         formData
       )
       .then((response) => {
         reset();
-        // navigate(`/settings/profile/${userInfo.username}`);
+        // navigate(`/settings/profile/${userSettings.username}`);
         window.location.reload(false); //refresh the page
       })
       .catch((err) => {
@@ -34,13 +35,13 @@ export default function ProfilePictureManager({ userInfo }) {
 
   const deleteCurrentPic = () => {
     const replaceDefault = {
-      profilePicture: userInfo.profilePicture,
+      profilePicture: userSettings.profilePicture,
       defaultPic:
         "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png",
     };
     console.log(replaceDefault, "is the body of the  request");
     axiosClient
-      .patch(`http://localhost:3010/users/${userInfo._id}/remove-profile-pic`, {
+      .patch(`http://localhost:3010/users/${userSettings._id}/remove-profile-pic`, {
         replaceDefault,
       })
       .then((response) => {
@@ -70,10 +71,10 @@ export default function ProfilePictureManager({ userInfo }) {
             className="w-100  rounded-md border border-gray-800 bg-stone-100 px-4 py-2"
           />
 
-          <input type="submit" value={"submit"} />
+          <input type="submit" value={"submit picture"} />
         </div>
 
-        <img src={userInfo.profilePicture} alt="" style={{ width: "22rem", marginTop:"2rem"}} />
+        <img src={userSettings.profilePicture} alt="" style={{ width: "22rem", marginTop:"2rem"}} />
 
       </form>
       <div className="mt-2">
