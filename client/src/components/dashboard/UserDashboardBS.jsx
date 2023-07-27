@@ -78,7 +78,7 @@ export default function UserDashboardBS() {
                 }}
               >
                 <NavLink
-                  to={"/"}
+                  to={`../${user.username}`}
                   className="d-flex gap-3"
                   style={{ color: cols.white, textDecoration: "none" }}
                 >

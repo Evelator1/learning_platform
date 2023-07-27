@@ -7,7 +7,7 @@ export default function Avatar() {
 
   const {  isLoading, user } = useContext(AuthContext);
 
-  return user&&(
+  return (
     <div >
       <img
         src={user.profilePicture}
