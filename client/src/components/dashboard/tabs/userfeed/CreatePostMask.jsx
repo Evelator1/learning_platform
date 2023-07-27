@@ -58,8 +58,9 @@ export default function CreatePostMask() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Share with the Community</h3>
 
-          <Form.Group controlId="content">
+          <Form.Group controlId="content" >
             <Form.Control
+            size="lg"
               type="post"
               placeholder="Post Something"
               {...register("content", {

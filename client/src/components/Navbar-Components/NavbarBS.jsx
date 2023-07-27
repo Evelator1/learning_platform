@@ -29,9 +29,9 @@ const {user, isLoading}= useContext(AuthContext)
   return (
     <>
       <Navbar
-        style={{ zIndex: "2", height: "4rem", backgroundColor: cols.black, }}
+        style={{ zIndex: "2", height: "4rem", backgroundColor: cols.black,position:"fixed", width:"100%" }}
       >
-        <Container fluid style={{padding:"4rem",margin:"0" }}>
+        <Container fluid >
           <Navbar.Brand
             href="/"
             style={{ fontFamily: "IBM Plex Mono italic", fontStyle: "italic" }}

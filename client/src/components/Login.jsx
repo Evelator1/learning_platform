@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { cols } from "../colorSchema";
 
-export default function Login({ setUserInfo }) {
+export default function Login() {
   const {
     handleSubmit,
     register,

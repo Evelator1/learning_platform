@@ -15,8 +15,7 @@ export default function Avatar() {
         style={{width: "3rem", height:"auto",aspectRatio:"1/1", objectFit: "cover" }}
         alt={user.username}
       />
-      {"   "}
-      {user.username}
+     
     </div>
   );
 }

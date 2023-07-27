@@ -25,22 +25,20 @@ export default function WelcomeUserPage() {
   return (
     user && (
       <div
-        className="my-lg-5 my-sm-0 position-fixed overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
+        className=" position-fixed overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
         style={{
           backgroundColor: cols.white,
-          paddingTop: "8vw",
-          paddingBottom: "5rem",
+
         }}
       >
-        <h1 className="fs-1 mt-2 text-center" style={{ color: cols.white }}>
-          Welcome {user.username}!
-        </h1>
         <Container
           fluid
           className="w-100 py-0 d-flex-column justify-content-center align-items-center"
         >
-          <h5>Welcome {user.username}</h5>
 
+        <h1 className="fs-3 mt-2 text-center" style={{ color: cols.black }}>
+          Welcome {user.username}!
+        </h1>
           <Row className="justify-content-around">
             {userMenuOptions.map((option) => (
               <Col

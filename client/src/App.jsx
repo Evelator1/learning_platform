@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import LearningCardsTab from "./components/dashboard/tabs/LearningCardsTab";
 import InterviewQuestionsTab from "./components/dashboard/tabs/InterviewQuestionsTab";
-import JobSearchTab from "./components/dashboard/tabs/JobSearchTab";
+import JobSearchTab from "./components/dashboard/tabs/JobSearch/JobSearchTab";
 import ShareReviewsTab from "./components/dashboard/tabs/review/ShareReviewsTab";
 import ChatTab from "./components/dashboard/tabs/ChatTab";
 import NextStepsTab from "./components/dashboard/tabs/NextStepsTab";
