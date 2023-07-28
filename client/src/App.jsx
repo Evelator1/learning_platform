@@ -27,14 +27,14 @@ import LogoutMessage from "./components/LogoutMessage";
 
 
 import LearningCardList from "./components/LearningCards/LearningCardList";
-import LearningCard from "./components/LearningCards/LearningCard";
-import cardData from "./components/LearningCards/LearningCardsData";
+import NewLearningCard from "./components/LearningCards/NewLearningCard";
 
 function App() {
   const { user, isLoading } = useContext(AuthContext);
 
   return (
     <>
+
       <NavbarBS />
 
       <Routes>
@@ -48,6 +48,9 @@ function App() {
           <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
           <Route path="learning-cards" element={<LearningCardsTab />} />
+          <Route path="/learningcards" element={<LearningCardList />} />
+          <Route path="/learningcards/createlearningcard"
+          element={<NewLearningCard />} />
           <Route
             path="interview-questions"
             element={<InterviewQuestionsTab />}
@@ -59,6 +62,7 @@ function App() {
           <Route path="favourites" element={<Favourite />} />
 
           <Route path="settings/account" element={<UserSettings />} />
+
         </Route>
       </Routes>
     </>

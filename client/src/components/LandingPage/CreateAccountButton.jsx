@@ -10,8 +10,12 @@ function WelcomePageButton({ content, color, textColor,linkto }) {
             color: ${textColor}; 
         }`}
       </style>
+
+      <Button variant="flat" size="lg">
+
       <Link to={linkto}>
-      <Button variant="flat" size="sm">
+     
+
         {content}
       </Button>
       </Link>
