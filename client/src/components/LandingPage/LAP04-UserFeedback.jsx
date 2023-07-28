@@ -42,7 +42,7 @@ function UserFeedbackPage() {
                       src={Woman1}
                       alt="Blonde Woman"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "10rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
@@ -62,7 +62,7 @@ function UserFeedbackPage() {
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
-                        It helped me feel less lost after my coding bootcamp.
+                        It helped me feel less lost.
                       </p>
                       <p className="card-text text-small mt-2 mb-0 font-mont text-center">
                         John, Lisbon
@@ -74,7 +74,7 @@ function UserFeedbackPage() {
                       src={Woman2}
                       alt="Brunette Woman"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "9rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
@@ -94,7 +94,7 @@ function UserFeedbackPage() {
                       src={Man1}
                       alt="Man with glasses"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "10rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
@@ -110,7 +110,7 @@ function UserFeedbackPage() {
                       src={Woman3}
                       alt="Brunette Woman"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "10rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
@@ -146,7 +146,7 @@ function UserFeedbackPage() {
                       src={Woman4}
                       alt="Brunette Woman in front of window"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "10rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
@@ -162,7 +162,7 @@ function UserFeedbackPage() {
                       src={Man4}
                       alt="Blonde Woman"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "10rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">
@@ -178,7 +178,7 @@ function UserFeedbackPage() {
                       src={Woman5}
                       alt="Brunette Woman in field"
                       className="card-img-top"
-                      style={{ width: "5rem" }}
+                      style={{ width: "10rem" }}
                     />
                     <div className="card-body">
                       <p className="card-text m-0 font-plex text-center">

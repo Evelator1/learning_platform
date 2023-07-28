@@ -37,7 +37,7 @@ function AboutUsPage() {
                 objectFit: "cover",
               }}
             />
-            <p className="text-white text-center pt-4 px-5">
+            <p className="text-white text-center pt-4 px-5 pb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
               voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
@@ -58,7 +58,7 @@ function AboutUsPage() {
               />
             </div>
 
-            <p className="text-white text-center pt-4 px-5">
+            <p className="text-white text-center pt-4 px-5 pb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
               voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
@@ -76,7 +76,7 @@ function AboutUsPage() {
                 objectFit: "cover",
               }}
             />
-            <p className="text-white text-center pt-4 px-5">
+            <p className="text-white text-center pt-4 px-5 pb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               sit voluptatem possimus autem doloribus, saepe, aspernatur
               voluptatibus quis adipisci ad dolores corrupti modi necessitatibus

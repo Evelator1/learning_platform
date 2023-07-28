@@ -12,7 +12,7 @@ function CardsPage() {
       <div className="container-fluid pt-5 d-flex flex-column align-items-center justify-content-center bg-black2">
         <div className="row d-flex align-items-center justify-content-center p-md-5">
           <div className="col-12">
-            <h2 className="text-white font-mont fw-bold p-md-5 card-section-h2">
+            <h2 className="text-white font-mont fw-bold p-md-5 pb-md-0 card-section-h2 display-6">
               What can I do here?
             </h2>
           </div>

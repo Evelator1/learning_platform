@@ -20,8 +20,8 @@ function WelcomePage() {
           </div>
         </div>
         <div className="row d-flex flex-row align-items-center justify-content-center text-center ps-md-5">
-          <div className="col-12 col-lg-7 text-white text-center font-mont ps-md-5">
-            <h4 className="fw-light lh-base welcome-text ps-5">
+          <div className="col-10 col-lg-7 text-white text-center font-mont ps-md-5">
+            <h4 className="fw-light lh-base welcome-text ps-md-5 p-0">
               We are a platform for connecting with other coding bootcamp
               graduates, preparing for interviews and practicing what you have
               learned. <br></br>Join our community of likeminded coders who are
