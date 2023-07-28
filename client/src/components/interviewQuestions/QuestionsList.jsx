@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import { axiosClient } from "../../axiosClient";
 import "./QuestionsList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleUp,
-  faCircleDown,
-  faCheckCircle,
-  faCircleXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider.jsx";
+import {faCircleUp,faCircleDown,} from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle as mediumChecked } from "@fortawesome/free-regular-svg-icons";
 import { Container, Col, Row, Image, Button } from "react-bootstrap";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-function QuestionsList(userInfo) {
+function QuestionsList() {
+  const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +33,7 @@ function QuestionsList(userInfo) {
 
   const handleVote = async (questionId, voteType) => {
     try {
-      const userId = userInfo._id;
+      const userId = user._id;
 
       await axiosClient.patch(
         `http://localhost:3010/interviewQuestions/${questionId}/vote`,

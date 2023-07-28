@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthProvider";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NavbarBS from "./components/Navbar-Components/NavbarBS";
@@ -10,7 +12,7 @@ import WelcomeUserPage from "./components/dashboard/WelcomeUserPage";
 
 import UserSettings from "./components/settings/Settings";
 import PostsFeedTab from "./components/dashboard/tabs/userfeed/PostsFeedTab";
-import InterviewQuestionsDashboard from "./components/interviewQuestions/InterviewQuestionsDashboard"
+import InterviewQuestionsDashboard from "./components/interviewQuestions/InterviewQuestionsDashboard";
 import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,8 +25,6 @@ import NextStepsTab from "./components/dashboard/tabs/NextStepsTab";
 import Favourite from "./components/dashboard/tabs/Favourite";
 import LogoutMessage from "./components/LogoutMessage";
 
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthProvider";
 
 import LearningCardList from "./components/LearningCards/LearningCardList";
 import LearningCard from "./components/LearningCards/LearningCard";
@@ -32,7 +32,6 @@ import cardData from "./components/LearningCards/LearningCardsData";
 
 function App() {
   const { user, isLoading } = useContext(AuthContext);
-
 
   return (
     <>
@@ -60,18 +59,8 @@ function App() {
           <Route path="favourites" element={<Favourite />} />
 
           <Route path="settings/account" element={<UserSettings />} />
-
-        </Route>
-        <Route
-          path="/interview-questions"
-          element={
-            <InterviewQuestionsDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
-          }
-        >
-          {" "}
         </Route>
       </Routes>
-      
     </>
   );
 }

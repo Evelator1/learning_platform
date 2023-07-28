@@ -2,11 +2,11 @@ import React from 'react'
 import QuestionsList from './QuestionsList'
 import CreateInterviewQuestion from "./CreateInterviewQuestion"
 
-function InterviewQuestionsDashboard({userInfo}) {
+function InterviewQuestionsDashboard() {
   return (
     <div>
-        <CreateInterviewQuestion userInfo={userInfo}/>
-        <QuestionsList userInfo={userInfo}/>
+        <CreateInterviewQuestion />
+        <QuestionsList />
     </div>
   )
 }

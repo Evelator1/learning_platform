@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { cols } from "../colorSchema";
 
-export default function Signup({ setUserInfo }) {
+export default function Signup() {
   const {
     handleSubmit,
     register,
@@ -18,7 +18,6 @@ export default function Signup({ setUserInfo }) {
 
   const { isLoading, user, signup } = useContext(AuthContext);
   console.log(isLoading, user, signup )
-  const navigate = useNavigate();
 
 
   const onSubmit = (data) => {

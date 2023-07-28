@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import PostsList from "../../../InterviewQuestions/PostsList";
+import PostsList from "../../../communityQuestions/PostsList";
 import CreatePostMask from "./CreatePostMask";
 export default function PostsFeedTab() {
   return (

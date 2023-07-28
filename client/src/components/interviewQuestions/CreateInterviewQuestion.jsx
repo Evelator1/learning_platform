@@ -3,20 +3,23 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./CreateInterviewQuestion.css";
 import { axiosClient } from "../../axiosClient";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider.jsx";
 
-function CreateInterviewQuestion({ userInfo }) {
+function CreateInterviewQuestion() {
+  const { user } = useContext(AuthContext);
   const [content, setContent] = useState("");
   const [isTechnical, setIsTechnical] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    console.log(userInfo);
+    console.log(user);
     try {
       const question = await axiosClient.post("http://localhost:3010/interviewQuestions/newQuestion", {
       content,
       isTechnical,
-      userId:userInfo._id
+      author:user._id
     });
       console.log(question.data);
 
