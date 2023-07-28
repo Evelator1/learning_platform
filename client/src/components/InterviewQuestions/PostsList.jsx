@@ -32,7 +32,7 @@ function PostsList({ userInfo }) {
       }
     };
     fetchData();
-  }, [data]);
+  }, []);
 
   const handleLikeClick = (postId) => {
     setData((prevData) =>

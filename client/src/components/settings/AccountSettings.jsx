@@ -1,63 +1,27 @@
+import StandardButton from "../StandardButton";
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { userMenuOptions } from "../../userMenuOptions";
-import { axiosClient } from "../../axiosClient";
-import Switch from "@mui/material/Switch";
 import { cols } from "../../colorSchema";
-import StandardButton from '../StandardButton'
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+import { axiosClient } from "../../axiosClient";
+import ChangeEmail from "./ChangeEmail";
+import ChangePassword from "./ChangePassword";
 
+// const label = { inputProps: { "aria-label": "Switch demo" } };
+
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 export default function AccountSettings() {
-  const params = useParams();
-  const [userSettings, setUserSettings] = useState();
-  useEffect(() => {
-    axiosClient
-      // .get(`http://localhost:3010/users/${params.username}`) //user route
-      .get(`http://localhost:3010/auth/profile`) //auth route
-      .then((response) => {
-        const { userWishWelcome, profilePicture, _id, username } = response.data;
-        setUserSettings({ userWishWelcome, profilePicture, _id, username });
-        if (response.data.username === params.username) {
-          console.log("match!");
-        } else {
-          navigate(`/login`);
-        }
-      })
-      .catch((err) => console.error(err));
-  }, []);
-  console.log(userSettings);
-
-  const sendPreferences = (e) => {
-    const updatedUserInfo = {
-      userWishWelcome: e.target.checked,
-    };
-
- 
-      axiosClient
-        .put(`http://localhost:3010/users/${userSettings._id}`, updatedUserInfo)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-  };
-
+  const { user} = useContext(AuthContext);
+  console.log(user);
   return (
-    userSettings && (
-      <div style={{ marginTop: "18vw" }}>
+    user && (
+      <div style={{  }}>
         <h1>ACCOUNT SETTINGS: </h1>
+        <ChangeEmail />
 
-        <h3>change Email: <span>{userSettings.username}</span></h3>
-        
-         
-        <h3>Change Password</h3>
- 
-        <StandardButton link={`/settings/account/${userSettings.username}`} w={100} content={"Dashboard"}/>
-
-
+        <ChangePassword />
       </div>
     )
   );

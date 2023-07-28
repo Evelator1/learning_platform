@@ -15,7 +15,7 @@ const cloudinaryUpload = async (req, res, next) => {
       file.path,
       "odgsuzdgvzszogzuovszdddfzgsuvodv" // unsigned upload parameter
     );
-    //console.log(result, "is the result");
+    console.log(result, "is the result");
 
     result.localPath = file.path;
     req.file = result;

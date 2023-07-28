@@ -3,15 +3,15 @@ import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { axiosClient } from "../../axiosClient";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import ProfilePictureManager from "./ProfilePictureManager";
 import ToggleWelcomeMessage from "./ToggleWelcomeMessage";
 import UsernameManager from "./UsernameManager";
 import PersonalInfoManager from "./PersonalInfoManager";
 
 export default function ProfileSettings() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
-  const params = useParams();
   const [userSettings, setUserSettings] = useState();
   useEffect(() => {
     axiosClient
@@ -40,17 +40,15 @@ export default function ProfileSettings() {
   console.log(userSettings);
   return (
     userSettings && (
-      <div
-        style={{ marginTop: "10vw", padding: "2rem", display:"flex", flexDirection:"column" ,alignItems:"center" }}
-        className="pt-5 pt-md-3pt-xl-0"
-      >
-        <h1>PROFILE SETTINGS: </h1>
-
-        <ToggleWelcomeMessage userInfo={userSettings} />
-        <UsernameManager userInfo={userSettings} />
-        <PersonalInfoManager userInfo={userSettings} />
-        <ProfilePictureManager userInfo={userSettings} />
-      </div>
+      <Container>
+      
+          <h1>PROFILE SETTINGS: </h1>
+          <ToggleWelcomeMessage userSettings={userSettings} />
+          <UsernameManager userSettings={userSettings} />
+          <PersonalInfoManager userSettings={userSettings} />
+          <ProfilePictureManager userSettings={userSettings} />
+      
+      </Container>
     )
   );
 }

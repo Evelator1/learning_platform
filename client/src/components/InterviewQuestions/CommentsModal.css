@@ -132,7 +132,6 @@ padding-bottom: 0;
     margin-left: 450px;
     height: 25px;
     color: #65676b;
-    cursor: pointer;
     position: absolute;
     bottom: 28px;
     right: 45px;
@@ -142,7 +141,6 @@ padding-bottom: 0;
 .commantBoxIcons svg{
     height: 25px;
     color: #65676b;
-    cursor: pointer;
     padding-bottom: 10px;
 }
 @keyframes pulsate {
@@ -157,9 +155,31 @@ padding-bottom: 0;
     }
   }
 
-.commantBoxIcons svg:hover{
-    animation: pulsate 1s infinite;
-}
+/* Add this new keyframes rule for the click animation */
+@keyframes iconClickAnimation {
+    0% {
+      transform: translate(0, 0); /* Starting position: no translation */
+      opacity: 1; /* Starting opacity: fully opaque */
+    }
+    50% {
+      opacity: 0.4; /* Middle opacity: partially transparent */
+    }
+    100% {
+      transform: translate(50px, -50px); /* Final position: back to starting position */
+      opacity: 0; /* Final opacity: fully opaque */
+    }
+  }
+  
+  /* Add the new click animation to the .commentIcon class */
+  .commentIcon:hover {
+    animation: pulsate 1s infinite; /* Existing pulsate animation on hover */
+  }
+  
+  /* Add the new click animation to the .commentIcon:active class */
+  .commentIcon:active {
+    animation: iconClickAnimation 1s ease-in; /* Use the new click animation */
+  }
+  
 
 
 
