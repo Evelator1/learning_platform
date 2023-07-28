@@ -18,7 +18,7 @@ function Footer() {
           <li className="nav-item">About Us</li>
         </ul>
         <ul className="list-unstyled d-flex flex-column m-0">
-          <li>Copyright Information</li>
+          <li>Copyright</li>
           <li>Terms of Conditions</li>
           <li>Privacy Policy</li>
         </ul>
