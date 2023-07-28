@@ -1,38 +1,39 @@
+import React from "react";
+import { Card, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
-import StandardButton from "../StandardButton";
 import theme from "../../theme";
 import { ThemeProvider } from "@mui/material";
-import {cols} from '../../colorSchema'
+import { cols } from "../../colorSchema";
 
 export default function UserBadge({ userInfo }) {
   const navigate = useNavigate();
-  console.log(userInfo)
+  console.log(userInfo);
 
   return (
     <ThemeProvider theme={theme}>
-      <Card sx={{ maxWidth: "15rem", position: "relative" }}>
-        <CardMedia
-          component="img"
-          height="240"
-          image={userInfo.profilePicture}
+      <Card style={{ maxWidth: "15rem", position: "relative" }}>
+        <Card.Img
+          variant="top"
+          src={userInfo.profilePicture}
           alt={userInfo.username}
+          height="240"
         />
-        <CardContent>
-          <Typography variant="h6" component="div" className="p-0">
-            {userInfo.username}
-          </Typography>
-          <Typography variant="p" color={cols.black} className="my-4">
+        <Card.Body>
+          <Card.Title>
+            <h6>{userInfo.username}</h6>
+          </Card.Title>
+          <Card.Text style={{ color: cols.black }} className="my-4">
             {userInfo.personalInfo}
-             
-          </Typography>
-
-          <StandardButton
-            link={`/settings/profile/${userInfo.username}`}
-            w={100}
-            content={"settings"}
-          />
-        </CardContent>
+          </Card.Text>
+          <Button
+            as={Link}
+            to={`/settings/profile/${userInfo.username}`}
+            variant="primary"
+            style={{ width: 100 }}
+          >
+            Settings
+          </Button>
+        </Card.Body>
       </Card>
     </ThemeProvider>
   );

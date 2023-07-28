@@ -10,6 +10,7 @@ import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
 function WelcomePage() {
   return (
     <>
+
       <Navbar />
       <div className="container-fluid h-100 p-0 m-0 bg-black2">
         <div className="row m-0 p-0">
@@ -17,6 +18,8 @@ function WelcomePage() {
             <h1 className="text-white text-center font-mont fw-bold display-1">
               Welcome to CodeRoad
             </h1>
+           
+
           </div>
         </div>
         <div className="row d-flex flex-row align-items-center justify-content-center text-center ps-md-5">

@@ -35,7 +35,17 @@ import { userMenuOptions } from "../userMenuOptions";
 function Navbar({ userInfo, setUserInfo }) {
   const navigate = useNavigate();
   const params = useParams();
-  const landing = true;
+  console.log(useParams())
+
+  const landing = (params)=>{
+   
+    if (params === "/"){
+return true
+    }else{
+      return false
+    }
+  }
+  
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -78,7 +88,10 @@ function Navbar({ userInfo, setUserInfo }) {
       })
       .catch((err) => console.error(err));
   }, []);
-
+//
+//
+//
+//
   const settingsOptions = [
     {
       name: "Dashboard",
@@ -261,7 +274,7 @@ function Navbar({ userInfo, setUserInfo }) {
                   </Link>
                 </MenuItem>
               )}
-              {!userInfo && !landing && (
+              {/* {!userInfo && !landing && (
                 <MenuItem>
                   <Link to={`/login`}>
                     <LoginOutlinedIcon
@@ -270,7 +283,7 @@ function Navbar({ userInfo, setUserInfo }) {
                     <Typography textAlign="center">Login</Typography>
                   </Link>
                 </MenuItem>
-              )}
+              )} */}
             </Menu>
           </Box>
         </Toolbar>

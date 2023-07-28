@@ -11,13 +11,15 @@ import { faThumbsUp as outlineThumbsUp } from "@fortawesome/free-regular-svg-ico
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faStar as outlineStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { axiosClient } from "../../axiosClient";
-
-import "./PostsList.css";
-import CommentsModal from "./CommentsModal";
+import { axiosClient } from "../../../../axiosClient";
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/AuthProvider";
+import "./reviewList.css";
+// import CommentsModal from "./CommentsModal";
 // import PostCommentsList from "./CommentsList";
 
-function PostsList({ userInfo }) {
+function PostsList() {
+  const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -32,7 +34,7 @@ function PostsList({ userInfo }) {
       }
     };
     fetchData();
-  }, [data]);
+  }, []);
 
   const handleLikeClick = (postId) => {
     setData((prevData) =>
@@ -204,12 +206,6 @@ function PostsList({ userInfo }) {
           </Row>
         </Container>
       ))}
-      <CommentsModal
-        selectedPost={selectedPost}
-        isOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
-        userInfo={userInfo}
-      />
     </div>
   );
 }

@@ -1,7 +1,3 @@
-
-
-
-
 const authorize = (role) => {
   return (req, res, next) => {
     if (req.user) {
@@ -18,6 +14,5 @@ const authorize = (role) => {
 module.exports = {
   authorize,
   //  authorizeUser,
-   // authorizeAdmin,
+  // authorizeAdmin,
 };
-

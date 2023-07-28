@@ -1,0 +1,144 @@
+#root{
+    background-color: #F0F2F5;
+    box-sizing: border-box;
+}
+html{
+    background-color: #F0F2F5;  
+}
+.userPicture{
+    margin-top: 4px;
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+
+
+.postList{
+    width:80% ;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    background-color: #F0F2F5;
+    
+}
+
+.postCard{
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 30px;
+    box-shadow: -0.5px 0px 1px #CED0D3, 6px 0px 2px #CED0D3, 0px -0.5px 1px #CED0D3, 0px 6px 2px #CED0D3;
+    border: solid 3px transparent;
+    border-radius: 7px;
+}
+
+.postHeader{
+    height: 60px;
+    padding-top: 5px;
+}
+.userName{
+    font-size: larger;
+}
+.postTime{
+    font-size: small;
+    color: #65676b;
+}
+.likes_Comments_Counter{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+    color: #65676b;
+    border-bottom: 1px solid #CED0D4;
+}
+
+.likesCounter{
+    text-align: start;
+    margin-left: 30px;
+}
+.commentsTracker{
+    text-align: end;
+    margin-right: 30px;
+}
+.commentsTracker a{
+    color: #65676b; 
+    text-decoration: none;
+}
+.likeIconCounter{
+color: #129CF7;
+font-size: larger;
+}
+
+.likes_Comments_Save{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 50px !important;
+    margin-right: 1px !important;
+    color: #65676b;
+}
+
+.LCS{
+    justify-content: center !important;
+}
+.likeButton{
+    background-color: transparent !important;
+    color:#65676b !important;
+    border: none !important;
+}
+.commentButton{
+    background-color: transparent !important;
+    color:#65676b !important;
+    border: none !important;
+}
+.saveButton{
+    background-color: transparent !important;
+    color:#65676b !important;
+    border: none !important;
+}
+
+
+.likeButton span{
+    margin-left: 6px;
+}
+
+.LikeIconAction{
+color: "#65676b" ;
+    
+}
+.commentButton span{
+    margin-left: 6px;
+}
+.commentIconAction{
+    color: "#65676b" ;
+        
+}
+.saveButton span{
+    margin-left: 6px;
+}
+.saveIconAction{
+    color: "#65676b" ;
+        
+}
+
+.LikeIconAction.likeChecked{
+    color: #129CF7 !important;
+}
+
+.saveIconAction.saveChecked{
+    color: #129CF7;
+}
+
+.likeButtonText.likeChecked{
+    color: #129CF7;
+}
+
+.saveButtonText.saveChecked{
+    color: #129CF7;
+}
+.postImage{
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+
+.blockquote p {
+    word-break: break-all;
+}
