@@ -15,8 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { axiosClient } from "./axiosClient";
 
 import LearningCardList from "./components/LearningCards/LearningCardList";
-// import LearningCard from "./components/LearningCards/LearningCard";
-// import cardData from "./components/LearningCards/LearningCardsData";
+import NewLearningCard from "./components/LearningCards/NewLearningCard";
 
 function App() {
   const [userInfo, setUserInfo] = useState();
@@ -29,6 +28,10 @@ function App() {
           {" "}
         </Route>
         <Route path="/learningcards" element={<LearningCardList />}></Route>
+        <Route
+          path="/learningcards/createlearningcard"
+          element={<NewLearningCard />}
+        ></Route>
         <Route path="/login" element={<Login setUserInfo={setUserInfo} />}>
           {" "}
         </Route>
