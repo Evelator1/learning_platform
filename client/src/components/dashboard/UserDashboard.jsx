@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { axiosClient } from "../../axiosClient";
 
 import CreatePostMask from "./CreatePostMask";
-import PostsList from "../InterviewQuestions/PostsList";
+import PostsList from "../communityQuestions/PostsList";
 import UserBadge from "./UserBadge";
 import LeftMenu from "./LeftMenu";
 import { cols } from "../../colorSchema";

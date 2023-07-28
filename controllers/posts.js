@@ -1,5 +1,4 @@
 const Post =require("../models/post")
-const fs = require("fs")
 
 const getPosts=async(req,res)=>{
     try{

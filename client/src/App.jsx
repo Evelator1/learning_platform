@@ -8,8 +8,7 @@ import UserDashboard from "./components/dashboard/UserDashboard";
 import WelcomeUserPage from "./components/dashboard/WelcomeUserPage";
 import AccountSettings from "./components/settings/AccountSettings";
 import ProfileSettings from "./components/settings/ProfileSettings";
-
- 
+import InterviewQuestionsDashboard from "./components/interviewQuestions/InterviewQuestionsDashboard"
 import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,7 +18,7 @@ function App() {
   const [userInfo, setUserInfo] = useState();
   return (
     <>
-      <Navbar userInfo={userInfo} setUserInfo={setUserInfo} />
+      {/* <Navbar userInfo={userInfo} setUserInfo={setUserInfo} /> */}
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<Login setUserInfo={setUserInfo} />}>
@@ -61,7 +60,16 @@ function App() {
         >
           {" "}
         </Route>
+        <Route
+          path="/interview-questions"
+          element={
+            <InterviewQuestionsDashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+          }
+        >
+          {" "}
+        </Route>
       </Routes>
+      
     </>
   );
 }
