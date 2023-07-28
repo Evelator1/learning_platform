@@ -65,15 +65,15 @@ const editPassword = async (req, res, next) => {
 
     //here i here i check if the old password is the right one
     const isMatch = await bcrypt.compare(oldPassword, checkUser.password);
-
+    
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
     console.log(
       isMatch,
       "___________________________________________password Matches"
-    );
-
-    //here i hash the newPassword
-    const saltRounds = 10;
+      );
+      //here i hash the newPassword
+      const saltRounds = 10;
+      console.log(newPassword, saltRounds)
     const hashed = await bcrypt.hash(newPassword, saltRounds);
     console.log(
       hashed,
@@ -85,7 +85,7 @@ const editPassword = async (req, res, next) => {
 
     //here i update the password
     const user = await User.findByIdAndUpdate(
-      id,
+      _id,
       { password: hashed },
       { new: true }
     );
@@ -115,6 +115,68 @@ const editPassword = async (req, res, next) => {
 };
 ////////////////////////////////////////////////////
 //
+//   EDIT EMAIL
+//
+//
+//
+const editEmail = async (req, res, next) => {
+  try {
+    const _id = req.params.id;
+    const { newEmail, password } = req.body;
+
+    // here i check if the user is the right one
+    const checkUser = await User.findById({ _id }).select("+password");
+    if (!checkUser) throw new ErrorResponse("User doesn't exist", 404);
+    console.log(
+      checkUser,
+      "____________________________________________ user checked"
+    );
+
+    // here i here i check if the given password is the right one
+    const isMatch = await bcrypt.compare(password, checkUser.password);
+    
+    if (!isMatch) throw new ErrorResponse("Wrong password", 401);
+    console.log(
+      isMatch,
+      "___________________________________________password Matches"
+      );
+
+     
+
+    console.log(newEmail, "is the newEmail");
+
+    // here i update the email
+    const user = await User.findByIdAndUpdate(
+      _id,
+      { email: newEmail },
+      { new: true }
+    );
+    console.log("this is the user: ", user);
+
+    const payload = {
+      email: user.email,
+      id: user._id,
+      role: user.role,
+      username: user.username,
+      userWishWelcome: user.userWishWelcome,
+      personalInfo: user.personalInfo,
+    };
+
+    console.log("this is the payload: ", payload);
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "1440m",
+    });
+
+    res
+      .cookie("access_token", token, { maxAge: 24*60 * 60 * 1000, httpOnly: true })
+      .json(payload);
+  } catch (error) {
+    next(error);
+  }
+};
+////////////////////////////////////////////////////
+//
 //   LOGIN
 //
 //
@@ -132,20 +194,22 @@ const login = async (req, res, next) => {
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
 
     const payload = {
-      email: user.email,
       id: user._id,
-      role: user.role,
       username: user.username,
+      email: user.email,
+      profilePicture: user.profilePicture,
       userWishWelcome: user.userWishWelcome,
+      role: user.role,
+      createdAt: user.createdAt,
       personalInfo: user.personalInfo,
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "10m",
+      expiresIn: "1440m",
     });
 
     res
-      .cookie("access_token", token, { maxAge: 10 * 60 * 1000, httpOnly: true })
+      .cookie("access_token", token, { maxAge: 24 * 60* 60 * 1000, httpOnly: true })
       .json(payload);
   } catch (error) {
     next(error);
@@ -188,4 +252,4 @@ const getProfile = async (req, res, next) => {
   }
 };
 
-module.exports = { signup, login, editPassword, logout, getProfile };
+module.exports = { signup, login, editPassword, editEmail, logout, getProfile };

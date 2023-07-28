@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { axiosClient } from "../../axiosClient";
 
 
-export default function UsernameManager({userInfo}) {
+export default function UsernameManager({userSettings}) {
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ export default function UsernameManager({userInfo}) {
   const onSubmit = (data) => {
     console.log(data);
     axiosClient
-      .put(`http://localhost:3010/users/${userInfo._id}`, data)
+      .put(`http://localhost:3010/users/${userSettings._id}`, data)
       .then((response) => {
         console.log(response.data);
       })
@@ -30,10 +30,10 @@ export default function UsernameManager({userInfo}) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
         style={{width:"22rem"}}
-          defaultValue={userInfo.username}
+          defaultValue={userSettings.username}
           {...register("username", { required: true, maxLength: 20 })}
         />
-        <input type="submit" />
+        <input type="submit" value={"submit Username"} />
       </form>
     </div>
   );

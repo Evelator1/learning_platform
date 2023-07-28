@@ -1,15 +1,16 @@
 import { cols } from "../../colorSchema";
 import Switch from "@mui/material/Switch";
+import { Box } from "@mui/material";
 import { axiosClient } from "../../axiosClient";
 
-export default function ToggleWelcomeMessage({ userInfo }) {
+export default function ToggleWelcomeMessage({ userSettings }) {
   const sendPreferences = (e) => {
-    const updatedUserInfo = {
+    const updatedUserSettings = {
       userWishWelcome: e.target.checked,
     };
 
     axiosClient
-      .put(`http://localhost:3010/users/${userInfo._id}`, updatedUserInfo)
+      .put(`http://localhost:3010/users/${userSettings._id}`, updatedUserSettings)
       .then((response) => {
         console.log(response.data);
       })
@@ -19,12 +20,12 @@ export default function ToggleWelcomeMessage({ userInfo }) {
   };
 
   return (
-    <span className="form-check-span m-3 w-100" style={{ color: cols.black }}>
+    <Box className="form-check-span m-3 w-100" style={{ color: cols.black }}>
       <h3> View welcome message on login</h3>
       <Switch
-        defaultChecked={userInfo.userWishWelcome}
+        defaultChecked={userSettings.userWishWelcome}
         onChange={sendPreferences}
       />
-    </span>
+    </Box>
   );
 }
