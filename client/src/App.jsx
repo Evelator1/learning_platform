@@ -25,9 +25,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 
 function App() {
-  const { user, isLoading } =
-    useContext(AuthContext);
-
+  const { user, isLoading } = useContext(AuthContext);
 
   return (
     <>
@@ -41,7 +39,7 @@ function App() {
         <Route path="/welcome/:username" element={<WelcomeUserPage />}></Route>
 
         <Route path="/:username" element={<Protected />}>
-        <Route index element={<Profile />} />
+          <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
           <Route path="learning-cards" element={<LearningCardsTab />} />
           <Route
@@ -56,8 +54,6 @@ function App() {
 
           <Route path="settings/account" element={<UserSettings />} />
         </Route>
-
-        
       </Routes>
     </>
   );

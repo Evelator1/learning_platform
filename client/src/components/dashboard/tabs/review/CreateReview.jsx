@@ -49,7 +49,7 @@ export default function CreatePostMask() {
       <div
         className="container-fluid  p-5 rounded my-5"
         style={{
-          border: "none",
+          // border: "none",
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
