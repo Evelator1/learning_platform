@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/esm/Container";
@@ -18,7 +20,8 @@ import Form from "react-bootstrap/Form";
 import "./CommentsModal.css"; // Importing custom CSS for the component
 import { axiosClient } from "../../axiosClient"; // Importing the axios client for API requests
 
-function CommentsModal({ selectedPost, isOpen, onClose, userInfo }) {
+function CommentsModal({ selectedPost, isOpen, onClose }) {
+  const { user } = useContext(AuthContext);
   // State to manage the comment input
   const [comment, setComment] = useState("");
 
@@ -30,7 +33,7 @@ function CommentsModal({ selectedPost, isOpen, onClose, userInfo }) {
     // Make the POST request using the comment data
     axiosClient
       .post("http://localhost:3010/comments/newComment", {
-        author: userInfo._id,
+        author: user._id,
         content: comment,
         onPost: selectedPost._id,
       })

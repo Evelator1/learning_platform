@@ -34,6 +34,13 @@ app.use("/post", postRouter);
 const commentRouter = require("./routes/comments");
 app.use("/comments", commentRouter);
 
+const questionRouter=require("./routes/interviewQuestion")
+app.use("/interviewQuestions",questionRouter)
+
+
+const answerRouter=require("./routes/interviewAnswer")
+app.use("/interviewAnswers",answerRouter)
+
 app.use(errorHandler);
 
 app.listen(port, () =>

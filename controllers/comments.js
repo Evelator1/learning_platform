@@ -4,7 +4,7 @@ const Comment =require("../models/comment")
 const getComments=async(req,res)=>{
     try{
         const comments = await Comment.find().populate("author").populate("onPost")
-        res.status(201).json(comments)
+        res.status(200).json(comments)
     }catch(error){
         res.status(500).send(error.message)
     }
