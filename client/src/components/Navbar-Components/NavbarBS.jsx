@@ -51,8 +51,7 @@ const {user, isLoading}= useContext(AuthContext)
                 letterSpacing: "2px",
               }}
             >
-              GRADBOOK
-            </span>
+CodeRoad            </span>
           </Navbar.Brand>
 
             {/* <Avatar user={user} /> */}

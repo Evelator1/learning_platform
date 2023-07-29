@@ -3,11 +3,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import { undraw1 } from "../../assets/pics/undraw_1.svg";
 import "../../App.css";
-import WelcomePageButton from "./CreateAccountButton";
+import WelcomePageButton from "./WelcomePageButton";
 import Navbar from "../LandingPage/Navbar";
 import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
+import {cols} from "../../colorSchema"
+
+
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
+
 
 function WelcomePage() {
+  const { user } = useContext(AuthContext);
+
   return (
     <>
 
@@ -38,7 +46,7 @@ function WelcomePage() {
         </div>
         <div className="row">
           <div className="col text-center p-5">
-            <WelcomePageButton content={"Discover more"} color={"#d2bbee"} />
+          <WelcomePageButton content={"Discover more"} color={cols.lila} linkTo={"/signup"} />
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { cols } from "../../../../colorSchema";
 import axios from "axios";
@@ -19,6 +20,7 @@ import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import WorkIcon from "@mui/icons-material/Work";
+import JobDescription from "./JobDescription";
 
 export default function JobAdDisplay() {
   const [show, setShow] = useState(false);
@@ -81,7 +83,7 @@ export default function JobAdDisplay() {
 
   const handleJobSelect = (job) => {
     setSelectedJob(job);
-    console.log(job)
+    console.log(job);
   };
 
   const toggleIcon = () => {
@@ -119,6 +121,7 @@ export default function JobAdDisplay() {
           margin: 0,
           padding: "1rem",
           display: "flex",
+          flexDirection: "column",
           justifyContent: "start",
           backgroundColor: cols.lila,
           border: `2px solid ${cols.gray}`,
@@ -127,15 +130,6 @@ export default function JobAdDisplay() {
       >
         <Container>
           <h1>Search For Jobs</h1>
-
-          <Row
-            style={{
-              width: "24rem",
-              position: "fixed",
-              top: "4.5rem",
-              zIndex: "4",
-            }}
-          ></Row>
 
           <Row>
             <Col className="col-10">
@@ -161,7 +155,9 @@ export default function JobAdDisplay() {
               </Form>
               {searchStatus === "searching" && <p>Searching...</p>}
             </Col>
+          </Row>
 
+          <Row>
             <Col className="col-lg-2 col-md-8">
               {jobs && jobs.data.length > 0 && (
                 <Button variant="primary" onClick={handleShow}>
@@ -170,10 +166,27 @@ export default function JobAdDisplay() {
               )}
             </Col>
           </Row>
-
-          {/* <Row>
-            <Col>jcädjnfjkdnögvadfjk</Col>
-          </Row> */}
+        </Container>
+      </div>
+      <div
+        style={{
+          width: "75%",
+          height: "auto",
+          position: "relative",
+          top: "1rem",
+          left: "5rem",
+          overflow: "scroll",
+          margin: 0,
+          padding: "1rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "start",
+          backgroundColor: cols.white,
+          border: `2px solid ${cols.gray}`,
+          borderRadius: "0.5rem",
+        }}
+      >
+        <Container>
           <Row>
             <JobSearchResultsOffCanvas
               handleShow={handleShow}
@@ -184,7 +197,6 @@ export default function JobAdDisplay() {
             />
 
             <Col className="d-flex-row justify-content-between">
-              {/* <Row className="d-flex flex-direction-row justify-content-between"></Row> */}
               {selectedJob && (
                 <div>
                   <div onClick={toggleIcon}>
@@ -204,7 +216,11 @@ export default function JobAdDisplay() {
                       </p>
                     </Col>
                     <Col>
-                      <Button>Apply Now</Button>
+                      {selectedJob.job_apply_link && (
+                        <Link to={selectedJob.job_apply_link} target="_blank">
+                          <Button>Apply Now</Button>
+                        </Link>
+                      )}
                     </Col>
                   </Row>
 
@@ -219,18 +235,14 @@ export default function JobAdDisplay() {
                       </p>
                     </Col>
                     <Col>
-                      
                       {selectedJob.job_latitude && (
-                        <JobLocation
-                         lat={52.00}
-                         lon={13.00}
-                        />
+                        <JobLocation lat={52.0} lon={13.0} />
                       )}
                     </Col>
                   </Row>
 
                   <hr />
-                  <p>{selectedJob.job_description}</p>
+                 <JobDescription selectedJob={selectedJob}/>
                   <hr />
                 </div>
               )}

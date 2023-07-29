@@ -48,13 +48,9 @@ function App() {
           <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
           <Route path="learning-cards" element={<LearningCardsTab />} />
-          <Route path="/learningcards" element={<LearningCardList />} />
-          <Route path="/learningcards/createlearningcard"
-          element={<NewLearningCard />} />
-          <Route
-            path="interview-questions"
-            element={<InterviewQuestionsTab />}
-          />
+          <Route path="learningcards" element={<LearningCardList />} />
+          <Route path="learningcards/createlearningcard"  element={<NewLearningCard />} />
+          <Route path="interview-questions" element={<InterviewQuestionsTab />} />
           <Route path="job-search" element={<JobSearchTab />} />
           <Route path="reviews" element={<ShareReviewsTab />} />
           <Route path="connect" element={<ChatTab />} />
