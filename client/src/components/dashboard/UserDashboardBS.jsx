@@ -20,12 +20,13 @@ export default function UserDashboardBS() {
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row
           style={{
+            position:"relative",
+            top:"4rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
-            paddingTop:"3rem",
-            backgroundColor:cols.yellow
+            backgroundColor:cols.white
           }}
         >
           <Col xs={2} style={{ height: "100vh", zIndex: 1 }}>
@@ -37,16 +38,16 @@ export default function UserDashboardBS() {
                 backgroundColor: cols.black,
                 position: "fixed",
                 top: "0",
-                padding: "5rem 2rem 2rem 2rem ",
+                padding: "5rem 1rem 2rem 1rem ",
                 display: " flex",
                 justifyContent: "space-between",
                 overflow:"scroll"
               }}
             >
-              <div>
+              <div className="d-flex-column align-items-center">
                 {userMenuOptions.map((option) => {
                   return (
-                    <Nav.Item key={option.name} className="d-flex-column pt-4">
+                    <Nav.Item key={option.name} className="d-flex-column justify-content-center h-25">
                       <NavLink
                         to={`${option.linkTo}`}
                         className="d-flex"
@@ -80,7 +81,7 @@ export default function UserDashboardBS() {
                   className="d-flex fs-4"
                   style={{ color: cols.white, textDecoration: "none" }}
                 >
-                  <Avatar />
+                  <Avatar user={user}/>
                   <span className="d-none d-xl-block">  {user.username}</span>
 
                  

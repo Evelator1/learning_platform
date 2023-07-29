@@ -38,19 +38,17 @@ function App() {
       <NavbarBS />
 
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/welcome/:username" element={<WelcomeUserPage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/logout" element={<LogoutMessage />}></Route>
-        <Route path="/welcome/:username" element={<WelcomeUserPage />}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
 
         <Route path="/:username" element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
           <Route path="learning-cards" element={<LearningCardsTab />} />
-          <Route
-            path="interview-questions"
-            element={<InterviewQuestionsTab />}
+          <Route      path="interview-questions"    element={<InterviewQuestionsTab />}
           />
           <Route path="job-search" element={<JobSearchTab />} />
           <Route path="reviews" element={<ShareReviewsTab />} />

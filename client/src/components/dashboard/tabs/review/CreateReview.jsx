@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container,Row } from "react-bootstrap";
 import { cols } from "../../../../colorSchema";
 import { axiosClient } from "../../../../axiosClient";
 
@@ -10,7 +10,7 @@ import { faImage, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 
-export default function CreatePostMask() {
+export default function CreateReviewMask() {
   const { user } = useContext(AuthContext);
   const [imgUpload, setImgUpload] = useState(false);
 
@@ -24,15 +24,16 @@ export default function CreatePostMask() {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("author", user._id);
+    formData.append("author", data.title);
     formData.append("content", data.content);
     formData.append("postCategory", "review");
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]);
     }
-    console.log(data);
+
 
     axiosClient
-      .post("http://localhost:3010/post/newPost", formData)
+      .post("http://localhost:3010/reviews/newReview", formData)
       .then((response) => {
         console.log(response);
       })
@@ -41,15 +42,30 @@ export default function CreatePostMask() {
       });
     reset();
   };
+
+
+
+
   return (
-    <div
-      style={{ width: "80%" }}
-      className="d-flex justify-content-center align-items-center"
+    <Container
+    style={{
+      width: "100%", // Default width for small screens
+      "@media (minWidth: 768px)": { // Medium screens (sm)
+        width: "80%",
+      },
+      "@media (minWidth: 992px)": { // Large screens (md)
+        width: "60%",
+      },
+      "@media (minWidth: 1200px)": { // Extra-large screens (lg)
+        width: "30%",
+      },
+    }}
+
+      className="d-flex justify-content-center "
     >
-      <div
-        className="container-fluid  p-5 rounded my-5"
+      <Row
+        className="container-fluid justify-content-center px-2 py-3 rounded my-5 col-xs-12  "
         style={{
-          // border: "none",
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
@@ -60,9 +76,18 @@ export default function CreatePostMask() {
 
           <Form.Group controlId="content">
             <Form.Control
+            className="my-1"
+              type="post"
+              placeholder="Title"
+              {...register("title", {
+                required: "empty Posts are not allowed",
+              })}
+              rows={4}
+            />
+            <Form.Control
             as="textarea"
               type="post"
-              placeholder="Post Something"
+              placeholder="Share your Review with the community"
               {...register("content", {
                 required: "empty Posts are not allowed",
               })}
@@ -115,7 +140,7 @@ export default function CreatePostMask() {
             </Button>
           </div>
         </Form>
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
