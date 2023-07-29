@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 // import { cardsMenu } from "../../../src/cardsMenu";
-import WelcomePageButton from "./CreateAccountButton";
+import WelcomePageButton from "./WelcomePageButton";
 import Card from "react-bootstrap/Card";
 import { ReactComponent as Windows } from "../../assets/pics/windows.svg";
 

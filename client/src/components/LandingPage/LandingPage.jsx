@@ -16,7 +16,6 @@ function LandingPage() {
     <>
       <WelcomePage />
       <CardsPage />
-
       <UserFeedbackPage />
       <AboutUsPage />
     </>
