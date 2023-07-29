@@ -38,11 +38,11 @@ function App() {
       <NavbarBS />
 
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/welcome/:username" element={<WelcomeUserPage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/logout" element={<LogoutMessage />}></Route>
-        <Route path="/welcome/:username" element={<WelcomeUserPage />}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
 
         <Route path="/:username" element={<Protected />}>
           <Route index element={<Profile />} />

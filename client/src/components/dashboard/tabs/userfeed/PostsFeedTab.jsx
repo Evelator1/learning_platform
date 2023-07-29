@@ -8,7 +8,9 @@ import CreatePostMask from "./CreatePostMask";
 export default function PostsFeedTab() {
   return (
     <Container>
-      <Row>
+      <Row      
+      className="mx-lg-5 col-lg-8 col-md-10 col-sm-12"
+>
         <Col>
           <CreatePostMask />
           <PostsList />

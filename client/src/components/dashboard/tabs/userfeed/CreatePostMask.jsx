@@ -43,7 +43,6 @@ export default function CreatePostMask() {
   };
   return (
     <div
-      style={{ width: "80%" }}
       className="d-flex justify-content-center align-items-center"
     >
       <div

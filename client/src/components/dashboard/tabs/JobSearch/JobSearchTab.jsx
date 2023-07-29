@@ -1,4 +1,17 @@
-import JobAd from "./JobAd";
+import JobAdDisplay from "./JobAdDisplay";
+
+import { Container } from "react-bootstrap";
+
 export default function JobSearchTab() {
-  return <JobAd />;
+
+  
+  return(
+<Container>
+
+
+<JobAdDisplay />;
+
+</Container>
+
+  )
 }

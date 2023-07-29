@@ -25,7 +25,7 @@ export default function WelcomeUserPage() {
   return (
     user && (
       <div
-        className=" position-fixed overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
+        className=" position-relative  mt-5 pt-5 overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
         style={{
           backgroundColor: cols.white,
 
@@ -33,10 +33,10 @@ export default function WelcomeUserPage() {
       >
         <Container
           fluid
-          className="w-100 py-0 d-flex-column justify-content-center align-items-center"
+          className="w-100  d-flex-column justify-content-center align-items-center"
         >
 
-        <h1 className="fs-3 mt-5 pt-5 text-center position-relative" style={{ color: cols.black }}>
+        <h1 className="fs-3  text-center" style={{ color: cols.black }}>
           Welcome {user.username}!
         </h1>
           <Row className="justify-content-around">

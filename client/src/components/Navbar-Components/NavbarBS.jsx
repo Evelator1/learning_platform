@@ -22,14 +22,12 @@ export default function NavbarBS() {
 
 const {user, isLoading}= useContext(AuthContext)
 
-  const [showInfo, setShowInfo] = useState(false);
 
-  const handleShowSettings = () => setShowInfo(true);
 
   return (
     <>
       <Navbar
-        style={{ zIndex: "2", height: "4rem", backgroundColor: cols.black,position:"fixed", width:"100%" }}
+        style={{ zIndex: "2", height: "4rem", backgroundColor: cols.black, position:"fixed", top:"0", width:"100%" }}
       >
         <Container fluid >
           <Navbar.Brand

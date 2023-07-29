@@ -94,7 +94,7 @@ function PostsList() {
   };
 
   return (
-    <div className="postList">
+    <div  >
       {data.map((post) => (
         <Container key={post._id} className="postCard">
           <Row className="postHeader">
@@ -207,10 +207,7 @@ function PostsList() {
           </Row>
         </Container>
       ))}
-      <CommentsModal
-        selectedPost={selectedPost}
-        isOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
+      <CommentsModal selectedPost={selectedPost} isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}
       />
     </div>
   );
