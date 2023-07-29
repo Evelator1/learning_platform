@@ -5,8 +5,8 @@
   position: relative;
   border-radius: 0.25rem;
   transform-style: preserve-3d;
-  height: 15rem;
-  width: 25rem;
+  height: 20rem;
+  width: 35rem;
   transition: 200ms;
   transform: rotateY(var("angle"));
   transform: perspective(1000px) rotateY(var(--rotate-y, 0));
@@ -24,4 +24,15 @@
 
 .card .back {
   transform: rotateY(180deg);
+}
+
+.custom-input {
+  height: 8rem; /* You can adjust this value to your desired height */
+  line-height: 8rem;
+}
+
+.savecardbtn {
+  background-color: #d2bbee !important;
+  border-color: #d2bbee !important;
+  color: black;
 }

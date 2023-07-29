@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { axiosClient } from "../../axiosClient";
 import LearningCard from "./LearningCard";
-import cardData from "./LearningCardsData";
 
 export default function LearningCardList() {
-  const [learningCards, setLearningCards] = useState(cardData);
+  const [learningCards, setLearningCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    axiosClient
+      .get("http://localhost:3010/learningcards")
+      .then((response) => {
+        setLearningCards(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
 
   const handleNextCard = () => {
     const nextIndex = currentIndex + 1;
@@ -26,13 +37,15 @@ export default function LearningCardList() {
 
   return (
     <div>
-      <LearningCard
-        learningCard={learningCards[currentIndex]}
-        onNextCard={handleNextCard}
-        onPreviousCard={handlePreviousCard}
-        currentIndex={currentIndex}
-        length={learningCards.length}
-      />
+      {learningCards.length > 0 && (
+        <LearningCard
+          learningCard={learningCards[currentIndex]}
+          onNextCard={handleNextCard}
+          onPreviousCard={handlePreviousCard}
+          currentIndex={currentIndex}
+          length={learningCards.length}
+        />
+      )}
     </div>
   );
 }
