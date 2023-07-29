@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-function WelcomePageButton({ content, color, textColor,linkto }) {
+function WelcomePageButton({ content, color, textColor, linkto }) {
   return (
     <>
       <style type="text/css">
@@ -12,13 +12,10 @@ function WelcomePageButton({ content, color, textColor,linkto }) {
       </style>
 
       <Button variant="flat" size="lg">
-
-      <Link to={linkto}>
-     
+        <Link to={linkto}></Link>
 
         {content}
       </Button>
-      </Link>
     </>
   );
 }

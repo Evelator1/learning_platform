@@ -16,7 +16,7 @@ import InterviewQuestionsDashboard from "./components/interviewQuestions/Intervi
 import LandingPage from "./components/LandingPage/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import LearningCardsTab from "./components/dashboard/tabs/LearningCardsTab";
+import LearningCardsTab from "./components/dashboard/tabs/LearningCards/LearningCardsTab";
 import InterviewQuestionsTab from "./components/dashboard/tabs/InterviewQuestionsTab";
 import JobSearchTab from "./components/dashboard/tabs/JobSearch/JobSearchTab";
 import ShareReviewsTab from "./components/dashboard/tabs/review/ShareReviewsTab";
@@ -25,16 +25,14 @@ import NextStepsTab from "./components/dashboard/tabs/NextStepsTab";
 import Favourite from "./components/dashboard/tabs/Favourite";
 import LogoutMessage from "./components/LogoutMessage";
 
-
-import LearningCardList from "./components/LearningCards/LearningCardList";
-import NewLearningCard from "./components/LearningCards/NewLearningCard";
+import LearningCardList from "./components/dashboard/tabs/LearningCards/LearningCardList";
+import NewLearningCard from "./components/dashboard/tabs/LearningCards/NewLearningCard";
 
 function App() {
   const { user, isLoading } = useContext(AuthContext);
 
   return (
     <>
-
       <NavbarBS />
 
       <Routes>
@@ -48,9 +46,11 @@ function App() {
           <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
           <Route path="learning-cards" element={<LearningCardsTab />} />
-          <Route path="/learningcards" element={<LearningCardList />} />
-          <Route path="/learningcards/createlearningcard"
-          element={<NewLearningCard />} />
+          <Route path="learningcards" element={<LearningCardList />} />
+          <Route
+            path="learningcards/createlearningcard"
+            element={<NewLearningCard />}
+          />
           <Route
             path="interview-questions"
             element={<InterviewQuestionsTab />}
@@ -62,7 +62,6 @@ function App() {
           <Route path="favourites" element={<Favourite />} />
 
           <Route path="settings/account" element={<UserSettings />} />
-
         </Route>
       </Routes>
     </>

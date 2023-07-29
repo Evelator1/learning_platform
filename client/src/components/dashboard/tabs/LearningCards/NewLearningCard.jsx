@@ -17,14 +17,12 @@ export default function NewLearningCard() {
           <div className="col-6">
             <div className="card d-flex flex-column">
               <h5>Question</h5>
-              <input
-                type="text"
+              <textarea
                 style={{
-                  width: "25rem",
+                  width: "30rem",
                   height: "8rem",
                 }}
-                className="custom-input"
-              />
+              ></textarea>
             </div>
           </div>
           <div className="col-6">
