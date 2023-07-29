@@ -5,6 +5,7 @@ import LearningCard from "./LearningCard";
 export default function LearningCardList() {
   const [learningCards, setLearningCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     axiosClient
@@ -37,6 +38,15 @@ export default function LearningCardList() {
 
   return (
     <div>
+      <select
+        value={selectedCategory}
+        onChange={(e) => handleCategoryChange(e.target.value)}
+      >
+        <option value="">Filter by category</option>
+        <option value="Technical question">Technical Question</option>
+        <option value="Non-technical question">Non-technical Question</option>
+      </select>
+
       {learningCards.length > 0 && (
         <LearningCard
           learningCard={learningCards[currentIndex]}

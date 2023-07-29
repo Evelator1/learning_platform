@@ -37,6 +37,7 @@ export default function LearningCard({
               {currentIndex + 1}/{length}
             </p>
             <p>{learningCard.question}</p>
+            <p>{learningCard.category}</p>
           </div>
           <div className="back">{learningCard.answer}</div>
         </div>

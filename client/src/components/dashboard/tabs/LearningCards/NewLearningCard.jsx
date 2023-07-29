@@ -1,59 +1,91 @@
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from "react";
+import { axiosClient } from "../../../../axiosClient";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./learningCards.css";
+// import CategoryDropdown from "./CategoryDropdown";
+// import GroupDropdown from "./GroupDropdown";
 
 export default function NewLearningCard() {
-  const [flip, setFlip] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [category, setCategory] = useState("");
+  const [group, setGroup] = useState("");
 
-  const handleCardClick = () => {
-    setFlip(!flip);
+  // const handleCategory = (category) => {
+  //   setCategory(category);
+  // };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const newCard = await axiosClient.post(
+        "http://localhost:3010/learningcards/createlearningcard",
+        {
+          question,
+          answer,
+          category,
+          group,
+        }
+      );
+
+      console.log(newCard.data);
+      setQuestion("");
+      setAnswer("");
+      setCategory("");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
     <>
-      <div className="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
-        <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-6">
-            <div className="card d-flex flex-column">
-              <h5>Question</h5>
-              <textarea
-                style={{
-                  width: "30rem",
-                  height: "8rem",
-                }}
-              ></textarea>
-            </div>
-          </div>
-          <div className="col-6">
-            <div className="card d-flex flex-column">
-              <h5>Answer</h5>
-              <input type="text" style={{ width: "25rem", height: "8rem" }} />
-            </div>
-          </div>
-        </div>
-        <div className="row mt-5">
-          <div className="col d-flex align-items-center justify-content-center">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Select a category</option>
-              <option value="1">Technical Question</option>
-              <option value="2">Non-technical Question</option>
-            </select>
-          </div>
-          <div className="col d-flex align-items-center justify-content-center">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Select a group</option>
-              <option value="1">Easy Question</option>
-              <option value="2">Hard Question</option>
-            </select>
-          </div>
-        </div>
-        <div className="row mt-5">
-          <div className="col d-flex align-items-center justify-content-center">
-            <button className="btn btn-primary savecardbtn">Save Card</button>
-          </div>
-        </div>
-      </div>
+      <Form className="form" onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formGridAddress1">
+          <Form.Label className="h5">Set the question for the card</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="Question"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formGridAddress1">
+          <Form.Label className="h5">Set the answer</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="Answer"
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            required
+          />
+        </Form.Group>
+
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="">Select Category</option>
+          <option value="Technical question">Technical Question</option>
+          <option value="Non-technical question">Non-technical Question</option>
+        </select>
+
+        <select value={group} onChange={(e) => setGroup(e.target.value)}>
+          <option value="">Select level of difficulty</option>
+          <option value="Easy">Easy</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Hard">Hard</option>
+        </select>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </>
   );
 }
