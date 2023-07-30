@@ -37,25 +37,32 @@ export default function LearningCardList() {
   };
 
   return (
-    <div>
-      <select
-        value={selectedCategory}
-        onChange={(e) => handleCategoryChange(e.target.value)}
-      >
-        <option value="">Filter by category</option>
-        <option value="Technical question">Technical Question</option>
-        <option value="Non-technical question">Non-technical Question</option>
-      </select>
-
-      {learningCards.length > 0 && (
-        <LearningCard
-          learningCard={learningCards[currentIndex]}
-          onNextCard={handleNextCard}
-          onPreviousCard={handlePreviousCard}
-          currentIndex={currentIndex}
-          length={learningCards.length}
-        />
-      )}
+    <div className="container-fluid">
+      <div className="row d-flex flex-column">
+        <div className="col mt-5 d-flex align-items-center justify-content-center">
+          <select
+            value={selectedCategory}
+            onChange={(e) => handleCategoryChange(e.target.value)}
+          >
+            <option value="">Filter by category</option>
+            <option value="Technical question">Technical Question</option>
+            <option value="Non-technical question">
+              Non-technical Question
+            </option>
+          </select>
+        </div>
+        <div className="col">
+          {learningCards.length > 0 && (
+            <LearningCard
+              learningCard={learningCards[currentIndex]}
+              onNextCard={handleNextCard}
+              onPreviousCard={handlePreviousCard}
+              currentIndex={currentIndex}
+              length={learningCards.length}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

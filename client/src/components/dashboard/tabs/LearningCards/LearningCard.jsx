@@ -26,7 +26,7 @@ export default function LearningCard({
   };
 
   return (
-    <div className="container-fluid vh-100 d-flex justify-content-center align-items-center text-center">
+    <div className="container-fluid d-flex justify-content-center align-items-center text-center">
       <div className="row d-flex justify-content-center align-items-center">
         <div
           className={`card ${flip ? "flip" : ""} col-12`}
@@ -41,16 +41,24 @@ export default function LearningCard({
           </div>
           <div className="back">{learningCard.answer}</div>
         </div>
-        <div>
-          <button
-            onClick={handlePreviousClick}
-            className="btn btn-light mt-5 me-3"
-          >
-            Previous Card
-          </button>
-          <button onClick={handleNextClick} className="btn btn-light mt-5 ms-3">
-            Next Card
-          </button>
+        <div className="row">
+          <div className="col-12 d-flex align-items-center justify-content-center">
+            <button
+              onClick={handlePreviousClick}
+              className="btn btn-light mt-5"
+            >
+              Previous Card
+            </button>
+
+            <button
+              onClick={handleNextClick}
+              className="btn btn-light mt-5 ms-3"
+            >
+              Next Card
+            </button>
+
+            <button className="btn btn-light mt-5 ms-3">Create New Card</button>
+          </div>
         </div>
       </div>
     </div>
