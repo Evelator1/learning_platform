@@ -26,7 +26,7 @@ export default function UserDashboardBS() {
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
-            backgroundColor:cols.white
+            backgroundColor:cols.black
           }}
         >
           <Col xs={2} style={{ height: "100vh", zIndex: 1 }}>
@@ -68,44 +68,6 @@ export default function UserDashboardBS() {
                 })}
               </div>
 
-              {/* USER PROFILE SETTINGS ___------______-------__________------____ */}
-
-              <Nav.Item
-                className="d-flex-column pt-3"
-                style={{
-                  width: { sm: "4rem", md: "13rem", alignItems: "end" },
-                }}
-              >
-                <NavLink
-                  to={`../${user.username}`}
-                  className="d-flex fs-4"
-                  style={{ color: cols.white, textDecoration: "none" }}
-                >
-                  <Avatar user={user}/>
-                  <span className="d-none d-xl-block">  {user.username}</span>
-
-                 
-                </NavLink>
-
-                <NavLink
-                  to={`settings/account`}
-                  className="d-flex  fs-4"
-                  style={{ color: cols.white, textDecoration: "none" }}
-                >
-                  <SettingsIcon />
-                  <span className="d-none d-xl-block"> settings</span>
-                </NavLink>
-
-                <NavLink
-                  to={"/logout"}
-                  className="d-flex  fs-4"
-                  style={{ color: cols.white, textDecoration: "none" }}
-                >
-                  <i className="fa fa-sign-out" aria-hidden="true"></i>
-                  <LogoutIcon />
-                  <span className="d-none d-xl-block"> Logout</span>
-                </NavLink>
-              </Nav.Item>
             </Nav>
           </Col>
 

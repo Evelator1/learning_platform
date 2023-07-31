@@ -1,112 +1,92 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { cols } from "../../../../colorSchema";
 import axios from "axios";
-import { tempResult } from "./tempResult";
-import {
-  Row,
-  Col,
-  Form,
-  Card,
-  InputGroup,
-  Button,
-  Container,
-} from "react-bootstrap";
-import JobSearchResultsOffCanvas from "./JobSearchResultsOffCanvas";
-import JobLocation from "./JobLocation";
+import { Row, Col, Form, InputGroup, Button, Container } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/Search";
-import TurnedInIcon from "@mui/icons-material/TurnedIn";
-import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import WorkIcon from "@mui/icons-material/Work";
-import JobDescription from "./JobDescription";
+
+// import { tempResult } from "./tempResult";
+// import JobFilterUtils from "./JobFilterUtils"
+// import FetchJobHardCoded from "./FetchJobHardCoded";
+import { applyFilters } from "./applyFilters";
+import JobSearchFilters from "./JobSearchFilters";
+import SelectedAd from "./SelectedAd";
 
 export default function JobAdDisplay() {
-  const [show, setShow] = useState(false);
-  const [jobs, setJobs] = useState(tempResult);
-  const [selectedJob, setSelectedJob] = useState(null);
-  const [favourite, setFavourite] = useState(false); // State to keep track of the favourite icon
-  const [searchStatus, setSearchStatus] = useState("completed");
+  const [searchStatus, setSearchStatus] = useState("completed"); // search status
+  const [jobs, setJobs] = useState([]); //all the Jobs
+  const [filtered, setFiltered] = useState([]); // filterd Jobs
+  const [show, setShow] = useState(false); //show results offcanvas
+  const [showFilters, setShowFilters] = useState(false); //show
 
-  const handleShow = () => setShow(!show);
+  const [publishedFilter, setPublishedFilter] = useState("");
+  const [cityFilter, setCityFilter] = useState("");
+  const [experienceFilter, setExperienceFilter] = useState("");
+  const [remoteFilter, setRemoteFilter] = useState("");
+  const [levelOfExperienceFilter, setLevelOfExperienceFilter] = useState("");
+  const [requiredEducationFilter, setRequiredEducationFilter] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3010/jobs/jobs")
+      .then((response) => {
+        console.log("response: ", response);
+        setJobs(response.data);
+        setFiltered(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    handleFilterChange();
+  }, [
+    publishedFilter,
+    cityFilter,
+    remoteFilter,
+    experienceFilter,
+    requiredEducationFilter,
+  ]);
+
+  const handleShow = () => {
+    showFilters && setShowFilters(false);
+    setShow(!show);
+  };
+
+  const handleShowFilters = () => {
+    // console.log(showFilters);
+    setShowFilters(!showFilters);
+  };
 
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
     reset,
+    formState: { errors },
   } = useForm();
 
-  const fetchJobs = async (data) => {
-    const options = {
-      method: "GET",
-      url: "https://jsearch.p.rapidapi.com/search",
-      params: {
-        query: data.JobSearchQuery,
-        page: "1",
-        num_pages: "10",
-      },
-      headers: {
-        "X-RapidAPI-Key": "12fe5a7697mshe6caf281041db58p1fd5e2jsn2d268fc62743",
-        "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
-      },
+  const handleFilterChange = () => {
+    const filters = {
+      publishedFilter,
+      cityFilter,
+      remoteFilter,
+      experienceFilter,
+      requiredEducationFilter,
     };
 
-    try {
-      const response = await axios.request(options);
-      setJobs(response.data);
-      console.log(response.data, "is the result of the query");
-      setSearchStatus("completed");
-    } catch (error) {
-      console.error(error);
-      setSearchStatus("completed");
-    }
-    // axios
-    //   .request(options)
-    //   .then((response) => {
-    //     setJobs(response.data.data);
-    //     console.log(response.data.data,"is the result of the query");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    const filteredJobs = applyFilters(jobs, filters);
+
+    setFiltered(filteredJobs);
   };
 
   function onSubmit(data) {
-    setSearchStatus("searching"); // Set the search status to "searching"
-    fetchJobs(data);
+    // setSearchStatus("searching");
+    // fetchJobs(data);
     console.log("you are  searching for: ", data.JobSearchQuery);
     reset();
   }
-
-  const handleJobSelect = (job) => {
-    setSelectedJob(job);
-    console.log(job);
-  };
-
-  const toggleIcon = () => {
-    setFavourite(!favourite);
-  };
-
-  const getTimeDifference = (timestamp) => {
-    const currentTime = Date.now() / 1000;
-    const difference = currentTime - timestamp;
-    const secondsInADay = 86400; // 60 seconds * 60 minutes * 24 hours
-    const secondsInAWeek = secondsInADay * 7;
-    const secondsInAMonth = secondsInADay * 30;
-
-    if (difference < secondsInADay) {
-      return `${Math.floor(difference / 3600)} hours ago`;
-    } else if (difference < secondsInAWeek) {
-      return `${Math.floor(difference / secondsInADay)} days ago`;
-    } else if (difference < secondsInAMonth) {
-      return `${Math.floor(difference / secondsInAWeek)} weeks ago`;
-    } else {
-      return `${Math.floor(difference / secondsInAMonth)} months ago`;
-    }
-  };
 
   return (
     <>
@@ -118,7 +98,6 @@ export default function JobAdDisplay() {
           top: "1rem",
           left: "5rem",
           overflow: "scroll",
-          margin: 0,
           padding: "1rem",
           display: "flex",
           flexDirection: "column",
@@ -126,6 +105,7 @@ export default function JobAdDisplay() {
           backgroundColor: cols.lila,
           border: `2px solid ${cols.gray}`,
           borderRadius: "0.5rem",
+          boxShadow: `10px 10px 5px  ${cols.black}`,
         }}
       >
         <Container>
@@ -157,99 +137,55 @@ export default function JobAdDisplay() {
             </Col>
           </Row>
 
-          <Row>
-            <Col className="col-lg-2 col-md-8">
-              {jobs && jobs.data.length > 0 && (
+          {/* /////////////////DIsplay Filters/////////////////////////////////////// */}
+          <Row className="d-flex ">
+            <Col className="col-12 ">
+              {jobs && (
+                <Button variant="primary" onClick={handleShowFilters}>
+                  Filters
+                </Button>
+              )}
+
+              {showFilters && (
+                <Row className="col-12 mx-1">
+                  <JobSearchFilters
+                    publishedFilter={publishedFilter}
+                    setPublishedFilter={setPublishedFilter}
+                    cityFilter={cityFilter}
+                    setCityFilter={setCityFilter}
+                    experienceFilter={experienceFilter}
+                    setExperienceFilter={setExperienceFilter}
+                    levelOfExperienceFilter={levelOfExperienceFilter}
+                    setLevelOfExperienceFilter={setLevelOfExperienceFilter}
+                    requiredEducationFilter={requiredEducationFilter}
+                    setRequiredEducationFilter={setRequiredEducationFilter}
+                    remoteFilter={remoteFilter}
+                    setRemoteFilter={setRemoteFilter}
+                  />
+                </Row>
+              )}
+            </Col>
+            {/* /////////////////Show Results/////////////////////////////////////// */}
+
+            <Col className="col-12 my-2">
+              {jobs && (
                 <Button variant="primary" onClick={handleShow}>
-                  Results
+                  Show&nbsp;Results
                 </Button>
               )}
             </Col>
           </Row>
         </Container>
       </div>
-      <div
-        style={{
-          width: "75%",
-          height: "auto",
-          position: "relative",
-          top: "1rem",
-          left: "5rem",
-          overflow: "scroll",
-          margin: 0,
-          padding: "1rem",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "start",
-          backgroundColor: cols.white,
-          border: `2px solid ${cols.gray}`,
-          borderRadius: "0.5rem",
-        }}
-      >
-        <Container>
-          <Row>
-            <JobSearchResultsOffCanvas
-              handleShow={handleShow}
-              show={show}
-              setShow={setShow}
-              jobs={jobs}
-              handleJobSelect={handleJobSelect}
-            />
 
-            <Col className="d-flex-row justify-content-between">
-              {selectedJob && (
-                <div>
-                  <div onClick={toggleIcon}>
-                    {favourite ? <TurnedInIcon /> : <TurnedInNotIcon />}
-                  </div>
-                  <h3>{selectedJob.job_title}</h3>
-
-                  <Row>
-                    <Col>
-                      <img
-                        src={selectedJob.employer_logo}
-                        alt={selectedJob.employer_name}
-                        style={{ width: "3rem" }}
-                      />
-                      <p>
-                        {selectedJob.employer_name} - {selectedJob.job_city}
-                      </p>
-                    </Col>
-                    <Col>
-                      {selectedJob.job_apply_link && (
-                        <Link to={selectedJob.job_apply_link} target="_blank">
-                          <Button>Apply Now</Button>
-                        </Link>
-                      )}
-                    </Col>
-                  </Row>
-
-                  <hr />
-
-                  <Row>
-                    <Col>
-                      <p>
-                        <AccessTimeIcon /> -{" "}
-                        {getTimeDifference(selectedJob.job_posted_at_timestamp)}{" "}
-                        - <WorkIcon /> {selectedJob.job_employment_type}
-                      </p>
-                    </Col>
-                    <Col>
-                      {selectedJob.job_latitude && (
-                        <JobLocation lat={52.0} lon={13.0} />
-                      )}
-                    </Col>
-                  </Row>
-
-                  <hr />
-                 <JobDescription selectedJob={selectedJob}/>
-                  <hr />
-                </div>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      </div>
+      <SelectedAd
+        jobs={jobs}
+        filtered={filtered}
+        handleShow={handleShow}
+        show={show}
+        setShow={setShow}
+      />
+      {/* <FetchJobHardCoded setJobs={setJobs}/> */}
     </>
   );
 }

@@ -27,6 +27,8 @@ export default function CreateReviewMask() {
     formData.append("author", data.title);
     formData.append("content", data.content);
     formData.append("postCategory", "review");
+
+
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]);
     }
@@ -69,6 +71,8 @@ export default function CreateReviewMask() {
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
+          boxShadow: `10px 10px 5px  ${cols.black}`,
+
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
