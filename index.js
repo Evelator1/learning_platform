@@ -48,6 +48,8 @@ app.use("/reviews", reviewRouter)
 const answerRouter=require("./routes/interviewAnswer")
 app.use("/interviewAnswers",answerRouter)
 
+const jobsRouter=require("./routes/jobs")
+app.use("/jobs", jobsRouter)
 
 app.use(errorHandler);
 

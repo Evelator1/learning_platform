@@ -21,8 +21,8 @@ export default function JobSearchResultsOffCanvas({
       </Offcanvas.Header>
       <Offcanvas.Body>
         {jobs &&
-          jobs.data.length > 0 &&
-          jobs.data.map((job) => {
+          jobs.length > 0 &&
+          jobs.map((job) => {
             return (
               <div
                 style={{
@@ -30,10 +30,10 @@ export default function JobSearchResultsOffCanvas({
                   height: "8rem",
                   cursor: "pointer",
                 }}
-                key={job.job_id}
+                key={job._id}
                 onClick={() => {
-                  handleClose(),
-                  handleJobSelect(job)}}
+                  handleClose(), handleJobSelect(job);
+                }}
               >
                 <h6>{job.job_title}</h6>
                 <p>{job.employer_name}</p>
