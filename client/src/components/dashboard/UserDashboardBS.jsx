@@ -30,7 +30,11 @@ export default function UserDashboardBS() {
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
+
             backgroundColor: cols.black,
+
+    
+
           }}
         >
           <Col
@@ -74,6 +78,7 @@ export default function UserDashboardBS() {
                   );
                 })}
               </div>
+
             </Nav>
           </Col>
 

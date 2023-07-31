@@ -18,6 +18,7 @@ import HikingOutlinedIcon from "@mui/icons-material/HikingOutlined";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 
 export const userMenuOptions = [
+
   {
     id: 0,
     name: "Your Feed",

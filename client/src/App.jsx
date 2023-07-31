@@ -45,6 +45,7 @@ function App() {
         <Route path="/:username" element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
+
           {/* <Route path="learning-cards" element={<LearningCardsTab />} /> */}
           <Route path="learning-cards" element={<LearningCardList />} />
           <Route
@@ -55,6 +56,7 @@ function App() {
             path="interview-questions"
             element={<InterviewQuestionsTab />}
           />
+
           <Route path="job-search" element={<JobSearchTab />} />
           <Route path="reviews" element={<ShareReviewsTab />} />
           <Route path="connect" element={<ChatTab />} />
