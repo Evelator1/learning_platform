@@ -25,7 +25,7 @@ export default function UserDashboardBS() {
             alignItems: "center",
             width: "100vw",
             paddingTop:"3rem",
-            backgroundColor:cols.yellow
+            // backgroundColor:cols.yellow
           }}
         >
           <Col xs={2} style={{ height: "100vh", zIndex: 1 }}>
@@ -108,7 +108,7 @@ export default function UserDashboardBS() {
             </Nav>
           </Col>
 
-          <Col xs={10}>
+          <Col xs={10} style={{paddingLeft:"70px"}}>
             {/* <div>something</div> */}
             <Tab.Content>
               <Outlet />

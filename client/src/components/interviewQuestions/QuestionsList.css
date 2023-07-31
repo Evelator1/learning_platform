@@ -1,7 +1,7 @@
 :root {
-    --best-color: #09500b;
-    --useful-color: #092250;
-    --useless-color: #501509;
+    --best-color: #27ad2b;
+    --useful-color: #1e4da5;
+    --useless-color: #ce3618;
     --normal-color: gray   ;
   }
 .interviewQuestionSection{
@@ -58,7 +58,6 @@
     margin-left: 0;
     margin-right: 0;
     height: auto;
-    width: 100%;
     font-weight: bolder;
 }
 
@@ -83,7 +82,7 @@
     justify-content: start;
     margin-top: 5px;
     height: 95%;
-    width: 30% !important;
+    width: 17% !important;
 }
 .userPhoto{
     height: 45px;
@@ -108,7 +107,7 @@
     align-self: center;
 }
 .colorAmpel{
-    background-color:black ;
+    background-color:rgb(255, 255, 255) ;
     height:195px;
     display: flex;
     flex-direction: column;
@@ -132,6 +131,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.answersLink{
+    width: 20%;
+    
 }
 
 

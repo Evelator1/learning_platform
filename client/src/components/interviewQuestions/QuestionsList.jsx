@@ -4,15 +4,20 @@ import "./QuestionsList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
-import {faCircleUp,faCircleDown,} from "@fortawesome/free-solid-svg-icons";
+import {faCircleUp,faCircleDown,faCogs,faLightbulb} from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle as mediumChecked } from "@fortawesome/free-regular-svg-icons";
 import { Container, Col, Row, Image, Button } from "react-bootstrap";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import AnswerList from './AnswerList'
+import QuestionModal from "./AnswerModal";
 
 function QuestionsList() {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -52,6 +57,18 @@ function QuestionsList() {
   if (data.length === 0) {
     return <div>No questions found.</div>;
   }
+
+  // Function to open the modal
+  const handleOpenModal = (question) => {
+    setSelectedQuestion(question);
+    setShowModal(true);
+  };
+
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setSelectedQuestion(null);
+    setShowModal(false);
+  };
 
   function getFormattedDate(dateString) {
     const currentDate = new Date();
@@ -180,14 +197,14 @@ function QuestionsList() {
                       roundedCircle
                     />
                   </Col>
-                  <Col xs={3} sm={2} md={2} lg={2} className="userName">
+                  <Col xs={1} sm={1} md={1} lg={1} className="userName">
                     {question.author.username}
                   </Col>
-                  <Col className="abc" xs={5}>
-                    <h5 style={{ height: "10px" }}>
-                      {question.isTechnical ? "Technical" : "Non-Technical"}{" "}
-                      Question
-                    </h5>
+                  <Col className="abc" xs={6}>
+                    <h3 style={{textAlign:"center"}} >
+                      {question.isTechnical ? <FontAwesomeIcon icon={faCogs} /> : <FontAwesomeIcon icon={faLightbulb} />}
+                      
+                    </h3>
                   </Col>
                   <Col>
                     <Row className="date" xs={2}>
@@ -196,15 +213,24 @@ function QuestionsList() {
                   </Col>
                 </Row>
                 <Row className="questionBody">
-                  <Row className="type">
-                    <h5 style={{ height: "10px" }}>
-                      {question.isTechnical ? "Technical" : "Non_Technical"}{" "}
-                      Question:
-                    </h5>
-                  </Row>
-                  <Row className="type">
+                  
                     <h6>{question.content}</h6>
-                  </Row>
+                  
+                </Row>
+                <Row className="answersLink">
+                    
+                    <Button style={{
+                      backgroundColor:"transparent",
+                      border:"0",
+                    color:
+                      question.votes > 0 && index === 0
+                        ? "var(--best-color)"
+                        : question.votes > 0 && index !== 0
+                        ? "var(--useful-color)"
+                        : question.votes < 0 && index !== 0
+                        ? "var(--useless-color)"
+                        : "var(--normal-color)",
+                  }}  onClick={() => handleOpenModal(question)}>View Answers</Button>
                 </Row>
               </Col>
             </Row>
@@ -216,7 +242,15 @@ function QuestionsList() {
         <div className="colorIndicator" style={{backgroundColor:"var(--useful-color)"}}>Useful</div>
         <div className="colorIndicator" style={{backgroundColor:"var(--useless-color)"}}>Useless</div>
       </div>
+      {selectedQuestion && (
+      <QuestionModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        question={selectedQuestion}
+      />
+    )}
     </div>
+    
   );
 }
 

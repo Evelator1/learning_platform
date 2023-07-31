@@ -3,8 +3,8 @@ const InterviewQuestion = require("../models/interviewQuestion");
 const createQuestion=async (req,res)=>{
     try{
         const {id}=req.user
-        const {body:{content,author}}=req
-        const question=await InterviewQuestion.create({content,author})
+        const {body:{content,author,isTechnical}}=req
+        const question=await InterviewQuestion.create({content,author,isTechnical})
         res.status(201).json(question)
     }catch(error){
         res.status(500).send(error.message)

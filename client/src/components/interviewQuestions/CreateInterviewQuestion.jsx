@@ -5,11 +5,13 @@ import "./CreateInterviewQuestion.css";
 import { axiosClient } from "../../axiosClient";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCogs,faLightbulb} from "@fortawesome/free-solid-svg-icons";
 
 function CreateInterviewQuestion() {
   const { user } = useContext(AuthContext);
   const [content, setContent] = useState("");
-  const [isTechnical, setIsTechnical] = useState(false);
+  const [isTechnical, setIsTechnical] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +24,8 @@ function CreateInterviewQuestion() {
       author:user._id
     });
       console.log(question.data);
-
       setContent("");
-      setIsTechnical(false);
+      setIsTechnical(null);
     } catch (error) {
       console.log(error);
     }
@@ -46,21 +47,32 @@ function CreateInterviewQuestion() {
       </Form.Group>
       <Form.Group className="mb-3 mx-5" id="formGridCheckbox">
         <Form.Check
+        className="mx-6"
           inline
-          label="Technical"
+          label={
+            <>
+              Technical <FontAwesomeIcon icon={faCogs} />
+            </>
+          } 
           type="radio"
           name="group1"
-          checked={isTechnical}
-          onChange={() => setIsTechnical(true)}
+          value="true" // Set the value to a string representation of the boolean
+          checked={isTechnical === "true"} // Compare with string value
+          onChange={(e) => setIsTechnical(e.target.value)} // Store the value as a string
           required
         />
         <Form.Check
           inline
-          label="Non-Technical"
+          label={
+            <>
+              Non-Technical <FontAwesomeIcon icon={faLightbulb} />
+            </>
+          }   
           type="radio"
           name="group1"
-          checked={!isTechnical}
-          onChange={() => setIsTechnical(false)}
+          value="false" // Set the value to a string representation of the boolean
+          checked={isTechnical === "false"} // Compare with string value
+          onChange={(e) => setIsTechnical(e.target.value)} // Store the value as a string
           required
         />
       </Form.Group>
