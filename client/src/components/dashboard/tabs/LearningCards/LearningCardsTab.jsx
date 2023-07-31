@@ -6,7 +6,6 @@ export default function LearningCardsTab() {
   return (
     <>
       <LearningCardList />
-      <NewLearningCard />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./learningCards.css";
 
@@ -23,6 +24,12 @@ export default function LearningCard({
   const handlePreviousClick = () => {
     setFlip(false);
     onPreviousCard();
+  };
+
+  let navigate = useNavigate();
+  const redirect = () => {
+    let path = "createlearningcard";
+    navigate(path);
   };
 
   return (
@@ -57,7 +64,9 @@ export default function LearningCard({
               Next Card
             </button>
 
-            <button className="btn btn-light mt-5 ms-3">Create New Card</button>
+            <button className="btn btn-light mt-5 ms-3" onClick={redirect}>
+              Create New Card
+            </button>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ const createLearningcard = async (req, res) => {
       answer,
       category,
       group,
+      author: req.user.id,
     });
     res.status(201).json(card);
   } catch (error) {
@@ -17,7 +18,7 @@ const createLearningcard = async (req, res) => {
 
 const getLearningcard = async (req, res) => {
   try {
-    const card = await Learningcard.find();
+    const card = await Learningcard.find({ author: req.user.id });
     res.status(201).json(card);
   } catch (error) {
     res.status(500).send(error.message);

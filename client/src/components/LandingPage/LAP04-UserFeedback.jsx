@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../../App.css";
-import WelcomePageButton from "./CreateAccountButton";
 import { ReactComponent as Wave } from "../../assets/background-pics/wave3.svg";
 import { ReactComponent as Wave2 } from "../../assets/background-pics/wave2.svg";
 import Woman1 from "../../assets/pics/woman1.jpg";

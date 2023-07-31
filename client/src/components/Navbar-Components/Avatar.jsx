@@ -1,11 +1,8 @@
 import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthProvider.jsx";
 
 
-export default function Avatar() {
+export default function Avatar({user}) {
 
-  const {  isLoading, user } = useContext(AuthContext);
 
   return (
     <div >

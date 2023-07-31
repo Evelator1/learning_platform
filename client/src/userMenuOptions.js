@@ -15,7 +15,7 @@ import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import HikingOutlinedIcon from "@mui/icons-material/HikingOutlined";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
 
 export const userMenuOptions = [
   {
@@ -53,25 +53,25 @@ export const userMenuOptions = [
     iconOutlined: ShareOutlinedIcon,
     display: ShareReviewsTab,
   },
-  {
-    id: 5,
-    name: "Connect",
-    linkTo: "connect",
-    iconOutlined: ChatOutlinedIcon,
-    display: ChatTab,
-  },
-  {
-    id: 6,
-    name: "Next Steps",
-    linkTo: "next-steps",
-    iconOutlined: HikingOutlinedIcon,
-    display: NextStepsTab,
-  },
+  // {
+  //   id: 5,
+  //   name: "Connect",
+  //   linkTo: "connect",
+  //   iconOutlined: ChatOutlinedIcon,
+  //   display: ChatTab,
+  // },
+  // {
+  //   id: 6,
+  //   name: "Next Steps",
+  //   linkTo: "next-steps",
+  //   iconOutlined: HikingOutlinedIcon,
+  //   display: NextStepsTab,
+  // },
   {
     id: 7,
     name: "Your Favourites",
     linkTo: "favourites",
-    iconOutlined: BookmarkBorderOutlinedIcon,
+    iconOutlined: BookmarksIcon,
     display: Favourite,
   },
 ];

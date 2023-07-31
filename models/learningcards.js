@@ -21,6 +21,11 @@ const learningcardSchema = new mongoose.Schema({
     enum: ["Easy", "Moderate", "Hard"],
     required: true,
   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
 });
 
 const Learningcard = mongoose.model("Learningcard", learningcardSchema);
