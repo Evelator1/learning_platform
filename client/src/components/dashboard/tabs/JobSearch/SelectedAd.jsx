@@ -12,7 +12,7 @@ import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import WorkIcon from "@mui/icons-material/Work";
-export default function SelectedAd({ jobs, show, setShow, handleShow }) {
+export default function SelectedAd({ jobs,filtered, show, setShow, handleShow }) {
   const [selectedJob, setSelectedJob] = useState(null);
   const [favourite, setFavourite] = useState(false); // State to keep track of the favourite icon
 
@@ -46,10 +46,11 @@ export default function SelectedAd({ jobs, show, setShow, handleShow }) {
   return  (
     <>
 <JobSearchResultsOffCanvas
+  jobs={jobs}
+  filtered={filtered}
   handleShow={handleShow}
   show={show}
   setShow={setShow}
-  jobs={jobs}
   handleJobSelect={handleJobSelect}
 />
    {selectedJob&& <div
@@ -112,11 +113,11 @@ export default function SelectedAd({ jobs, show, setShow, handleShow }) {
                       <WorkIcon /> {selectedJob.job_employment_type}
                     </p>
                   </Col>
-                  <Col>
+                  {/* <Col>
                     {selectedJob.job_latitude && (
                       <JobLocation lat={52.0} lon={13.0} />
                     )}
-                  </Col>
+                  </Col> */}
                 </Row>
 
                 <hr />

@@ -3,10 +3,11 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 export default function JobSearchResultsOffCanvas({
   show,
   setShow,
-  jobs,
   handleJobSelect,
+  jobs,
+  filtered
 }) {
-  jobs && console.log(jobs);
+  jobs && console.log("job Results: ",filtered);
   const handleClose = () => setShow(!show);
 
   return (
@@ -14,7 +15,7 @@ export default function JobSearchResultsOffCanvas({
       show={show}
       onHide={handleClose}
       placement="end"
-      backdrop={false}
+      backdrop={true}
     >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Results:</Offcanvas.Title>
@@ -22,7 +23,7 @@ export default function JobSearchResultsOffCanvas({
       <Offcanvas.Body>
         {jobs &&
           jobs.length > 0 &&
-          jobs.map((job) => {
+          filtered.map((job) => {
             return (
               <div
                 style={{

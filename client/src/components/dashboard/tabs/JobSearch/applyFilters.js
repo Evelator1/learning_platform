@@ -1,61 +1,147 @@
 const applyFilters = (jobs, filters) => {
-  // console.log(jobs)
-  let filteredJobs = jobs;
-
-  // Filter by Published date
-  if (filters.publishedFilter === "yesterday") {
-    filteredJobs = filteredJobs.filter((job) => {
-      if (filters.publishedFilter === "yesterday") {
-        const oneDayInSeconds = 24 * 60 * 60;
-        const currentTime = Math.floor(Date.now() / 1000); // Current timestamp in seconds
-        filteredJobs = filteredJobs.filter((job) => {
-          const jobAgeInSeconds = currentTime - job.job_posted_at_timestamp;
-          return jobAgeInSeconds <= oneDayInSeconds;
-        });
-      }
-    });
-  } else if (filters.publishedFilter === "1 week ago") {
-    filteredJobs = filteredJobs.filter((job) => {});
-  } else if (filters.publishedFilter === "4 weeks ago") {
-    filteredJobs = filteredJobs.filter((job) => {});
-  } else if (filters.publishedFilter === "1 month ago") {
-    filteredJobs = filteredJobs.filter((job) => {});
-  } else if (filters.publishedFilter === "older") {
-    filteredJobs = filteredJobs.filter((job) => {});
-  }
+  // console.log("all jobs", jobs);
+  console.log("filters", filters);
+  let filteredJobs = [...jobs];
+  console.log(filteredJobs);
 
   // Filter by City
   if (filters.cityFilter !== "") {
-    filteredJobs = filteredJobs.filter(
-      (job) => job.job_city === filters.cityFilter
-    );
-    console.log(filteredJobs)
+    filteredJobs = filteredJobs.filter((job) => {
+      return job.job_city === filters.cityFilter;
+    });
   }
 
-  // Filter by Required Experience
-  if (filters.experienceFilter === "experience_mentioned") {
-    filteredJobs = filteredJobs.filter(
-      (job) => job.job_required_experience.experience_mentioned === true
-    );
-  } else if (filters.experienceFilter === "experience_preferred") {
-    filteredJobs = filteredJobs.filter(
-      (job) => job.job_required_experience.experience_preferred === true
-    );
-  } else if (filters.experienceFilter === "no_experience_required") {
-    filteredJobs = filteredJobs.filter(
-      (job) => job.job_required_experience.no_experience_required === true
-    );
+  // Filter by remote Jobs
+  if (filters.remoteFilter !== "") {
+    filteredJobs = filteredJobs.filter((job) => {
+      console.log(filters.remoteFilter);
+      if (filters.remoteFilter === "Remote") {
+        return job.job_is_remote === true;
+      } else if (filters.remoteFilter === "On Site") {
+        return job.job_is_remote === false;
+      }
+    });
   }
 
-  // Filter by Level of Experience
-  if (filters.levelOfExperienceFilter !== "") {
-    filteredJobs = filteredJobs.filter((job) => {});
+  if (filters.publishedFilter !== "") {
+    const currentTime = Date.now() / 1000;
+
+    switch (filters.publishedFilter) {
+      case "yesterday":
+        filteredJobs = filteredJobs.filter(
+          (job) => currentTime - job.job_posted_at_timestamp <= 86400 // 1 day in seconds
+        );
+        break;
+      case "1 week ago":
+        filteredJobs = filteredJobs.filter(
+          (job) => currentTime - job.job_posted_at_timestamp <= 604800 // 1 week in seconds
+        );
+        break;
+      case "4 weeks ago":
+        filteredJobs = filteredJobs.filter(
+          (job) => currentTime - job.job_posted_at_timestamp <= 2419200 // 4 weeks in seconds
+        );
+        break;
+      case "1 month ago":
+        filteredJobs = filteredJobs.filter(
+          (job) => currentTime - job.job_posted_at_timestamp <= 2678400 // 1 month in seconds
+        );
+        break;
+      case "older":
+        filteredJobs = filteredJobs.filter(
+          (job) => currentTime - job.job_posted_at_timestamp > 2678400 // 1 month in seconds
+        );
+        break;
+      default:
+        break;
+    }
   }
 
-  // Filter by Required Education
+  if (filters.experienceFilter !== "") {
+    switch (filters.experienceFilter) {
+      case "mentioned":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_experience.experience_mentioned === true
+        );
+        break;
+
+      case "experience preferred":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_experience.experience_preferred === true
+        );
+        break;
+
+      case "no experience required":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_experience.no_experience_required === true
+        );
+        break;
+
+      default:
+        break;
+    }
+  }
+
+
+
   if (filters.requiredEducationFilter !== "") {
-    filteredJobs = filteredJobs.filter((job) => {});
+
+    switch (filters.requiredEducationFilter) {
+      case "associates degree":
+        filteredJobs = filteredJobs.filter(
+          (job) => {job.job_required_education.associates_degree === true
+          console.log(job)}
+        );
+        break;
+      case "bachelors degree":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.bachelors_degree === true
+        );
+        break;
+      case "degree mentioned":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.degree_mentioned === true
+        );
+        break;
+      case "degree referred":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.degree_preferred === true
+        );
+        break;
+      case "associates degree":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.associates_degree === true
+        );
+        break;
+      case "high school":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.high_school === true
+        );
+        break;
+      case "postgraduate degree":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.postgraduate_degree === true
+        );
+        break;
+      case "professional certification":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.professional_certification === true
+        );
+        break;
+      case "professional certification mentioned":
+        filteredJobs = filteredJobs.filter(
+          (job) => job.job_required_education.professional_certification_mentioned === true
+        );
+        break;
+
+  
+      default:
+        break;
+    }
   }
+
+
+  console.log(filteredJobs);
 
   return filteredJobs;
 };

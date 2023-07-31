@@ -5,7 +5,7 @@ export default function FetchJobHardCoded({ setJobs }) {
     method: "GET",
     url: "https://jsearch.p.rapidapi.com/search",
     params: {
-      query: "Tech job in Germany",
+      query: "Marketing Analist Germany",
       page: "",
       num_pages: "20",
     },

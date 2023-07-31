@@ -23,7 +23,7 @@ export const userMenuOptions = [
   { id: 2, name: "Interview Questions", linkTo: "interview-questions", iconOutlined: QuestionAnswerOutlinedIcon , display: InterviewQuestionsTab },
   { id: 3, name: "Job Search", linkTo: "job-search", iconOutlined: WorkOutlineOutlinedIcon , display: JobSearchTab },
   { id: 4, name: "Your Experience", linkTo: "reviews", iconOutlined: ShareOutlinedIcon , display: ShareReviewsTab },
-  { id: 5, name: "Connect", linkTo: "connect", iconOutlined: ChatOutlinedIcon , display: ChatTab },
-  { id: 6, name: "Next Steps", linkTo: "next-steps", iconOutlined: HikingOutlinedIcon , display: NextStepsTab },
+  // { id: 5, name: "Connect", linkTo: "connect", iconOutlined: ChatOutlinedIcon , display: ChatTab },
+  // { id: 6, name: "Next Steps", linkTo: "next-steps", iconOutlined: HikingOutlinedIcon , display: NextStepsTab },
   { id: 7, name: "Your Favourites", linkTo: "favourites", iconOutlined: BookmarksIcon , display: Favourite },
 ];

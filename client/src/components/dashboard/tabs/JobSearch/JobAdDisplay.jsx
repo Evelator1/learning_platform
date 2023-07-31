@@ -2,17 +2,10 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { cols } from "../../../../colorSchema";
 import axios from "axios";
-import { tempResult } from "./tempResult";
-import {
-  Row,
-  Col,
-  Form,
-  InputGroup,
-  Button,
-  Container,
-} from "react-bootstrap";
+import { Row, Col, Form, InputGroup, Button, Container } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/Search";
 
+// import { tempResult } from "./tempResult";
 // import JobFilterUtils from "./JobFilterUtils"
 // import FetchJobHardCoded from "./FetchJobHardCoded";
 import { applyFilters } from "./applyFilters";
@@ -20,16 +13,16 @@ import JobSearchFilters from "./JobSearchFilters";
 import SelectedAd from "./SelectedAd";
 
 export default function JobAdDisplay() {
-  const [jobs, setJobs] = useState([]);
-  const [searchStatus, setSearchStatus] = useState("completed");
-  const [show, setShow] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
+  const [searchStatus, setSearchStatus] = useState("completed"); // search status
+  const [jobs, setJobs] = useState([]); //all the Jobs
+  const [filtered, setFiltered] = useState([]); // filterd Jobs
+  const [show, setShow] = useState(false); //show results offcanvas
+  const [showFilters, setShowFilters] = useState(false); //show
 
-  const [publishedFilter, setPublishedFilter] = useState("yesterday");
+  const [publishedFilter, setPublishedFilter] = useState("");
   const [cityFilter, setCityFilter] = useState("");
-  const [experienceFilter, setExperienceFilter] = useState(
-    "experience_mentioned"
-  );
+  const [experienceFilter, setExperienceFilter] = useState("");
+  const [remoteFilter, setRemoteFilter] = useState("");
   const [levelOfExperienceFilter, setLevelOfExperienceFilter] = useState("");
   const [requiredEducationFilter, setRequiredEducationFilter] = useState("");
 
@@ -37,8 +30,9 @@ export default function JobAdDisplay() {
     axios
       .get("http://localhost:3010/jobs/jobs")
       .then((response) => {
-        console.log(response);
+        console.log("response: ", response);
         setJobs(response.data);
+        setFiltered(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -50,8 +44,8 @@ export default function JobAdDisplay() {
   }, [
     publishedFilter,
     cityFilter,
+    remoteFilter,
     experienceFilter,
-    levelOfExperienceFilter,
     requiredEducationFilter,
   ]);
 
@@ -60,8 +54,8 @@ export default function JobAdDisplay() {
     setShow(!show);
   };
 
-  const handleFilters = () => {
-    console.log(showFilters);
+  const handleShowFilters = () => {
+    // console.log(showFilters);
     setShowFilters(!showFilters);
   };
 
@@ -77,12 +71,14 @@ export default function JobAdDisplay() {
     const filters = {
       publishedFilter,
       cityFilter,
+      remoteFilter,
       experienceFilter,
-      levelOfExperienceFilter,
       requiredEducationFilter,
     };
+
     const filteredJobs = applyFilters(jobs, filters);
-    setJobs(filteredJobs);
+
+    setFiltered(filteredJobs);
   };
 
   function onSubmit(data) {
@@ -141,10 +137,11 @@ export default function JobAdDisplay() {
             </Col>
           </Row>
 
+          {/* /////////////////DIsplay Filters/////////////////////////////////////// */}
           <Row className="d-flex ">
             <Col className="col-12 ">
               {jobs && (
-                <Button variant="primary" onClick={handleFilters}>
+                <Button variant="primary" onClick={handleShowFilters}>
                   Filters
                 </Button>
               )}
@@ -162,10 +159,13 @@ export default function JobAdDisplay() {
                     setLevelOfExperienceFilter={setLevelOfExperienceFilter}
                     requiredEducationFilter={requiredEducationFilter}
                     setRequiredEducationFilter={setRequiredEducationFilter}
+                    remoteFilter={remoteFilter}
+                    setRemoteFilter={setRemoteFilter}
                   />
                 </Row>
               )}
             </Col>
+            {/* /////////////////Show Results/////////////////////////////////////// */}
 
             <Col className="col-12 my-2">
               {jobs && (
@@ -177,8 +177,10 @@ export default function JobAdDisplay() {
           </Row>
         </Container>
       </div>
+
       <SelectedAd
         jobs={jobs}
+        filtered={filtered}
         handleShow={handleShow}
         show={show}
         setShow={setShow}
