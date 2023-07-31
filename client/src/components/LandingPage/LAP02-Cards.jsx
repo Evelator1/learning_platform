@@ -22,7 +22,7 @@ function CardsPage() {
             <div className="flip-card">
               <div className="flip-card-inner">
                 <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Enhance my learning</h4>
+                  <h4>Enhance your learning</h4>
                 </div>
                 <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
                   With our custom made learning cards you can easily practice
@@ -35,7 +35,7 @@ function CardsPage() {
             <div className="flip-card">
               <div className="flip-card-inner">
                 <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Master Coding Job Interviews</h4>
+                  <h4>Master coding job interviews</h4>
                 </div>
                 <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
                   Browse through interview questions other users have posted and
@@ -48,10 +48,11 @@ function CardsPage() {
             <div className="flip-card">
               <div className="flip-card-inner">
                 <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Network with Other Graduates</h4>
+                  <h4>Network with other graduates</h4>
                 </div>
                 <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
-                  Connect with fellow coders and chat with them in real-time.
+                  See what others have posted and create your own feed with news
+                  and articles.
                 </div>
               </div>
             </div>
@@ -60,10 +61,11 @@ function CardsPage() {
             <div className="flip-card">
               <div className="flip-card-inner">
                 <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Explore Job Offers</h4>
+                  <h4>Explore job offers</h4>
                 </div>
                 <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
-                  An integrated job board let's you discover job opportunities.
+                  An integrated job board lets you discover the latest job
+                  opportunities.
                 </div>
               </div>
             </div>

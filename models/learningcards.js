@@ -13,11 +13,18 @@ const learningcardSchema = new mongoose.Schema({
   },
   category: {
     type: String,
+    enum: ["Technical question", "Non-technical question"],
     required: true,
   },
   group: {
     type: String,
+    enum: ["Easy", "Moderate", "Hard"],
     required: true,
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
   },
 });
 

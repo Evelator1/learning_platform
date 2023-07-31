@@ -4,30 +4,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { undraw1 } from "../../assets/pics/undraw_1.svg";
 import "../../App.css";
 import WelcomePageButton from "./WelcomePageButton";
-import Navbar from "../LandingPage/Navbar";
-import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
-import {cols} from "../../colorSchema"
 
+import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
+import { cols } from "../../colorSchema";
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-
 
 function WelcomePage() {
   const { user } = useContext(AuthContext);
 
   return (
     <>
-
-      <Navbar />
       <div className="container-fluid h-100 p-0 m-0 bg-black2">
         <div className="row m-0 p-0">
           <div className="col-12 m-0 d-flex flex-column align-items-center justify-content-center pt-5 pb-3">
             <h1 className="text-white text-center font-mont fw-bold display-1">
               Welcome to CodeRoad
             </h1>
-           
-
           </div>
         </div>
         <div className="row d-flex flex-row align-items-center justify-content-center text-center ps-md-5">
@@ -45,8 +39,12 @@ function WelcomePage() {
           </div>
         </div>
         <div className="row">
-          <div className="col text-center p-5">
-          <WelcomePageButton content={"Discover more"} color={cols.lila} linkTo={"/signup"} />
+          <div className="col text-center d-flex align-items-center justify-content-center p-5">
+            <WelcomePageButton
+              content={"Discover more"}
+              color={cols.lila}
+              linkTo={"/signup"}
+            />
           </div>
         </div>
       </div>

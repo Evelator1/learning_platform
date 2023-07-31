@@ -17,37 +17,51 @@ export default function UserDashboardBS() {
 
   return (
     <>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      <Tab.Container
+        id="left-tabs-example"
+        defaultActiveKey="first"
+        style={{ backgroundColor: cols.black }}
+      >
         <Row
           style={{
-            position:"relative",
-            top:"4rem",
+            position: "relative",
+            top: "3rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
-            backgroundColor:cols.black
+
+            backgroundColor: cols.black,
+
+    
+
           }}
         >
-          <Col xs={2} style={{ height: "100vh", zIndex: 1 }}>
+          <Col
+            xs={2}
+            style={{ height: "100vh", zIndex: 1, backgroundColor: cols.black }}
+          >
             <Nav
               className="flex-column"
               style={{
-                flexDirection:"column",
-                height:"100vh",
+                flexDirection: "column",
+                height: "100vh",
                 backgroundColor: cols.black,
                 position: "fixed",
-                top: "0",
-                padding: "5rem 1rem 2rem 1rem ",
-                display: " flex",
+                top: "2rem",
+                padding: "5rem 1rem 5rem 1rem ",
+                display: "flex",
                 justifyContent: "space-between",
-                overflow:"scroll"
+                overflow: "scroll",
               }}
             >
               <div className="d-flex-column align-items-center">
                 {userMenuOptions.map((option) => {
                   return (
-                    <Nav.Item key={option.name} className="d-flex-column justify-content-center h-25">
+                    <Nav.Item
+                      key={option.name}
+                      className="d-flex-column justify-content-center h-25 pb-3"
+                    >
                       <NavLink
                         to={`${option.linkTo}`}
                         className="d-flex"
@@ -58,10 +72,7 @@ export default function UserDashboardBS() {
                         }}
                       >
                         <option.iconOutlined style={{ fontSize: "1.6rem" }} />
-                        <span className="d-none d-xl-block">
-                          {" "}
-                          {option.name}
-                        </span>
+                        <span className="d-none d-xl-block">{option.name}</span>
                       </NavLink>
                     </Nav.Item>
                   );
@@ -71,7 +82,7 @@ export default function UserDashboardBS() {
             </Nav>
           </Col>
 
-          <Col xs={10}>
+          <Col xs={10} style={{ backgroundColor: cols.black }}>
             {/* <div>something</div> */}
             <Tab.Content>
               <Outlet />

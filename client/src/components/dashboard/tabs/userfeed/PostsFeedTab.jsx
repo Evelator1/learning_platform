@@ -5,12 +5,11 @@ import Col from "react-bootstrap/Col";
 
 import PostsList from "../../../communityQuestions/PostsList";
 import CreatePostMask from "./CreatePostMask";
+import { cols } from "../../../../colorSchema";
 export default function PostsFeedTab() {
   return (
-    <Container>
-      <Row      
-      className="mx-lg-5 col-lg-8 col-md-10 col-sm-12"
->
+    <Container style={{ backgroundColor: cols.black }}>
+      <Row className="mx-lg-5 col-lg-8 col-md-10 col-sm-12">
         <Col>
           <CreatePostMask />
           <PostsList />
