@@ -1,3 +1,7 @@
-*{
-    font-family: montserrat;
+* {
+  font-family: montserrat;
+}
+
+body {
+  background-color: #181d25;
 }

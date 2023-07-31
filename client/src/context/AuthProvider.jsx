@@ -106,10 +106,10 @@ export default function AuthProvider({ children }) {
 
   const logout = () => {
     axiosClient
-      .post("auth/logout")
+      .post("/auth/logout")
       .then((response) => {
         setUser(null);
-        navigate(`/ `);
+        navigate(`/`);
       })
       .catch((err) => {
         console.log(err);

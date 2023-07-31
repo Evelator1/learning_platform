@@ -27,7 +27,7 @@ export default function WelcomeUserPage() {
   return (
     user && (
       <div
-        className=" position-relative  mt-5 pt-5 overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
+        className="position-relative  mt-5 pt-5 overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
         style={{
           backgroundColor: cols.white,
         }}

@@ -65,15 +65,15 @@ const editPassword = async (req, res, next) => {
 
     //here i here i check if the old password is the right one
     const isMatch = await bcrypt.compare(oldPassword, checkUser.password);
-    
+
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
     console.log(
       isMatch,
       "___________________________________________password Matches"
-      );
-      //here i hash the newPassword
-      const saltRounds = 10;
-      console.log(newPassword, saltRounds)
+    );
+    //here i hash the newPassword
+    const saltRounds = 10;
+    console.log(newPassword, saltRounds);
     const hashed = await bcrypt.hash(newPassword, saltRounds);
     console.log(
       hashed,
@@ -134,14 +134,12 @@ const editEmail = async (req, res, next) => {
 
     // here i here i check if the given password is the right one
     const isMatch = await bcrypt.compare(password, checkUser.password);
-    
+
     if (!isMatch) throw new ErrorResponse("Wrong password", 401);
     console.log(
       isMatch,
       "___________________________________________password Matches"
-      );
-
-     
+    );
 
     console.log(newEmail, "is the newEmail");
 
@@ -169,7 +167,10 @@ const editEmail = async (req, res, next) => {
     });
 
     res
-      .cookie("access_token", token, { maxAge: 24*60 * 60 * 1000, httpOnly: true })
+      .cookie("access_token", token, {
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      })
       .json(payload);
   } catch (error) {
     next(error);
@@ -209,7 +210,10 @@ const login = async (req, res, next) => {
     });
 
     res
-      .cookie("access_token", token, { maxAge: 24 * 60* 60 * 1000, httpOnly: true })
+      .cookie("access_token", token, {
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      })
       .json(payload);
   } catch (error) {
     next(error);
@@ -223,12 +227,9 @@ const login = async (req, res, next) => {
 //
 const logout = async (req, res, next) => {
   try {
-    console.log(res);
-    console.log(new Date(0));
     res
       .cookie("access_token", "", {
         maxAge: 0,
-        expires: new Date(0),
         httpOnly: true,
       })
       .send("User is Logged Out");

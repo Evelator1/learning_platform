@@ -45,10 +45,10 @@ function App() {
         <Route path="/:username" element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path="feed" element={<PostsFeedTab />} />
-          <Route path="learning-cards" element={<LearningCardsTab />} />
-          <Route path="learningcards" element={<LearningCardList />} />
+          {/* <Route path="learning-cards" element={<LearningCardsTab />} /> */}
+          <Route path="learning-cards" element={<LearningCardList />} />
           <Route
-            path="learningcards/createlearningcard"
+            path="learning-cards/createlearningcard"
             element={<NewLearningCard />}
           />
           <Route

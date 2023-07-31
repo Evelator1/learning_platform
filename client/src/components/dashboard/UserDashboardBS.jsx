@@ -17,7 +17,11 @@ export default function UserDashboardBS() {
 
   return (
     <>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      <Tab.Container
+        id="left-tabs-example"
+        defaultActiveKey="first"
+        style={{ backgroundColor: cols.black }}
+      >
         <Row
           style={{
             position: "relative",
@@ -26,10 +30,13 @@ export default function UserDashboardBS() {
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
-            backgroundColor: cols.white,
+            backgroundColor: cols.black,
           }}
         >
-          <Col xs={2} style={{ height: "100vh", zIndex: 1 }}>
+          <Col
+            xs={2}
+            style={{ height: "100vh", zIndex: 1, backgroundColor: cols.black }}
+          >
             <Nav
               className="flex-column"
               style={{
@@ -61,68 +68,16 @@ export default function UserDashboardBS() {
                         }}
                       >
                         <option.iconOutlined style={{ fontSize: "1.6rem" }} />
-                        <span className="d-none d-xl-block">
-                          {" "}
-                          {option.name}
-                        </span>
+                        <span className="d-none d-xl-block">{option.name}</span>
                       </NavLink>
                     </Nav.Item>
                   );
                 })}
               </div>
-
-              {/* USER PROFILE SETTINGS ___------______-------__________------____ */}
-
-              <Nav.Item
-                className="d-flex-column pt-3"
-                style={{
-                  width: { sm: "4rem", md: "13rem", alignItems: "end" },
-                }}
-              >
-                <NavLink
-                  to={`../${user.username}`}
-                  className="d-flex"
-                  style={{
-                    color: cols.white,
-                    textDecoration: "none",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  <Avatar user={user} />
-                  <span className="d-none d-xl-block">{user.username}</span>
-                </NavLink>
-
-                <NavLink
-                  to={`settings/account`}
-                  className="d-flex"
-                  style={{
-                    color: cols.white,
-                    textDecoration: "none",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  <SettingsIcon />
-                  <span className="d-none d-xl-block ps-4">Settings</span>
-                </NavLink>
-
-                <NavLink
-                  to={"/logout"}
-                  className="d-flex"
-                  style={{
-                    color: cols.white,
-                    textDecoration: "none",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  <i className="fa fa-sign-out" aria-hidden="true"></i>
-                  <LogoutIcon />
-                  <span className="d-none d-xl-block ps-4">Logout</span>
-                </NavLink>
-              </Nav.Item>
             </Nav>
           </Col>
 
-          <Col xs={10}>
+          <Col xs={10} style={{ backgroundColor: cols.black }}>
             {/* <div>something</div> */}
             <Tab.Content>
               <Outlet />

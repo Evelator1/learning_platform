@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { undraw1 } from "../../assets/pics/undraw_1.svg";
 import "../../App.css";
 import WelcomePageButton from "./WelcomePageButton";
-import Navbar from "../LandingPage/Navbar";
+
 import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
 import { cols } from "../../colorSchema";
 
@@ -16,7 +16,6 @@ function WelcomePage() {
 
   return (
     <>
-      <Navbar />
       <div className="container-fluid h-100 p-0 m-0 bg-black2">
         <div className="row m-0 p-0">
           <div className="col-12 m-0 d-flex flex-column align-items-center justify-content-center pt-5 pb-3">
