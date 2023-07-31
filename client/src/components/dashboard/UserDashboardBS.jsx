@@ -25,7 +25,7 @@ export default function UserDashboardBS() {
         <Row
           style={{
             position: "relative",
-            top: "4rem",
+            top: "3rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
