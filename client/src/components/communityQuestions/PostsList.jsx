@@ -14,12 +14,12 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { axiosClient } from "../../axiosClient";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
-
+import { cols } from "../../colorSchema";
 import "./PostsList.css";
 import CommentsModal from "./CommentsModal";
 // import PostCommentsList from "./CommentsList";
 
-function PostsList({posts,setPosts}) {
+function PostsList({ posts, setPosts }) {
   const { user } = useContext(AuthContext);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -81,9 +81,13 @@ function PostsList({posts,setPosts}) {
   };
 
   return (
-    <div  >
+    <div>
       {posts.map((post) => (
-        <Container key={post._id} className="postCard">
+        <Container
+          key={post._id}
+          className="postCard"
+          style={{ boxShadow: `10px 10px 5px  ${cols.gray}` }}
+        >
           <Row className="postHeader">
             <Col xs={2}>
               {post.author.profilePicture && (
@@ -104,7 +108,9 @@ function PostsList({posts,setPosts}) {
           <Row>
             <blockquote className="blockquote mb-0">
               <p>{post.content}</p>
-             { post.image&&  <Image src={post.image} className="postImage"></Image>}
+              {post.image && (
+                <Image src={post.image} className="postImage"></Image>
+              )}
             </blockquote>
           </Row>
           <Row className="likes_Comments_Counter">
@@ -194,7 +200,10 @@ function PostsList({posts,setPosts}) {
           </Row>
         </Container>
       ))}
-      <CommentsModal selectedPost={selectedPost} isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}
+      <CommentsModal
+        selectedPost={selectedPost}
+        isOpen={modalIsOpen}
+        onClose={() => setModalIsOpen(false)}
       />
     </div>
   );

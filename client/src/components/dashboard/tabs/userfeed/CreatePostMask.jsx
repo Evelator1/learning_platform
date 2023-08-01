@@ -55,10 +55,12 @@ export default function CreatePostMask( {posts, setPosts}) {
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
+          boxShadow: `10px 10px 5px  ${cols.gray}`,
+
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-center">Share with the Community</h3>
+          <h1 className="text-center">Share with the Community</h1>
 
           <Form.Group controlId="content" >
             <Form.Control
