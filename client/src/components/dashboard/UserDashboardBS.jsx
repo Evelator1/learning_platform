@@ -25,34 +25,34 @@ export default function UserDashboardBS() {
         <Row
           style={{
             position: "relative",
-            top: "3rem",
+            top: "4.5rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
 
             backgroundColor: cols.black,
-
-    
-
           }}
         >
           <Col
             xs={2}
-            style={{ height: "100vh", zIndex: 1, backgroundColor: cols.black }}
+            style={{
+              height: "100vh",
+              zIndex: 200,
+              backgroundColor: cols.black,
+            }}
           >
             <Nav
               className="flex-column"
               style={{
                 flexDirection: "column",
                 height: "100vh",
-                backgroundColor: cols.black,
+                backgroundColor: cols.lightBlack,
                 position: "fixed",
-                top: "2rem",
+                top: 0,
                 padding: "5rem 1rem 5rem 1rem ",
                 display: "flex",
                 justifyContent: "space-between",
-                overflow: "scroll",
               }}
             >
               <div className="d-flex-column align-items-center">
@@ -78,7 +78,6 @@ export default function UserDashboardBS() {
                   );
                 })}
               </div>
-
             </Nav>
           </Col>
 

@@ -9,8 +9,16 @@ function WelcomePageButton({ content, color, textColor, linkTo }) {
         {`.btn-flat {
             background-color: ${color}; 
             color: ${textColor}; 
-           
-        }`}
+            border-color: ${color}
+        }
+        
+        .btn-flat:hover {
+            color: ${color}; 
+            border-color: ${color}
+        }
+        
+        
+        `}
       </style>
       <Link to={linkTo}>
         <Button variant="flat" size="md">
