@@ -23,7 +23,7 @@ export default function ShareReviewsTab() {
 
   return (
     <Container>
-      <Row className="mx-lg-5 col-lg-8 col-md-10 col-sm-12">
+      <Row className="mx-lg-4 col-lg-10 col-md-10 col-sm-12">
         <Col>
           <CreateReview />
           <ReviewList reviews={reviews} />

@@ -32,6 +32,10 @@ const postSchema = new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId], 
     ref: "User" 
   },
+  favourite: { 
+    type: [mongoose.Schema.Types.ObjectId], 
+    ref: "User" 
+  },
   postCategory:{
     type:String, enum:["interviewQuestion","review","communityReview"],
     required: true

@@ -81,7 +81,7 @@ function QuestionsList() {
   }
 
   return (
-    <div style={{display:"flex" , margin: "auto", width:"90%"}}>
+    <div style={{display:"flex" , margin: "auto", width:"80%"}}>
       <Container fluid className="interviewQuestionSection">
         <Row>
           {data.map((question, index) => (

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import PostsList from "../../../communityQuestions/PostsList";
 import CreatePostMask from "./CreatePostMask";
 import { cols } from "../../../../colorSchema";
+import { faDisplay } from "@fortawesome/free-solid-svg-icons";
 export default function PostsFeedTab() {
   const [posts, setPosts] = useState([]);
 
@@ -25,8 +26,8 @@ export default function PostsFeedTab() {
   }, []);
 
   return (
-    <Container style={{ backgroundColor: cols.black }}>
-      <Row className="mx-lg-5 col-lg-8 col-md-10 col-sm-12">
+    <Container style={{ backgroundColor: cols.black, display:"flex", justifyContent:"center", marginLeft:"2rem"}}>
+      <Row className="col-lg-9 col-md-10 col-sm-12" >
         <Col>
           <CreatePostMask posts={posts} setPosts={setPosts}/>
           <PostsList posts={posts} setPosts={setPosts} />
