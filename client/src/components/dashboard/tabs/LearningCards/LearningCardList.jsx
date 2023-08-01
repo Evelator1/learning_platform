@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosClient } from "../../../../axiosClient";
 import LearningCard from "./LearningCard";
+import { Navigate } from "react-router-dom";
 
 export default function LearningCardList() {
   const [learningCards, setLearningCards] = useState([]);
@@ -49,33 +50,40 @@ export default function LearningCardList() {
     setCurrentIndex(0);
   }, [selectedCategory, learningCards]);
 
-  return (
-    <div className="container-fluid">
-      <div className="row d-flex flex-column">
-        <div className="col mt-5 d-flex align-items-center justify-content-center">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">Filter by category</option>
-            <option value="Technical question">Technical Question</option>
-            <option value="Non-technical question">
-              Non-technical Question
-            </option>
-          </select>
-        </div>
-        <div className="col">
-          {filteredCards.length > 0 && (
-            <LearningCard
-              learningCard={filteredCards[currentIndex]}
-              onNextCard={handleNextCard}
-              onPreviousCard={handlePreviousCard}
-              currentIndex={currentIndex}
-              length={filteredCards.length}
-            />
-          )}
+  if (learningCards.length > 0) {
+    return (
+      <div className="container-fluid">
+        <div className="row d-flex flex-column">
+          <div className="col mt-5 d-flex align-items-center justify-content-center">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">Filter by category</option>
+              <option value="Technical question">Technical Question</option>
+              <option value="Non-technical question">
+                Non-technical Question
+              </option>
+            </select>
+          </div>
+          <div className="col">
+            {filteredCards.length > 0 && (
+              <LearningCard
+                learningCard={filteredCards[currentIndex]}
+                onNextCard={handleNextCard}
+                onPreviousCard={handlePreviousCard}
+                currentIndex={currentIndex}
+                length={filteredCards.length}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else{
+    return(
+
+<Navigate to="createlearningcard" />
+    )
+  }
 }
