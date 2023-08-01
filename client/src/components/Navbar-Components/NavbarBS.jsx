@@ -73,39 +73,7 @@ export default function NavbarBS() {
           </Navbar.Brand>
 
           {user && (
-            <div className="d-flex flex-row align-items-center">
-              {/* <Button
-                to={`settings/account`}
-                className="d-flex pe-5"
-                style={{
-                  color: cols.black,
-                  textDecoration: "none",
-                  fontSize: "1rem",
-                  width: "5.8rem",
-                  backgroundColor: cols.lila,
-                  borderColor: cols.lila,
-                  marginRight: "1.5rem",
-                }}
-              >
-                <span className="d-none d-xl-block">Settings</span>
-              </Button>
-
-              <Button
-                onClick={logout}
-                className="d-flex"
-                style={{
-                  color: cols.black,
-                  textDecoration: "none",
-                  fontSize: "1rem",
-                  width: "5rem",
-                  backgroundColor: cols.lila,
-                  borderColor: cols.lila,
-                  marginRight: "3.5rem",
-                }}
-              >
-                <span className="d-none d-xl-block pe-5">Logout</span>
-              </Button> */}
-
+            <div className="d-flex flex-row align-items-center">           
               <div className="d-flex gap-3">
                 <WelcomePageButton
                   content={"Settings"}

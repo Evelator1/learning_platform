@@ -41,11 +41,11 @@ export default function ReviewList({ reviews }) {
   }
 
   return (
-    <div className="d-flex-column justify-content-center mx-5">
+    <div className="d-flex-column justify-content-center align-items-center">
       {reviews &&
         reviews.map((review) => {
           return (
-            <Card key={review._id} style={{ width: "98%" }}>
+            <Card key={review._id} style={{ width: "90%", display:"flex", flexDirection:"column", marginTop:"3rem"}}>
               <Card.Header as="h5" className="w-100">
                 <Row>
                   <Col className="col-lg-1 col-xs-2">
@@ -60,25 +60,34 @@ export default function ReviewList({ reviews }) {
                 <Card.Text className="fs-6 "> </Card.Text>
               </Card.Header>
 
-              <Card.Body className="w-100 d-flex-column">
+              <Card.Body className="w-100">
                 <Container>
-
-                <Card.Title as="h3"> {review.title}</Card.Title>
-                <Card.Text as="p">{review.content}</Card.Text>
-
+                  <Card.Title as="h3"> {review.title}</Card.Title>
+                  <Card.Text as="p">{review.content}</Card.Text>
                 </Container>
-                <Container
+
+                
+
+                {/* <Container
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    width: "90%",
+                    width: "100%",
+                  }}
+                ></Container> */}
+              </Card.Body>
+
+              <Card.Footer
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "100%",
                   }}
                 >
                   <ThumbUpOffAltIcon />
                   <ChatBubbleOutlineIcon />
                   <BookmarkBorderIcon />
-                </Container>
-              </Card.Body>
+                </Card.Footer>
             </Card>
           );
         })}

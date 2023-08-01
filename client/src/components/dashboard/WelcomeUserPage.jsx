@@ -29,7 +29,7 @@ export default function WelcomeUserPage() {
       <div
         className="position-relative  mt-5 pt-5 overflow-auto vh-100 overflow-scroll d-flex-column justify-content-center align-items-center"
         style={{
-          backgroundColor: cols.white,
+          backgroundColor: cols.black,
         }}
       >
         <Container
