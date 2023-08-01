@@ -49,7 +49,7 @@ export const userMenuOptions = [
   },
   {
     id: 4,
-    name: "Your Experience",
+    name: "BC Experience",
     linkTo: "reviews",
     iconOutlined: ShareOutlinedIcon,
     display: ShareReviewsTab,

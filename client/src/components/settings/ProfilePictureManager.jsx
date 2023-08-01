@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { axiosClient } from "../../axiosClient";
-
-
+import { cols } from "../../colorSchema";
 export default function ProfilePictureManager({ userSettings }) {
   const {
     register,
@@ -41,9 +40,12 @@ export default function ProfilePictureManager({ userSettings }) {
     };
     console.log(replaceDefault, "is the body of the  request");
     axiosClient
-      .patch(`http://localhost:3010/users/${userSettings._id}/remove-profile-pic`, {
-        replaceDefault,
-      })
+      .patch(
+        `http://localhost:3010/users/${userSettings._id}/remove-profile-pic`,
+        {
+          replaceDefault,
+        }
+      )
       .then((response) => {
         console.log(response);
         window.location.reload(false);
@@ -74,8 +76,20 @@ export default function ProfilePictureManager({ userSettings }) {
           <input type="submit" value={"submit picture"} />
         </div>
 
-        <img src={userSettings.profilePicture} alt="" style={{ width: "22rem", marginTop:"2rem"}} />
-
+        <div>
+          <img
+            src={userSettings.profilePicture}
+            className="rounded-circle shadow-4 border border-1 border-white"
+            style={{
+              marginTop:"2rem",
+              width: "10rem",
+              height: "auto",
+              aspectRatio: "1/1",
+              objectFit: "cover",
+            }}
+            alt={userSettings.username}
+          />
+        </div>
       </form>
       <div className="mt-2">
         <button

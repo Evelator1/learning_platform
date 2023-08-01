@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
-import React, { useState, useEffect } from "react";
+import { AuthContext } from "../../../../context/AuthProvider";
+import  { useState, useEffect , useContext} from "react";
 import { axiosClient } from "../../../../axiosClient";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -7,8 +8,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./learningCards.css";
 import { cols } from "../../../../colorSchema";
+import WelcomePageButton from "../../../LandingPage/WelcomePageButton";
+
+
 
 export default function NewLearningCard() {
+  const { user } = useContext(AuthContext);
+
+  const[showBtn, setShowBtn]=useState(false)
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [category, setCategory] = useState("");
@@ -31,7 +38,7 @@ export default function NewLearningCard() {
           group,
         }
       );
-
+      setShowBtn(true)
       console.log(newCard.data);
       setQuestion("");
       setAnswer("");
@@ -43,6 +50,10 @@ export default function NewLearningCard() {
 
   return (
     <>
+    <div style={{display:"flex", justifyContent:"center", color:cols.white}}>
+
+    <h1>Create a Learning Card</h1>
+    </div>
       <Form className="form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGridAddress1">
           <Form.Label className="h5 text-white">
@@ -91,14 +102,28 @@ export default function NewLearningCard() {
           </div>
         </div>
 
+<div style={{display:"flex", marginTop:"4rem"}}>
+
+
+            
         <Button
           type="submit"
-          className="mt-3"
-          style={{ backgroundColor: cols.lila }}
+          style={{ backgroundColor: cols.lila, color:cols.black, height:"auto", marginRight:"3rem", fontFamily:" IBM Plex Mono", border:"none"  }}
         >
           Submit
         </Button>
+        {showBtn&& 
+        <WelcomePageButton 
+        content={"Show all cards"}
+        color={cols.lila}
+        textColor={cols.black}
+        linkTo={`/${user.username}/learning-cards`}
+      />}
+          </div>
+
       </Form>
+      
     </>
   );
+  
 }

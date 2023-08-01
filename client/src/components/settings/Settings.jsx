@@ -4,7 +4,7 @@ import AccountSettings from "./AccountSettings"
 
 export default function Settings() {
   return (
-    <Container>
+    <Container style={{overflow:"scroll"}}>
        <ProfileSettings/>
        <AccountSettings/>
         

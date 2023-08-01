@@ -50,7 +50,6 @@ function CreateInterviewQuestion() {
         backgroundColor: cols.lila,
         border: `2px solid ${cols.gray}`,
         borderRadius: "0.5rem",
-        boxShadow: `10px 10px 5px  ${cols.gray}`,
       }}
     >
       <Form.Group className="mb-3" controlId="formGridAddress1">

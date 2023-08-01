@@ -12,6 +12,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
+import WelcomePageButton from "../LandingPage/WelcomePageButton";
 import WaveNavbar from "./WaveNavbar";
 import { cols } from "../../colorSchema";
 import "../../App.css";
@@ -74,40 +75,22 @@ export default function NavbarBS() {
 
           {user && (
             <div className="d-flex flex-row align-items-center">
+          
 
-              <Button
-                to={`${user.username}/settings`}
-
-                className="d-flex pe-5"
-                style={{
-                  color: cols.white,
-                  textDecoration: "none",
-                  fontSize: "1rem",
-                  width: "5.8rem",
-                  backgroundColor: cols.lila,
-                  borderColor: cols.lila,
-                  marginRight: "1.5rem",
-                }}
-              >
-                <span className="d-none d-xl-block">Settings</span>
-              </Button>
-
-              <Button
-                onClick={logout}
-                className="d-flex"
-                style={{
-                  color: cols.white,
-                  textDecoration: "none",
-                  fontSize: "1rem",
-                  width: "5rem",
-                  backgroundColor: cols.lila,
-                  borderColor: cols.lila,
-                  marginRight: "3.5rem",
-                }}
-              >
-                <span className="d-none d-xl-block pe-5">Logout</span>
-              </Button>
-
+              <div className="d-flex gap-3">
+                <WelcomePageButton
+                  content={"Settings"}
+                  color={cols.lila}
+                  linkTo={`${user.username}/settings`}
+                  border-color={cols.lila}
+                />
+                <WelcomePageButton
+                  content={"Logout"}
+                  color={cols.lila}
+                  linkTo={"/logout"}
+                  border-color={cols.lila}
+                />
+              </div>
               <Nav.Item
                 className="d-flex align-items-center"
                 style={{
@@ -116,7 +99,7 @@ export default function NavbarBS() {
               >
                 <NavLink
                   to={`../${user.username}`}
-                  className="d-flex align-items-center"
+                  className="d-flex align-items-center mx-4"
                   style={{
                     color: cols.white,
                     textDecoration: "none",
@@ -128,9 +111,8 @@ export default function NavbarBS() {
                     {user.username}
                   </span>
                 </NavLink>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               </Nav.Item>
-
             </div>
           )}
         </Container>
