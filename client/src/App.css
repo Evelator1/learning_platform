@@ -11,13 +11,11 @@ body {
 html {
   margin: 0 !important;
   padding: 0 !important;
-  width: 100% !important;
 }
 
 #root {
   margin: 0 !important;
   padding: 0 !important;
-  width: 100vw !important;
   overflow: hidden;
 
   background-color: #181d25;

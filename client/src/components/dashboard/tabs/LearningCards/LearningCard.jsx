@@ -36,35 +36,39 @@ export default function LearningCard({
     <div className="container-fluid d-flex justify-content-center align-items-center text-center">
       <div className="row d-flex justify-content-center align-items-center">
         <div
-          className={`card ${flip ? "flip" : ""} col-12`}
+          className={`card ${
+            flip ? "flip" : ""
+          } col-12 bg-black2 border border-white`}
           onClick={handleCardClick}
         >
-          <div className="front">
+          <div className="front text-white fs-5">
             <p>
               {currentIndex + 1}/{length}
             </p>
             <p>{learningCard.question}</p>
             <p>{learningCard.category}</p>
           </div>
-          <div className="back">{learningCard.answer}</div>
+          <div className="back text-white fs-5">{learningCard.answer}</div>
         </div>
         <div className="row">
           <div className="col-12 d-flex align-items-center justify-content-center">
             <button
               onClick={handlePreviousClick}
-              className="btn btn-light mt-5"
+              className="btn btn-light mt-4 bg-purple border-purple"
             >
               Previous Card
             </button>
 
             <button
               onClick={handleNextClick}
-              className="btn btn-light mt-5 ms-3"
+              className="btn btn-light mt-4 ms-3 bg-purple border-purple"
             >
               Next Card
             </button>
-
-            <button className="btn btn-light mt-5 ms-3" onClick={redirect}>
+            <button
+              className="btn btn-light bg-purple border-purple mt-4 ms-3"
+              onClick={redirect}
+            >
               Create New Card
             </button>
           </div>

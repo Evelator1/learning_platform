@@ -54,6 +54,7 @@ export default function LearningCardList() {
     }
     setCurrentIndex(0);
   }, [selectedCategory, learningCards]);
+
   
   if (!isLoading && learningCards && !learningCards.length) {
     return <Navigate to="createlearningcard" />;
@@ -85,6 +86,7 @@ export default function LearningCardList() {
               />
             )}
           </div>
+
         </div>
       </div>
     );

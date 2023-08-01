@@ -17,7 +17,7 @@ import Man4 from "../../assets/pics/man4.jpg";
 function UserFeedbackPage() {
   return (
     <>
-      <div className="container-fluid p-0 m-0 welcome-container align-items-center d-flex flex-column justify-content-center bg-purple">
+      <div className="container-fluid pt-5 m-0 welcome-container align-items-center d-flex flex-column justify-content-center bg-purple">
         <div className="row">
           <div className="col-12 mt-5 pb-5 d-flex flex-column align-items-center text-center ">
             <h2 className="display-4 pt-5 font-mont fw-bold display-6">
