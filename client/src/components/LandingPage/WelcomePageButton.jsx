@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 function WelcomePageButton({ content, color, textColor, linkTo }) {
   return (
-    // <div style={{backgroundColor:color, color:textColor, width:"10rem"}}>
     <>
       <style type="text/css">
         {`.btn-flat {
+          font-family:" IBM Plex Mono" , monospace;
             background-color: ${color}; 
             color: ${textColor}; 
             border-color: ${color}

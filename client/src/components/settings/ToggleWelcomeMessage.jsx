@@ -20,7 +20,7 @@ export default function ToggleWelcomeMessage({ userSettings }) {
   };
 
   return (
-    <Box className="form-check-span m-3 w-100" style={{ color: cols.black }}>
+    <Box className="form-check-span m-3 w-100" style={{ color: cols.white }}>
       <h3> View welcome message on login</h3>
       <Switch
         defaultChecked={userSettings.userWishWelcome}

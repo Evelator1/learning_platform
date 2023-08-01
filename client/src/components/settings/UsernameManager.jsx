@@ -25,7 +25,7 @@ export default function UsernameManager({userSettings}) {
   };
 
   return (
-    <div className="my-3 w-100">
+    <div className="my-5 w-100">
       <h3>Username</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input

@@ -69,7 +69,6 @@ export default function SelectedAd({ jobs,filtered, show, setShow, handleShow })
         backgroundColor: cols.white,
         border: `2px solid ${cols.gray}`,
         borderRadius: "0.5rem",
-        boxShadow: `10px 10px 5px  ${cols.black}`,
       }}
     >
       <Container>

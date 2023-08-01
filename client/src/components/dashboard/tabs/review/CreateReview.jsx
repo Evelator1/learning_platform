@@ -71,7 +71,6 @@ export default function CreateReviewMask() {
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
-          boxShadow: `10px 10px 5px  ${cols.black}`,
 
         }}
       >

@@ -4,18 +4,23 @@ import LearningCard from "./LearningCard";
 import { Navigate } from "react-router-dom";
 
 export default function LearningCardList() {
-  const [learningCards, setLearningCards] = useState([]);
+  const [learningCards, setLearningCards] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [filteredCards, setFilteredCards] = useState([]);
-
+  
   useEffect(() => {
     axiosClient
-      .get("http://localhost:3010/learningcards")
-      .then((response) => {
-        setLearningCards(response.data);
+    .get("http://localhost:3010/learningcards")
+    .then((response) => {
+      console.log(response.data)
+      setLearningCards(response.data);
+      setFilteredCards(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false);
         console.log(error.message);
       });
   }, []);
@@ -49,8 +54,11 @@ export default function LearningCardList() {
     }
     setCurrentIndex(0);
   }, [selectedCategory, learningCards]);
-
-  if (learningCards.length > 0) {
+  
+  if (!isLoading && learningCards && !learningCards.length) {
+    return <Navigate to="createlearningcard" />;
+  }
+  if (learningCards && learningCards.length && !isLoading && filteredCards.length) {
     return (
       <div className="container-fluid">
         <div className="row d-flex flex-column">
@@ -80,10 +88,5 @@ export default function LearningCardList() {
         </div>
       </div>
     );
-  } else{
-    return(
-
-<Navigate to="createlearningcard" />
-    )
   }
 }
