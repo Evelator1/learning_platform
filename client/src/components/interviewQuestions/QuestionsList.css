@@ -5,12 +5,12 @@
     --normal-color: gray   ;
   }
 .interviewQuestionSection{
+    width: 70%;
     padding-top: 3%;
     padding-bottom: 50px;
-    background-color: #F0F2F5;
     min-height: 100vh;
     height: 100%;
-    width: 90%;
+    margin: auto;
 }
 .questionCard{
     margin-bottom: 35px;
@@ -19,7 +19,7 @@
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 97%;   
+
 }
 
 .questionRatingSection{
@@ -68,7 +68,6 @@
     padding: 1%;
     min-height: 150px;
     justify-content: space-around;
-    font-family: monospace;
     width: 95%;
     text-align: justify;
 }

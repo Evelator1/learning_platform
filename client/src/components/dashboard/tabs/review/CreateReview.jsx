@@ -24,7 +24,7 @@ export default function CreateReviewMask() {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("author", user._id);
-    formData.append("author", data.title);
+    formData.append("title", data.title);
     formData.append("content", data.content);
     formData.append("postCategory", "review");
 
@@ -63,10 +63,10 @@ export default function CreateReviewMask() {
       },
     }}
 
-      className="d-flex justify-content-center "
+      className="d-flex justify-content-center"
     >
       <Row
-        className="container-fluid justify-content-center px-2 py-3 rounded my-5 col-xs-12  "
+        className="container-fluid justify-content-center px-2 py-3 rounded my-5 col-xs-12 col-lg-11  "
         style={{
           backgroundColor: cols.lila,
           color: cols.black,
@@ -76,7 +76,7 @@ export default function CreateReviewMask() {
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-center">How was your experience?</h3>
+          <h1 className="text-center">How was your experience?</h1>
 
           <Form.Group controlId="content">
             <Form.Control
