@@ -1,0 +1,18 @@
+.answerForm{
+    width: 100% !important;
+}
+.formTextArea{
+    width: 100% !important;
+    background-color: #F2F3F5 !important;
+}
+
+.submitAnswerIcon{
+    background-color: transparent;
+    margin-top: -50px;
+    margin-left: 450px;
+    height: 25px;
+    color: #65676b;
+    position: absolute;
+    
+    right: 45px;
+}

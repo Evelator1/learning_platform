@@ -28,5 +28,50 @@ const getAnswersByQuestionId=async (req,res)=>{
     }
 }
 
+const updateAnswersVotes = async (req, res) => {
+    try {
+      const answerId = req.params.id;
+      const { voteType } = req.body;
+      const {id}=req.user
+      
+  
+      const answer = await InterviewAnswer.findById(answerId);
+      if (!answer) {
+        return res.status(404).json({ message: "answer not found" });
+      }
 
-module.exports={createAnswer,getAnswers,getAnswersByQuestionId}
+      const hasUpvoted = answer.upVotes.includes(id);
+      const hasDownvoted = answer.downVotes.includes(id);
+  
+      if (voteType === "upvote") {
+        if (hasDownvoted) {
+          answer.downVotes.pull(id);
+        } else {
+          if (hasUpvoted) {
+            return res.status(400).json({ message: "You can vote only once" });
+          }
+          answer.upVotes.push(id);
+        }
+
+      } else if (voteType === "downvote") {
+        if (hasUpvoted) {
+          answer.upVotes.pull(id);
+        } else {
+          if (hasDownvoted) {
+            return res.status(400).json({ message: "You can vote only once" });
+          }
+          answer.downVotes.push(id);
+        }
+      }
+
+      answer.votes=answer.upVotes.length-answer.downVotes.length
+  
+      await answer.save();
+      res.status(200).json(answer);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
+
+module.exports={createAnswer,getAnswers,getAnswersByQuestionId,updateAnswersVotes}

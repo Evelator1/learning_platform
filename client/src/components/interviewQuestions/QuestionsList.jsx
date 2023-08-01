@@ -4,37 +4,27 @@ import "./QuestionsList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
-import {faCircleUp,faCircleDown,faCogs,faLightbulb} from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleUp,
+  faCircleDown,
+  faCogs,
+  faLightbulb,
+} from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle as mediumChecked } from "@fortawesome/free-regular-svg-icons";
-import { Container, Col, Row, Image, Button } from "react-bootstrap";
+import { Container, Col, Row, Image, Button,ButtonGroup } from "react-bootstrap";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import AnswerList from './AnswerList'
+import AnswerList from "./AnswerList";
 import QuestionModal from "./AnswerModal";
+import DateFormatter from "./DateFormatter";
+import Dropdown from "react-bootstrap/Dropdown";
 
-function QuestionsList() {
+function QuestionsList({ data, loading, setData }) {
   const { user } = useContext(AuthContext);
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const [showModal, setShowModal] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      const response = await axiosClient.get(
-        "http://localhost:3010/interviewQuestions"
-      );
-      setData(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [isTechnical, setIsTechnical] = useState(null);
+  const [selectedTechnology, setSelectedTechnology] = useState(null);
 
   const handleVote = async (questionId, voteType) => {
     try {
@@ -44,11 +34,23 @@ function QuestionsList() {
         `http://localhost:3010/interviewQuestions/${questionId}/vote`,
         { voteType, userId }
       );
-      fetchData();
+      // Create a new array with updated votes
+      const updatedData = data.map((question) =>
+        question._id === questionId
+          ? {
+              ...question,
+              votes:
+                voteType === "upvote" ? question.votes + 1 : question.votes - 1,
+            }
+          : question
+      );
+
+      setData(updatedData);
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -58,66 +60,143 @@ function QuestionsList() {
     return <div>No questions found.</div>;
   }
 
-  // Function to open the modal
   const handleOpenModal = (question) => {
     setSelectedQuestion(question);
     setShowModal(true);
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
     setSelectedQuestion(null);
     setShowModal(false);
   };
 
-  function getFormattedDate(dateString) {
-    const currentDate = new Date();
-    const date = new Date(dateString);
-
-    if (isSameDay(currentDate, date)) {
-      return "Today";
-    } else if (isSameDay(getYesterday(currentDate), date)) {
-      return "Yesterday";
-    } else {
-      return date.toLocaleDateString("en-GB");
+  const questionWithHighestVotes = data.reduce(
+    (prevQuestion, currentQuestion) => {
+      return currentQuestion.votes > prevQuestion.votes
+        ? currentQuestion
+        : prevQuestion;
+    },
+    data[0]
+  );
+  
+  
+  const handleFilterQuestions = (option) => {
+    switch (option) {
+      case "all":
+        setIsTechnical(null); // Set isTechnical to null to show all questions
+        setSelectedTechnology(null); // Reset the selected technology when changing the filter option
+        break;
+      case "technical":
+        setIsTechnical(true);
+        setSelectedTechnology(null); // Reset the selected technology when changing the filter option
+        break;
+      case "non-technical":
+        setIsTechnical(false);
+        setSelectedTechnology(null); // Reset the selected technology when changing the filter option
+        break;
+      default:
+        setIsTechnical(null); // Set isTechnical to null to show all questions
+        setSelectedTechnology(null); // Reset the selected technology when changing the filter option
+        break;
     }
+  };
+  
+  // let filteredData = data;
+  // if (isTechnical !== null) {
+  //   if (isTechnical) {
+  //     if (selectedTechnology) {
+  //       filteredData = data.filter((question) => {
+  //         return (
+  //           question.isTechnical === true &&
+  //           question.technology === selectedTechnology
+  //         );
+  //       });
+  //     } else {
+  //       filteredData = data.filter((question) => question.isTechnical === true);
+  //     }
+  //   } else {
+  //     filteredData = data.filter((question) => question.isTechnical === false);
+  //   }
+  // }
+
+  let filteredData = data;
+  if (selectedTechnology) {
+    filteredData = data.filter((question) => {
+      return (
+        question.technology === selectedTechnology &&
+        (isTechnical === null || question.isTechnical === isTechnical)
+      );
+    });
+  } else if (isTechnical !== null) {
+    filteredData = data.filter((question) => question.isTechnical === isTechnical);
   }
 
-  function isSameDay(date1, date2) {
-    return (
-      date1.getDate() === date2.getDate() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getFullYear() === date2.getFullYear()
-    );
-  }
-
-  function getYesterday(date) {
-    const yesterday = new Date(date);
-    yesterday.setDate(date.getDate() - 1);
-    return yesterday;
-  }
 
   return (
-    <div style={{display:"flex"}}>
+    <div style={{ display: "flex",flexDirection:"column"}}>
+      <Dropdown required>
+          <Dropdown.Toggle variant="dark" id="dropDownType">
+            Question Type
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => handleFilterQuestions("all")}>all</Dropdown.Item>
+            <Dropdown as={ButtonGroup}>
+                    <Button variant="success" onClick={() => handleFilterQuestions("technical")}>Technical</Button>
+
+                    <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={() => setSelectedTechnology(null)}>
+                        All
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => setSelectedTechnology("node")}>
+                        node
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => setSelectedTechnology("express")}>
+                        express
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => setSelectedTechnology("react")}>
+                        react
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => setSelectedTechnology("javascript")}>
+                          javascript
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("html")}>
+                          html
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("css")}>
+                          css
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("sql")}>
+                          sql
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("mysql")}>
+                          mysql
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("mongodb")}>
+                          mongodb
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("bootstrap")}>
+                          bootstrap
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTechnology("other")}>
+                          other
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+      
+            <Dropdown.Item onClick={() => handleFilterQuestions("non-technical")}>Non-Technical</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
       <Container fluid className="interviewQuestionSection">
         <Row>
-          {data.map((question, index) => (
+          {filteredData.map((question) => (
             <Row
               key={question._id}
               className={"questionCard"}
-              style={{
-                border: `3px solid ${
-                  question.votes > 0 && index === 0
-                    ? "var(--best-color)"
-                    : question.votes > 0 && index !== 0
-                    ? "var(--useful-color)"
-                    : question.votes < 0 && index !== 0
-                    ? "var(--useless-color)"
-                    : "var(--normal-color)"
-                }`,
-              }}
             >
-              <Col xs={2} md={1} className="questionRatingSection">
+              <Col xs={2}  className="questionRatingSection">
                 <Row>
                   <Button
                     variant="link"
@@ -126,31 +205,11 @@ function QuestionsList() {
                     <FontAwesomeIcon
                       icon={faCircleUp}
                       className="arrowIcon"
-                      style={{
-                        color:
-                          question.votes > 0 && index === 0
-                            ? "var(--best-color)"
-                            : question.votes > 0 && index !== 0
-                            ? "var(--useful-color)"
-                            : question.votes < 0 && index !== 0
-                            ? "var(--useless-color)"
-                            : "var(--normal-color)",
-                      }}
                     />
                   </Button>
                 </Row>
                 <Row
                   className="votesCounter"
-                  style={{
-                    color:
-                      question.votes > 0 && index === 0
-                        ? "var(--best-color)"
-                        : question.votes > 0 && index !== 0
-                        ? "var(--useful-color)"
-                        : question.votes < 0 && index !== 0
-                        ? "var(--useless-color)"
-                        : "var(--normal-color)",
-                  }}
                 >
                   <h6>{question.votes} points</h6>
                 </Row>
@@ -162,33 +221,13 @@ function QuestionsList() {
                     <FontAwesomeIcon
                       icon={faCircleDown}
                       className="arrowIcon"
-                      style={{
-                        color:
-                          question.votes > 0 && index === 0
-                            ? "var(--best-color)"
-                            : question.votes > 0 && index !== 0
-                            ? "var(--useful-color)"
-                            : question.votes < 0 && index !== 0
-                            ? "var(--useless-color)"
-                            : "var(--normal-color)",
-                      }}
                     />
                   </Button>
                 </Row>
               </Col>
-              <Col xs={10} md={11} className="questionContent">
+              <Col xs={10}  className="questionContent">
                 <Row
                   className="questionHeader"
-                  style={{
-                    backgroundColor:
-                      question.votes > 0 && index === 0
-                        ? "var(--best-color)"
-                        : question.votes > 0 && index !== 0
-                        ? "var(--useful-color)"
-                        : question.votes < 0 && index !== 0
-                        ? "var(--useless-color)"
-                        : "var(--normal-color)",
-                  }}
                 >
                   <Col xs={2} sm={2} md={2} lg={1}>
                     <Image
@@ -201,56 +240,45 @@ function QuestionsList() {
                     {question.author.username}
                   </Col>
                   <Col className="abc" xs={6}>
-                    <h3 style={{textAlign:"center"}} >
-                      {question.isTechnical ? <FontAwesomeIcon icon={faCogs} /> : <FontAwesomeIcon icon={faLightbulb} />}
-                      
+                    <h3 style={{ textAlign: "center" }}>
+                      {question.isTechnical ? (
+                        <FontAwesomeIcon icon={faCogs} />
+                      ) : (
+                        <FontAwesomeIcon icon={faLightbulb} />
+                      )}
                     </h3>
                   </Col>
                   <Col>
                     <Row className="date" xs={2}>
-                      Created: {getFormattedDate(question.createdAt)}
+                      Created: <DateFormatter dateString={question.createdAt} />
                     </Row>
                   </Col>
                 </Row>
                 <Row className="questionBody">
-                  
-                    <h6>{question.content}</h6>
-                  
+                  <h6>{question.content}</h6>
                 </Row>
-                <Row className="answersLink">
-                    
-                    <Button style={{
-                      backgroundColor:"transparent",
-                      border:"0",
-                    color:
-                      question.votes > 0 && index === 0
-                        ? "var(--best-color)"
-                        : question.votes > 0 && index !== 0
-                        ? "var(--useful-color)"
-                        : question.votes < 0 && index !== 0
-                        ? "var(--useless-color)"
-                        : "var(--normal-color)",
-                  }}  onClick={() => handleOpenModal(question)}>View Answers</Button>
+                <Row >
+                  <Button 
+                  className="showAnswers"
+                    onClick={() => handleOpenModal(question)}
+                  >
+                    View Answers
+                  </Button>
                 </Row>
               </Col>
             </Row>
           ))}
         </Row>
       </Container>
-      <div className="colorAmpel">
-        <div className="colorIndicator" style={{backgroundColor:"var(--best-color)"}}>Best</div>
-        <div className="colorIndicator" style={{backgroundColor:"var(--useful-color)"}}>Useful</div>
-        <div className="colorIndicator" style={{backgroundColor:"var(--useless-color)"}}>Useless</div>
-      </div>
+
       {selectedQuestion && (
-      <QuestionModal
-        show={showModal}
-        handleClose={handleCloseModal}
-        question={selectedQuestion}
-      />
-    )}
+        <QuestionModal
+          show={showModal}
+          handleClose={handleCloseModal}
+          question={selectedQuestion}
+        />
+      )}
     </div>
-    
   );
 }
 

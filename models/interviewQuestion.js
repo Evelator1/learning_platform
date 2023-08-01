@@ -30,18 +30,18 @@ const questionSchema = new mongoose.Schema(
             default: Date.now,
         },
         isTechnical:{
-            type: Boolean,
-            default:true
+            type: Boolean
         },
         positionLevel: {
              type: String,
              enum: ["junior","senior"],
-             required
+             
         },
         technology: {
             type: String,
-            enum: ["react","bootstrap"],
-            required
+            enum: ["node", "express", "react",  "javascript", "html", "css", "sql", "mysql", "mongodb","bootstrap","other",""],
+            
+            
        },
         updatedAt: { type: Date, default: Date.now }
     }

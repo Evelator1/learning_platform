@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col,Row,Button, Image } from "react-bootstrap";
 import { faCogs, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import AnswerList from './AnswerList';
+import CreateInterviewAnswer from './CreateInterviewAnswer';
 
 const AnswerModal = ({ show, handleClose, question }) => {
   const { author, content} = question;
@@ -19,8 +20,9 @@ const AnswerModal = ({ show, handleClose, question }) => {
         </Col>
       </Modal.Header>
       <Modal.Body >
-        <Row style={{maxHeight:"200px"}}>
-          <h6>{content}</h6>
+        <Row style={{maxHeight:"200px",marginLeft:"50px"}}>
+          Question:
+          <h6 style={{marginLeft:"100px"}}>{content}</h6>
         </Row>
       </Modal.Body>
       <hr/>
@@ -29,10 +31,10 @@ const AnswerModal = ({ show, handleClose, question }) => {
           <AnswerList questionId={question._id}/>
         </Row>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
+      <Modal.Footer >
+        
+          <CreateInterviewAnswer questionId={question._id} />
+        
       </Modal.Footer>
     </Modal>
   );
