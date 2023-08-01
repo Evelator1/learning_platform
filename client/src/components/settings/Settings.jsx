@@ -1,13 +1,13 @@
-import React from 'react'
+import { Container } from "react-bootstrap"
 import ProfileSettings from "./ProfileSettings"
 import AccountSettings from "./AccountSettings"
 
 export default function Settings() {
   return (
-    <div>
+    <Container>
        <ProfileSettings/>
        <AccountSettings/>
         
-    </div>
+    </Container>
   )
 }

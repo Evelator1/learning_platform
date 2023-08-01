@@ -38,11 +38,11 @@ export default function ReviewList({ reviews }) {
   }
 
   return (
-    <div>
+    <div >
       {reviews &&
         reviews.map((review) => {
           return (
-            <Card key={review._id} >
+            <Card key={review._id} style={{width:"100%"}}>
               <Card.Header as="h5" className="w-100">
                 <Row>
                   <Col className="col-2">
@@ -50,7 +50,7 @@ export default function ReviewList({ reviews }) {
 
                   </Col>
                   <Col className="col-10">
-                {review.author.username} - 
+                {review.author.username}
                 <p className="fs-6">
 
                   {formatDate(review.createdAt)}

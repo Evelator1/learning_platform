@@ -8,7 +8,7 @@ import {faCircleUp,faCircleDown,} from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle as mediumChecked } from "@fortawesome/free-regular-svg-icons";
 import { Container, Col, Row, Image, Button } from "react-bootstrap";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-
+import { cols } from "../../colorSchema";
 function QuestionsList() {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
@@ -81,7 +81,7 @@ function QuestionsList() {
   }
 
   return (
-    <div style={{display:"flex"}}>
+    <div style={{display:"flex" , margin: "auto", width:"90%"}}>
       <Container fluid className="interviewQuestionSection">
         <Row>
           {data.map((question, index) => (
@@ -89,6 +89,7 @@ function QuestionsList() {
               key={question._id}
               className={"questionCard"}
               style={{
+                backgroundColor: cols.white,
                 border: `3px solid ${
                   question.votes > 0 && index === 0
                     ? "var(--best-color)"
@@ -197,7 +198,7 @@ function QuestionsList() {
                 </Row>
                 <Row className="questionBody">
                   <Row className="type">
-                    <h5 style={{ height: "10px" }}>
+                    <h5 style={{ height: "10px" ,    fontFamily: "IBM Plex Mono, monospace" }}>
                       {question.isTechnical ? "Technical" : "Non_Technical"}{" "}
                       Question:
                     </h5>

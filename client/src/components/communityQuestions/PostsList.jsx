@@ -19,33 +19,20 @@ import "./PostsList.css";
 import CommentsModal from "./CommentsModal";
 // import PostCommentsList from "./CommentsList";
 
-function PostsList() {
+function PostsList({posts,setPosts}) {
   const { user } = useContext(AuthContext);
-  const [data, setData] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axiosClient.get("http://localhost:3010/post");
-        setData(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
   const handleLikeClick = (postId) => {
-    setData((prevData) =>
+    setPosts((prevData) =>
       prevData.map((post) =>
         post._id === postId ? { ...post, likeChecked: !post.likeChecked } : post
       )
     );
   };
   const handleCommentClick = (postId) => {
-    setData((prevData) =>
+    setPosts((prevData) =>
       prevData.map((post) =>
         post._id === postId
           ? { ...post, commentChecked: !post.commentChecked }
@@ -54,7 +41,7 @@ function PostsList() {
     );
   };
   const handleSaveClick = (postId) => {
-    setData((prevData) =>
+    setPosts((prevData) =>
       prevData.map((post) =>
         post._id === postId ? { ...post, saveChecked: !post.saveChecked } : post
       )
@@ -95,7 +82,7 @@ function PostsList() {
 
   return (
     <div  >
-      {data.map((post) => (
+      {posts.map((post) => (
         <Container key={post._id} className="postCard">
           <Row className="postHeader">
             <Col xs={2}>

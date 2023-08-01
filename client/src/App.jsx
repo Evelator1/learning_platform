@@ -48,22 +48,14 @@ function App() {
 
           {/* <Route path="learning-cards" element={<LearningCardsTab />} /> */}
           <Route path="learning-cards" element={<LearningCardList />} />
-          <Route
-            path="learning-cards/createlearningcard"
-            element={<NewLearningCard />}
-          />
-          <Route
-            path="interview-questions"
-            element={<InterviewQuestionsTab />}
-          />
-
+          <Route path="learning-cards/createlearningcard" element={<NewLearningCard />}   />
+          <Route path="interview-questions" element={<InterviewQuestionsTab />}   />
           <Route path="job-search" element={<JobSearchTab />} />
           <Route path="reviews" element={<ShareReviewsTab />} />
-          <Route path="connect" element={<ChatTab />} />
-          <Route path="next-steps" element={<NextStepsTab />} />
           <Route path="favourites" element={<Favourite />} />
-
-          <Route path="settings/account" element={<UserSettings />} />
+          <Route path="settings" element={<UserSettings />} />
+          {/* <Route path="next-steps" element={<NextStepsTab />} /> */}
+          {/* <Route path="connect" element={<ChatTab />} /> */}
         </Route>
       </Routes>
     </>
