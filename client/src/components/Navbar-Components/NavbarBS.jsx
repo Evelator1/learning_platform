@@ -39,7 +39,6 @@ export default function NavbarBS() {
               fontFamily: "IBM Plex Mono, monospace",
               fontStyle: "italic",
             }}
-            className="font-plex"
           >
             <div>
               <span
@@ -75,8 +74,7 @@ export default function NavbarBS() {
 
           {user && (
             <div className="d-flex flex-row align-items-center">
-
-              <Button
+              {/* <Button
                 to={`settings/account`}
                 className="d-flex pe-5"
                 style={{
@@ -106,8 +104,7 @@ export default function NavbarBS() {
                 }}
               >
                 <span className="d-none d-xl-block pe-5">Logout</span>
-              </Button>
-
+              </Button> */}
 
               <div className="d-flex gap-3">
                 <WelcomePageButton

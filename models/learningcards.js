@@ -4,12 +4,12 @@ const learningcardSchema = new mongoose.Schema({
   question: {
     type: String,
     required: true,
-    max: 500,
+    maxLength: 500,
   },
   answer: {
     type: String,
     required: true,
-    max: 500,
+    maxLength: 500,
   },
   category: {
     type: String,
