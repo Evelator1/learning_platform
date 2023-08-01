@@ -24,7 +24,7 @@ export default function CreateReviewMask() {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("author", user._id);
-    formData.append("author", data.title);
+    formData.append("title", data.title);
     formData.append("content", data.content);
     formData.append("postCategory", "review");
 
@@ -45,34 +45,36 @@ export default function CreateReviewMask() {
 
   return (
     <Container
-      style={{
-        width: "100%", // Default width for small screens
-        "@media (minWidth: 768px)": {
-          // Medium screens (sm)
-          width: "80%",
-        },
-        "@media (minWidth: 992px)": {
-          // Large screens (md)
-          width: "60%",
-        },
-        "@media (minWidth: 1200px)": {
-          // Extra-large screens (lg)
-          width: "30%",
-        },
-      }}
-      className="d-flex justify-content-center "
+
+    style={{
+      width: "100%", // Default width for small screens
+      "@media (minWidth: 768px)": { // Medium screens (sm)
+        width: "80%",
+      },
+      "@media (minWidth: 992px)": { // Large screens (md)
+        width: "60%",
+      },
+      "@media (minWidth: 1200px)": { // Extra-large screens (lg)
+        width: "30%",
+      },
+    }}
+
+      className="d-flex justify-content-center"
+
     >
       <Row
-        className="container-fluid justify-content-center px-2 py-3 rounded my-5 col-xs-12  "
+        className="container-fluid justify-content-center px-2 py-3 rounded my-5 col-xs-12 col-lg-11  "
         style={{
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
-          boxShadow: `10px 10px 5px  ${cols.black}`,
+
+
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-center">How was your bootcamp?</h3>
+          <h1 className="text-center">How was your experience?</h1>
+
 
           <Form.Group controlId="content">
             <Form.Control

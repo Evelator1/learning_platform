@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { useParams, NavLink, Link, Navigate, Outlet } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+
 import Navbar from "react-bootstrap/Navbar";
 import ProfileInfoOffcanvas from "../settings/ProfileInfoOffcanvas";
 import Avatar from "./Avatar";
@@ -11,6 +12,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
+import WelcomePageButton from "../LandingPage/WelcomePageButton";
 import WaveNavbar from "./WaveNavbar";
 import { cols } from "../../colorSchema";
 import "../../App.css";
@@ -73,6 +75,7 @@ export default function NavbarBS() {
 
           {user && (
             <div className="d-flex flex-row align-items-center">
+
               <Button
                 to={`settings/account`}
                 className="d-flex pe-5"
@@ -105,6 +108,21 @@ export default function NavbarBS() {
                 <span className="d-none d-xl-block pe-5">Logout</span>
               </Button>
 
+
+              <div className="d-flex gap-3">
+                <WelcomePageButton
+                  content={"Settings"}
+                  color={cols.lila}
+                  linkTo={`${user.username}/settings`}
+                  border-color={cols.lila}
+                />
+                <WelcomePageButton
+                  content={"Logout"}
+                  color={cols.lila}
+                  linkTo={"/logout"}
+                  border-color={cols.lila}
+                />
+              </div>
               <Nav.Item
                 className="d-flex align-items-center"
                 style={{
@@ -113,7 +131,7 @@ export default function NavbarBS() {
               >
                 <NavLink
                   to={`../${user.username}`}
-                  className="d-flex align-items-center"
+                  className="d-flex align-items-center mx-4"
                   style={{
                     color: cols.white,
                     textDecoration: "none",
@@ -125,6 +143,7 @@ export default function NavbarBS() {
                     {user.username}
                   </span>
                 </NavLink>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               </Nav.Item>
             </div>
           )}

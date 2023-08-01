@@ -19,10 +19,12 @@ function WelcomePage() {
 
   return (
     <>
+
       <div className="container-fluid h-100 pt-5 me-0 bg-black2 mt-5 pe-0">
         <div className="row d-flex flex-row align-items-center justify-content-center text-center mt-5 ">
           <div className="col-lg-7 text-white font-mont  d-flex flex-column justify-content-start align-items-center gap-3">
             <h1 className="text-white font-mont fw-bold display-5 mb-3">
+
               Welcome to CodeRoad
             </h1>
             <p className="fw-light lh-base welcome-text w-75">
