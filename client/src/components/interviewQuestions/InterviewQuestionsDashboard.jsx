@@ -30,7 +30,7 @@ function InterviewQuestionsDashboard() {
   };
 
   return (
-    <div>
+    <div style={{marginLeft:"-10rem"}} >
         <CreateInterviewQuestion onAddQuestion={handleAddQuestion} />
         <QuestionsList data={data}  loading={loading} setLoading={setLoading} setData={setData} />
 

@@ -1,5 +1,5 @@
-const { cloudinaryUpload } = require("../middlewares/cloudinary-upload");
-const upload = require("../middlewares/multer-upload");
+const { cloudinaryUpload } = require("./cloudinary-upload");
+const upload = require("./multer-upload");
 
 function handlePostCreation(req, res, next) {
   if (req.file) {

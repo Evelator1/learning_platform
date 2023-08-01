@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
     res.status(500).send("Error while trying to get", error);
   }
 });
+
 const { errorHandler } = require("./middlewares/errorHandler");
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
@@ -34,12 +35,21 @@ app.use("/post", postRouter);
 const commentRouter = require("./routes/comments");
 app.use("/comments", commentRouter);
 
+
+const learningcardRouter = require("./routes/learningcards");
+app.use("/learningcards", learningcardRouter);
+
 const questionRouter=require("./routes/interviewQuestion")
 app.use("/interviewQuestions",questionRouter)
 
+const reviewRouter=require("./routes/reviews")
+app.use("/reviews", reviewRouter)
 
 const answerRouter=require("./routes/interviewAnswer")
 app.use("/interviewAnswers",answerRouter)
+
+const jobsRouter=require("./routes/jobs")
+app.use("/jobs", jobsRouter)
 
 app.use(errorHandler);
 

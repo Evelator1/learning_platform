@@ -1,213 +1,87 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp as solidThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { faThumbsUp as outlineThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { faComment } from "@fortawesome/free-regular-svg-icons";
-import { faStar as outlineStar } from "@fortawesome/free-regular-svg-icons";
-import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { axiosClient } from "../../../../axiosClient";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
-import "./reviewList.css";
-// import CommentsModal from "./CommentsModal";
-// import PostCommentsList from "./CommentsList";
+import Avatar from "../../../Navbar-Components/Avatar";
+import { Button, Image, Container, Row, Col } from "react-bootstrap";
 
-function PostsList() {
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+
+export default function ReviewList({ reviews }) {
   const { user } = useContext(AuthContext);
-  const [data, setData] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axiosClient.get("http://localhost:3010/post");
-        setData(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  function formatDate(date) {
+    const now = new Date();
+    const reviewDate = new Date(date);
 
-  const handleLikeClick = (postId) => {
-    setData((prevData) =>
-      prevData.map((post) =>
-        post._id === postId ? { ...post, likeChecked: !post.likeChecked } : post
-      )
-    );
-  };
-  const handleCommentClick = (postId) => {
-    setData((prevData) =>
-      prevData.map((post) =>
-        post._id === postId
-          ? { ...post, commentChecked: !post.commentChecked }
-          : post
-      )
-    );
-  };
-  const handleSaveClick = (postId) => {
-    setData((prevData) =>
-      prevData.map((post) =>
-        post._id === postId ? { ...post, saveChecked: !post.saveChecked } : post
-      )
-    );
-  };
+    const diffInMilliseconds = now - reviewDate;
+    const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+    const diffInMinutes = Math.floor(diffInSeconds / 60);
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    const diffInDays = Math.floor(diffInHours / 24);
 
-  function getFormattedDate(dateString) {
-    const currentDate = new Date();
-    const date = new Date(dateString);
-
-    if (isSameDay(currentDate, date)) {
-      return "Today";
-    } else if (isSameDay(getYesterday(currentDate), date)) {
-      return "Yesterday";
+    if (diffInDays === 0) {
+      return "today";
+    } else if (diffInDays === 1) {
+      return "yesterday";
+    } else if (diffInDays <= 10) {
+      return `${diffInDays} days ago`;
     } else {
-      return date.toLocaleDateString("en-GB");
+      // Format the review date in your desired way if older than 10 days
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      return reviewDate.toLocaleDateString(undefined, options);
     }
   }
 
-  function isSameDay(date1, date2) {
-    return (
-      date1.getDate() === date2.getDate() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getFullYear() === date2.getFullYear()
-    );
-  }
-
-  function getYesterday(date) {
-    const yesterday = new Date(date);
-    yesterday.setDate(date.getDate() - 1);
-    return yesterday;
-  }
-
-  const handleAllCommentsClick = (post, event) => {
-    event.preventDefault(), setSelectedPost(post);
-    setModalIsOpen(true);
-  };
-
   return (
-    <div className="postList">
-      {data.map((post) => (
-        <Container key={post._id} className="postCard">
-          <Row className="postHeader">
-            <Col xs={2}>
-              {post.author.profilePicture && (
-                <Image
-                  src={post.author.profilePicture}
-                  alt="userImg"
-                  className="userPicture"
-                  roundedCircle
-                />
-              )}
-            </Col>
-            <Col xs={2}>
-              <Row className="userName">{post.author.username}</Row>
-              <Row className="postTime">{getFormattedDate(post.createdAt)}</Row>
-            </Col>
-            <Col xs={6}></Col>
-          </Row>
-          <Row>
-            <blockquote className="blockquote mb-0">
-              <p>{post.content}</p>
-             { post.image&&  <Image src={post.image} className="postImage"></Image>}
-            </blockquote>
-          </Row>
-          <Row className="likes_Comments_Counter">
-            <Col className="likesCounter">
-              <FontAwesomeIcon
-                icon={solidThumbsUp}
-                className="likeIconCounter"
-              />{" "}
-              15
-            </Col>
-            <Col className="commentsTracker">
-              <a
-                href="/comments"
-                onClick={(event) => handleAllCommentsClick(post, event)}
-              >
-                All Comments
-              </a>
-            </Col>
-          </Row>
-          <Row className="likes_Comments_Save">
-            <Col xs={4} className="d-flex LCS">
-              <Button
-                className={`likeButton ${
-                  post.likeChecked ? "likeChecked" : ""
-                }`}
-                onClick={() => handleLikeClick(post._id)}
-              >
-                <FontAwesomeIcon
-                  icon={post.likeChecked ? solidThumbsUp : outlineThumbsUp}
-                  className={`LikeIconAction ${
-                    post.likeChecked ? "likeChecked" : ""
-                  }`}
-                />
-                <span
-                  className={`ml-6 likeButtonText ${
-                    post.likeChecked ? "likeChecked" : ""
-                  }`}
+    <div className="d-flex-column justify-content-center mx-5">
+      {reviews &&
+        reviews.map((review) => {
+          return (
+            <Card key={review._id} style={{ width: "98%" }}>
+              <Card.Header as="h5" className="w-100">
+                <Row>
+                  <Col className="col-lg-1 col-xs-2">
+                    <Avatar user={review.author} />
+                  </Col>
+                  <Col className="col-lg-11 col-xs-10">
+                    {review.author.username}
+                    <p className="fs-6">{formatDate(review.createdAt)}</p>
+                  </Col>
+                </Row>
+
+                <Card.Text className="fs-6 "> </Card.Text>
+              </Card.Header>
+
+              <Card.Body className="w-100 d-flex-column">
+                <Container>
+
+                <Card.Title as="h3"> {review.title}</Card.Title>
+                <Card.Text as="p">{review.content}</Card.Text>
+
+                </Container>
+                <Container
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "90%",
+                  }}
                 >
-                  Like
-                </span>
-              </Button>
-            </Col>
-            <Col xs={4} className="d-flex LCS">
-              <Button
-                className={`commentButton ${
-                  post.commentChecked ? "commentChecked" : ""
-                }`}
-                onClick={() => handleCommentClick(post._id)}
-              >
-                <FontAwesomeIcon
-                  icon={faComment}
-                  className={`commentIconAction ${
-                    post.commentChecked ? "commentChecked" : ""
-                  }`}
-                />
-                <span
-                  className={`ml-6 commentButtonText ${
-                    post.commentChecked ? "commentChecked" : ""
-                  }`}
-                >
-                  Comment
-                </span>
-              </Button>
-            </Col>
-            <Col xs={4} className="d-flex LCS">
-              <Button
-                className={`saveButton ${
-                  post.saveChecked ? "saveChecked" : ""
-                }`}
-                onClick={() => handleSaveClick(post._id)}
-              >
-                <FontAwesomeIcon
-                  icon={post.saveChecked ? solidStar : outlineStar}
-                  className={`saveIconAction ${
-                    post.saveChecked ? "saveChecked" : ""
-                  }`}
-                />
-                <span
-                  className={`ml-6 saveButtonText ${
-                    post.saveChecked ? "saveChecked" : ""
-                  }`}
-                >
-                  Save
-                </span>
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      ))}
+                  <ThumbUpOffAltIcon />
+                  <ChatBubbleOutlineIcon />
+                  <BookmarkBorderIcon />
+                </Container>
+              </Card.Body>
+            </Card>
+          );
+        })}
     </div>
   );
 }
-
-export default PostsList;

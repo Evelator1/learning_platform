@@ -2,32 +2,33 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 // import { cardsMenu } from "../../../src/cardsMenu";
-import WelcomePageButton from "./CreateAccountButton";
+import WelcomePageButton from "./WelcomePageButton";
 import Card from "react-bootstrap/Card";
 import { ReactComponent as Windows } from "../../assets/pics/windows.svg";
+import { ReactComponent as Wave2 } from "../../assets/background-pics/wave2.svg";
 
 function CardsPage() {
   return (
     <>
-      <div className="container-fluid d-flex flex-column align-items-center justify-content-center bg-black2">
-        <div className="row mh-25 pb-0 mb-0 h-md-60 h-25">
-          <div className="col-md-6 h-25 d-flex align-items-center justify-content-around">
-            <h2 className="text-white font-mont fw-bold pl-5">
+      <div className="container-fluid pt-5 d-flex flex-column align-items-center justify-content-center bg-purple">
+        <div className="row d-flex align-items-center justify-content-center">
+          <div className="col-12 d-flex flex-column align-items-center justify-content-center">
+            <h2 className="font-mont fw-bold card-section-h2 display-6">
               What can I do here?
             </h2>
-          </div>
-          <div className="col-md-6 h-25 d-flex align-items-center justify-content-around">
-            <Windows className="w-50 vh-25" />
+            <h6 className="font-mont">
+              Learn more about our amazing features here
+            </h6>
           </div>
         </div>
-        <div className="row pb-5 pt-0 mt-0">
+        <div className="row pb-5 pt-5 mt-0">
           <div className="col pb-3 d-flex justify-content-center align-items-center">
             <div className="flip-card">
               <div className="flip-card-inner">
-                <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Enhance my learning</h4>
+                <div className="flip-card-front text-white bg-black2 font-plex d-flex align-items-center justify-content-center">
+                  <h4>Enhance your learning</h4>
                 </div>
-                <div className="flip-card-back bg-black2 border p-3 font-plex d-flex flex-column align-items-center justify-content-center">
+                <div className="flip-card-back bg-black2  border border-black p-3 font-plex d-flex flex-column align-items-center justify-content-center">
                   With our custom made learning cards you can easily practice
                   for your next interview or freshen up your coding knowledge.
                 </div>
@@ -37,10 +38,10 @@ function CardsPage() {
           <div className="col pb-3 d-flex justify-content-center align-items-center">
             <div className="flip-card">
               <div className="flip-card-inner">
-                <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Master Coding Job Interviews</h4>
+                <div className="flip-card-front text-white bg-black2 font-plex d-flex align-items-center justify-content-center">
+                  <h4>Master coding job interviews</h4>
                 </div>
-                <div className="flip-card-back bg-purple font-plex d-flex flex-column align-items-center justify-content-center">
+                <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
                   Browse through interview questions other users have posted and
                   let others know what you have been asked.
                 </div>
@@ -50,11 +51,12 @@ function CardsPage() {
           <div className="col pb-3 d-flex justify-content-center align-items-center">
             <div className="flip-card">
               <div className="flip-card-inner">
-                <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Network with Other Graduates</h4>
+                <div className="flip-card-front text-white bg-black2 font-plex d-flex align-items-center justify-content-center">
+                  <h4>Network with other graduates</h4>
                 </div>
-                <div className="flip-card-back bg-purple font-plex d-flex flex-column align-items-center justify-content-center">
-                  Connect with fellow coders and chat with them in real-time.
+                <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
+                  See what others have posted and create your own feed with news
+                  and articles.
                 </div>
               </div>
             </div>
@@ -62,11 +64,12 @@ function CardsPage() {
           <div className="col pb-3 d-flex justify-content-center align-items-center">
             <div className="flip-card">
               <div className="flip-card-inner">
-                <div className="flip-card-front bg-purple font-plex d-flex align-items-center justify-content-center">
-                  <h4>Explore Job Offers</h4>
+                <div className="flip-card-front text-white bg-black2 font-plex d-flex align-items-center justify-content-center">
+                  <h4>Explore job offers</h4>
                 </div>
-                <div className="flip-card-back bg-purple font-plex d-flex flex-column align-items-center justify-content-center">
-                  An integrated job board let's you discover job opportunities.
+                <div className="flip-card-back bg-black2 border border-purple p-3 font-plex d-flex flex-column align-items-center justify-content-center">
+                  An integrated job board lets you discover the latest job
+                  opportunities.
                 </div>
               </div>
             </div>

@@ -1,22 +1,20 @@
 import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthProvider.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-
-export default function Avatar() {
-
-  const {  isLoading, user } = useContext(AuthContext);
-
+export default function Avatar({ user }) {
   return (
-    <div >
+    <div>
       <img
         src={user.profilePicture}
-        className="rounded-circle shadow-4"
-        style={{width: "3rem", height:"auto",aspectRatio:"1/1", objectFit: "cover" }}
+        className="rounded-circle shadow-4 border border-1 border-white"
+        style={{
+          width: "3rem",
+          height: "auto",
+          aspectRatio: "1/1",
+          objectFit: "cover",
+        }}
         alt={user.username}
       />
-     
     </div>
   );
 }
-

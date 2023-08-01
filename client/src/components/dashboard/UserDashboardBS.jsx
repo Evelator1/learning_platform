@@ -17,36 +17,51 @@ export default function UserDashboardBS() {
 
   return (
     <>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      <Tab.Container
+        id="left-tabs-example"
+        defaultActiveKey="first"
+        style={{ backgroundColor: cols.black }}
+      >
         <Row
           style={{
+            position: "relative",
+            top: "4.5rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             width: "100vw",
-            paddingTop:"3rem",
-            // backgroundColor:cols.yellow
+
+            backgroundColor: cols.black,
           }}
         >
-          <Col xs={2} style={{ height: "100vh", zIndex: 1 }}>
+          <Col
+            xs={2}
+            style={{
+              height: "100vh",
+              zIndex: 200,
+              backgroundColor: cols.black,
+            }}
+          >
             <Nav
               className="flex-column"
               style={{
-                flexDirection:"column",
-                height:"100vh",
-                backgroundColor: cols.black,
+                flexDirection: "column",
+                height: "100vh",
+                backgroundColor: cols.lightBlack,
                 position: "fixed",
-                top: "0",
-                padding: "5rem 2rem 2rem 2rem ",
-                display: " flex",
+                top: 0,
+                padding: "5rem 1rem 5rem 1rem ",
+                display: "flex",
                 justifyContent: "space-between",
-                overflow:"scroll"
               }}
             >
-              <div>
+              <div className="d-flex-column align-items-center">
                 {userMenuOptions.map((option) => {
                   return (
-                    <Nav.Item key={option.name} className="d-flex-column pt-4">
+                    <Nav.Item
+                      key={option.name}
+                      className="d-flex-column justify-content-center h-25 pb-3"
+                    >
                       <NavLink
                         to={`${option.linkTo}`}
                         className="d-flex"
@@ -57,58 +72,16 @@ export default function UserDashboardBS() {
                         }}
                       >
                         <option.iconOutlined style={{ fontSize: "1.6rem" }} />
-                        <span className="d-none d-xl-block">
-                          {" "}
-                          {option.name}
-                        </span>
+                        <span className="d-none d-xl-block">{option.name}</span>
                       </NavLink>
                     </Nav.Item>
                   );
                 })}
               </div>
-
-              {/* USER PROFILE SETTINGS ___------______-------__________------____ */}
-
-              <Nav.Item
-                className="d-flex-column pt-3"
-                style={{
-                  width: { sm: "4rem", md: "13rem", alignItems: "end" },
-                }}
-              >
-                <NavLink
-                  to={`../${user.username}`}
-                  className="d-flex fs-4"
-                  style={{ color: cols.white, textDecoration: "none" }}
-                >
-                  <Avatar />
-                  <span className="d-none d-xl-block">  {user.username}</span>
-
-                 
-                </NavLink>
-
-                <NavLink
-                  to={`settings/account`}
-                  className="d-flex  fs-4"
-                  style={{ color: cols.white, textDecoration: "none" }}
-                >
-                  <SettingsIcon />
-                  <span className="d-none d-xl-block"> settings</span>
-                </NavLink>
-
-                <NavLink
-                  to={"/logout"}
-                  className="d-flex  fs-4"
-                  style={{ color: cols.white, textDecoration: "none" }}
-                >
-                  <i className="fa fa-sign-out" aria-hidden="true"></i>
-                  <LogoutIcon />
-                  <span className="d-none d-xl-block"> Logout</span>
-                </NavLink>
-              </Nav.Item>
             </Nav>
           </Col>
 
-          <Col xs={10} style={{paddingLeft:"70px"}}>
+          <Col xs={10} style={{ backgroundColor: cols.black }}>
             {/* <div>something</div> */}
             <Tab.Content>
               <Outlet />

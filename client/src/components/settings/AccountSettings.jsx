@@ -3,7 +3,6 @@ import StandardButton from "../StandardButton";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { cols } from "../../colorSchema";
-import { axiosClient } from "../../axiosClient";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 

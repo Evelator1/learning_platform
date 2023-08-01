@@ -7,6 +7,8 @@ html {
   margin: 0 !important;
   padding: 0 !important;
   width: 100vw;
+
+  background-color: #181d25;
 }
 
 .bg-blue {
@@ -39,6 +41,11 @@ html {
 
 .font-mont {
   font-family: Montserrat !important;
+}
+
+.border-purple {
+  border-color: #d2bbee !important;
+  border-width: 2px solid !important;
 }
 
 .circle {
@@ -88,7 +95,7 @@ html {
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1.5s;
   transform-style: preserve-3d;
 }
 
@@ -118,4 +125,29 @@ html {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+}
+
+@media screen and (min-width: 568px) {
+  .cards-wrapper {
+    display: flex;
+  }
+
+  .card {
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .card:not(:first-child) {
+    display: none;
+  }
+
+  .welcome-text {
+    font-size: 1em;
+    padding: 0 20px 0 20px;
+  }
+
+  .card-section-h2 {
+    font-size: 1.5em;
+  }
 }

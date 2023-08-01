@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/AuthProvider.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCogs, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "react-bootstrap/Dropdown";
+import { cols } from "../../colorSchema";
 
 function CreateInterviewQuestion({ onAddQuestion }) {
   const { user } = useContext(AuthContext);
@@ -38,14 +39,32 @@ function CreateInterviewQuestion({ onAddQuestion }) {
     }
   };
 
+
   return (
-    <Form className="form" onSubmit={handleSubmit}>
+    <Form
+      className="form "
+      onSubmit={handleSubmit}
+      style={{
+        width: "55%",
+        height: "auto",
+        position: "relative",
+        overflow: "scroll",
+        padding: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+        backgroundColor: cols.lila,
+        border: `2px solid ${cols.gray}`,
+        borderRadius: "0.5rem",
+        boxShadow: `10px 10px 5px  ${cols.gray}`,
+      }}
+    >
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label className="h1">Interview Questions</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
-          placeholder="Share with us your Interview Question"
+          placeholder="Share Job Interview Question with the community"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required

@@ -10,7 +10,7 @@ import { faImage, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 
-export default function CreatePostMask() {
+export default function CreatePostMask( {posts, setPosts}) {
   const { user } = useContext(AuthContext);
   const [imgUpload, setImgUpload] = useState(false);
 
@@ -34,16 +34,18 @@ export default function CreatePostMask() {
     axiosClient
       .post("http://localhost:3010/post/newPost", formData)
       .then((response) => {
-        console.log(response);
+        console.log(response.data, posts);
+
+        setPosts([ {...response.data, author:user}, ...posts ])
       })
       .catch((err) => {
         console.error(err);
       });
     reset();
+    
   };
   return (
     <div
-      style={{ width: "80%" }}
       className="d-flex justify-content-center align-items-center"
     >
       <div
@@ -53,10 +55,12 @@ export default function CreatePostMask() {
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
+          boxShadow: `10px 10px 5px  ${cols.gray}`,
+
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-center">Share with the Community</h3>
+          <h1 className="text-center">Share with the Community</h1>
 
           <Form.Group controlId="content" >
             <Form.Control

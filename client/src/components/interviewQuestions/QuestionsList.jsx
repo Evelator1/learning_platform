@@ -17,7 +17,7 @@ import AnswerList from "./AnswerList";
 import QuestionModal from "./AnswerModal";
 import DateFormatter from "./DateFormatter";
 import Dropdown from "react-bootstrap/Dropdown";
-
+import { cols } from "../../colorSchema";
 function QuestionsList({ data, loading, setData }) {
   const { user } = useContext(AuthContext);
 

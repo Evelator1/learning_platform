@@ -14,38 +14,25 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { axiosClient } from "../../axiosClient";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
-
+import { cols } from "../../colorSchema";
 import "./PostsList.css";
 import CommentsModal from "./CommentsModal";
 // import PostCommentsList from "./CommentsList";
 
-function PostsList() {
+function PostsList({ posts, setPosts }) {
   const { user } = useContext(AuthContext);
-  const [data, setData] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axiosClient.get("http://localhost:3010/post");
-        setData(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
   const handleLikeClick = (postId) => {
-    setData((prevData) =>
+    setPosts((prevData) =>
       prevData.map((post) =>
         post._id === postId ? { ...post, likeChecked: !post.likeChecked } : post
       )
     );
   };
   const handleCommentClick = (postId) => {
-    setData((prevData) =>
+    setPosts((prevData) =>
       prevData.map((post) =>
         post._id === postId
           ? { ...post, commentChecked: !post.commentChecked }
@@ -54,7 +41,7 @@ function PostsList() {
     );
   };
   const handleSaveClick = (postId) => {
-    setData((prevData) =>
+    setPosts((prevData) =>
       prevData.map((post) =>
         post._id === postId ? { ...post, saveChecked: !post.saveChecked } : post
       )
@@ -94,9 +81,13 @@ function PostsList() {
   };
 
   return (
-    <div className="postList">
-      {data.map((post) => (
-        <Container key={post._id} className="postCard">
+    <div>
+      {posts.map((post) => (
+        <Container
+          key={post._id}
+          className="postCard"
+          style={{ boxShadow: `10px 10px 5px  ${cols.gray}` }}
+        >
           <Row className="postHeader">
             <Col xs={2}>
               {post.author.profilePicture && (
@@ -117,7 +108,9 @@ function PostsList() {
           <Row>
             <blockquote className="blockquote mb-0">
               <p>{post.content}</p>
-             { post.image&&  <Image src={post.image} className="postImage"></Image>}
+              {post.image && (
+                <Image src={post.image} className="postImage"></Image>
+              )}
             </blockquote>
           </Row>
           <Row className="likes_Comments_Counter">
