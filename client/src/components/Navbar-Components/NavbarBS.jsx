@@ -77,7 +77,7 @@ export default function NavbarBS() {
                 to={`settings/account`}
                 className="d-flex pe-5"
                 style={{
-                  color: cols.white,
+                  color: cols.black,
                   textDecoration: "none",
                   fontSize: "1rem",
                   width: "5.8rem",
@@ -93,7 +93,7 @@ export default function NavbarBS() {
                 onClick={logout}
                 className="d-flex"
                 style={{
-                  color: cols.white,
+                  color: cols.black,
                   textDecoration: "none",
                   fontSize: "1rem",
                   width: "5rem",

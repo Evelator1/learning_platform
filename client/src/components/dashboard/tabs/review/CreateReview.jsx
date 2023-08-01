@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Form, Button, Container,Row } from "react-bootstrap";
+import { Form, Button, Container, Row } from "react-bootstrap";
 import { cols } from "../../../../colorSchema";
 import { axiosClient } from "../../../../axiosClient";
 
@@ -28,11 +28,9 @@ export default function CreateReviewMask() {
     formData.append("content", data.content);
     formData.append("postCategory", "review");
 
-
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]);
     }
-
 
     axiosClient
       .post("http://localhost:3010/reviews/newReview", formData)
@@ -45,24 +43,23 @@ export default function CreateReviewMask() {
     reset();
   };
 
-
-
-
   return (
     <Container
-    style={{
-      width: "100%", // Default width for small screens
-      "@media (minWidth: 768px)": { // Medium screens (sm)
-        width: "80%",
-      },
-      "@media (minWidth: 992px)": { // Large screens (md)
-        width: "60%",
-      },
-      "@media (minWidth: 1200px)": { // Extra-large screens (lg)
-        width: "30%",
-      },
-    }}
-
+      style={{
+        width: "100%", // Default width for small screens
+        "@media (minWidth: 768px)": {
+          // Medium screens (sm)
+          width: "80%",
+        },
+        "@media (minWidth: 992px)": {
+          // Large screens (md)
+          width: "60%",
+        },
+        "@media (minWidth: 1200px)": {
+          // Extra-large screens (lg)
+          width: "30%",
+        },
+      }}
       className="d-flex justify-content-center "
     >
       <Row
@@ -72,15 +69,14 @@ export default function CreateReviewMask() {
           color: cols.black,
           border: `2px solid ${cols.gray}`,
           boxShadow: `10px 10px 5px  ${cols.black}`,
-
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-center">How was your experience?</h3>
+          <h3 className="text-center">How was your bootcamp?</h3>
 
           <Form.Group controlId="content">
             <Form.Control
-            className="my-1"
+              className="my-1"
               type="post"
               placeholder="Title"
               {...register("title", {
@@ -89,9 +85,9 @@ export default function CreateReviewMask() {
               rows={4}
             />
             <Form.Control
-            as="textarea"
+              as="textarea"
               type="post"
-              placeholder="Share your Review with the community"
+              placeholder="Share your review about a coding bootcamp or a job with the community"
               {...register("content", {
                 required: "empty Posts are not allowed",
               })}
@@ -106,8 +102,8 @@ export default function CreateReviewMask() {
           >
             <Button
               style={{
-                backgroundColor: cols.yellow,
-                color: cols.black,
+                backgroundColor: cols.black,
+                color: cols.white,
                 border: "none",
               }}
             >
@@ -125,7 +121,7 @@ export default function CreateReviewMask() {
                 <FontAwesomeIcon
                   icon={faImage}
                   onClick={() => setImgUpload(true)}
-                  fontSize={"2rem"}
+                  fontSize={"1.5rem"}
                 />
               )}
             </Button>
@@ -133,11 +129,11 @@ export default function CreateReviewMask() {
             <Button
               type="submit"
               style={{
-                backgroundColor: cols.yellow,
-                color: cols.black,
+                backgroundColor: cols.black,
+                color: cols.white,
                 border: "none",
-                fontSize:"2rem",
-                margin:"0 0rem 0 1rem"
+                fontSize: "1.5rem",
+                margin: "0 0rem 0 1rem",
               }}
             >
               <FontAwesomeIcon icon={faPaperPlane} />

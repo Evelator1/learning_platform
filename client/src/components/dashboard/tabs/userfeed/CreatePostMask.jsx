@@ -42,9 +42,7 @@ export default function CreatePostMask() {
     reset();
   };
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-    >
+    <div className="d-flex justify-content-center align-items-center">
       <div
         className="container-fluid  p-5 rounded my-5"
         style={{
@@ -57,9 +55,9 @@ export default function CreatePostMask() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-center">Share with the Community</h3>
 
-          <Form.Group controlId="content" >
+          <Form.Group controlId="content">
             <Form.Control
-            size="lg"
+              size="lg"
               type="post"
               placeholder="Post Something"
               {...register("content", {
@@ -75,8 +73,8 @@ export default function CreatePostMask() {
           >
             <Button
               style={{
-                backgroundColor: cols.yellow,
-                color: cols.black,
+                backgroundColor: cols.black,
+                color: cols.white,
                 border: "none",
               }}
             >
@@ -87,14 +85,14 @@ export default function CreatePostMask() {
                     id="image"
                     accept="image/*"
                     {...register("image", { required: true })}
-                    className="w-100  rounded-md   "
+                    className="w-100 rounded-md"
                   />
                 </>
               ) : (
                 <FontAwesomeIcon
                   icon={faImage}
                   onClick={() => setImgUpload(true)}
-                  fontSize={"2rem"}
+                  fontSize={"1.5rem"}
                 />
               )}
             </Button>
@@ -102,11 +100,11 @@ export default function CreatePostMask() {
             <Button
               type="submit"
               style={{
-                backgroundColor: cols.yellow,
-                color: cols.black,
+                backgroundColor: cols.black,
+                color: cols.white,
                 border: "none",
-                fontSize:"2rem",
-                margin:"0 0rem 0 1rem"
+                fontSize: "1.5rem",
+                margin: "0 0rem 0 1rem",
               }}
             >
               <FontAwesomeIcon icon={faPaperPlane} />

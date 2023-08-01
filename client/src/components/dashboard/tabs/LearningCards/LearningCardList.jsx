@@ -52,10 +52,11 @@ export default function LearningCardList() {
   return (
     <div className="container-fluid">
       <div className="row d-flex flex-column">
-        <div className="col mt-5 d-flex align-items-center justify-content-center">
+        <div className="col mb-4 d-flex align-items-center justify-content-center">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
+            className="p-2 border rounded"
           >
             <option value="">Filter by category</option>
             <option value="Technical question">Technical Question</option>
