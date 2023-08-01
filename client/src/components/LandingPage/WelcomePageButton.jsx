@@ -6,7 +6,7 @@ function WelcomePageButton({ content, color, textColor, linkTo }) {
     <>
       <style type="text/css">
         {`.btn-flat {
-          font-family:" IBM Plex Mono" , monospace;
+          font-family:"Montserrat" , monospace;
             background-color: ${color}; 
             color: ${textColor}; 
             border-color: ${color}
