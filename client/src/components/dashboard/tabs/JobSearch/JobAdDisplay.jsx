@@ -18,7 +18,7 @@ export default function JobAdDisplay() {
   const [filtered, setFiltered] = useState([]); // filterd Jobs
   const [show, setShow] = useState(false); //show results offcanvas
   const [showFilters, setShowFilters] = useState(false); //show
-
+// filters:
   const [publishedFilter, setPublishedFilter] = useState("");
   const [cityFilter, setCityFilter] = useState("");
   const [experienceFilter, setExperienceFilter] = useState("");
@@ -26,18 +26,20 @@ export default function JobAdDisplay() {
   const [levelOfExperienceFilter, setLevelOfExperienceFilter] = useState("");
   const [requiredEducationFilter, setRequiredEducationFilter] = useState("");
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3010/jobs/jobs")
-      .then((response) => {
-        console.log("response: ", response);
-        setJobs(response.data);
-        setFiltered(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+// this function will be 
+  //
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3010/jobs/jobs")
+  //     .then((response) => {
+  //       console.log("response: ", response);
+  //       setJobs(response.data);
+  //       setFiltered(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   useEffect(() => {
     handleFilterChange();
@@ -81,9 +83,37 @@ export default function JobAdDisplay() {
     setFiltered(filteredJobs);
   };
 
+
+  const fetchJobs = async (data) => {
+    const options = {
+      method: "GET",
+      url: "https://jsearch.p.rapidapi.com/search",
+      params: {
+        query: data.JobSearchQuery,
+        page: "",
+        num_pages: "10",
+      },
+      headers: {
+        "X-RapidAPI-Key": "ecb3b37079msh225eb66a9ebe28ap1d6e60jsn78c8d3b347f3",
+        "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setJobs(response.data.data);
+      setFiltered(response.data.data);
+      console.log(response.data.data, "is the result of the query");
+      setSearchStatus("completed");
+    } catch (error) {
+      console.error(error);
+      setSearchStatus("completed");
+    }
+  };
+
   function onSubmit(data) {
-    // setSearchStatus("searching");
-    // fetchJobs(data);
+    setSearchStatus("searching");
+    fetchJobs(data);
     console.log("you are  searching for: ", data.JobSearchQuery);
     reset();
   }
@@ -118,7 +148,7 @@ export default function JobAdDisplay() {
                     type="post"
                     placeholder="example: Web Developer in Berlin"
                     {...register("JobSearchQuery", {
-                      required: "empty Posts are not allowed",
+                      required: "empty requests are not allowed",
                     })}
                     style={{ zIndex: "1" }}
                   />

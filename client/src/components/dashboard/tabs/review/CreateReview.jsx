@@ -44,37 +44,17 @@ export default function CreateReviewMask() {
   };
 
   return (
-    <Container
-
-    style={{
-      width: "100%", // Default width for small screens
-      "@media (minWidth: 768px)": { // Medium screens (sm)
-        width: "80%",
-      },
-      "@media (minWidth: 992px)": { // Large screens (md)
-        width: "60%",
-      },
-      "@media (minWidth: 1200px)": { // Extra-large screens (lg)
-        width: "30%",
-      },
-    }}
-
-      className="d-flex justify-content-center"
-
-    >
+    <Container className="d-flex justify-content-center align-items-center">
       <Row
-        className="container-fluid justify-content-center px-2 py-3 rounded my-5 col-xs-12 col-lg-11  "
+        className="container-fluid justify-content-center py-3 rounded my-5 col-xs-12 col-lg-11  "
         style={{
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
-
-
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-center">How was your experience?</h1>
-
 
           <Form.Group controlId="content">
             <Form.Control

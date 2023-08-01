@@ -5,18 +5,13 @@ export default function JobSearchResultsOffCanvas({
   setShow,
   handleJobSelect,
   jobs,
-  filtered
+  filtered,
 }) {
-  jobs && console.log("job Results: ",filtered);
+  jobs && console.log("job Results: ", filtered, jobs);
   const handleClose = () => setShow(!show);
 
   return (
-    <Offcanvas
-      show={show}
-      onHide={handleClose}
-      placement="end"
-      backdrop={true}
-    >
+    <Offcanvas show={show} onHide={handleClose} placement="end" backdrop={true}>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Results:</Offcanvas.Title>
       </Offcanvas.Header>

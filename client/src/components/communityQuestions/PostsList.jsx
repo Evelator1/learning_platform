@@ -86,7 +86,6 @@ function PostsList({ posts, setPosts }) {
         <Container
           key={post._id}
           className="postCard"
-          style={{ boxShadow: `10px 10px 5px  ${cols.gray}` }}
         >
           <Row className="postHeader">
             <Col xs={2}>
