@@ -6,6 +6,9 @@ import "../../App.css";
 import WelcomePageButton from "./WelcomePageButton";
 
 import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
+import { ReactComponent as Undraw3 } from "../../assets/pics/undraw3.svg";
+import { ReactComponent as Wave } from "../../assets/background-pics/wave3.svg";
+
 import { cols } from "../../colorSchema";
 
 import { useContext } from "react";
@@ -16,35 +19,39 @@ function WelcomePage() {
 
   return (
     <>
-      <div className="container-fluid h-100 p-0 m-0 bg-black2">
-        <div className="row m-0 p-0">
-          <div className="col-12 m-0 d-flex flex-column align-items-center justify-content-center pt-5 pb-3">
-            <h1 className="text-white text-center font-mont fw-bold display-1">
+      <div className="container-fluid h-100 pt-5 me-0 bg-black2 mt-5 pe-0">
+        <div className="row d-flex flex-row align-items-center justify-content-center text-center mt-5 ">
+          <div className="col-lg-7 text-white font-mont  d-flex flex-column justify-content-start align-items-center gap-3">
+            <h1 className="text-white font-mont fw-bold display-5 mb-3">
               Welcome to CodeRoad
             </h1>
-          </div>
-        </div>
-        <div className="row d-flex flex-row align-items-center justify-content-center text-center ps-md-5">
-          <div className="col-10 col-lg-7 text-white text-center font-mont ps-md-5">
-            <h4 className="fw-light lh-base welcome-text ps-md-5 p-0">
+            <p className="fw-light lh-base welcome-text w-75">
               We are a platform for connecting with other coding bootcamp
               graduates, preparing for interviews and practicing what you have
               learned. <br></br>Join our community of likeminded coders who are
               embarking on this exciting journey into the tech world!
-            </h4>
+            </p>
+            <div className="d-flex gap-3">
+              <WelcomePageButton
+                content={"Discover"}
+                color={cols.lila}
+                linkTo={"/"}
+                border-color={cols.lila}
+              />
+              <WelcomePageButton
+                content={"Sign up"}
+                color={cols.lila}
+                linkTo={"/signup"}
+                border-color={cols.lila}
+              />
+            </div>
           </div>
 
-          <div className="col-lg-5 h-50 d-flex flex-column align-items-center justify-content-center text-center pt-5 pe-5 ps-5 ps-md-0">
-            <Undraw1 style={{ width: "80%", height: "50%" }} />
+          <div className="col-lg-5 h-50 p-0 m-0 overlow-hidden d-flex flex-column align-items-center justify-content-center text-center">
+            <Undraw3 style={{ width: "70%" }} />
           </div>
-        </div>
-        <div className="row">
-          <div className="col text-center d-flex align-items-center justify-content-center p-5">
-            <WelcomePageButton
-              content={"Discover more"}
-              color={cols.lila}
-              linkTo={"/signup"}
-            />
+          <div className="row p-0 m-0">
+            <Wave style={{ width: "100%", padding: "0" }} />
           </div>
         </div>
       </div>

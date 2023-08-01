@@ -6,8 +6,7 @@ import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./learningCards.css";
-// import CategoryDropdown from "./CategoryDropdown";
-// import GroupDropdown from "./GroupDropdown";
+import { cols } from "../../../../colorSchema";
 
 export default function NewLearningCard() {
   const [question, setQuestion] = useState("");
@@ -46,7 +45,9 @@ export default function NewLearningCard() {
     <>
       <Form className="form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label className="h5">Set the question for the card</Form.Label>
+          <Form.Label className="h5 text-white">
+            Set the question for the card
+          </Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -58,7 +59,7 @@ export default function NewLearningCard() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label className="h5">Set the answer</Form.Label>
+          <Form.Label className="h5 text-white">Set the answer</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -68,21 +69,33 @@ export default function NewLearningCard() {
             required
           />
         </Form.Group>
+        <div className="row">
+          <div className="col-12">
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="">Select Category</option>
+              <option value="Technical question">Technical Question</option>
+              <option value="Non-technical question">
+                Non-technical Question
+              </option>
+            </select>
 
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="">Select Category</option>
-          <option value="Technical question">Technical Question</option>
-          <option value="Non-technical question">Non-technical Question</option>
-        </select>
+            <select value={group} onChange={(e) => setGroup(e.target.value)}>
+              <option value="">Select level of difficulty</option>
+              <option value="Easy">Easy</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+        </div>
 
-        <select value={group} onChange={(e) => setGroup(e.target.value)}>
-          <option value="">Select level of difficulty</option>
-          <option value="Easy">Easy</option>
-          <option value="Moderate">Moderate</option>
-          <option value="Hard">Hard</option>
-        </select>
-
-        <Button variant="primary" type="submit">
+        <Button
+          type="submit"
+          className="mt-3"
+          style={{ backgroundColor: cols.lila }}
+        >
           Submit
         </Button>
       </Form>
