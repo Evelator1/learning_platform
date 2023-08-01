@@ -10,7 +10,7 @@ import { faImage, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 
-export default function CreatePostMask() {
+export default function CreatePostMask( {posts, setPosts}) {
   const { user } = useContext(AuthContext);
   const [imgUpload, setImgUpload] = useState(false);
 
@@ -34,12 +34,15 @@ export default function CreatePostMask() {
     axiosClient
       .post("http://localhost:3010/post/newPost", formData)
       .then((response) => {
-        console.log(response);
+        console.log(response.data, posts);
+
+        setPosts([ {...response.data, author:user}, ...posts ])
       })
       .catch((err) => {
         console.error(err);
       });
     reset();
+    
   };
   return (
     <div

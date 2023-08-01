@@ -4,6 +4,6 @@ import InterviewQuestionsDashboard from "../../interviewQuestions/InterviewQuest
 
 export default function InterviewQuestionsTab() {
   return (
-<InterviewQuestionsDashboard/>
+<InterviewQuestionsDashboard />
   )
 }

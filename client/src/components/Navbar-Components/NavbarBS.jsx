@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { useParams, NavLink, Link, Navigate, Outlet } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+
 import Navbar from "react-bootstrap/Navbar";
 import ProfileInfoOffcanvas from "../settings/ProfileInfoOffcanvas";
 import Avatar from "./Avatar";
@@ -65,7 +66,7 @@ export default function NavbarBS() {
           {user && (
             <div className="d-flex flex-row align-items-center">
               <NavLink
-                to={`settings/account`}
+                to={`${user.username}/settings`}
                 className="d-flex pe-5"
                 style={{
                   color: cols.white,
@@ -108,7 +109,9 @@ export default function NavbarBS() {
                     {user.username}
                   </span>
                 </NavLink>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               </Nav.Item>
+
             </div>
           )}
         </Container>
