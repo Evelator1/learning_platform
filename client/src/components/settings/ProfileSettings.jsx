@@ -15,7 +15,7 @@ export default function ProfileSettings() {
   const [userSettings, setUserSettings] = useState();
   useEffect(() => {
     axiosClient
-      .get(`http://localhost:3010/auth/profile`) //auth route
+      .get(`http://localhost:3010/api/auth/profile`) //auth route
       .then((response) => {
         const {
           userWishWelcome,

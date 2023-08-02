@@ -1,7 +1,7 @@
 import axios from "axios";
 export default function Footer() {
   function logout(){axios
-    .post("http://localhost:3010/auth/logout")
+    .post("http://localhost:3010/api/auth/logout")
     .then((response) => {
    //   console.log(response, "logout");
     })
