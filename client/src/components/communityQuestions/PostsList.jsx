@@ -81,12 +81,9 @@ function PostsList({ posts, setPosts }) {
   };
 
   return (
-    <div style={{width:"85%", marginLeft:"-2rem"}}>
+    <div style={{ width: "85%", marginLeft: "-2rem" }}>
       {posts.map((post) => (
-        <Container
-          key={post._id}
-          className="postCard"
-        >
+        <Container key={post._id} className="postCard">
           <Row className="postHeader">
             <Col xs={11}>
               {post.author.profilePicture && (
@@ -100,14 +97,13 @@ function PostsList({ posts, setPosts }) {
               {post.author.username}
             </Col>
             <Col xs={1}>
-              
               <Row className="postTime">{getFormattedDate(post.createdAt)}</Row>
             </Col>
             <Col xs={6}></Col>
           </Row>
           <Row>
-            <blockquote className="blockquote mb-0">
-              <p>{post.content}</p>
+            <blockquote className="blockquote mb-0 px-3">
+              <p className="mt-3">{post.content}</p>
               {post.image && (
                 <Image src={post.image} className="postImage"></Image>
               )}
@@ -158,7 +154,6 @@ function PostsList({ posts, setPosts }) {
                 className={`commentButton ${
                   post.commentChecked ? "commentChecked" : ""
                 }`}
-                
                 href="/comments"
                 onClick={(event) => handleAllCommentsClick(post, event)}
               >

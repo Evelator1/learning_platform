@@ -42,10 +42,12 @@ function QuestionsList({ data, loading, setData }) {
     try {
       const userId = user._id;
 
-      await axiosClient.patch(
-        `http://localhost:3010/interviewQuestions/${questionId}/vote`,
-        { voteType, userId }
-      );
+
+      await axiosClient.patch(`/interviewQuestions/${questionId}/vote`, {
+        voteType,
+        userId,
+      });
+
       // Create a new array with updated votes
       const updatedData = data.map((question) =>
         question._id === questionId
@@ -137,7 +139,7 @@ function QuestionsList({ data, loading, setData }) {
     >
       <Dropdown className="filterDropDown" required>
         <Dropdown.Toggle variant="dark" id="dropDownType">
-          filter by
+          Filter by
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => handleFilterQuestions("all")}>
@@ -271,7 +273,7 @@ function QuestionsList({ data, loading, setData }) {
                   </Row>
                 </Col>
                 <Col>
-                  <h6 className="questionText">{question.content}</h6>
+                  <h5 className="questionText">{question.content}</h5>
                 </Col>
               </Row>
               <Row className="questionFooter">

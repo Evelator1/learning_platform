@@ -114,7 +114,7 @@ export default function JobAdDisplay() {
 
   function onSubmit(data) {
     setSearchStatus("searching");
-    // fetchJobs(data);
+    fetchJobs(data);
     setSearchQuery(data);
     console.log("you are  searching for: ", data.JobSearchQuery);
     reset();
@@ -165,7 +165,8 @@ export default function JobAdDisplay() {
                 </InputGroup>
               </Form>
               {searchStatus === "searching" && <p>Searching...</p>}
-              {searchQuery !== "" && <p>{{searchQuery}}</p> }
+              
+              {/* {searchQuery !== "" && <p>{searchQuery}</p> } */}
             </Col>
           </Row>
 
@@ -202,7 +203,7 @@ export default function JobAdDisplay() {
             <Col className="col-12 my-2">
               {filtered.length>0 && (
                 <Button variant="primary" onClick={handleShow}>
-                  {`Show ${filtered.length}Results`}
+                  {`Show  ${filtered.length}  Results`}
                 </Button>
               )}
             </Col>

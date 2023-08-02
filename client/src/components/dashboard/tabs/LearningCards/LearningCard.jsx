@@ -6,20 +6,18 @@ import "./learningCards.css";
 import { OverlayTrigger } from "react-bootstrap";
 import { Tooltip } from "react-bootstrap";
 
+import {axiosClient} from "../../../../axiosClient";
+
 export default function LearningCard({
   learningCard,
   onNextCard,
   onPreviousCard,
   currentIndex,
-  length,}) {
+  length,
+}) {
   const [flip, setFlip] = useState(false);
 
-
-  const tooltip = (
-    <Tooltip id="tooltip">
-      Click to Flip the Card
-    </Tooltip>
-  );
+  const tooltip = <Tooltip id="tooltip">Click to Flip the Card</Tooltip>;
 
   const handleCardClick = () => {
     setFlip(!flip);
@@ -41,27 +39,45 @@ export default function LearningCard({
     navigate(path);
   };
 
+  const handleDelete = () => {
+    axiosClient
+      .delete(`http://localhost:3010/api/learningcards/${learningCard._id}`)
+      .then((response) => {
+        console.log(response.data, "card was deleted");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center text-center">
       <div className="row d-flex justify-content-center align-items-center">
-      <OverlayTrigger  overlay={tooltip}    delayShow={100} delayHide={1350} style={{position:"fixed", top:"4rem"}}>
-        <div
-          className={`card ${
-            flip ? "flip" : ""
-          } col-12 bg-black2 border border-white border-2`}
-          onClick={handleCardClick}
+        <OverlayTrigger
+          overlay={tooltip}
+          delayShow={100}
+          delayHide={1350}
+          style={{ position: "fixed", top: "4rem" }}
         >
-          <div className="front text-white fs-6 px-4">
-            <p className="fs-6 fw-bold">
-              {currentIndex + 1}/{length}
-            </p>
-            <p className="text-wrap fs-5">{learningCard.question}</p>
-            <hr className="mt-1 me-5 ms-5" />
-            <p className="fs-6"> {learningCard.category}</p>
-            <p className="fs-6">{learningCard.group}</p>
+          <div
+            className={`card ${
+              flip ? "flip" : ""
+            } col-12 bg-black2 border border-white border-2`}
+            onClick={handleCardClick}
+          >
+            <div className="front text-white fs-6 px-4">
+              <p className="fs-6 fw-bold">
+                {currentIndex + 1}/{length}
+              </p>
+              <p className="text-wrap fs-5">{learningCard.question}</p>
+              <hr className="mt-1 me-5 ms-5" />
+              <p className="fs-6"> {learningCard.category}</p>
+              <p className="fs-6">{learningCard.group}</p>
+            </div>
+            <div className="back text-white fs-5 px-4">
+              {learningCard.answer}
+            </div>
           </div>
-          <div className="back text-white fs-5 px-4">{learningCard.answer}</div>
-        </div>
         </OverlayTrigger>
 
         <div className="row">
@@ -85,7 +101,11 @@ export default function LearningCard({
             >
               Create New Card
             </button>
-            <button className="btn btn-light bg-purple border-purple mt-4 ms-3">
+
+            <button
+              onClick={handleDelete}
+              className="btn btn-light bg-purple border-purple mt-4 ms-3"
+            >
               Delete Card
             </button>
           </div>

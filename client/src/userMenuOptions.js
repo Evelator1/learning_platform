@@ -46,13 +46,13 @@ export const userMenuOptions = [
     iconOutlined: DashboardOutlinedIcon,
     display: LearningCardsTab,
   },
-  {
-    id: 4,
-    name: "BC Experience",
-    linkTo: "reviews",
-    iconOutlined: ShareOutlinedIcon,
-    display: ShareReviewsTab,
-  },
+  // {
+  //   id: 4,
+  //   name: "BC Experience",
+  //   linkTo: "reviews",
+  //   iconOutlined: ShareOutlinedIcon,
+  //   display: ShareReviewsTab,
+  // },
   // {
   //   id: 5,
   //   name: "Connect",

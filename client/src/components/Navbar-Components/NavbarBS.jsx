@@ -72,8 +72,21 @@ export default function NavbarBS() {
             </div>
           </Navbar.Brand>
 
+          {!user && (
+            <div className="d-flex flex-row align-items-center mx-5">
+              <div className="d-flex gap-3">
+                <WelcomePageButton
+                  content={"Login"}
+                  color={cols.lila}
+                  linkTo={`/login`}
+                  border-color={cols.lila}
+                />
+              </div>
+            </div>
+          )}
+
           {user && (
-            <div className="d-flex flex-row align-items-center">           
+            <div className="d-flex flex-row align-items-center">
               <div className="d-flex gap-3">
                 <WelcomePageButton
                   content={"Settings"}
@@ -88,6 +101,7 @@ export default function NavbarBS() {
                   border-color={cols.lila}
                 />
               </div>
+
               <Nav.Item
                 className="d-flex align-items-center"
                 style={{

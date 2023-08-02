@@ -5,14 +5,13 @@
   --normal-color: rgb(136, 136, 136);
 }
 
-
-.questionCard{
-    margin: 0;
-    margin-bottom: 35px;
-    padding: 10px 0;
-    border-radius: 10px;
-    width: 100%; 
-    background-color: rgb(255, 255, 255);  
+.questionCard {
+  margin: 0;
+  margin-bottom: 35px;
+  padding: 10px 0 20px 0;
+  border-radius: 10px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
 }
 
 .questionRatingSection {
@@ -21,8 +20,7 @@
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
-
-  padding-top: 5px;
+  padding-top: 2px;
 }
 .questionHeader {
   height: 50px;
@@ -39,7 +37,7 @@
   color: black;
 }
 .votesCounter {
-  margin: 50px 0 50px 0;
+  margin: 30px 0 30px 0;
 
   text-align: center;
 }
@@ -55,99 +53,108 @@
   height: auto;
 }
 
-
-.userPhoto{
-    margin-top: 3px;
-    margin-left: 4.8%;
-    height: 55px;
-    width: 55px;
-    margin-right: 15px;
+.questionText {
+  margin-bottom: 1rem;
 }
 
-.cardHeaderRight{
-    justify-content: center;
-    text-align: center;
-}
-.type{
-    justify-content: start;
-    width: 100%;
+.userPhoto {
+  margin-top: 3px;
+  margin-left: 4.8%;
+  height: 55px;
+  width: 55px;
+  margin-right: 15px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
+.cardHeaderRight {
+  justify-content: center;
+  text-align: center;
+}
+.type {
+  justify-content: start;
+  width: 100%;
+}
 
-.colorIndicator{
-    height:60px;
-    width:60px;
-    border-radius:50%;
-    text-align:center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.colorIndicator {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.questionFooter{
-    height: 50px;
+.questionFooter {
+  height: 50px;
 }
-.showAnswers{
-    
-    height: 40px;
-    border: 0 !important;
-    background-color: #d2bbee;
-    color: black !important;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: larger;
-    width: 250px;
+
+.questionBody {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.showAnswers:hover{
-    background-color:black ;
-    color: #d2bbee !important; 
+.showAnswers {
+  height: 40px;
+  border: 0 !important;
+  background-color: #d2bbee;
+  color: black !important;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: larger;
+  width: 250px;
 }
-.filterDropDown{
-    width: 100% !important;
-    padding: 70px 0 20px 0;
+.showAnswers:hover {
+  background-color: black;
+  color: #d2bbee !important;
 }
-#dropDownType{
-    color: #d2bbee !important;
-    border: 1px solid #d2bbee !important;
+.filterDropDown {
+  width: 100% !important;
+  padding: 70px 0 20px 0;
 }
-.dropdown-menu{
-width: 250px;
+#dropDownType {
+  color: #d2bbee !important;
+  border: 1px solid #d2bbee !important;
+}
+.dropdown-menu {
+  width: 250px;
 }
 .saveQuetionIcon svg {
-    height: 50px ;
-    width: auto ;
-    margin-left: -15px;
+  height: 50px;
+  width: auto;
+  margin-left: -15px;
 }
-.filterQuestionsBtn{
-    background-color: white;
-    border: none;
-    color: black;
-    width: 140px;
-    text-align: start;
-    
+.filterQuestionsBtn {
+  background-color: white;
+  border: none;
+  color: black;
+  width: 140px;
+  text-align: start;
 }
-.filterQuestionsBtn:hover{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+.filterQuestionsBtn:hover {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
-#dropdown-split-basic{
-    background-color: rgb(255, 255, 255);
-    border: none;
-    color: black;
-    width: 50px ;
-    font-size: large;
+#dropdown-split-basic {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  width: 50px;
+  font-size: large;
 }
-#dropdown-split-basic:hover{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+#dropdown-split-basic:hover {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
-.questionListSection{
-    width: 55%;
-    max-width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
+.questionListSection {
+  width: 55%;
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.interviewQuestionSection{
-width: 100%;
+.interviewQuestionSection {
+  width: 100%;
 }
 
 /* @media only screen and (max-width: 576px) {
