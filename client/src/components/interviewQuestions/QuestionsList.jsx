@@ -43,7 +43,7 @@ function QuestionsList({ data, loading, setData }) {
       const userId = user._id;
 
       await axiosClient.patch(
-        `/interviewQuestions/${questionId}/vote`,
+        `http://localhost:3010/interviewQuestions/${questionId}/vote`,
         { voteType, userId }
       );
       // Create a new array with updated votes
@@ -210,7 +210,6 @@ function QuestionsList({ data, loading, setData }) {
         <Row>
           {filteredData.map((question) => (
             <Row key={question._id} className="questionCard">
-              {/* <Col xs={10} className="questionContent"> */}
               <Row className="questionHeader">
                 <Col xs={7}>
                   <Image
@@ -223,7 +222,9 @@ function QuestionsList({ data, loading, setData }) {
 
                 <Col xs={4}>
                   <Row className="cardHeaderRight">
-                  <strong>Created: <DateFormatter dateString={question.createdAt} /></strong>
+                    <strong>
+                      Created: <DateFormatter dateString={question.createdAt} />
+                    </strong>
                   </Row>
                   <Row className="cardHeaderRight">
                     {question.isTechnical === true
@@ -231,9 +232,9 @@ function QuestionsList({ data, loading, setData }) {
                       : "Type: Non-Technical"}
                   </Row>
                   <Row className="cardHeaderRight">
-                    {question.technology !== null && (
-                      <>Technology: {question.technology}</>
-                    )}
+                  {question.technology !== "" && (
+  <>Technology: {question.technology}</>
+)}
                   </Row>
                 </Col>
                 <Col xs={1}>
@@ -252,21 +253,21 @@ function QuestionsList({ data, loading, setData }) {
               <Row className="questionBody">
                 <Col xs={2} className="questionRatingSection">
                   <Row>
-                      <FontAwesomeIcon
-                        icon={faCircleUp}
-                        className="upArrowIcon"
-                        onClick={() => handleVote(question._id, "upvote")}
-                      />
+                    <FontAwesomeIcon
+                      icon={faCircleUp}
+                      className="upArrowIcon"
+                      onClick={() => handleVote(question._id, "upvote")}
+                    />
                   </Row>
                   <Row className="votesCounter">
                     <h6 className="counterText">{question.votes} points</h6>
                   </Row>
                   <Row>
-                      <FontAwesomeIcon
-                        icon={faCircleDown}
-                        className="downArrowIcon"
-                        onClick={() => handleVote(question._id, "downvote")}
-                      />
+                    <FontAwesomeIcon
+                      icon={faCircleDown}
+                      className="downArrowIcon"
+                      onClick={() => handleVote(question._id, "downvote")}
+                    />
                   </Row>
                 </Col>
                 <Col>
@@ -274,16 +275,13 @@ function QuestionsList({ data, loading, setData }) {
                 </Col>
               </Row>
               <Row className="questionFooter">
-                
-                  <Button
-                    className="showAnswers"
-                    onClick={() => handleOpenModal(question)}
-                  >
-                    View Answers
-                  </Button>
-              
+                <Button
+                  className="showAnswers"
+                  onClick={() => handleOpenModal(question)}
+                >
+                  View Answers
+                </Button>
               </Row>
-              
             </Row>
           ))}
         </Row>
