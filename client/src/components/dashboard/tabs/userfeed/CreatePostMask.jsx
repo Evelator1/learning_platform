@@ -52,7 +52,8 @@ export default function CreatePostMask( {posts, setPosts}) {
           // border: "none",
           backgroundColor: cols.lila,
           color: cols.black,
-          border: `2px solid ${cols.gray}`
+          border: `2px solid ${cols.gray}`,
+          width:"85%", marginLeft:"-2rem"
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>

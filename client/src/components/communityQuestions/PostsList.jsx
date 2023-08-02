@@ -81,14 +81,14 @@ function PostsList({ posts, setPosts }) {
   };
 
   return (
-    <div>
+    <div style={{width:"85%", marginLeft:"-2rem"}}>
       {posts.map((post) => (
         <Container
           key={post._id}
           className="postCard"
         >
           <Row className="postHeader">
-            <Col xs={2}>
+            <Col xs={11}>
               {post.author.profilePicture && (
                 <Image
                   src={post.author.profilePicture}
@@ -97,9 +97,10 @@ function PostsList({ posts, setPosts }) {
                   roundedCircle
                 />
               )}
+              {post.author.username}
             </Col>
-            <Col xs={2}>
-              <Row className="userName">{post.author.username}</Row>
+            <Col xs={1}>
+              
               <Row className="postTime">{getFormattedDate(post.createdAt)}</Row>
             </Col>
             <Col xs={6}></Col>
@@ -113,13 +114,13 @@ function PostsList({ posts, setPosts }) {
             </blockquote>
           </Row>
           <Row className="likes_Comments_Counter">
-            <Col className="likesCounter">
+            {/* <Col className="likesCounter">
               <FontAwesomeIcon
                 icon={solidThumbsUp}
                 className="likeIconCounter"
               />{" "}
               15
-            </Col>
+            </Col> */}
             <Col className="commentsTracker">
               <a
                 href="/comments"
