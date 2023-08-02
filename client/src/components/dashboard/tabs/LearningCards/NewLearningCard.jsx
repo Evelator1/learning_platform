@@ -58,7 +58,7 @@ export default function NewLearningCard() {
         Create a Learning Card
       </h2>
 
-      <Form className="form mt-4" onSubmit={handleSubmit}>
+      <Form className="form mt-4 w-50" onSubmit={handleSubmit}>
         <Form.Group className="mb-4" controlId="formGridAddress1">
           <Form.Label className="h5 text-white">
             Set the question for the card
@@ -70,6 +70,7 @@ export default function NewLearningCard() {
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             required
+            className="me-5"
           />
         </Form.Group>
 
