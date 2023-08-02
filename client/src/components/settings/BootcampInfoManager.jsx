@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import WelcomePageButton from "../LandingPage/WelcomePageButton";
 import { axiosClient } from "../../axiosClient";
 
-export default function PersonalInfoManager({ userSettings }) {
+export default function BootcampInfoManager({ userSettings }) {
   const {
     register,
     handleSubmit,
@@ -25,14 +25,13 @@ export default function PersonalInfoManager({ userSettings }) {
 
   return (
     <div className="my-3">
-      <h3>Personal Information:</h3>
+      <h3>Your Bootcamp:</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="textarea"
-          rows= {3}
           style={{ width: "22rem", height: "3rem", marginRight: "1rem" }}
-          defaultValue={userSettings.personalInfo}
-          {...register("personalInfo", { required: true, maxLength: 200 })}
+          defaultValue={userSettings.bootcamp}
+          {...register("bootcamp", { required: true, maxLength: 200 })}
         />
         {/* <input type="submit" value={"submit Information"} /> */}
         <WelcomePageButton
