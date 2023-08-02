@@ -3,8 +3,8 @@ const InterviewQuestion = require("../models/interviewQuestion");
 const createQuestion=async (req,res)=>{
     try{
         const {id}=req.user
-        const {body:{content,author}}=req
-        const question=await InterviewQuestion.create({content,author})
+        const {body:{content,author,isTechnical,technology}}=req
+        const question=await InterviewQuestion.create({content,author,isTechnical,technology})
         res.status(201).json(question)
     }catch(error){
         res.status(500).send(error.message)
@@ -13,7 +13,7 @@ const createQuestion=async (req,res)=>{
 
 const getQuestions=async (req,res)=>{
     try{
-        const questions=await InterviewQuestion.find().sort({votes:-1}).populate("author")
+        const questions=await InterviewQuestion.find().sort({createdAt:-1}).populate("author")
         .populate({
           path: "upVotes",
           model: "User",

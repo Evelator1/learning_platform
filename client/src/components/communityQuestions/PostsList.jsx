@@ -157,7 +157,9 @@ function PostsList({ posts, setPosts }) {
                 className={`commentButton ${
                   post.commentChecked ? "commentChecked" : ""
                 }`}
-                onClick={() => handleCommentClick(post._id)}
+                
+                href="/comments"
+                onClick={(event) => handleAllCommentsClick(post, event)}
               >
                 <FontAwesomeIcon
                   icon={faComment}

@@ -1,6 +1,72 @@
-.form {
-  width: 80%;
-  margin: 5rem auto 50px auto;
-  padding: 20px 10px 20px 10px;
-  font-family: "IBM Plex Mono", monospace;
+
+.createQuestionForm{
+    height: auto;
+    min-height: 400px;
+    width: 55%;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: #d2bbee;
+    border: 2px solid #999999;
+    border-radius: 0.5rem;
+    font-family:monospace ;
+}
+
+.formTextArea{
+    margin: 1rem 0 0.5rem 0;
+}
+
+#formButtons{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 140px;
+}
+
+#dropDownCategory{
+    width: 250px;
+    margin: 10px 0 10px 0;
+    margin-right: auto;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: none;
+    border-radius: 0;
+    text-align: start;
+}
+
+#dropDownCategory:hover{
+    background-color: #000000;
+    color: white;
+
+}
+.dropdown-menu{
+    background-color: rgb(255, 255, 255);
+    
+}
+.dropdown-item:hover{
+    background-color: #000000;
+    color: white;
+    
+}
+
+#dropDownType{
+    width: 250px;
+    background-color: black ;
+    
+    /* padding: 5px;
+    margin: 10px;
+    margin-left: auto; */
+}
+.submitBtn{
+    width: 250px;
+  /* margin-left: 15%;
+  margin-right: 15%; */
+  /* background-color: black !important; */
 }
