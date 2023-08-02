@@ -10,7 +10,7 @@ import { faImage, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 
-export default function CreatePostMask( {posts, setPosts}) {
+export default function CreatePostMask({ posts, setPosts }) {
   const { user } = useContext(AuthContext);
   const [imgUpload, setImgUpload] = useState(false);
 
@@ -36,13 +36,12 @@ export default function CreatePostMask( {posts, setPosts}) {
       .then((response) => {
         console.log(response.data, posts);
 
-        setPosts([ {...response.data, author:user}, ...posts ])
+        setPosts([{ ...response.data, author: user }, ...posts]);
       })
       .catch((err) => {
         console.error(err);
       });
     reset();
-    
   };
   return (
     <div className="d-flex justify-content-center align-items-center">
@@ -53,17 +52,21 @@ export default function CreatePostMask( {posts, setPosts}) {
           backgroundColor: cols.lila,
           color: cols.black,
           border: `2px solid ${cols.gray}`,
-          width:"85%", marginLeft:"-2rem"
+          width: "85%",
+          marginLeft: "-2rem",
         }}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="text-center">Share with the Community</h1>
+          <h2 className="text-center">Share with the Community</h2>
 
           <Form.Group controlId="content">
             <Form.Control
-              size="lg"
+              className="formTextArea"
+              as="textarea"
+              size="md"
+              rows={4}
               type="post"
-              placeholder="Post Something"
+              placeholder="Post something"
               {...register("content", {
                 required: "empty Posts are not allowed",
               })}

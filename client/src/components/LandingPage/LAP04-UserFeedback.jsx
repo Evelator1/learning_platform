@@ -30,24 +30,24 @@ function UserFeedbackPage() {
         <div className="row pb-5 d-flex justify-content-center">
           <div className="col-12 d-flex">
             <button
-              class="carousel-control"
+              className="carousel-control"
               type="button"
               data-bs-target="#carouselExampleControls"
               data-bs-slide="prev"
             >
               <span
-                class="carousel-control-prev-icon"
+                className="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Previous</span>
+              <span className="visually-hidden">Previous</span>
             </button>
             <div
               id="carouselExampleControls"
-              class="carousel carousel-dark slide"
+              className="carousel carousel-dark slide"
               // data-bs-interval="false"
             >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
                   <div className="cards-wrapper">
                     <div className="card" style={{ width: "15rem" }}>
                       <img
@@ -114,7 +114,7 @@ function UserFeedbackPage() {
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                   <div className="cards-wrapper">
                     <div className="card" style={{ width: "15rem" }}>
                       <img
@@ -181,7 +181,7 @@ function UserFeedbackPage() {
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                   <div className="cards-wrapper">
                     <div className="card" style={{ width: "15rem" }}>
                       <img
@@ -251,16 +251,16 @@ function UserFeedbackPage() {
               </div>
             </div>
             <button
-              class="carousel-control2"
+              className="carousel-control2"
               type="button"
               data-bs-target="#carouselExampleControls"
               data-bs-slide="next"
             >
               <span
-                class="carousel-control-next-icon"
+                className="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Next</span>
+              <span className="visually-hidden">Next</span>
             </button>
           </div>
         </div>

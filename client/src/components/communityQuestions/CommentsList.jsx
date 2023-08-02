@@ -32,6 +32,7 @@ function PostCommentsList({ post, newComment }) {
                 height={43}
                 width={43}
                 roundedCircle
+                style={{ aspectRatio: "1/1", objectFit: "cover" }}
               />
             </Col>
             <Col lg={10} md={10} sm={10} className="commentBlock">

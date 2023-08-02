@@ -82,7 +82,7 @@ function CommentsModal({ selectedPost, isOpen, onClose }) {
               </Col>
             </Row>
             <Row>
-              <p>{selectedPost.content}</p>
+              <p className="mt-4">{selectedPost.content}</p>
             </Row>
             <Row className="likes_Comments_Counter">
               <Col className="likesCounter">
