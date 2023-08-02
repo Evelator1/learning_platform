@@ -12,9 +12,7 @@ function PostCommentsList({ post, newComment }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axiosClient.get(
-          `http://localhost:3010/comments/posts/${post._id}`
-        );
+        const result = await axiosClient.get(`/comments/posts/${post._id}`);
         setComments([...result.data]);
       } catch (error) {
         console.log(error);

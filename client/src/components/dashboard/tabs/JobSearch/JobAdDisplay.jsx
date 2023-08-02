@@ -30,7 +30,7 @@ export default function JobAdDisplay() {
   //
   // useEffect(() => {
   //   axios
-  //     .get("http://localhost:3010/jobs/jobs")
+  //     .get("/jobs/jobs")
   //     .then((response) => {
   //       console.log("response: ", response);
   //       setJobs(response.data);

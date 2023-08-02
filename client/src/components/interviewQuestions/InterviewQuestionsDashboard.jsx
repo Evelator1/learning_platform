@@ -12,7 +12,7 @@ function InterviewQuestionsDashboard() {
   const fetchData = async () => {
     try {
       const response = await axiosClient.get(
-        "http://localhost:3010/interviewQuestions"
+        "/interviewQuestions"
       );
       setData(response.data);
       setLoading(false); 

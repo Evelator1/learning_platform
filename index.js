@@ -31,38 +31,39 @@ app.use(express.json());
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
-app.get("*", (req, res)=>{
-  res.sendFile(path.join(___dirname, "client", "dist", "index.html " ))
-})
 
 
 const userRouter = require("./routes/users");
-app.use("/users", userRouter);
+app.use("/api/users", userRouter);
 
 
 const postRouter = require("./routes/posts");
-app.use("/post", postRouter);
+app.use("/api/post", postRouter);
 
 const commentRouter = require("./routes/comments");
-app.use("/comments", commentRouter);
- 
+app.use("/api/comments", commentRouter);
+
 const learningcardRouter = require("./routes/learningcards");
-app.use("/learningcards", learningcardRouter);
+app.use("/api/learningcards", learningcardRouter);
 
 const questionRouter=require("./routes/interviewQuestion")
-app.use("/interviewQuestions",questionRouter)
+app.use("/api/interviewQuestions",questionRouter)
 
 const reviewRouter=require("./routes/reviews")
-app.use("/reviews", reviewRouter)
+app.use("/api/reviews", reviewRouter)
 
 const answerRouter=require("./routes/interviewAnswer")
-app.use("/interviewAnswers",answerRouter)
+app.use("/api/nterviewAnswers",answerRouter)
 
 const jobsRouter=require("./routes/jobs")
-app.use("/jobs", jobsRouter)
+app.use("/api/jobs", jobsRouter)
 
 app.use(errorHandler);
 
+app.get("*", (req, res)=>{
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html " ))
+})
+
 app.listen(port, () =>
-  console.log(`Server is successfully running on http://localhost:${port}`)
+console.log(`Server is successfully running on http://localhost:${port}`)
 );

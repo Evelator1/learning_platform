@@ -32,7 +32,7 @@ export default function CreatePostMask( {posts, setPosts}) {
     console.log(data);
 
     axiosClient
-      .post("http://localhost:3010/post/newPost", formData)
+      .post("/post/newPost", formData)
       .then((response) => {
         console.log(response.data, posts);
 

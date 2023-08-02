@@ -20,7 +20,7 @@ function CreateInterviewAnswer({questionId}) {
 
     try {
       const answer = await axiosClient.post(
-        "http://localhost:3010/interviewAnswers/newAnswer",
+        "/interviewAnswers/newAnswer",
         {
           answerContent,
           author: user._id,
@@ -39,7 +39,7 @@ function CreateInterviewAnswer({questionId}) {
     const fetchAnswers = async () => {
       try {
         const response = await axiosClient.get(
-          `http://localhost:3010/interviewAnswers/${questionId}`
+          `/interviewAnswers/${questionId}`
         );
   
         setAnswers(response.data);

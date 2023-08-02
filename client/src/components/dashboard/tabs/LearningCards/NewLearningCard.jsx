@@ -28,7 +28,7 @@ export default function NewLearningCard() {
 
     try {
       const newCard = await axiosClient.post(
-        "http://localhost:3010/learningcards/createlearningcard",
+        "/learningcards/createlearningcard",
         {
           question,
           answer,

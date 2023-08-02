@@ -33,7 +33,7 @@ export default function CreateReviewMask() {
     }
 
     axiosClient
-      .post("http://localhost:3010/reviews/newReview", formData)
+      .post("/reviews/newReview", formData)
       .then((response) => {
         console.log(response);
       })

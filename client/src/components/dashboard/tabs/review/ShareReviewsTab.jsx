@@ -11,7 +11,7 @@ export default function ShareReviewsTab() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     axiosClient
-      .get("http://localhost:3010/reviews")
+      .get("/reviews")
       .then((response) => {
         setReviews(response.data);
         console.log(response.data);

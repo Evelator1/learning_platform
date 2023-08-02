@@ -21,7 +21,7 @@ export default function ProfilePictureManager({ userSettings }) {
 
     axiosClient
       .patch(
-        `http://localhost:3010/users/${userSettings._id}/update-profile-pic`,
+        `/users/${userSettings._id}/update-profile-pic`,
         formData
       )
       .then((response) => {
@@ -43,7 +43,7 @@ export default function ProfilePictureManager({ userSettings }) {
     console.log(replaceDefault, "is the body of the  request");
     axiosClient
       .patch(
-        `http://localhost:3010/users/${userSettings._id}/remove-profile-pic`,
+        `/users/${userSettings._id}/remove-profile-pic`,
         {
           replaceDefault,
         }

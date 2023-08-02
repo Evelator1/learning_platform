@@ -14,7 +14,7 @@ export default function AnswerList({ questionId}, props) {
   const fetchData = async (req, res) => {
     try {
       const response = await axiosClient.get(
-        `http://localhost:3010/interviewAnswers/question/${questionId}`
+        `/interviewAnswers/question/${questionId}`
       );
       setData(response.data);
     } catch (error) {
@@ -30,7 +30,7 @@ export default function AnswerList({ questionId}, props) {
         const userId = user._id;
 
         await axiosClient.patch(
-          `http://localhost:3010/interviewAnswers/${answerId}/vote`,
+          `/interviewAnswers/${answerId}/vote`,
           { voteType, userId }
         );
         fetchData();

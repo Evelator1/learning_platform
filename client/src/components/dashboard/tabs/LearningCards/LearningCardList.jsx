@@ -15,7 +15,7 @@ export default function LearningCardList() {
 
   useEffect(() => {
     axiosClient
-      .get("http://localhost:3010/learningcards")
+      .get("/learningcards")
       .then((response) => {
         setLearningCards(response.data);
         setFilteredCards(response.data);
