@@ -165,7 +165,8 @@ export default function JobAdDisplay() {
                 </InputGroup>
               </Form>
               {searchStatus === "searching" && <p>Searching...</p>}
-              {searchQuery !== "" && <p>{{searchQuery}}</p> }
+              
+              {searchQuery !== "" && <p>{searchQuery}</p> }
             </Col>
           </Row>
 
