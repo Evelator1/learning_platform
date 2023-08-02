@@ -42,10 +42,12 @@ function QuestionsList({ data, loading, setData }) {
     try {
       const userId = user._id;
 
+
       await axiosClient.patch(`/interviewQuestions/${questionId}/vote`, {
         voteType,
         userId,
       });
+
       // Create a new array with updated votes
       const updatedData = data.map((question) =>
         question._id === questionId
@@ -210,7 +212,6 @@ function QuestionsList({ data, loading, setData }) {
         <Row>
           {filteredData.map((question) => (
             <Row key={question._id} className="questionCard">
-              {/* <Col xs={10} className="questionContent"> */}
               <Row className="questionHeader">
                 <Col xs={7}>
                   <Image
@@ -233,9 +234,9 @@ function QuestionsList({ data, loading, setData }) {
                       : "Type: Non-Technical"}
                   </Row>
                   <Row className="cardHeaderRight">
-                    {question.technology !== null && (
-                      <>Technology: {question.technology}</>
-                    )}
+                  {question.technology !== "" && (
+  <>Technology: {question.technology}</>
+)}
                   </Row>
                 </Col>
                 <Col xs={1}>
