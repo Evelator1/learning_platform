@@ -35,7 +35,7 @@ export default function Login() {
         style={{
           backgroundColor: cols.white,
           color: cols.black,
-          paddingTop: "-2rem",
+          // paddingTop: "-2rem",
         }}
       >
         <div

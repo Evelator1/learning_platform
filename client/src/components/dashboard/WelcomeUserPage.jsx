@@ -46,7 +46,7 @@ export default function WelcomeUserPage() {
                 xs={12}
                 sm={6}
                 md={4}
-                lg={3}
+                lg={4}
                 className="my-5"
               >
                 <Card style={{ width: "80%" }}>
