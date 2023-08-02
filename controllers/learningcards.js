@@ -27,7 +27,8 @@ const getLearningcard = async (req, res) => {
 
 const deleteLearningCard = async (req, res) => {
   try {
-    const result = await Learningcard.deleteOne;
+    const { id } = req.params;
+    const result = await Learningcard.deleteOne({ id });
     res.json(result);
   } catch (error) {
     console.log(error.message);
