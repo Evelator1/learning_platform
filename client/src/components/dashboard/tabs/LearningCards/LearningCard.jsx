@@ -2,15 +2,24 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./learningCards.css";
+// import Tooltip from "../../../Tooltip";
+import { OverlayTrigger } from "react-bootstrap";
+import { Tooltip } from "react-bootstrap";
 
 export default function LearningCard({
   learningCard,
   onNextCard,
   onPreviousCard,
   currentIndex,
-  length,
-}) {
+  length,}) {
   const [flip, setFlip] = useState(false);
+
+
+  const tooltip = (
+    <Tooltip id="tooltip">
+      Click to Flip the Card
+    </Tooltip>
+  );
 
   const handleCardClick = () => {
     setFlip(!flip);
@@ -35,6 +44,7 @@ export default function LearningCard({
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center text-center">
       <div className="row d-flex justify-content-center align-items-center">
+      <OverlayTrigger  overlay={tooltip}    delayShow={100} delayHide={1350} style={{position:"fixed", top:"4rem"}}>
         <div
           className={`card ${
             flip ? "flip" : ""
@@ -52,6 +62,8 @@ export default function LearningCard({
           </div>
           <div className="back text-white fs-5 px-4">{learningCard.answer}</div>
         </div>
+        </OverlayTrigger>
+
         <div className="row">
           <div className="col-12 d-flex align-items-center justify-content-center">
             <button

@@ -6,6 +6,7 @@
   border-radius: 0.25rem;
   transform-style: preserve-3d;
   height: 20rem;
+
   width: 40rem;
   transition: 200ms;
   transform: rotateY(var("angle"));

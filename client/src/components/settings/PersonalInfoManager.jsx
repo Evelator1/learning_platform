@@ -1,6 +1,6 @@
 import { cols } from "../../colorSchema";
 import { useForm } from "react-hook-form";
-
+import WelcomePageButton from "../LandingPage/WelcomePageButton";
 import { axiosClient } from "../../axiosClient";
 
 export default function PersonalInfoManager({ userSettings }) {
@@ -10,7 +10,7 @@ export default function PersonalInfoManager({ userSettings }) {
     watch,
     formState: { errors },
   } = useForm();
-  
+
   const onSubmit = (data) => {
     console.log(data);
     axiosClient
@@ -24,15 +24,17 @@ export default function PersonalInfoManager({ userSettings }) {
   };
 
   return (
-    <div className="my-3 w-100">
-      <h3>Personal Information</h3>
+    <div className="my-3">
+      <h3>Personal Information:</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-           style={{width:"22rem"}}
+          type="textarea"
+          style={{ width: "22rem", height:"3rem"}}
           defaultValue={userSettings.personalInfo}
           {...register("personalInfo", { required: true, maxLength: 200 })}
         />
-        <input type="submit" value={"submit Information"} />
+        {/* <input type="submit" value={"submit Information"} /> */}
+        <WelcomePageButton  content={"submit"} color={cols.lila} textColor={cols.black} linkTo={null} type={"submit"} />
       </form>
     </div>
   );

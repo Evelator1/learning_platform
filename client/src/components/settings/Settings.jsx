@@ -6,7 +6,7 @@ export default function Settings() {
   return (
     <Container style={{overflow:"scroll"}}>
        <ProfileSettings/>
-       <AccountSettings/>
+       {/* <AccountSettings/> */}
         
     </Container>
   )
