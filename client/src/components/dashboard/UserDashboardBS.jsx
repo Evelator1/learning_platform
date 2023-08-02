@@ -121,7 +121,15 @@ export default function UserDashboardBS() {
             </Nav>
           </Col>
 
-          <Col xs={10} style={{ backgroundColor: cols.black, overflow:"scroll", paddingBottom:"10rem"}}>
+          <Col
+            xs={10}
+            style={{
+              backgroundColor: cols.black,
+              overflow: "scroll",
+              paddingBottom: "10rem",
+              paddingTop: "2rem",
+            }}
+          >
             <Tab.Content>
               <Outlet />
             </Tab.Content>

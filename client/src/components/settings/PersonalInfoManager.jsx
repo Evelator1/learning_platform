@@ -29,12 +29,18 @@ export default function PersonalInfoManager({ userSettings }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="textarea"
-          style={{ width: "22rem", height:"3rem"}}
+          style={{ width: "22rem", height: "3rem", marginRight: "1rem" }}
           defaultValue={userSettings.personalInfo}
           {...register("personalInfo", { required: true, maxLength: 200 })}
         />
         {/* <input type="submit" value={"submit Information"} /> */}
-        <WelcomePageButton  content={"submit"} color={cols.lila} textColor={cols.black} linkTo={null} type={"submit"} />
+        <WelcomePageButton
+          content={"submit"}
+          color={cols.lila}
+          textColor={cols.black}
+          linkTo={null}
+          type={"submit"}
+        />
       </form>
     </div>
   );

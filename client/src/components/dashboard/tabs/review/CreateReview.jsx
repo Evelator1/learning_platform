@@ -69,7 +69,7 @@ export default function CreateReviewMask() {
             <Form.Control
               as="textarea"
               type="post"
-              placeholder="Share your review about a coding bootcamp or a job with the community"
+              placeholder="Share your review about a coding bootcamp or a job"
               {...register("content", {
                 required: "empty Posts are not allowed",
               })}

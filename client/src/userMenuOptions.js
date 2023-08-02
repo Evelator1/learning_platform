@@ -18,7 +18,6 @@ import HikingOutlinedIcon from "@mui/icons-material/HikingOutlined";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 
 export const userMenuOptions = [
-
   {
     id: 0,
     name: "Your Feed",
@@ -28,10 +27,10 @@ export const userMenuOptions = [
   },
   {
     id: 1,
-    name: "Learning Cards",
-    linkTo: "learning-cards",
-    iconOutlined: DashboardOutlinedIcon,
-    display: LearningCardsTab,
+    name: "Job Search",
+    linkTo: "job-search",
+    iconOutlined: WorkOutlineOutlinedIcon,
+    display: JobSearchTab,
   },
   {
     id: 2,
@@ -42,10 +41,10 @@ export const userMenuOptions = [
   },
   {
     id: 3,
-    name: "Job Search",
-    linkTo: "job-search",
-    iconOutlined: WorkOutlineOutlinedIcon,
-    display: JobSearchTab,
+    name: "Learning Cards",
+    linkTo: "learning-cards",
+    iconOutlined: DashboardOutlinedIcon,
+    display: LearningCardsTab,
   },
   {
     id: 4,
