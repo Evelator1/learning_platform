@@ -82,7 +82,7 @@ export default function Login() {
               ?{" "}
             </p>
             <p className="text-left text-decoration-none">
-              New to CODE-ROAD?{" "}
+              New to CODE-ROAD?
               <Link to="/signup" className="text-decoration-none">
                 {"Sign up"}
               </Link>
