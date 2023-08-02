@@ -16,6 +16,7 @@ export default function JobAdDisplay() {
   const [searchStatus, setSearchStatus] = useState("completed"); // search status
   const [jobs, setJobs] = useState([]); //all the Jobs
   const [filtered, setFiltered] = useState([]); // filterd Jobs
+  const [searchQuery, setSearchQuery] = useState(""); // search query
   const [show, setShow] = useState(false); //show results offcanvas
   const [showFilters, setShowFilters] = useState(false); //show
 // filters:
@@ -113,7 +114,8 @@ export default function JobAdDisplay() {
 
   function onSubmit(data) {
     setSearchStatus("searching");
-    fetchJobs(data);
+    // fetchJobs(data);
+    setSearchQuery(data);
     console.log("you are  searching for: ", data.JobSearchQuery);
     reset();
   }
@@ -163,13 +165,14 @@ export default function JobAdDisplay() {
                 </InputGroup>
               </Form>
               {searchStatus === "searching" && <p>Searching...</p>}
+              {searchQuery !== "" && <p>{{searchQuery}}</p> }
             </Col>
           </Row>
 
           {/* /////////////////DIsplay Filters/////////////////////////////////////// */}
           <Row className="d-flex ">
             <Col className="col-12 ">
-              {jobs && (
+              {filtered.length>0 && (
                 <Button variant="primary" onClick={handleShowFilters}>
                   Filters
                 </Button>
@@ -197,9 +200,9 @@ export default function JobAdDisplay() {
             {/* /////////////////Show Results/////////////////////////////////////// */}
 
             <Col className="col-12 my-2">
-              {jobs && (
+              {filtered.length>0 && (
                 <Button variant="primary" onClick={handleShow}>
-                  {`Show Results`}
+                  {`Show ${filtered.length}Results`}
                 </Button>
               )}
             </Col>

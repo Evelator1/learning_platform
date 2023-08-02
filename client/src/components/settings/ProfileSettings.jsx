@@ -14,8 +14,9 @@ import { cols } from "../../colorSchema";
 export default function ProfileSettings() {
   const [userSettings, setUserSettings] = useState();
   useEffect(() => {
+    
     axiosClient
-      .get(`/api/auth/profile`) //auth route
+      .get(`/auth/profile`) //auth route
       .then((response) => {
         const {
           userWishWelcome,
