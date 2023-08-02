@@ -12,6 +12,7 @@ import "./CreateInterviewAnswer.css"
 function CreateInterviewAnswer({questionId}) {
   const { user } = useContext(AuthContext);
   const [answerContent, setAnswerContent] = useState("");
+
   
 
   const handleSubmit = async (e) => {
@@ -27,7 +28,6 @@ function CreateInterviewAnswer({questionId}) {
         }
       );
       
-    //   onAddAnswer(answer.data);
       setAnswerContent("");
       setIsTechnical(false);
       setSelectedTechnology('')
@@ -35,6 +35,21 @@ function CreateInterviewAnswer({questionId}) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    const fetchAnswers = async () => {
+      try {
+        const response = await axiosClient.get(
+          `http://localhost:3010/interviewAnswers/${questionId}`
+        );
+  
+        setAnswers(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    fetchAnswers();
+  }, [questionId]);
 
   return (
     <Form className="answerForm" onSubmit={handleSubmit}>

@@ -54,8 +54,7 @@ export default function CreatePostMask( {posts, setPosts}) {
           // border: "none",
           backgroundColor: cols.lila,
           color: cols.black,
-          border: `2px solid ${cols.gray}`,
-          boxShadow: `10px 10px 5px  ${cols.gray}`,
+          border: `2px solid ${cols.gray}`
 
         }}
       >

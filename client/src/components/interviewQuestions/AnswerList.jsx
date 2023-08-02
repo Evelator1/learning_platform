@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
 
 
-export default function AnswerList({ questionId }, props) {
+export default function AnswerList({ questionId}, props) {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const fetchData = async (req, res) => {
@@ -43,8 +43,8 @@ export default function AnswerList({ questionId }, props) {
     <>
       {data.map((answer) => (
         <Container key={answer._id}>
-          <Row>
-            <Col xs={1}>
+          <Row style={{marginBottom:"30px",padding:"20px",borderBottom:"1px solid lightgray"} }>
+            <Col xs={2}>
               <Row>
                 <Button
                   variant="link"
@@ -73,7 +73,7 @@ export default function AnswerList({ questionId }, props) {
                 </Button>
               </Row>
             </Col>
-            <Col xs={11} md={11} className="answerContent">
+            <Col xs={10}  className="answerContent">
               <Row
                 className="answerHeader"
                         >
@@ -90,7 +90,7 @@ export default function AnswerList({ questionId }, props) {
                   Created: <DateFormatter dateString={answer.createdAt} />
                 </Col>
               </Row>
-              <Row style={{ marginTop: "20px", paddingLeft: "30px" }}>
+              <Row style={{ marginTop: "30px", paddingLeft: "30px",paddingTop:"20px",marginRight:"30px",minHeight:"100px",overflowWrap:"anywhere" }}>
                 <p>{answer.answerContent}</p>
               </Row>
             </Col>

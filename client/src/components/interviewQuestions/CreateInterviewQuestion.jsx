@@ -8,7 +8,6 @@ import { AuthContext } from "../../context/AuthProvider.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCogs, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "react-bootstrap/Dropdown";
-import { cols } from "../../colorSchema";
 
 function CreateInterviewQuestion({ onAddQuestion }) {
   const { user } = useContext(AuthContext);
@@ -26,116 +25,134 @@ function CreateInterviewQuestion({ onAddQuestion }) {
           content,
           isTechnical,
           author: user._id,
-          technology:isTechnical?selectedTechnology:""
+          technology: isTechnical ? selectedTechnology : "",
         }
       );
-      
+
       onAddQuestion(question.data);
       setContent("");
       setIsTechnical(null);
-      setSelectedTechnology('')
+      setSelectedTechnology("");
     } catch (error) {
       console.log(error);
     }
   };
 
-
   return (
-    <Form
-      className="form "
-      onSubmit={handleSubmit}
-      style={{
-        width: "55%",
-        height: "auto",
-        position: "relative",
-        overflow: "scroll",
-        padding: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        backgroundColor: cols.lila,
-        border: `2px solid ${cols.gray}`,
-        borderRadius: "0.5rem",
-        boxShadow: `10px 10px 5px  ${cols.gray}`,
-      }}
-    >
+    <Form className="createQuestionForm" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label className="h1">Interview Questions</Form.Label>
+        <Form.Label className="h2">Interview Questions</Form.Label>
         <Form.Control
+          className="formTextArea"
           as="textarea"
-          rows={3}
+          rows={4}
           placeholder="Share Job Interview Question with the community"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3 mx-5" id="formGridCheckbox">
+      <Form.Group className="mb-3 mx-5" id="formButtons">
         <Dropdown required>
           <Dropdown.Toggle variant="dark" id="dropDownType">
             Question Type
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => setIsTechnical(true)}>
-              Technical
-            </Dropdown.Item>
+            <Dropdown>
+              <Dropdown.Toggle variant="dark" id="dropDownCategory">
+                Technical
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("node"), setIsTechnical(true);
+                  }}
+                >
+                  node
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("express"), setIsTechnical(true);
+                  }}
+                >
+                  express
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("react"), setIsTechnical(true);
+                  }}
+                >
+                  react
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("javascript"), setIsTechnical(true);
+                  }}
+                >
+                  javascript
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("html"), setIsTechnical(true);
+                  }}
+                >
+                  html
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("css"), setIsTechnical(true);
+                  }}
+                >
+                  css
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("sql"), setIsTechnical(true);
+                  }}
+                >
+                  sql
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("mysql"), setIsTechnical(true);
+                  }}
+                >
+                  mysql
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("mongodb"), setIsTechnical(true);
+                  }}
+                >
+                  mongodb
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("bootstrap"), setIsTechnical(true);
+                  }}
+                >
+                  bootstrap
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSelectedTechnology("other"), setIsTechnical(true);
+                  }}
+                >
+                  other
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <Dropdown.Item onClick={() => setIsTechnical(false)}>
               Non-Technical
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        
-        {isTechnical && (
-          <Dropdown>
-            <Dropdown.Toggle variant="dark" id="dropDownCategory">
-              Question Technology
-            </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => setSelectedTechnology("node")}>
-                node
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("express")}>
-                express
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("react")}>
-                react
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("javascript")}>
-                javascript
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("html")}>
-                html
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("css")}>
-                css
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("sql")}>
-                sql
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("mysql")}>
-                mysql
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("mongodb")}>
-                mongodb
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("bootstrap")}>
-                bootstrap
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("other")}>
-                other
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        )}
-        
-      </Form.Group>
         <Button variant="primary" type="submit" className="submitBtn">
           Submit
         </Button>
-        
-      
-      
+      </Form.Group>
     </Form>
   );
 }

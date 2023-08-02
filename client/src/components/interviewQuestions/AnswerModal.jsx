@@ -10,28 +10,31 @@ const AnswerModal = ({ show, handleClose, question }) => {
   const { author, content} = question;
 
   return (
-    <Modal show={show} onHide={handleClose} size="xl" aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Header closeButton>
-        <Col xs={2} sm={2} md={2} lg={2}>
+    <Modal show={show} onHide={handleClose} size="xl" style={{height:"100%"}} aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal.Header closeButton style={{height:"70px"}}>
+        <div style={{display:"flex",flexDirection:"row",width:"100%",justifyContent:"center",alignItems:"center"}}>
           <Image className="userPhoto" src={author.profilePicture} roundedCircle />
-        </Col>
-        <Col xs={1} sm={1} md={2} lg={2} className="userName">
           {author.username}
-        </Col>
+        </div>
       </Modal.Header>
-      <Modal.Body >
-        <Row style={{maxHeight:"200px",marginLeft:"50px"}}>
-          Question:
-          <h6 style={{marginLeft:"100px"}}>{content}</h6>
-        </Row>
-      </Modal.Body>
-      <hr/>
-      <Modal.Body style={{maxHeight:"400px", overflowY:"scroll"}}>
-        <Row className="questionBo">
-          <AnswerList questionId={question._id}/>
-        </Row>
-      </Modal.Body>
-      <Modal.Footer >
+      <div style={{overflowY:"scroll",marginBottom:"120px"}}>
+        <Modal.Body >
+          <Row style={{height:"150px",marginLeft:"50px",paddingTop:"15px"}}>
+            Question:<h6  style={{height:"80px"}}>{content}</h6>
+          </Row>
+        </Modal.Body>
+        <hr/>
+        <Modal.Body style={{height:"200px"}}>
+          <Row style={{marginLeft:"50px",marginBottom:"20px"}}>
+          Answers:
+          </Row>
+          <Row className="questionBo"  >
+            <AnswerList questionId={question._id}  />
+          </Row>
+        </Modal.Body>
+      </div>
+      
+      <Modal.Footer style={{position:"absolute",bottom:"0px",width:"100%",height:"150px",backgroundColor:"white"}}>
         
           <CreateInterviewAnswer questionId={question._id} />
         
