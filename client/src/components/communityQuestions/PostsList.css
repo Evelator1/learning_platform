@@ -10,6 +10,7 @@ html{
     height: 50px;
     width: 50px;
     object-fit: cover;
+    margin-right: 12px;
 }
 
 
@@ -28,8 +29,10 @@ html{
     font-size: larger;
 }
 .postTime{
-    font-size: small;
+    font-size: medium;
+    font-weight: bold;
     color: #65676b;
+    margin-top: 15px;
 }
 .likes_Comments_Counter{
     padding-top: 15px;
