@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
   /////////
   useEffect(() => {
     axiosClient
-      .get("http://localhost:3010/auth/profile")
+      .get("/auth/profile")
       .then((response) => {
         setUser(response.data);
         setIsLoading(false);
@@ -27,7 +27,7 @@ export default function AuthProvider({ children }) {
 
   const login = (data) => {
     axiosClient
-      .post("http://localhost:3010/auth/login", {
+      .post("/auth/login", {
         email: data.email,
         password: data.password,
       })
@@ -58,7 +58,7 @@ export default function AuthProvider({ children }) {
 
   const signup = (data) => {
     axiosClient
-      .post("http://localhost:3010/auth/signup", {
+      .post("/auth/signup", {
         username: data.username,
         email: data.email,
         password: data.password,
@@ -82,7 +82,7 @@ export default function AuthProvider({ children }) {
 
   const changeEmail = (data) => {
     axiosClient
-      .patch(`http://http://localhost:3010/auth/edit-email/${user._id}`, {
+      .patch(`/auth/edit-email/${user._id}`, {
         newEmail: data.newEmail,
         password: data.password,
       })
@@ -118,7 +118,7 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ login, logout, signup, changeEmail, user, setUser, isLoading,  }}
+      value={{ login, logout, signup, changeEmail, user, setUser, isLoading }}
     >
       {children}
     </AuthContext.Provider>

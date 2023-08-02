@@ -28,7 +28,7 @@ export default function NewLearningCard() {
 
     try {
       const newCard = await axiosClient.post(
-        "http://localhost:3010/learningcards/createlearningcard",
+        "/learningcards/createlearningcard",
         {
           question,
           answer,
@@ -57,85 +57,86 @@ export default function NewLearningCard() {
       >
         Create a Learning Card
       </h2>
-
-      <Form className="form mt-4 w-50" onSubmit={handleSubmit}>
-        <Form.Group className="mb-4" controlId="formGridAddress1">
-          <Form.Label className="h5 text-white">
-            Set the question for the card
-          </Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Question"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            required
-            className="me-5"
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label className="h5 text-white">Set the answer</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Answer"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <div className="row">
-          <div className="col-12 mt-3">
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="p-2 rounded me-4"
-            >
-              <option value="">Select Category</option>
-              <option value="Technical question">Technical Question</option>
-              <option value="Non-technical question">
-                Non-technical Question
-              </option>
-            </select>
-
-            <select
-              value={group}
-              onChange={(e) => setGroup(e.target.value)}
-              className="p-2 rounded"
-            >
-              <option value="">Select level of difficulty</option>
-              <option value="Easy">Easy</option>
-              <option value="Moderate">Moderate</option>
-              <option value="Hard">Hard</option>
-            </select>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", marginTop: "2rem" }}>
-          <Button
-            type="submit"
-            style={{
-              backgroundColor: cols.lila,
-              color: cols.black,
-              height: "auto",
-              marginRight: "3rem",
-
-              border: "none",
-            }}
-          >
-            Submit
-          </Button>
-          {showBtn && (
-            <WelcomePageButton
-              content={"Show all cards"}
-              color={cols.lila}
-              textColor={cols.black}
-              linkTo={`/${user.username}/learning-cards`}
+      <div className="col-12 m-0 d-flex flex-row justify-content-center align items-center">
+        <Form className="form mt-4 w-50" onSubmit={handleSubmit}>
+          <Form.Group className="mb-4" controlId="formGridAddress1">
+            <Form.Label className="h5 text-white">
+              Set the question for the card
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Question"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              required
+              className="me-5"
             />
-          )}
-        </div>
-      </Form>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formGridAddress1">
+            <Form.Label className="h5 text-white">Set the answer</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Answer"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <div className="row">
+            <div className="col-12 mt-3">
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="p-2 rounded me-4"
+              >
+                <option value="">Select Category</option>
+                <option value="Technical question">Technical Question</option>
+                <option value="Non-technical question">
+                  Non-technical Question
+                </option>
+              </select>
+
+              <select
+                value={group}
+                onChange={(e) => setGroup(e.target.value)}
+                className="p-2 rounded"
+              >
+                <option value="">Select level of difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", marginTop: "2rem" }}>
+            <Button
+              type="submit"
+              style={{
+                backgroundColor: cols.lila,
+                color: cols.black,
+                height: "auto",
+                marginRight: "3rem",
+
+                border: "none",
+              }}
+            >
+              Submit
+            </Button>
+            {showBtn && (
+              <WelcomePageButton
+                content={"Show all cards"}
+                color={cols.lila}
+                textColor={cols.black}
+                linkTo={`/${user.username}/learning-cards`}
+              />
+            )}
+          </div>
+        </Form>
+      </div>
     </>
   );
 }

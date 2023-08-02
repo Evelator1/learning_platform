@@ -15,7 +15,7 @@ export default function LearningCardList() {
 
   useEffect(() => {
     axiosClient
-      .get("http://localhost:3010/learningcards")
+      .get("/learningcards")
       .then((response) => {
         setLearningCards(response.data);
         setFilteredCards(response.data);
@@ -75,7 +75,7 @@ export default function LearningCardList() {
         <div className="row d-flex flex-column align-items-center justify-content-center">
           <div className="col d-flex flex-column align-items-center justify-content-center text-white mb-4">
             <h2>Your learning cards</h2>
-            <p className="text-white">Click card to see the answer</p>
+            {/* <p className="text-white">Click card to see the answer</p> */}
           </div>
           <div className="col d-flex align-items-center justify-content-center gap-4">
             <select

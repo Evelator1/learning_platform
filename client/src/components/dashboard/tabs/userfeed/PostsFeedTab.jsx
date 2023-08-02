@@ -16,7 +16,7 @@ export default function PostsFeedTab() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axiosClient.get("http://localhost:3010/post");
+        const result = await axiosClient.get("/post");
         setPosts(result.data);
       } catch (error) {
         console.log(error);

@@ -7,7 +7,7 @@ export default function JobSearchResultsOffCanvas({
   jobs,
   filtered,
 }) {
-  jobs && console.log("job Results: ", filtered, jobs);
+  jobs && console.log("job Results: ", filtered.length, jobs.lenght);
   const handleClose = () => setShow(!show);
 
   return (

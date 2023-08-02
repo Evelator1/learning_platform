@@ -1,9 +1,10 @@
 :root {
-    --best-color: #27ad2b;
-    --useful-color: #1e4da5;
-    --useless-color: #ce3618;
-    --normal-color: rgb(136, 136, 136)   ;
-  }
+  --best-color: #27ad2b;
+  --useful-color: #1e4da5;
+  --useless-color: #ce3618;
+  --normal-color: rgb(136, 136, 136);
+}
+
 
 .questionCard{
     margin: 0;
@@ -14,74 +15,46 @@
     background-color: rgb(255, 255, 255);  
 }
 
-.questionRatingSection{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    
-    padding-top: 5px;
-    
-    
-   
+.questionRatingSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+
+  padding-top: 5px;
 }
-.questionHeader{
-    height: 50px;
-    
+.questionHeader {
+  height: 50px;
 }
 
 .upArrowIcon {
-    height: 45px;
-    padding: 0%;
-    color: black;
-    
+  height: 45px;
+  padding: 0%;
+  color: black;
 }
 .downArrowIcon {
-    height: 45px;
-    padding: 0%;
-    color: black;
-   
-    
+  height: 45px;
+  padding: 0%;
+  color: black;
 }
-.votesCounter{
-    margin: 50px 0 50px 0;
-    
-    text-align: center;
-    
+.votesCounter {
+  margin: 50px 0 50px 0;
+
+  text-align: center;
 }
 
-
-
-.questionHeader{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    color: rgb(0, 0, 0);
-    padding: 1%;
-    margin-left: 0;
-    margin-right: 0;
-    height: auto;
-    
+.questionHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  color: rgb(0, 0, 0);
+  padding: 1%;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
 }
 
-.questionBody{
-    margin-left: 0;
-    margin-right: 0;
-    padding: 1%;
-    min-height: 270px;
-    justify-content: space-around;
-    width: 95%;
-    text-align: start;
-}
-.questionText{
-    font-size: 1.5rem;
-    padding-top: 20px;
-    padding-left: 20px;
-    line-height: 1.5rem;
-    height: 100%;
-    overflow-wrap: anywhere;
-}
 
 .userPhoto{
     margin-top: 3px;
@@ -176,7 +149,6 @@ width: 250px;
 .interviewQuestionSection{
 width: 100%;
 }
-
 
 /* @media only screen and (max-width: 576px) {
     .userName{

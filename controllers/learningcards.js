@@ -25,4 +25,15 @@ const getLearningcard = async (req, res) => {
   }
 };
 
-module.exports = { createLearningcard, getLearningcard };
+const deleteLearningCard = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Learningcard.deleteOne({ id });
+    res.json(result);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send(error.message);
+  }
+};
+
+module.exports = { createLearningcard, getLearningcard, deleteLearningCard };

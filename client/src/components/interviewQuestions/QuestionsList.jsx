@@ -43,7 +43,7 @@ function QuestionsList({ data, loading, setData }) {
       const userId = user._id;
 
       await axiosClient.patch(
-        `http://localhost:3010/interviewQuestions/${questionId}/vote`,
+        `/interviewQuestions/${questionId}/vote`,
         { voteType, userId }
       );
       // Create a new array with updated votes
