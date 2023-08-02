@@ -41,7 +41,7 @@ export default function ReviewList({ reviews }) {
   }
 
   return (
-    <div className="d-flex-column justify-content-center align-items-center">
+    <div className="d-flex flex-column justify-content-center align-items-center">
       {reviews &&
         reviews.map((review) => {
           return (
@@ -52,7 +52,6 @@ export default function ReviewList({ reviews }) {
                 display: "flex",
                 flexDirection: "column",
                 marginTop: "3rem",
-
                 height: "auto",
               }}
             >
@@ -71,7 +70,7 @@ export default function ReviewList({ reviews }) {
                   </Col>
                 </Row>
 
-                <Card.Text className="fs-6 "> </Card.Text>
+                <Card.Text className="fs-6"> </Card.Text>
               </Card.Header>
 
               <Card.Body className="w-100">

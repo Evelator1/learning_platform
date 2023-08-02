@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import WelcomePageButton from "../LandingPage/WelcomePageButton";
 import { axiosClient } from "../../axiosClient";
 
-
-export default function UsernameManager({userSettings}) {
+export default function UsernameManager({ userSettings }) {
   const {
     register,
     handleSubmit,
@@ -29,13 +28,18 @@ export default function UsernameManager({userSettings}) {
       <h3>Username:</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-        style={{width:"22rem" , height:"3rem"}}
+          style={{ width: "22rem", height: "3rem", marginRight: "1rem" }}
           defaultValue={userSettings.username}
           {...register("username", { required: true, maxLength: 20 })}
         />
         {/* <input type="submit" value={"submit Username"} /> */}
-        <WelcomePageButton  content={"submit"} color={cols.lila} textColor={cols.black} linkTo={null} type={"submit"} />
-
+        <WelcomePageButton
+          content={"submit"}
+          color={cols.lila}
+          textColor={cols.black}
+          linkTo={null}
+          type={"submit"}
+        />
       </form>
     </div>
   );

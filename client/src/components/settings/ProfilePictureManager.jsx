@@ -20,10 +20,7 @@ export default function ProfilePictureManager({ userSettings }) {
     console.log(data.profilePicture);
 
     axiosClient
-      .patch(
-        `/users/${userSettings._id}/update-profile-pic`,
-        formData
-      )
+      .patch(`/users/${userSettings._id}/update-profile-pic`, formData)
       .then((response) => {
         reset();
         // navigate(`/settings/profile/${userSettings.username}`);
@@ -42,12 +39,9 @@ export default function ProfilePictureManager({ userSettings }) {
     };
     console.log(replaceDefault, "is the body of the  request");
     axiosClient
-      .patch(
-        `/users/${userSettings._id}/remove-profile-pic`,
-        {
-          replaceDefault,
-        }
-      )
+      .patch(`/users/${userSettings._id}/remove-profile-pic`, {
+        replaceDefault,
+      })
       .then((response) => {
         console.log(response);
         window.location.reload(false);
@@ -67,7 +61,7 @@ export default function ProfilePictureManager({ userSettings }) {
       >
         <div>
           <input
-            style={{ width: "22rem" , height:"3rem" }}
+            style={{ width: "22rem", height: "3rem", marginRight: "1rem" }}
             type="file"
             id="image"
             accept="image/*"
@@ -107,12 +101,12 @@ export default function ProfilePictureManager({ userSettings }) {
           Delete current pic
         </button> */}
         <WelcomePageButton
-         onClick={deleteCurrentPic}
-            content={"Delete current pic"}
-            color={cols.lila}
-            textColor={cols.black}
-            type={"submit"}
-          />
+          onClick={deleteCurrentPic}
+          content={"Delete current pic"}
+          color={cols.lila}
+          textColor={cols.black}
+          type={"submit"}
+        />
       </div>
     </div>
   );
