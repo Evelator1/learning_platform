@@ -25,7 +25,7 @@ export default function FetchJobHardCoded({ setJobs }) {
 
       jobDataArray.data.map((ad) => {
         axios
-          .post("http://localhost:3010/jobs/newJob", ad)
+          .post("/jobs/newJob", ad)
           .then((response) => {
             console.log(response.data);
           })

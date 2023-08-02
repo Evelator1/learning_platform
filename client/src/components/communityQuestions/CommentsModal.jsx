@@ -32,7 +32,7 @@ function CommentsModal({ selectedPost, isOpen, onClose }) {
   const handleCreateComment = () => {
     // Make the POST request using the comment data
     axiosClient
-      .post("http://localhost:3010/comments/newComment", {
+      .post("/comments/newComment", {
         author: user._id,
         content: comment,
         onPost: selectedPost._id,

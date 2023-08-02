@@ -20,7 +20,7 @@ function CreateInterviewQuestion({ onAddQuestion }) {
 
     try {
       const question = await axiosClient.post(
-        "http://localhost:3010/interviewQuestions/newQuestion",
+        "/interviewQuestions/newQuestion",
         {
           content,
           isTechnical,

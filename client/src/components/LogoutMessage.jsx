@@ -10,7 +10,7 @@ export default function LogoutMessage() {
   const navigate = useNavigate();
   useEffect(() => {
     axiosClient
-      .post("http://localhost:3010/api/auth/logout")
+      .post("/auth/logout")
       .then((response) => {
         if ((response.status = 200)) {
           setUser(null)

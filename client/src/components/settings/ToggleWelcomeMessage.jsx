@@ -10,7 +10,7 @@ export default function ToggleWelcomeMessage({ userSettings }) {
     };
 
     axiosClient
-      .put(`http://localhost:3010/users/${userSettings._id}`, updatedUserSettings)
+      .put(`/users/${userSettings._id}`, updatedUserSettings)
       .then((response) => {
         console.log(response.data);
       })
