@@ -11,13 +11,6 @@ const port = process.env.PORT || 3011;
 app.use(express.static(path.join(__dirname, "client", "dist")))
 require("./db");
 
-app.get("/", (req, res) => {
-  try {
-    res.status(201).send("Welcome to the final project");
-  } catch (error) {
-    res.status(500).send("Error while trying to get", error);
-  }
-});
 
 const { errorHandler } = require("./middlewares/errorHandler");
 
@@ -58,11 +51,12 @@ app.use("/api/nterviewAnswers",answerRouter)
 const jobsRouter=require("./routes/jobs")
 app.use("/api/jobs", jobsRouter)
 
-app.use(errorHandler);
 
 app.get("*", (req, res)=>{
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html " ))
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html" ))
 })
+
+app.use(errorHandler);
 
 app.listen(port, () =>
 console.log(`Server is successfully running on http://localhost:${port}`)
