@@ -9,6 +9,9 @@ import Fred from "../../assets/pics/Fred.jpg";
 import Marie from "../../assets/pics/Marie_Foto_Kopie.jpg";
 import Omar from "../../assets/pics/Omar.jpg";
 import Footer from "../LandingPage/Footer";
+import { ReactComponent as Github2 } from "../../assets/pics/github2.svg";
+import { ReactComponent as LinkedIn } from "../../assets/pics/inkedin_1.svg";
+import { Link } from "react-router-dom";
 
 function AboutUsPage() {
   return (
@@ -37,12 +40,30 @@ function AboutUsPage() {
                 objectFit: "cover",
               }}
             />
-            <p className="text-white text-center pt-4 px-5 pb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              sit voluptatem possimus autem doloribus, saepe, aspernatur
-              voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
-              ab! Nulla dicta autem tenetur quibusdam!
+            <p
+              className="text-white text-center pt-4 px-5
+            "
+            >
+              Hi, I'm Fred! Before the bootcamp, I had a diverse background in
+              the food industry, managing teams and running my own ventures.
+              However, my true passion lies in coding as I discovered the power
+              of web technologies to transform businesses.
             </p>
+            <Row className="d-flex">
+              <Col>
+                <Link to={"https://github.com/fredegd"} target="_blank">
+                  <Github2 />
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to={"https://www.linkedin.com/in/federicoegidi/"}
+                  target="_blank"
+                >
+                  <LinkedIn />
+                </Link>
+              </Col>
+            </Row>
           </Col>
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
             <div className="rounded-circle ratio-1x1">
@@ -58,12 +79,27 @@ function AboutUsPage() {
               />
             </div>
 
-            <p className="text-white text-center pt-4 px-5 pb-5">
+            <p className="text-white text-center pt-4 px-5">
               Hi, I'm Marie! Before becoming a web developer I had several
               different careers, including working as a gallery assistant, a
               freight forwarder and working on a cruise ship. In coding I have
               finally found something that makes me really happy!
             </p>
+            <Row className="d-flex">
+              <Col>
+                <Link to={"https://github.com/Evelator1"} target="_blank">
+                  <Github2 />
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to={"https://www.linkedin.com/in/marie-hink/"}
+                  target="_blank"
+                >
+                  <LinkedIn />
+                </Link>
+              </Col>
+            </Row>
           </Col>
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
             <Image
@@ -76,12 +112,27 @@ function AboutUsPage() {
                 objectFit: "cover",
               }}
             />
-            <p className="text-white text-center pt-4 px-5 pb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              sit voluptatem possimus autem doloribus, saepe, aspernatur
-              voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
-              ab! Nulla dicta autem tenetur quibusdam!
+            <p className="text-white text-center pt-4 px-5">
+              Hello, I'm Omar! I am a professional with a diverse educational
+              background and a passion for technology and marketing. With a
+              Bachelor's degree in Management Information Systems and a Master's
+              degree in Marketing.
             </p>
+            <Row className="d-flex">
+              <Col>
+                <Link to={"https://github.com/Omar-WD"} target="_blank">
+                  <Github2 />
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to={"https://www.linkedin.com/in/omar-al-zoubi-09340b278/"}
+                  target="_blank"
+                >
+                  <LinkedIn />
+                </Link>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
