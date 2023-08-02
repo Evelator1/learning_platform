@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import { cols } from "../../colorSchema";
+import { ReactComponent as Undraw4 } from "../../assets/pics/Undraw4.svg";
 
 function Footer() {
   return (
@@ -80,6 +81,7 @@ function Footer() {
           </ul>
         </div>
       </div>
+      <Undraw4 style={{ width: "15%", height: "60%" }} />
     </div>
   );
 }

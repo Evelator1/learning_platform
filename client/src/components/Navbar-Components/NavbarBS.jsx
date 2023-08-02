@@ -39,7 +39,6 @@ export default function NavbarBS() {
               fontFamily: "IBM Plex Mono, monospace",
               fontStyle: "italic",
             }}
-            className="font-plex"
           >
             <div>
               <span
@@ -74,11 +73,7 @@ export default function NavbarBS() {
           </Navbar.Brand>
 
           {user && (
-            <div className="d-flex flex-row align-items-center">
-
-            
-
-             
+            <div className="d-flex flex-row align-items-center">           
               <div className="d-flex gap-3">
                 <WelcomePageButton
                   content={"Settings"}

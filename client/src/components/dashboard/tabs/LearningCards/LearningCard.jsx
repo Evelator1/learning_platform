@@ -48,17 +48,19 @@ export default function LearningCard({
         <div
           className={`card ${
             flip ? "flip" : ""
-          } col-12 bg-black2 border border-white`}
+          } col-12 bg-black2 border border-white border-2`}
           onClick={handleCardClick}
         >
-          <div className="front text-white fs-5">
-            <p>
+          <div className="front text-white fs-6 px-4">
+            <p className="fs-6 fw-bold">
               {currentIndex + 1}/{length}
             </p>
-            <p>{learningCard.question}</p>
-            <p>{learningCard.category}</p>
+            <p className="text-wrap fs-5">{learningCard.question}</p>
+            <hr className="mt-1 me-5 ms-5" />
+            <p className="fs-6"> {learningCard.category}</p>
+            <p className="fs-6">{learningCard.group}</p>
           </div>
-          <div className="back text-white fs-5">{learningCard.answer}</div>
+          <div className="back text-white fs-5 px-4">{learningCard.answer}</div>
         </div>
         </OverlayTrigger>
 
@@ -82,6 +84,9 @@ export default function LearningCard({
               onClick={redirect}
             >
               Create New Card
+            </button>
+            <button className="btn btn-light bg-purple border-purple mt-4 ms-3">
+              Delete Card
             </button>
           </div>
         </div>

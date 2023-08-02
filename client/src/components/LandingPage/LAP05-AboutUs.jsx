@@ -59,10 +59,10 @@ function AboutUsPage() {
             </div>
 
             <p className="text-white text-center pt-4 px-5 pb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              sit voluptatem possimus autem doloribus, saepe, aspernatur
-              voluptatibus quis adipisci ad dolores corrupti modi necessitatibus
-              ab! Nulla dicta autem tenetur quibusdam!
+              Hi, I'm Marie! Before becoming a web developer I had several
+              different careers, including working as a gallery assistant, a
+              freight forwarder and working on a cruise ship. In coding I have
+              finally found something that makes me really happy!
             </p>
           </Col>
           <Col className="d-flex flex-column col-12 col-md-4 pt-4 pt-md-0 justify-content-center align-items-center">
