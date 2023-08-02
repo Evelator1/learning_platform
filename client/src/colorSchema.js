@@ -7,5 +7,6 @@ export const cols = {
   white: "#f1f1f1",
   green: "#10b07d",
   yellow: "#f1de7e",
+  red: '#ff0000',
   gray: "#999999",
 };

@@ -18,6 +18,7 @@ export default function FetchJobHardCoded({ setJobs }) {
   async function fetchData() {
     try {
       const response = await axios.request(options);
+
       const jobDataArray = response.data;
 
       console.log(jobDataArray.data);
@@ -46,29 +47,29 @@ export default function FetchJobHardCoded({ setJobs }) {
 
 
 
-  // const fetchJobs = async (data) => {
-  //   const options = {
-  //     method: "GET",  
-  //     url: "https://jsearch.p.rapidapi.com/search",
-  //     params: {
-  //       query: data.JobSearchQuery,  
-  //       page: "1",
-  //       num_pages: "10",
-  //     },
-  //     headers: {
-  //  'X-RapidAPI-Key': 'ecb3b37079msh225eb66a9ebe28ap1d6e60jsn78c8d3b347f3',  
-  //  'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-  //  }
-  //   };
+// const fetchJobs = async (data) => {
+//   const options = {
+//     method: "GET",  
+//     url: "https://jsearch.p.rapidapi.com/search",
+//     params: {
+//       query: data.JobSearchQuery,  
+//       page: "1",
+//       num_pages: "10",
+//     },
+//     headers: {
+//  'X-RapidAPI-Key': 'ecb3b37079msh225eb66a9ebe28ap1d6e60jsn78c8d3b347f3',  
+//  'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+//  }
+//   };
 
-  //   try {
-  //     const response = await axios.request(options);  
-  //     setJobs(response.data);
-  //     console.log(response.data, "is the result of the query");
-  //     setSearchStatus("completed");
-  //   } catch (error) {
-  //     console.error(error);  
-  //     setSearchStatus("completed");
-  //   }
+//   try {
+//     const response = await axios.request(options);  
+//     setJobs(response.data);
+//     console.log(response.data, "is the result of the query");
+//     setSearchStatus("completed");
+//   } catch (error) {
+//     console.error(error);  
+//     setSearchStatus("completed");
+//   }
 
-  // };
+// };

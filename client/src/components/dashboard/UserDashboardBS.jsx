@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useParams, NavLink, Link, Navigate, Outlet } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
@@ -25,12 +26,10 @@ export default function UserDashboardBS() {
         <Row
           style={{
             position: "relative",
-            top: "4.5rem",
+            top: "3rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            width: "100vw",
-
             backgroundColor: cols.black,
           }}
         >
@@ -50,17 +49,56 @@ export default function UserDashboardBS() {
                 backgroundColor: cols.lightBlack,
                 position: "fixed",
                 top: 0,
-                padding: "5rem 1rem 5rem 1rem ",
+                padding: "1rem 1rem 1rem 1rem ",
                 display: "flex",
-                justifyContent: "space-between",
               }}
             >
+              <Navbar.Brand
+                href="/"
+                style={{
+                  fontFamily: "IBM Plex Mono, monospace",
+                  fontStyle: "italic",
+                }}
+                className="font-plex ps-2 pb-5"
+              >
+                <div>
+                  <span
+                    style={{
+                      color: cols.lila,
+                      fontWeight: "600",
+                      fontSize: "2rem",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: cols.yellow,
+                        fontWeight: "600",
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      {"<"}
+                    </span>
+                    Road
+                    <span
+                      style={{
+                        color: cols.yellow,
+                        fontWeight: "600",
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      {" />"}
+                    </span>
+                  </span>
+                </div>
+              </Navbar.Brand>
+
               <div className="d-flex-column align-items-center">
                 {userMenuOptions.map((option) => {
                   return (
                     <Nav.Item
                       key={option.name}
-                      className="d-flex-column justify-content-center h-25 pb-3"
+                      className="d-flex-column justify-content-center pb-3 pt-2"
                     >
                       <NavLink
                         to={`${option.linkTo}`}
@@ -71,7 +109,9 @@ export default function UserDashboardBS() {
                           fontSize: "1.2rem",
                         }}
                       >
-                        <option.iconOutlined style={{ fontSize: "1.6rem" }} />
+                        <option.iconOutlined
+                          style={{ fontSize: "1.6rem", marginRight: "1rem" }}
+                        />
                         <span className="d-none d-xl-block">{option.name}</span>
                       </NavLink>
                     </Nav.Item>
@@ -82,7 +122,6 @@ export default function UserDashboardBS() {
           </Col>
 
           <Col xs={10} style={{ backgroundColor: cols.black }}>
-            {/* <div>something</div> */}
             <Tab.Content>
               <Outlet />
             </Tab.Content>

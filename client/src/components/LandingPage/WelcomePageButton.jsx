@@ -1,32 +1,39 @@
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function WelcomePageButton({ content, color, textColor, linkTo }) {
+export default function WelcomePageButton({ content, color, textColor, linkTo, type }) {
+  const navigate = useNavigate();
   return (
-    // <div style={{backgroundColor:color, color:textColor, width:"10rem"}}>
     <>
       <style type="text/css">
         {`.btn-flat {
+          font-family:"Montserrat" , monospace;
             background-color: ${color}; 
             color: ${textColor}; 
-            border-color: ${color}
+            border-color: ${textColor};
         }
-        
         .btn-flat:hover {
+          background-color: ${textColor}; 
             color: ${color}; 
             border-color: ${color}
         }
-        
-        
         `}
       </style>
-      <Link to={linkTo}>
-        <Button variant="flat" size="md">
-          {content}
-        </Button>
-      </Link>
+
+      <Button
+      type={type?"submit":""}
+        variant="flat"
+        size="md"
+        onClick={() => {
+          if (linkTo) {
+            navigate(linkTo);
+          }
+        }}
+      >
+        {content}
+      </Button>
     </>
   );
 }
 
-export default WelcomePageButton;
+

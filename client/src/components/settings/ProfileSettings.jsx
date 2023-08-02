@@ -10,12 +10,11 @@ import ProfilePictureManager from "./ProfilePictureManager";
 import ToggleWelcomeMessage from "./ToggleWelcomeMessage";
 import UsernameManager from "./UsernameManager";
 import PersonalInfoManager from "./PersonalInfoManager";
-
+import { cols } from "../../colorSchema";
 export default function ProfileSettings() {
   const [userSettings, setUserSettings] = useState();
   useEffect(() => {
     axiosClient
-      // .get(`http://localhost:3010/users/${params.username}`) //user route
       .get(`http://localhost:3010/auth/profile`) //auth route
       .then((response) => {
         const {
@@ -26,6 +25,7 @@ export default function ProfileSettings() {
           email,
           personalInfo,
         } = response.data;
+
         setUserSettings({
           userWishWelcome,
           profilePicture,
@@ -40,14 +40,13 @@ export default function ProfileSettings() {
   console.log(userSettings);
   return (
     userSettings && (
-      <Container>
+      <Container style={{color:cols.white, width:"70%"}}>
       
           <h1>PROFILE SETTINGS: </h1>
           <ToggleWelcomeMessage userSettings={userSettings} />
           <UsernameManager userSettings={userSettings} />
           <PersonalInfoManager userSettings={userSettings} />
           <ProfilePictureManager userSettings={userSettings} />
-      
       </Container>
     )
   );
