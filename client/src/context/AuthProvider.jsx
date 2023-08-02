@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
   /////////
   useEffect(() => {
     axiosClient
-      .get("http://localhost:3010/auth/profile")
+      .get("http://localhost:3010/api/auth/profile")
       .then((response) => {
         setUser(response.data);
         setIsLoading(false);
@@ -27,7 +27,7 @@ export default function AuthProvider({ children }) {
 
   const login = (data) => {
     axiosClient
-      .post("http://localhost:3010/auth/login", {
+      .post("http://localhost:3010/api/auth/login", {
         email: data.email,
         password: data.password,
       })
@@ -58,7 +58,7 @@ export default function AuthProvider({ children }) {
 
   const signup = (data) => {
     axiosClient
-      .post("http://localhost:3010/auth/signup", {
+      .post("http://localhost:3010/api/auth/signup", {
         username: data.username,
         email: data.email,
         password: data.password,
@@ -82,7 +82,7 @@ export default function AuthProvider({ children }) {
 
   const changeEmail = (data) => {
     axiosClient
-      .patch(`http://http://localhost:3010/auth/edit-email/${user._id}`, {
+      .patch(`http://http://localhost:3010/api/auth/edit-email/${user._id}`, {
         newEmail: data.newEmail,
         password: data.password,
       })
@@ -106,7 +106,7 @@ export default function AuthProvider({ children }) {
 
   const logout = () => {
     axiosClient
-      .post("/auth/logout")
+      .post("/api/auth/logout")
       .then((response) => {
         setUser(null);
         navigate(`/`);

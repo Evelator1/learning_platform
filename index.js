@@ -1,10 +1,14 @@
 const express = require("express");
 require("dotenv").config();
+const path = require("path")
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
 
 const port = process.env.PORT || 3011;
+
+
+app.use(express.static(path.join(__dirname, "client", "dist")))
 require("./db");
 
 app.get("/", (req, res) => {
@@ -23,11 +27,18 @@ app.use(cookieParser());
 
 app.use(express.json());
 
+
+const authRouter = require("./routes/auth");
+app.use("/api/auth", authRouter);
+
+app.get("*", (req, res)=>{
+  res.sendFile(path.join(___dirname, "client", "dist", "index.html " ))
+})
+
+
 const userRouter = require("./routes/users");
 app.use("/users", userRouter);
 
-const authRouter = require("./routes/auth");
-app.use("/auth", authRouter);
 
 const postRouter = require("./routes/posts");
 app.use("/post", postRouter);
