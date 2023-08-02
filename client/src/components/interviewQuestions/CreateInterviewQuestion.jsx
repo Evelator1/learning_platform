@@ -40,13 +40,14 @@ function CreateInterviewQuestion({ onAddQuestion }) {
 
   return (
     <Form className="createQuestionForm" onSubmit={handleSubmit}>
+      <h2 className="text-center">Interview Questions</h2>
       <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label className="h2">Interview Questions</Form.Label>
+        {/* <Form.Label></Form.Label> */}
         <Form.Control
           className="formTextArea"
           as="textarea"
           rows={4}
-          placeholder="Share Job Interview Question with the community"
+          placeholder="Share job interview questions with the community"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required

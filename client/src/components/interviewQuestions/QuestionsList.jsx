@@ -42,10 +42,10 @@ function QuestionsList({ data, loading, setData }) {
     try {
       const userId = user._id;
 
-      await axiosClient.patch(
-        `/interviewQuestions/${questionId}/vote`,
-        { voteType, userId }
-      );
+      await axiosClient.patch(`/interviewQuestions/${questionId}/vote`, {
+        voteType,
+        userId,
+      });
       // Create a new array with updated votes
       const updatedData = data.map((question) =>
         question._id === questionId
@@ -137,7 +137,7 @@ function QuestionsList({ data, loading, setData }) {
     >
       <Dropdown className="filterDropDown" required>
         <Dropdown.Toggle variant="dark" id="dropDownType">
-          filter by
+          Filter by
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => handleFilterQuestions("all")}>
@@ -223,7 +223,9 @@ function QuestionsList({ data, loading, setData }) {
 
                 <Col xs={4}>
                   <Row className="cardHeaderRight">
-                  <strong>Created: <DateFormatter dateString={question.createdAt} /></strong>
+                    <strong>
+                      Created: <DateFormatter dateString={question.createdAt} />
+                    </strong>
                   </Row>
                   <Row className="cardHeaderRight">
                     {question.isTechnical === true
@@ -252,38 +254,35 @@ function QuestionsList({ data, loading, setData }) {
               <Row className="questionBody">
                 <Col xs={2} className="questionRatingSection">
                   <Row>
-                      <FontAwesomeIcon
-                        icon={faCircleUp}
-                        className="upArrowIcon"
-                        onClick={() => handleVote(question._id, "upvote")}
-                      />
+                    <FontAwesomeIcon
+                      icon={faCircleUp}
+                      className="upArrowIcon"
+                      onClick={() => handleVote(question._id, "upvote")}
+                    />
                   </Row>
                   <Row className="votesCounter">
                     <h6 className="counterText">{question.votes} points</h6>
                   </Row>
                   <Row>
-                      <FontAwesomeIcon
-                        icon={faCircleDown}
-                        className="downArrowIcon"
-                        onClick={() => handleVote(question._id, "downvote")}
-                      />
+                    <FontAwesomeIcon
+                      icon={faCircleDown}
+                      className="downArrowIcon"
+                      onClick={() => handleVote(question._id, "downvote")}
+                    />
                   </Row>
                 </Col>
                 <Col>
-                  <h6 className="questionText">{question.content}</h6>
+                  <h5 className="questionText">{question.content}</h5>
                 </Col>
               </Row>
               <Row className="questionFooter">
-                
-                  <Button
-                    className="showAnswers"
-                    onClick={() => handleOpenModal(question)}
-                  >
-                    View Answers
-                  </Button>
-              
+                <Button
+                  className="showAnswers"
+                  onClick={() => handleOpenModal(question)}
+                >
+                  View Answers
+                </Button>
               </Row>
-              
             </Row>
           ))}
         </Row>
