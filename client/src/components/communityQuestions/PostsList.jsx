@@ -85,7 +85,7 @@ function PostsList({ posts, setPosts }) {
       {posts.map((post) => (
         <Container key={post._id} className="postCard">
           <Row className="postHeader">
-            <Col xs={11}>
+            <Col xs={10}>
               {post.author.profilePicture && (
                 <Image
                   src={post.author.profilePicture}
@@ -96,7 +96,7 @@ function PostsList({ posts, setPosts }) {
               )}
               {post.author.username}
             </Col>
-            <Col xs={1}>
+            <Col xs={2}>
               <Row className="postTime">{getFormattedDate(post.createdAt)}</Row>
             </Col>
             <Col xs={6}></Col>
