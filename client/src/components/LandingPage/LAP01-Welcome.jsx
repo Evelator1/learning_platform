@@ -4,8 +4,8 @@ import { Link as Scroller } from "react-scroll";
 import "../../App.css";
 import WelcomePageButton from "./WelcomePageButton";
 
-import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
-import { ReactComponent as Undraw3 } from "../../assets/pics/undraw3.svg";
+// import { ReactComponent as Undraw1 } from "../../assets/pics/undraw_1.svg";
+import { ReactComponent as Undraw3 } from "../../assets/pics/Undraw3.svg";
 import { ReactComponent as Wave } from "../../assets/background-pics/wave3.svg";
 
 import { cols } from "../../colorSchema";
