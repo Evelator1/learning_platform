@@ -38,7 +38,7 @@ export default function LearningCard({
         <div
           className={`card ${
             flip ? "flip" : ""
-          } col-12 bg-black2 border border-white`}
+          } col-12 bg-black2 border border-white border-2`}
           onClick={handleCardClick}
         >
           <div className="front text-white fs-6 px-4">
@@ -72,6 +72,9 @@ export default function LearningCard({
               onClick={redirect}
             >
               Create New Card
+            </button>
+            <button className="btn btn-light bg-purple border-purple mt-4 ms-3">
+              Delete Card
             </button>
           </div>
         </div>
