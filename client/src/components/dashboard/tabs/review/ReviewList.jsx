@@ -45,8 +45,22 @@ export default function ReviewList({ reviews }) {
       {reviews &&
         reviews.map((review) => {
           return (
-            <Card key={review._id} style={{ width: "90%", display:"flex", flexDirection:"column", marginTop:"3rem"}}>
-              <Card.Header as="h5" className="w-100">
+            <Card
+              key={review._id}
+              style={{
+                width: "90%",
+                display: "flex",
+                flexDirection: "column",
+                marginTop: "3rem",
+
+                height: "auto",
+              }}
+            >
+              <Card.Header
+                as="h5"
+                className="w-100"
+                style={{ padding: "1rem 2rem 1rem 2rem" }}
+              >
                 <Row>
                   <Col className="col-lg-1 col-xs-2">
                     <Avatar user={review.author} />
@@ -65,29 +79,33 @@ export default function ReviewList({ reviews }) {
                   <Card.Title as="h3"> {review.title}</Card.Title>
                   <Card.Text as="p">{review.content}</Card.Text>
                 </Container>
-
-                
-
-                {/* <Container
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "100%",
-                  }}
-                ></Container> */}
               </Card.Body>
-
-              <Card.Footer
+              {review.image && (
+                <Card.Img
+                  variant="bottom"
+                  src={review.image}
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "100%",
+                    width: "95%",
+                    height: "75%",
+                    aspectRatio: "1/1",
+                    objectFit: "cover",
+                    marginBottom: "4rem",
+                    borderRadius: "1.5rem",
                   }}
-                >
-                  <ThumbUpOffAltIcon />
-                  <ChatBubbleOutlineIcon />
-                  <BookmarkBorderIcon />
-                </Card.Footer>
+                />
+              )}
+              <Card.Footer
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  padding: "1rem 2rem 1rem 2rem",
+                }}
+              >
+                <ThumbUpOffAltIcon />
+                <ChatBubbleOutlineIcon />
+                <BookmarkBorderIcon />
+              </Card.Footer>
             </Card>
           );
         })}

@@ -10,7 +10,7 @@ import { ReactComponent as Wave2 } from "../../assets/background-pics/wave2.svg"
 function CardsPage() {
   return (
     <>
-      <div className="container-fluid pt-5 pb-5 d-flex flex-column align-items-center justify-content-center bg-purple">
+      <div className="container-fluid pt-5 pb-5 d-flex flex-column align-items-center justify-content-center bg-purple" id="discover-more">
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-12 d-flex flex-column align-items-center justify-content-center">
             <h2 className="font-mont fw-bold card-section-h2 display-6">

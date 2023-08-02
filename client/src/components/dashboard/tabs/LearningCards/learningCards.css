@@ -7,7 +7,7 @@
   transform-style: preserve-3d;
   height: 20rem;
   width: 35rem;
-  transition: 200ms;
+  transition: 700ms;
   transform: rotateY(var("angle"));
   transform: perspective(1000px) rotateY(var(--rotate-y, 0));
 }

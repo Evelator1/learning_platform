@@ -199,7 +199,7 @@ export default function JobAdDisplay() {
             <Col className="col-12 my-2">
               {jobs && (
                 <Button variant="primary" onClick={handleShow}>
-                  Show&nbsp;Results
+                  {`Show Results`}
                 </Button>
               )}
             </Col>

@@ -4,6 +4,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { axiosClient } from "../../axiosClient";
 import { cols } from "../../colorSchema";
+import WelcomePageButton from "../LandingPage/WelcomePageButton";
+
 export default function ProfilePictureManager({ userSettings }) {
   const {
     register,
@@ -56,8 +58,8 @@ export default function ProfilePictureManager({ userSettings }) {
   };
 
   return (
-    <div className="mt-3 w-100">
-      <h3>Profile Image</h3>
+    <div className="mt-5 w-100">
+      <h3>Profile Image:</h3>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -65,15 +67,21 @@ export default function ProfilePictureManager({ userSettings }) {
       >
         <div>
           <input
-            style={{ width: "22rem" }}
+            style={{ width: "22rem" , height:"3rem" }}
             type="file"
             id="image"
             accept="image/*"
             {...register("profilePicture", { required: true })}
-            className="w-100  rounded-md border border-gray-800 bg-stone-100 px-4 py-2"
+            className=" rounded-md border border-gray-800 bg-stone-100 px-4 py-2"
           />
 
-          <input type="submit" value={"submit picture"} />
+          <WelcomePageButton
+            content={"submit"}
+            color={cols.lila}
+            textColor={cols.black}
+            linkTo={null}
+            type={"submit"}
+          />
         </div>
 
         <div>
@@ -81,7 +89,7 @@ export default function ProfilePictureManager({ userSettings }) {
             src={userSettings.profilePicture}
             className="rounded-circle shadow-4 border border-1 border-white"
             style={{
-              marginTop:"2rem",
+              marginTop: "2rem",
               width: "10rem",
               height: "auto",
               aspectRatio: "1/1",
@@ -92,12 +100,19 @@ export default function ProfilePictureManager({ userSettings }) {
         </div>
       </form>
       <div className="mt-2">
-        <button
+        {/* <button
           onClick={deleteCurrentPic}
           className="w-80 cursor-pointer rounded-md bg-danger px-4 py-2 text-stone-50 hover:bg-stone-700"
         >
           Delete current pic
-        </button>
+        </button> */}
+        <WelcomePageButton
+         onClick={deleteCurrentPic}
+            content={"Delete current pic"}
+            color={cols.lila}
+            textColor={cols.black}
+            type={"submit"}
+          />
       </div>
     </div>
   );

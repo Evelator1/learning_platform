@@ -40,7 +40,7 @@ export default function ProfileSettings() {
   console.log(userSettings);
   return (
     userSettings && (
-      <Container style={{color:cols.white}}>
+      <Container style={{color:cols.white, width:"70%"}}>
       
           <h1>PROFILE SETTINGS: </h1>
           <ToggleWelcomeMessage userSettings={userSettings} />
