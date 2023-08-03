@@ -46,7 +46,7 @@ const reviewRouter=require("./routes/reviews")
 app.use("/api/reviews", reviewRouter)
 
 const answerRouter=require("./routes/interviewAnswer")
-app.use("/api/nterviewAnswers",answerRouter)
+app.use("/api/interviewAnswers",answerRouter)
 
 const jobsRouter=require("./routes/jobs")
 app.use("/api/jobs", jobsRouter)
