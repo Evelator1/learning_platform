@@ -129,7 +129,7 @@ export default function JobAdDisplay() {
           position: "relative",
           top: "1rem",
           left: "5rem",
-          overflow: "scroll",
+          overflow: "auto",
           padding: "1rem",
           display: "flex",
           flexDirection: "column",
