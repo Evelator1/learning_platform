@@ -128,6 +128,7 @@ export default function UserDashboardBS() {
               overflow: "scroll",
               paddingBottom: "10rem",
               paddingTop: "2rem",
+              height:"100vh"
             }}
           >
             <Tab.Content>
