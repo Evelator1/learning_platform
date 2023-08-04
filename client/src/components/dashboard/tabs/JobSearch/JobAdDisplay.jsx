@@ -137,7 +137,7 @@ export default function JobAdDisplay() {
           backgroundColor: cols.lila,
           border: `2px solid ${cols.gray}`,
           borderRadius: "0.5rem",
-          marginTop:"50px"
+          marginTop:"100px"
         }}
       >
         <Container>
