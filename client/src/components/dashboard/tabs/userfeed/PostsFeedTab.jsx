@@ -8,8 +8,13 @@ import PostsList from "../../../communityQuestions/PostsList";
 import CreatePostMask from "./CreatePostMask";
 import { cols } from "../../../../colorSchema";
 import { faDisplay } from "@fortawesome/free-solid-svg-icons";
+import Favourite from "../Favourite";
+
+
+
 export default function PostsFeedTab() {
   const [posts, setPosts] = useState([]);
+  const [comments, setcomments] = useState([]);
 
 
   
@@ -23,14 +28,27 @@ export default function PostsFeedTab() {
       }
     };
     fetchData();
-  }, []);
+  }, [posts]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axiosClient.get("/comments");
+        setcomments(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [comments]);
 
   return (
     <Container style={{ backgroundColor: cols.black, display:"flex", justifyContent:"center", marginLeft:"2rem"}}>
       <Row className="col-lg-9 col-md-10 col-sm-12" >
         <Col>
           <CreatePostMask posts={posts} setPosts={setPosts}/>
-          <PostsList posts={posts} setPosts={setPosts} />
+          <PostsList posts={posts} setPosts={setPosts} comments={comments} setcomments={setcomments} />
+          <Favourite posts={posts}/>
         </Col>
       </Row>
     </Container>

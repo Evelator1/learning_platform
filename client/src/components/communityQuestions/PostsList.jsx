@@ -14,38 +14,65 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { axiosClient } from "../../axiosClient";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
+import Favourite from "../dashboard/tabs/Favourite";
 import { cols } from "../../colorSchema";
 import "./PostsList.css";
 import CommentsModal from "./CommentsModal";
-// import PostCommentsList from "./CommentsList";
 
-function PostsList({ posts, setPosts }) {
+import { json } from "react-router-dom";
+
+
+function PostsList({ posts, setPosts, comments, setComments }) {
   const { user } = useContext(AuthContext);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleLikeClick = (postId) => {
-    setPosts((prevData) =>
-      prevData.map((post) =>
-        post._id === postId ? { ...post, likeChecked: !post.likeChecked } : post
-      )
-    );
+
+  
+
+  const handleLikeClick = async (postId) => {
+    try {
+      const response = await axiosClient.get(`/post/${postId}`);
+      const currentLikers = response.data.likes;
+      const flattenedLikers = currentLikers.flat();
+    
+      if (flattenedLikers.includes(user._id)) {
+        await axiosClient.put(`/post/${postId}`, {
+          $pull: { likes: user._id },
+        });
+      } else {
+        await axiosClient.put(`/post/${postId}`, {
+          $push: { likes: user._id },
+        });
+      }
+    } catch (error) {
+      console.error("Error while adding like:", error);
+    }
   };
-  const handleCommentClick = (postId) => {
-    setPosts((prevData) =>
-      prevData.map((post) =>
-        post._id === postId
-          ? { ...post, commentChecked: !post.commentChecked }
-          : post
-      )
-    );
-  };
-  const handleSaveClick = (postId) => {
-    setPosts((prevData) =>
-      prevData.map((post) =>
-        post._id === postId ? { ...post, saveChecked: !post.saveChecked } : post
-      )
-    );
+
+
+  const handleSaveClick = async (postId) => {
+    try {
+      const response = await axiosClient.get(`/post/${postId}`);
+      const currentSavers = response.data.saves;
+      if (Array.isArray(currentSavers)){
+      const flattenedSavers = currentSavers.flat();
+      if (flattenedSavers.includes(user._id)) {
+        await axiosClient.put(`/post/${postId}`, {
+          $pull: { saves: user._id },
+        });
+      } else {
+        await axiosClient.put(`/post/${postId}`, {
+          $push: { saves: user._id },
+        });
+      }
+    } else {
+      console.error("Error: response.data.saves is not an array.");
+    }
+      
+    } catch (error) {
+      console.error("Error while saving Post:", error);
+    }
   };
 
   function getFormattedDate(dateString) {
@@ -110,20 +137,34 @@ function PostsList({ posts, setPosts }) {
             </blockquote>
           </Row>
           <Row className="likes_Comments_Counter">
-            {/* <Col className="likesCounter">
-              <FontAwesomeIcon
-                icon={solidThumbsUp}
-                className="likeIconCounter"
-              />{" "}
-              15
-            </Col> */}
+            {post.likes.length > 0 ? (
+              <Col className="likesCounter">
+                <FontAwesomeIcon
+                  icon={solidThumbsUp}
+                  className="likeIconCounter"
+                />{" "}
+                {post.likes.length}
+              </Col>
+            ) : (
+              ""
+            )}
             <Col className="commentsTracker">
-              <a
-                href="/comments"
-                onClick={(event) => handleAllCommentsClick(post, event)}
-              >
-                All Comments
-              </a>
+              {comments.filter((comment) => comment.onPost._id === post._id)
+                .length > 0 ? (
+                <a
+                  href="/comments"
+                  onClick={(event) => handleAllCommentsClick(post, event)}
+                >
+                  {
+                    comments.filter(
+                      (comment) => comment.onPost._id === post._id
+                    ).length
+                  }{" "}
+                  Comments
+                </a>
+              ) : (
+                ""
+              )}
             </Col>
           </Row>
           <Row className="likes_Comments_Save">
@@ -135,7 +176,13 @@ function PostsList({ posts, setPosts }) {
                 onClick={() => handleLikeClick(post._id)}
               >
                 <FontAwesomeIcon
-                  icon={post.likeChecked ? solidThumbsUp : outlineThumbsUp}
+                  icon={
+                    JSON.stringify(post.likes).includes(
+                      JSON.stringify(user._id)
+                    )
+                      ? solidThumbsUp
+                      : outlineThumbsUp
+                  }
                   className={`LikeIconAction ${
                     post.likeChecked ? "likeChecked" : ""
                   }`}
@@ -180,7 +227,11 @@ function PostsList({ posts, setPosts }) {
                 onClick={() => handleSaveClick(post._id)}
               >
                 <FontAwesomeIcon
-                  icon={post.saveChecked ? solidStar : outlineStar}
+                  icon={
+                     JSON.stringify(post.saves).includes(JSON.stringify(user._id))
+                      ? solidStar
+                      : outlineStar
+                  }
                   className={`saveIconAction ${
                     post.saveChecked ? "saveChecked" : ""
                   }`}
@@ -202,8 +253,13 @@ function PostsList({ posts, setPosts }) {
         isOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       />
+
+
     </div>
+    
+
   );
+  
 }
 
 export default PostsList;

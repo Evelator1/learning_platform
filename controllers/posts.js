@@ -34,6 +34,9 @@ const createPost = async (req, res) => {
           author,
           createdAt,
           postCategory,
+          likes:[],
+          comment:[],
+          saves:[]
         });
         fs.unlinkSync(req.file.localPath);
       } else {
