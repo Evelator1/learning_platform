@@ -1,48 +1,48 @@
 import React, { useContext, useEffect, useState } from "react";
-import PostsFeedTab from "./userfeed/PostsFeedTab";
-import PostsList from "../../communityQuestions/PostsList";
 import { AuthContext } from "../../../context/AuthProvider";
 import { axiosClient } from "../../../axiosClient";
-import { json } from "react-router-dom";
-import { path } from "file-system/vendor/util";
+import PostsList from "../../communityQuestions/PostsList";
 
 
-export default function Favourite( {posts} ) {
-  const [savedPosts, setSavedPosts]=useState([])
+
+export default function Favourite() {
   const { user } = useContext(AuthContext);
+  const [posts, setPosts] = useState([]);
+  const [comments, setcomments] = useState([]);
+  const [savedPosts, setSavedPosts]=useState([])
 
+
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await axiosClient.get("/post");
-        const posts=(result.data)
-        console.log("POSTS", posts);
-        
-        setSavedPosts(posts.filter((post)=>(post.saves= user._id)))
-        console.log("saved",savedPosts);
+        setPosts(result.data);
+        setSavedPosts(posts.filter((post)=>JSON.stringify(post.saves).includes(user._id)))
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, []);
+  }, [posts]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axiosClient.get("/comments");
+        setcomments(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [comments]);
 
-  // useEffect (()=>{
-    // const savedPosts = posts.filter((post) => post.saves.includes(user._id));
-    // console.log(savedPosts);
-  // },[])
-
-  // Use filter to find saved posts based on user._id
-  
 
   return (
     <div className="col-12 mt-5 d-flex flex-column justify-content-center align-items-center">
      
-      {/* {savedPosts.map((post) => (
-        <div key={post._id}>{post.content}</div>
-      ))} */}
-      {/* <PostsList posts={posts}/> */}
+     <PostsList posts={savedPosts}  comments={comments} setcomments={setcomments} />
     </div>
   );
 }

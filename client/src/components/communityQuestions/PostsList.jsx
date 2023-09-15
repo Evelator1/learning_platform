@@ -19,15 +19,16 @@ import { cols } from "../../colorSchema";
 import "./PostsList.css";
 import CommentsModal from "./CommentsModal";
 
-import { json } from "react-router-dom";
 
 
-function PostsList({ posts, setPosts, comments, setComments }) {
+
+function PostsList({ posts, setPosts, comments, setComments,savedPosts }) {
   const { user } = useContext(AuthContext);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-
+  
+  const filteredPosts = posts && posts.length > 0 ? posts.filter((post) => post.saves.includes(user._id)) : [];
+// console.log(filteredPosts);
   
 
   const handleLikeClick = async (postId) => {
@@ -109,7 +110,7 @@ function PostsList({ posts, setPosts, comments, setComments }) {
 
   return (
     <div style={{ width: "85%", marginLeft: "-2rem" }}>
-      {posts.map((post) => (
+      {posts && posts.map((post) => (
         <Container key={post._id} className="postCard">
           <Row className="postHeader">
             <Col xs={10}>
@@ -137,7 +138,7 @@ function PostsList({ posts, setPosts, comments, setComments }) {
             </blockquote>
           </Row>
           <Row className="likes_Comments_Counter">
-            {post.likes.length > 0 ? (
+            {post && post.likes.length > 0 ? (
               <Col className="likesCounter">
                 <FontAwesomeIcon
                   icon={solidThumbsUp}
@@ -178,7 +179,7 @@ function PostsList({ posts, setPosts, comments, setComments }) {
                 <FontAwesomeIcon
                   icon={
                     JSON.stringify(post.likes).includes(
-                      JSON.stringify(user._id)
+                      (user._id)
                     )
                       ? solidThumbsUp
                       : outlineThumbsUp

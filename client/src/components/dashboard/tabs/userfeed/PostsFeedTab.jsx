@@ -41,6 +41,7 @@ export default function PostsFeedTab() {
     };
     fetchData();
   }, [comments]);
+  // console.log("postsfeedtabs",posts);
 
   return (
     <Container style={{ backgroundColor: cols.black, display:"flex", justifyContent:"center", marginLeft:"2rem"}}>
@@ -48,7 +49,6 @@ export default function PostsFeedTab() {
         <Col>
           <CreatePostMask posts={posts} setPosts={setPosts}/>
           <PostsList posts={posts} setPosts={setPosts} comments={comments} setcomments={setcomments} />
-          <Favourite posts={posts}/>
         </Col>
       </Row>
     </Container>
