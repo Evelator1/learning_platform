@@ -1,10 +1,11 @@
+const { default: mongoose } = require("mongoose");
 const InterviewQuestion = require("../models/interviewQuestion");
 
 const createQuestion=async (req,res)=>{
     try{
         const {id}=req.user
         const {body:{content,author,isTechnical,technology}}=req
-        const question=await InterviewQuestion.create({content,author,isTechnical,technology})
+        const question=await InterviewQuestion.create({content,author,isTechnical,technology,saves:[]})
         res.status(201).json(question)
     }catch(error){
         res.status(500).send(error.message)
@@ -29,6 +30,17 @@ const getQuestions=async (req,res)=>{
     }catch(error){
         res.status(500).send(error.message)
     }
+}
+
+
+const getQuestionsById=async(req,res)=>{
+  try {
+    const id = req.params.id
+    const question= await InterviewQuestion.findById(id)
+    res.status(200).json(question)
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
 }
 
 const updateQuestionsVotes = async (req, res) => {
@@ -77,4 +89,16 @@ const updateQuestionsVotes = async (req, res) => {
   };
 
 
-module.exports={createQuestion,getQuestions,updateQuestionsVotes}
+  const updateQuestionById=async(req,res)=>{
+    try {
+      const id=req.params.id
+      const body = req.body
+
+      const question= await InterviewQuestion.findByIdAndUpdate(id,body,{new:true})
+      res.status(202).json(question);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  }
+
+module.exports={createQuestion,getQuestions,updateQuestionsVotes, updateQuestionById,getQuestionsById}

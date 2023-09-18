@@ -18,6 +18,8 @@ import Favourite from "../dashboard/tabs/Favourite";
 import { cols } from "../../colorSchema";
 import "./PostsList.css";
 import CommentsModal from "./CommentsModal";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 
 
@@ -27,11 +29,11 @@ function PostsList({ posts, setPosts, comments, setComments,savedPosts }) {
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   
-  const filteredPosts = posts && posts.length > 0 ? posts.filter((post) => post.saves.includes(user._id)) : [];
-// console.log(filteredPosts);
+
   
 
   const handleLikeClick = async (postId) => {
+  
     try {
       const response = await axiosClient.get(`/post/${postId}`);
       const currentLikers = response.data.likes;
@@ -39,17 +41,19 @@ function PostsList({ posts, setPosts, comments, setComments,savedPosts }) {
     
       if (flattenedLikers.includes(user._id)) {
         await axiosClient.put(`/post/${postId}`, {
-          $pull: { likes: user._id },
+          $pull: { likes: user._id }
         });
       } else {
         await axiosClient.put(`/post/${postId}`, {
           $push: { likes: user._id },
         });
       }
+
     } catch (error) {
       console.error("Error while adding like:", error);
     }
   };
+
 
 
   const handleSaveClick = async (postId) => {
@@ -67,9 +71,7 @@ function PostsList({ posts, setPosts, comments, setComments,savedPosts }) {
           $push: { saves: user._id },
         });
       }
-    } else {
-      console.error("Error: response.data.saves is not an array.");
-    }
+    } 
       
     } catch (error) {
       console.error("Error while saving Post:", error);
@@ -140,10 +142,15 @@ function PostsList({ posts, setPosts, comments, setComments,savedPosts }) {
           <Row className="likes_Comments_Counter">
             {post && post.likes.length > 0 ? (
               <Col className="likesCounter">
+                <OverlayTrigger
+      
+      overlay={<Tooltip >{post.likes.map((like)=>like.map((innerLike)=>innerLike.username)).join(", ")}</Tooltip>}
+    >
                 <FontAwesomeIcon
                   icon={solidThumbsUp}
                   className="likeIconCounter"
-                />{" "}
+                />
+                </OverlayTrigger>{" "}
                 {post.likes.length}
               </Col>
             ) : (
