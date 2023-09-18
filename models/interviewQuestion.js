@@ -17,9 +17,9 @@ const questionSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
-        upVotes:{
-            type:[mongoose.Schema.Types.ObjectId],
-            default:[]
+        upVotes: {
+            type: [mongoose.Schema.Types.ObjectId],
+            default: []
         },
         downVotes: {
             type: [mongoose.Schema.Types.ObjectId],
@@ -29,21 +29,27 @@ const questionSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
         },
-        isTechnical:{
+        isTechnical: {
             type: Boolean
         },
         positionLevel: {
-             type: String,
-             enum: ["junior","senior"],
-             
+            type: String,
+            enum: ["junior", "senior"],
+
         },
         technology: {
             type: String,
-            enum: ["node", "express", "react",  "javascript", "html", "css", "sql", "mysql", "mongodb","bootstrap","other",""],
-            
-            
-       },
-        updatedAt: { type: Date, default: Date.now }
+            enum: ["node", "express", "react", "javascript", "html", "css", "sql", "mysql", "mongodb", "bootstrap", "other", ""],
+
+
+        },
+        updatedAt: { type: Date, default: Date.now },
+        saves: [
+            {
+                type: [mongoose.Schema.Types.ObjectId],
+                ref: "User"
+            }
+        ]
     }
 )
 

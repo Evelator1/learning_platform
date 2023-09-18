@@ -24,7 +24,7 @@ function InterviewQuestionsDashboard() {
   };
    useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
   const handleAddQuestion = (newQuestion) => {
     setData([...data, newQuestion]);
   };

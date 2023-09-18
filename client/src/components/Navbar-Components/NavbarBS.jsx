@@ -19,7 +19,7 @@ import "../../App.css";
 
 export default function NavbarBS() {
   const { user, isLoading, logout } = useContext(AuthContext);
-  console.log(user);
+  
   return (
     <>
       <Navbar

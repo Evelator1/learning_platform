@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import Modal from "react-bootstrap/Modal";
@@ -21,33 +21,55 @@ import "./CommentsModal.css"; // Importing custom CSS for the component
 import { axiosClient } from "../../axiosClient"; // Importing the axios client for API requests
 
 function CommentsModal({ selectedPost, isOpen, onClose }) {
+  
+  
+
   const { user } = useContext(AuthContext);
   // State to manage the comment input
   const [comment, setComment] = useState("");
 
   // State to track the newly added comment
   const [newComment, setNewComment] = useState();
+  const [comments, setComments] = useState([]);
 
   // Function to handle creating a new comment
-  const handleCreateComment = () => {
-    // Make the POST request using the comment data
-    axiosClient
-      .post("/comments/newComment", {
+  const handleCreateComment = async () => {
+    try {
+      // Make the POST request to create the comment
+      const commentResponse = await axiosClient.post("/comments/newComment", {
         author: user._id,
         content: comment,
         onPost: selectedPost._id,
-      })
-      .then((response) => {
-        // Handle the response, e.g., show a success message or update the UI
-        console.log("Comment successfully created:", response.data);
-        setComment(""); // Clear the comment input after submitting
-        setNewComment(response.data); // Save the newly added comment to the state
-      })
-      .catch((error) => {
-        // Handle errors, e.g., show an error message
-        console.error("Error creating comment:", error);
       });
+  
+      // Extract the comment ID from the response
+      // const commentId = commentResponse.data._id;
+      // console.log("gggg",commentId);
+  
+      // Make the PUT request to update the post with the comment ID
+      // await axiosClient.put(`/post/${selectedPost._id}`, {
+      //   $push: {comment: commentId},
+      // });
+  
+      // Handle the response, e.g., show a success message or update the UI
+      // console.log("Comment successfully created and added to the post.");
+      
+      setComment(""); // Clear the comment input after submitting
+      setNewComment(commentResponse.data); // Save the newly added comment to the state
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      console.error("Error creating and adding comment:", error);
+    }
   };
+  
+  useEffect(() => {
+    if (selectedPost) {
+      // Fetch comments when the selected post changes
+      axiosClient.get(`/comments/posts/${selectedPost._id}`).then((result) => {
+        setComments(result.data);
+      });
+    }
+  }, [selectedPost,newComment]);
 
   // Function to update the comment state when the user types in the textarea
   const handleCommentChange = (event) => {
@@ -85,13 +107,21 @@ function CommentsModal({ selectedPost, isOpen, onClose }) {
               <p className="mt-4">{selectedPost.content}</p>
             </Row>
             <Row className="likes_Comments_Counter">
-              <Col className="likesCounter">
+              {
+                selectedPost.likes.length > 0?
+                <Col className="likesCounter">
                 <FontAwesomeIcon icon={solidThumbsUp} />
-                15
-              </Col>
-              <Col className="commentsTracker">
-                <a>3 Comments</a>
-              </Col>
+                {" "}{selectedPost.likes.length}
+              </Col>:
+              ""
+              }
+              {
+                comments.length > 0 ?
+                <Col className="commentsTracker">
+                <a>{comments.length} Comments</a>
+              </Col>:
+              "No comments yet! Be the first!"
+              }
             </Row>
           </Container>
         </Modal.Header>

@@ -23,7 +23,7 @@ export default function AuthProvider({ children }) {
         setIsLoading(false);
         console.log(err);
       });
-  }, []);
+  }, [user]);
 
   const login = (data) => {
     axiosClient

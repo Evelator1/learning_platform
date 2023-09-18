@@ -29,12 +29,12 @@ export default function CreatePostMask({ posts, setPosts }) {
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]);
     }
-    console.log(data);
+    // console.log(data);
 
     axiosClient
       .post("/post/newPost", formData)
       .then((response) => {
-        console.log(response.data, posts);
+        // console.log(response.data, posts);
 
         setPosts([{ ...response.data, author: user }, ...posts]);
       })

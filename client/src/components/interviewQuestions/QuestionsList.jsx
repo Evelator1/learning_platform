@@ -1,47 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosClient } from "../../axiosClient";
 import "./QuestionsList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider.jsx";
-import {
-  faCircleUp,
-  faCircleDown,
-  faCogs,
-  faLightbulb,
-} from "@fortawesome/free-solid-svg-icons";
-import { faCheckCircle as mediumChecked } from "@fortawesome/free-regular-svg-icons";
-import {
-  Container,
-  Col,
-  Row,
-  Image,
-  Button,
-  ButtonGroup,
-} from "react-bootstrap";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import AnswerList from "./AnswerList";
+import { faCircleUp, faCircleDown } from "@fortawesome/free-solid-svg-icons";
+import { Container, Col, Row, Image, Button } from "react-bootstrap";
 import QuestionModal from "./AnswerModal";
 import DateFormatter from "./DateFormatter";
-import Dropdown from "react-bootstrap/Dropdown";
-import { cols } from "../../colorSchema";
 import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
+import QuestionsFilter from "../interviewQuestions/QuestionsFilter";
+import { json } from "react-router-dom";
 
-function QuestionsList({ data, loading, setData }) {
+function QuestionsList({ data, loading, setData, isFavoritesSection,savedQuest }) {
   const { user } = useContext(AuthContext);
-
   const [showModal, setShowModal] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [isTechnical, setIsTechnical] = useState(null);
   const [selectedTechnology, setSelectedTechnology] = useState(null);
-  const [savedQuestion, setSavedQuestion] = useState(false);
   const [selectedQuestionId, setSelectedQuestionId] = useState(null);
+  const [filteredData, setFilteredData] = useState(data);
+  const [showFilter, setshowFilter] = useState("filterShowed");
+  const [savedQuestions, setSavedQuestions]=useState([])
+
+  useEffect(() => {
+    let filteredQuestions = [...data];
+
+    if (selectedTechnology) {
+      filteredQuestions = filteredQuestions.filter(
+        (question) =>
+          question.technology === selectedTechnology &&
+          (isTechnical === null || question.isTechnical === isTechnical)
+      );
+    } else if (isTechnical !== null) {
+      filteredQuestions = filteredQuestions.filter(
+        (question) => question.isTechnical === isTechnical
+      );
+    }
+
+    setFilteredData(filteredQuestions);
+  }, [data, selectedTechnology, isTechnical]);
 
   const handleVote = async (questionId, voteType) => {
     try {
       const userId = user._id;
-
 
       await axiosClient.patch(`/interviewQuestions/${questionId}/vote`, {
         voteType,
@@ -73,6 +76,8 @@ function QuestionsList({ data, loading, setData }) {
     return <div>No questions found.</div>;
   }
 
+
+
   const handleOpenModal = (question) => {
     setSelectedQuestionId(question._id);
     setSelectedQuestion(question);
@@ -84,18 +89,37 @@ function QuestionsList({ data, loading, setData }) {
     setShowModal(false);
   };
 
-  const handleSaveQuestion = (questionId) => {
-    setSelectedQuestionId(questionId);
-  };
+  
 
-  const questionWithHighestVotes = data.reduce(
-    (prevQuestion, currentQuestion) => {
-      return currentQuestion.votes > prevQuestion.votes
-        ? currentQuestion
-        : prevQuestion;
-    },
-    data[0]
-  );
+  const handleSaveQuestion = async (questionId) => {
+    try {
+      const response = await axiosClient.get(`/interviewQuestions/${questionId}`);
+      const currentSavers = response.data.saves;
+  
+      if (Array.isArray(currentSavers)) {
+        const flattenedSavers = currentSavers.flat();
+        if (flattenedSavers.includes(user._id)) {
+          // User already saved the question, so unsave it
+          await axiosClient.put(`/interviewQuestions/${questionId}`, {
+            $pull: { saves: user._id },
+          });
+          
+        } else {
+          // User hasn't saved the question, so save it
+          await axiosClient.put(`/interviewQuestions/${questionId}`, {
+            $push: { saves: user._id },
+          });
+        }
+  
+        // Update the savedQuestions state after making the API call
+      }
+    } catch (error) {
+      console.error("Error while saving Question:", error);
+    }
+  };
+  
+
+  
 
   const handleFilterQuestions = (option) => {
     switch (option) {
@@ -118,96 +142,31 @@ function QuestionsList({ data, loading, setData }) {
     }
   };
 
-  let filteredData = data;
-  if (selectedTechnology) {
-    filteredData = data.filter((question) => {
-      return (
-        question.technology === selectedTechnology &&
-        (isTechnical === null || question.isTechnical === isTechnical)
-      );
-    });
-  } else if (isTechnical !== null) {
-    filteredData = data.filter(
-      (question) => question.isTechnical === isTechnical
-    );
-  }
+  const questionWithHighestVotes = data.reduce(
+    (prevQuestion, currentQuestion) => {
+      return currentQuestion.votes > prevQuestion.votes
+        ? currentQuestion
+        : prevQuestion;
+    },
+    data[0]
+  );
 
   return (
     <div
       className="questionListSection"
       style={{ display: "flex", flexDirection: "column" }}
     >
-      <Dropdown className="filterDropDown" required>
-        <Dropdown.Toggle variant="dark" id="dropDownType">
-          Filter by
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={() => handleFilterQuestions("all")}>
-            all
-          </Dropdown.Item>
-          <Dropdown as={ButtonGroup}>
-            <Button
-              className="filterQuestionsBtn"
-              variant="dark"
-              onClick={() => handleFilterQuestions("technical")}
-            >
-              Technical
-            </Button>
-
-            <Dropdown.Toggle
-              split
-              variant="success"
-              id="dropdown-split-basic"
-            />
-
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => setSelectedTechnology(null)}>
-                All
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("node")}>
-                node
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("express")}>
-                express
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("react")}>
-                react
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => setSelectedTechnology("javascript")}
-              >
-                javascript
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("html")}>
-                html
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("css")}>
-                css
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("sql")}>
-                sql
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("mysql")}>
-                mysql
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("mongodb")}>
-                mongodb
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("bootstrap")}>
-                bootstrap
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedTechnology("other")}>
-                other
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <Dropdown.Item onClick={() => handleFilterQuestions("non-technical")}>
-            Non-Technical
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-
+      {!isFavoritesSection && (
+      <div className={showFilter ? "filterShowed" : "filterHidden"}>
+      <QuestionsFilter
+      
+        data={data}
+        setFilteredData={setFilteredData}
+        handleFilterQuestions={handleFilterQuestions}
+        setSelectedTechnology={setSelectedTechnology}
+      />
+      </div>
+      )}
       <Container className="interviewQuestionSection">
         <Row>
           {filteredData.map((question) => (
@@ -234,9 +193,9 @@ function QuestionsList({ data, loading, setData }) {
                       : "Type: Non-Technical"}
                   </Row>
                   <Row className="cardHeaderRight">
-                  {question.technology !== "" && (
-  <>Technology: {question.technology}</>
-)}
+                    {question.technology !== "" && (
+                      <>Technology: {question.technology}</>
+                    )}
                   </Row>
                 </Col>
                 <Col xs={1}>
@@ -244,11 +203,11 @@ function QuestionsList({ data, loading, setData }) {
                     onClick={() => handleSaveQuestion(question._id)}
                     className="saveQuetionIcon"
                   >
-                    {selectedQuestionId === question._id ? (
+                     {JSON.stringify(question.saves).includes(JSON.stringify(user._id)) ? 
                       <TurnedInIcon />
-                    ) : (
+                     : 
                       <TurnedInNotIcon />
-                    )}
+                    }
                   </div>
                 </Col>
               </Row>

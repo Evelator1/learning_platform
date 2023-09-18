@@ -23,14 +23,23 @@ const postSchema = new mongoose.Schema({
     type:Boolean,
     default: false,
   },
-  likes: { 
-    type: [mongoose.Schema.Types.ObjectId], 
-    ref: "User" 
-  },
+  likes: [
+    { type: [mongoose.Schema.Types.ObjectId], 
+    ref: "User"}
+  ],
   postCategory:{
     type:String, enum:["interviewQuestion","review","communityPost"],
     required: true
-  }
+  },
+  comment:[
+    { type:[mongoose.Schema.Types.ObjectId],
+     ref:"Comment"}
+  ],
+  saves:[
+    { type:[mongoose.Schema.Types.ObjectId],
+     ref:"User"}
+  ]
+  
 });
 
 const Post = mongoose.model("Post", postSchema);

@@ -1,0 +1,49 @@
+
+
+.favorites{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.savedQuestionsCarousel{
+  width: 100%;
+  padding: 50px;
+  min-height: 600px;
+}
+.savedQuestionsCarousel .carousel-inner{
+    min-height: 500px;
+}
+
+
+
+.savedPostsCarousel {
+    width: 100%;
+    min-height: 750px;
+    height: 750px;
+    padding: 50px;
+    margin-bottom: 100px;
+    
+}
+
+.savedPostsCarousel .carousel-inner{
+
+    min-height: 750px;
+    max-height: 750px;
+    width: 80%;
+    overflow: visible;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+   
+    
+   
+}
+.carousel-indicators{
+    margin-top: 2rem;
+}
