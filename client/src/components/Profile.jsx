@@ -14,9 +14,9 @@ export default function Profile() {
             <Card.Text>Bootcamp: {user.bootcamp} </Card.Text>
 
           </Col>
-          <Col className="col-md-3">
+          {/* <Col className="col-md-3">
             <Button variant="primary">Add as Friend</Button>
-          </Col>
+          </Col> */}
         </Card.Header>
         <Card.Body>
           <Card.Img
