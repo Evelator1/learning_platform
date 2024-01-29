@@ -94,12 +94,6 @@ export default function ProfilePictureManager({ userSettings }) {
         </div>
       </form>
       <div className="mt-2">
-        {/* <button
-          onClick={deleteCurrentPic}
-          className="w-80 cursor-pointer rounded-md bg-danger px-4 py-2 text-stone-50 hover:bg-stone-700"
-        >
-          Delete current pic
-        </button> */}
         <WelcomePageButton
           onClick={deleteCurrentPic}
           content={"Delete current pic"}

@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
-
 import { axiosClient } from "../../axiosClient";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Container from "react-bootstrap/Container";
 import ToggleWelcomeMessage from "./ToggleWelcomeMessage";
 import UsernameManager from "./UsernameManager";
 import BootcampInfoManager from "./BootcampInfoManager";
@@ -14,9 +9,8 @@ import ProfilePictureManager from "./ProfilePictureManager";
 import { cols } from "../../colorSchema";
 import CityManager from "./CityManager";
 export default function ProfileSettings() {
-  const [userSettings, setUserSettings] = useState();
+  const [userSettings, setUserSettings] = useState({});
   useEffect(() => {
-    
     axiosClient
       .get(`/auth/profile`) //auth route
       .then((response) => {
@@ -30,8 +24,7 @@ export default function ProfileSettings() {
           bootcamp,
           city,
         } = response.data;
-
-        setUserSettings({
+        let data = {
           userWishWelcome,
           profilePicture,
           _id,
@@ -40,22 +33,22 @@ export default function ProfileSettings() {
           personalInfo,
           bootcamp,
           city,
-        });
+        };
+
+        if (data) setUserSettings((prev) => ({ ...prev, ...data }));
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(userSettings);
   return (
     userSettings && (
-      <Container style={{color:cols.white, width:"70%"}}>
-      
-          <h1>PROFILE SETTINGS: </h1>
-          <ToggleWelcomeMessage userSettings={userSettings} />
-          <UsernameManager userSettings={userSettings} />
-          <PersonalInfoManager userSettings={userSettings} />
-          <BootcampInfoManager userSettings={userSettings} />
-          <CityManager userSettings={userSettings} />
-          <ProfilePictureManager userSettings={userSettings} />
+      <Container style={{ color: cols.white, width: "70%" }}>
+        <h1>PROFILE SETTINGS: </h1>
+        <ToggleWelcomeMessage userSettings={userSettings} />
+        <UsernameManager userSettings={userSettings} />
+        <PersonalInfoManager userSettings={userSettings} />
+        <BootcampInfoManager userSettings={userSettings} />
+        <CityManager userSettings={userSettings} />
+        <ProfilePictureManager userSettings={userSettings} />
       </Container>
     )
   );

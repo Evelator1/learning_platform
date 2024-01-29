@@ -7,7 +7,6 @@ export default function JobSearchResultsOffCanvas({
   jobs,
   filtered,
 }) {
-  jobs && console.log("job Results: ", filtered.length, jobs.lenght);
   const handleClose = () => setShow(!show);
 
   return (
@@ -18,7 +17,7 @@ export default function JobSearchResultsOffCanvas({
       <Offcanvas.Body>
         {jobs &&
           jobs.length > 0 &&
-          filtered.map((job) => {
+          filtered.map((job, index) => {
             return (
               <div
                 style={{
@@ -26,7 +25,7 @@ export default function JobSearchResultsOffCanvas({
                   height: "8rem",
                   cursor: "pointer",
                 }}
-                key={job._id}
+                key={index}
                 onClick={() => {
                   handleClose(), handleJobSelect(job);
                 }}

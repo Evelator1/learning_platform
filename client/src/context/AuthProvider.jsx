@@ -32,7 +32,7 @@ export default function AuthProvider({ children }) {
         password: data.password,
       })
       .then((response) => {
-        if ((response.status = 200)) {
+        if (response.status == 200) {
           const returnedInfo = response.data;
           setUser(returnedInfo);
           setIsLoading(false);

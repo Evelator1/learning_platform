@@ -1,8 +1,5 @@
 const applyFilters = (jobs, filters) => {
-  // console.log("all jobs", jobs);
-  console.log("filters", filters);
   let filteredJobs = [...jobs];
-  console.log(filteredJobs);
 
   // Filter by City
   if (filters.cityFilter !== "") {
@@ -82,16 +79,13 @@ const applyFilters = (jobs, filters) => {
     }
   }
 
-
-
   if (filters.requiredEducationFilter !== "") {
-
     switch (filters.requiredEducationFilter) {
       case "associates degree":
-        filteredJobs = filteredJobs.filter(
-          (job) => {job.job_required_education.associates_degree === true
-          console.log(job)}
-        );
+        filteredJobs = filteredJobs.filter((job) => {
+          job.job_required_education.associates_degree === true;
+          console.log(job);
+        });
         break;
       case "bachelors degree":
         filteredJobs = filteredJobs.filter(
@@ -108,11 +102,6 @@ const applyFilters = (jobs, filters) => {
           (job) => job.job_required_education.degree_preferred === true
         );
         break;
-      case "associates degree":
-        filteredJobs = filteredJobs.filter(
-          (job) => job.job_required_education.associates_degree === true
-        );
-        break;
       case "high school":
         filteredJobs = filteredJobs.filter(
           (job) => job.job_required_education.high_school === true
@@ -125,21 +114,22 @@ const applyFilters = (jobs, filters) => {
         break;
       case "professional certification":
         filteredJobs = filteredJobs.filter(
-          (job) => job.job_required_education.professional_certification === true
+          (job) =>
+            job.job_required_education.professional_certification === true
         );
         break;
       case "professional certification mentioned":
         filteredJobs = filteredJobs.filter(
-          (job) => job.job_required_education.professional_certification_mentioned === true
+          (job) =>
+            job.job_required_education.professional_certification_mentioned ===
+            true
         );
         break;
 
-  
       default:
         break;
     }
   }
-
 
   console.log(filteredJobs);
 
