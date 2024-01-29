@@ -9,7 +9,7 @@ import ProfilePictureManager from "./ProfilePictureManager";
 import { cols } from "../../colorSchema";
 import CityManager from "./CityManager";
 export default function ProfileSettings() {
-  const [userSettings, setUserSettings] = useState();
+  const [userSettings, setUserSettings] = useState({});
   useEffect(() => {
     axiosClient
       .get(`/auth/profile`) //auth route
@@ -24,8 +24,7 @@ export default function ProfileSettings() {
           bootcamp,
           city,
         } = response.data;
-
-        setUserSettings({
+        let data = {
           userWishWelcome,
           profilePicture,
           _id,
@@ -34,11 +33,12 @@ export default function ProfileSettings() {
           personalInfo,
           bootcamp,
           city,
-        });
+        };
+
+        if (data) setUserSettings((prev) => ({ ...prev, ...data }));
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(userSettings);
   return (
     userSettings && (
       <Container style={{ color: cols.white, width: "70%" }}>

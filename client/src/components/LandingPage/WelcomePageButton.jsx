@@ -25,6 +25,7 @@ export default function WelcomePageButton({ content, color, textColor, linkTo, t
         variant="flat"
         size="md"
         onClick={() => {
+          console.log("clicked");
           if (linkTo) {
             navigate(linkTo);
           }

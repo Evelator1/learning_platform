@@ -33,7 +33,6 @@ export default function CityManager({ userSettings }) {
           defaultValue={userSettings.city}
           {...register("city", { required: true, maxLength: 200 })}
         />
-        {/* <input type="submit" value={"submit Information"} /> */}
         <WelcomePageButton
           content={"submit"}
           color={cols.lila}
